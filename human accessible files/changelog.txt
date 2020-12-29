@@ -1,0 +1,93 @@
+0.21
+- finished hub 2
+- changed sprites for entrances so the zone entrance doesn't look the same as hub entrance
+
+0.20
+- another change to save_state
+- extra levels (possibility of adding them rather than levels themselves)
+- beginning of hub 2
+- zone 4 (zone 3 still missing levels)
+
+0.19
+- revamped hub 1, added more levels (up to zone 3 [still missing 2 levels])
+- crucial save bugfix
+- zone-hub backing now functions properly, but there is another thing in levels.py to manually change
+
+0.18
+- after coming back from a level player appears where he should
+- changed some sprites
+
+0.17
+- added first hub
+- added map bridge block
+- added second zone
+- level name appears in right upper corner
+
+0.16
+- added level-changing block (obj_block_entrance)
+- added lobby for stage 1 (with some spaghetti and a pint of bullshit, please don't judge if it works it works)
+- progress is now automatically saved via save_state class
+- reset_progress command
+
+0.15
+- added sprites for remaining numeric blocks
+- update level options inputting
+- added levels 1/1 - 1/10
+
+0.14
+- tweaked move method of player a little
+- added bridge block
+
+0.13
+- added lamp block
+- fixed variable names in utils.py
+
+0.12
+- added portal blocks
+- added dummy blocks
+
+0.11
+- added lift block
+- commands for offsets
+- changes in variable naming (variablea -> variable_a)
+- config variables for visible layers amount
+- removed constant from code in sprite loading
+
+0.10
+- commands system implemented
+- better level management: autocompleting, commands, levels file, stage knows which level is loaded
+
+0.9
+- added death screen
+- added single layer view
+
+0.8
+- copied text_box from stack (currently unused)
+- added game_logic class to wrap up most of current main
+- changed test levels folder index to 0
+
+0.7
+- added jump blocks
+- move is now player's method instead of state's
+
+0.6
+- all blocks now know their exact position
+- added README.md and changelog.txt
+- added check functionality for obj_block_end
+
+SIMPLIFIED CHANGES BEFORE ADDING CHANGELOG:
+
+0.5
+- arrow block added
+
+0.4
+- ice block added
+
+0.3
+- 3d system now works
+
+0.2
+- numeric block added
+
+0.1
+- you can now move and die

@@ -1,0 +1,11 @@
+the lot
+
+- many players // i don't think so
+- ones
+- thunder 2.0 (only for connected components)
+- yes/no blocks // are they even useful?
+- some god damn levels
+- MORE DICTS
+- simple random level generator
+- a way to tell the player all the controls
+
