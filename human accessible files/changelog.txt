@@ -3,6 +3,7 @@
 - added ones block
 - added zone random with 119 (2*3*1 generated levels (which probably will be rerandomized at some point)
 - added new first zone hub and moved zone 1 there to make things less confusing
+- added 'c' command (complete current level)
 - changed many sprites
 
 0.21
@@ -61,7 +62,7 @@
 - removed constant from code in sprite loading
 
 0.10
-- commands system implemented
+- commands system implemented (uses text_box from stack)
 - better level management: autocompleting, commands, levels file, stage knows which level is loaded
 
 0.9
