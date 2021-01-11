@@ -1,11 +1,13 @@
+from save_state import global_save_state
 #!! levels of level_set 0 are for debugging
 
 hubs = {}
-hubs[0] = [1000, 1, 2, 3]
-hubs[1] = [4, 5, 6, 7]
+hubs[0] = [1]
+hubs[1] = [1000, 2, 3, 69]
+hubs[2] = [4, 5, 6, 7]
 
 levs = {}
-levs[0] = 18
+levs[0] = 19
 levs[1] = 10
 levs[2] = 10
 levs[3] = 7
@@ -15,6 +17,7 @@ levs[6] = 12
 levs[7] = 10
 levs[1000] = 3
 levs[2138] = 2136
+levs[69] = 136
 
 level_error_path = 'levels/0/1.txt'
 
@@ -78,3 +81,21 @@ def is_level(level_index):
     if is_zone(level_index):
         return False
     return True
+
+def level_name(level_index):
+    level_set, level = level_index
+    if level_set == 69:
+        if level != 0:
+            return "Zone random level " + str(level)
+        return "Zone random"
+
+    if level_set == 2138:
+        return "Zone hub " + str(level+1)
+    if level_set >= 1000:
+        if level == 0:
+            return "Zone extra " + str(level_set-999)
+        else:
+            return "Zone extra " + str(level_set-999) + " level " + str(level)
+    if level == 0:
+        return "Zone " + str(level_set)
+    return "Zone " + str(level_set) + " level " + str(level)

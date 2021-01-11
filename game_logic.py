@@ -30,10 +30,16 @@ class game_logic:
         if event.type == pygame.KEYDOWN:
             self.keys_registered.append(event)
 
+    def complete(self):
+        if not l.is_level(self.level_index):
+            return
+
+        global_save_state.complete(self.level_index)
+        self.set_stage(l.next_level(self.level_index))
+
     def move(self):
         if self.stage.latest_state().completed:
-            global_save_state.complete(self.level_index)
-            self.set_stage(l.next_level(self.level_index))
+            self.complete()
 
         if self.stage.change_to is not None:
             self.set_stage(self.stage.change_to)
@@ -116,5 +122,8 @@ class game_logic:
         elif command[0] == 'all':
             print("Completing all levels")
             global_save_state.complete_all()
+        elif command[0] == 'c':
+            print("Completing current level")
+            self.complete()
         else:
             print("No such command")

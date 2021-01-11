@@ -20,7 +20,7 @@ class stage:
             self.latest_state().draw()
         else:
             self.latest_state().draw_one_layer(single_layer)
-        txt_surface = FONT.render(u.level_name(self.level_index), True, pygame.Color('black'))
+        txt_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
         self.screen.blit(txt_surface, (16, 16))
 
     def latest_state(self):

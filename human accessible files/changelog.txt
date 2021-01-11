@@ -1,3 +1,10 @@
+0.22
+- added level generator (I personally use it and it won't be part of the game, just it's output)
+- added ones block
+- added zone random with 119 (2*3*1 generated levels (which probably will be rerandomized at some point)
+- added new first zone hub and moved zone 1 there to make things less confusing
+- changed many sprites
+
 0.21
 - finished hub 2
 - changed sprites for entrances so the zone entrance doesn't look the same as hub entrance

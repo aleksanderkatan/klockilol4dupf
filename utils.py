@@ -80,16 +80,3 @@ def prevents_win(blo):
     if type(blo) == o.block_lamp and not blo.on:
         return True
     return False
-
-def level_name(level_index):
-    level_set, level = level_index
-    if level_set == 2138:
-        return "Zone hub " + str(level+1)
-    if level_set >= 1000:
-        if level == 0:
-            return "Zone extra " + str(level_set-999)
-        else:
-            return "Zone extra " + str(level_set-999) + " level " + str(level)
-    if level == 0:
-        return "Zone " + str(level_set)
-    return "Zone " + str(level_set) + " level " + str(level)

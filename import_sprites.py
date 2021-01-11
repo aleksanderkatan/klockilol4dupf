@@ -19,7 +19,7 @@ temp_sprites["obj_block_arrow_3"] = pygame.image.load('sprites/blocks/arrow.bmp'
 temp_sprites["obj_block_arrow_3"] = pygame.transform.rotate(temp_sprites["obj_block_arrow_3"], 270)
 temp_sprites["obj_block_jump_2"] = pygame.image.load('sprites/blocks/jump.bmp').convert()
 temp_sprites["obj_block_lift"] = pygame.image.load('sprites/blocks/lift.bmp').convert()
-temp_sprites["obj_player"] = pygame.image.load('sprites/player2t.gif').convert()
+temp_sprites["obj_player"] = pygame.image.load('sprites/player3.gif').convert()
 temp_sprites["obj_block_portal"] = pygame.image.load('sprites/blocks/portal.bmp').convert()
 temp_sprites["obj_block_dummy"] = pygame.image.load('sprites/blocks/dummy.bmp').convert()
 temp_sprites["obj_block_lamp_on"] = pygame.image.load('sprites/blocks/lampon.bmp').convert()
@@ -38,6 +38,7 @@ temp_sprites["level_available"] = pygame.image.load('sprites/blocks/levelavailab
 temp_sprites["level_unavailable"] = pygame.image.load('sprites/blocks/levelunavailable.bmp').convert()
 temp_sprites["obj_block_map_bridge_off"] = pygame.image.load('sprites/blocks/mapbridgeoff.bmp').convert()
 temp_sprites["obj_block_map_bridge_on"] = pygame.image.load('sprites/blocks/mapbridgeon.bmp').convert()
+temp_sprites["obj_block_ones"] = pygame.image.load('sprites/blocks/ones.bmp').convert()
 
 sprites = {}
 for name, sprite in temp_sprites.items():
@@ -65,7 +66,7 @@ for name, sprite in temp_sprites.items():
     sprites[name][-3] = new_sprite.copy()
     sprites[name][-3].set_alpha(64)
 
-sprites["background"] = pygame.image.load('sprites/background.gif').convert()
+sprites["background"] = pygame.image.load('sprites/background.jpg').convert()
 sprites["background"] = pygame.transform.scale(sprites["background"], (c.WINDOW_X, c.WINDOW_Y))
 sprites["you_died"] = pygame.image.load('sprites/youdied.jpg').convert()
 sprites["you_died"] = pygame.transform.scale(sprites["you_died"], (c.WINDOW_X, c.WINDOW_Y))

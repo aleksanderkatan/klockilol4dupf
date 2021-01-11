@@ -13,6 +13,7 @@ from objects.obj_block_lamp import block_lamp
 from objects.obj_block_bridge import block_bridge
 from objects.obj_block_entrance import block_entrance
 from objects.obj_block_map_bridge import block_map_bridge
+from objects.obj_block_ones import block_ones
 
 standables = set()
 standables.add(block_perma)
@@ -29,6 +30,7 @@ standables.add(block_lamp)
 standables.add(block_bridge)
 standables.add(block_entrance)
 standables.add(block_map_bridge)
+standables.add(block_ones)
 
 preventing_win = set()
 preventing_win.add(block_numeric)

@@ -27,3 +27,4 @@ charmap['b'] = o.block_lamp
 charmap['M'] = o.block_bridge
 charmap['e'] = o.block_entrance
 charmap['m'] = o.block_map_bridge
+charmap['O'] = o.block_ones
