@@ -7,6 +7,7 @@ import import_sprites as s
 import config as c
 import levels as l
 from save_state import global_save_state
+from witch_stuff.witch import witch
 
 class game_logic:
     def __init__(self, screen):
@@ -16,6 +17,7 @@ class game_logic:
         self.single_layer = None
         self.input_box = input_box(0, c.WINDOW_Y - 32, c.WINDOW_X, 32, self, "elo")
         self.level_index = None
+        self.witch = witch(screen)
 
     def set_stage(self, level_index):
         self.stage = stage(self.screen, level_index, self.level_index)
@@ -44,11 +46,17 @@ class game_logic:
         if self.stage.change_to is not None:
             self.set_stage(self.stage.change_to)
 
+        self.witch.check_for_events(self.level_index, self.stage)
+
         next_move_direction = None
         for event in self.keys_registered:
             self.input_box.handle_event(event)  # !! ignores until activated
+            self.witch.handle_event(event)  # !! ignores until activated
 
             if self.input_box.active:
+                continue
+
+            if self.witch.is_active():
                 continue
 
             key = event.key
@@ -74,6 +82,9 @@ class game_logic:
     def draw(self):
         self.screen.blit(s.sprites['background'], (0, 0))
         self.stage.draw(self.single_layer)
+
+        if self.witch.is_active():
+            self.witch.draw()
 
         if self.input_box.active:
             self.screen.blit(s.sprites['black'], (0, 0))
@@ -115,10 +126,13 @@ class game_logic:
         elif command[0].lower() in ['exit', 'quit', 'halt', 'shutdown', 'poweroff', 'q']:
             pygame.quit()
             sys.exit(0)
-        elif command[0] == 'reset':
+        elif command[0] == 'ra':
             print("Erradicating save file")
             global_save_state.reset()
-            self.set_stage((1, 1))
+            self.set_stage((2138, 0))
+        elif command[0] == 're':
+            print("Resetting events")
+            global_save_state.reset_events()
         elif command[0] == 'all':
             print("Completing all levels")
             global_save_state.complete_all()

@@ -73,6 +73,8 @@ sprites["you_died"] = pygame.transform.scale(sprites["you_died"], (c.WINDOW_X, c
 sprites["black"] = pygame.image.load('sprites/black.jpg').convert()
 sprites["black"] = pygame.transform.scale(sprites["black"], (c.WINDOW_X, c.WINDOW_Y))
 sprites["black"].set_alpha(192)
+sprites["witch"] = pygame.image.load('sprites/witch.png')
+sprites["witch"] = pygame.transform.scale(sprites["witch"], (c.WINDOW_X, c.WINDOW_Y))
 
 alternate = {}
 alternate["background"] = pygame.image.load('sprites/dudachuj.png').convert()

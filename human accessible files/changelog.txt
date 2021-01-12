@@ -1,3 +1,6 @@
+0.23
+- added some witch code so now it theoretically works
+
 0.22
 - added level generator (I use it and it won't be part of the game, just its output)
 - added ones block
