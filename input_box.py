@@ -3,7 +3,7 @@ import config as c
 
 COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
-FONT = pg.font.Font(None, 32)
+FONT = pg.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", 32)
 
 class input_box:
     def __init__(self, x, y, w, h, stage, text=''):
@@ -43,6 +43,6 @@ class input_box:
 
     def draw(self, screen):
         # Blit the text.
-        screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))
+        screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y-4)) # !! another constant
         # Blit the rect.
         pg.draw.rect(screen, self.color, self.rect, 2)

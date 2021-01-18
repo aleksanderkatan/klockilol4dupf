@@ -10,7 +10,7 @@ class witch:
         self.events = events
         self.screen = screen
         self.active_event = None
-        self.text_box = witch_box(0, c.WINDOW_Y-100, c.WINDOW_X, 100, self.screen)
+        self.text_box = witch_box(self.screen)
 
     def check_for_events(self, level_index, stage):
         if self.active_event is not None:
@@ -31,7 +31,8 @@ class witch:
         self.text_box.draw()
 
     def update_text_box(self):
-        self.text_box.set_text(self.current_message())
+        if self.current_message() is not None:
+            self.text_box.set_text(self.current_message())
 
     def handle_event(self, event):
         if event.key == pg.K_SPACE:

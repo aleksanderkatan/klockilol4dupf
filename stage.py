@@ -3,7 +3,7 @@ from state import state
 import utils as u
 import levels as l
 
-FONT = pygame.font.Font(None, 64)
+FONT = pygame.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", 64)
 
 class stage:
     def __init__(self, screen, level_index, last_level_index):

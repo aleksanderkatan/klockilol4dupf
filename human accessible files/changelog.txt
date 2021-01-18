@@ -1,3 +1,9 @@
+0.24
+- added text wrapper for mono
+- polished witch so now it looks pretty (text_box, not she herself)
+- added some witch events (zone 1, 2)
+- changed font to mono
+
 0.23
 - added some witch code so now it theoretically works
 
