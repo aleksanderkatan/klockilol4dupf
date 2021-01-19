@@ -16,7 +16,7 @@ class block_jump(block):
 
     def set_boost(self, boost):
         self.boost = boost
-        if 2 <= boost <= 2:
+        if 2 <= boost <= 3:
             self.sprite = s.sprites["obj_block_jump_" + str(boost)]
         else:
             self.sprite = s.sprites["error"]

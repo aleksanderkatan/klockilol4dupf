@@ -30,7 +30,7 @@ class state:
         map_bridges = []
 
         for i in range(self.z):
-            newlayer = layer(self.x, self.y, self.screen, self.stage, self.state_index)
+            new_layer = layer(self.x, self.y, self.screen, self.stage, self.state_index)
 
             for j in range(self.y):
                 line = f.readline()
@@ -60,9 +60,9 @@ class state:
                     if obj == o.block_map_bridge:
                         map_bridges.append(blo)
 
-                    newlayer.update(k, j, blo)
+                    new_layer.update(k, j, blo)
 
-            self.layers.append(newlayer)
+            self.layers.append(new_layer)
             f.readline()
 
         options = {}
@@ -83,7 +83,7 @@ class state:
         if 'jumps' in options:
             print("Configuring jumps")
             jump_options = options['jumps']
-            for i in range(len(portals)):
+            for i in range(len(jumps)):
                 jumps[i].set_boost(int(jump_options[i]))
 
         if 'entrances' in options:

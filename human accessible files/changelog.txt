@@ -1,3 +1,7 @@
+0.25
+- added some levels for zone 1 and 5
+- minor other changes: sprite for jump 3, bugfix in state
+
 0.24
 - added text wrapper for mono
 - polished witch so now it looks pretty (text_box, not she herself)
