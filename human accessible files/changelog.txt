@@ -1,3 +1,10 @@
+0.27.3
+- cleaned up sprites folder
+- renamed all sprites to match convention
+- renamed objects to blocks
+- replaced "import_" in files with "all_"
+- renamed "witch_stuff" to "witch"
+
 0.27.2
 - removed the "obj_" prefix since there are no other prefixes in the project
 

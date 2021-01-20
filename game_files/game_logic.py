@@ -3,11 +3,11 @@ import sys
 from stage import stage
 from input_box import input_box
 import utils as u
-import import_sprites as s
+import all_sprites as s
 import config as c
 import levels as l
 from save_state import global_save_state
-from witch_stuff.witch import witch
+from witch.witch import witch
 
 class game_logic:
     def __init__(self, screen):

@@ -1,4 +1,4 @@
-import import_sprites as s
+import all_sprites as s
 import utils as u
 
 

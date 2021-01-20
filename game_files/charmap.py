@@ -1,4 +1,4 @@
-import import_objects as o
+import all_blocks as o
 
 charmap = {}
 charmap['.'] = o.block_empty

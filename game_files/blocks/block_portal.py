@@ -1,6 +1,6 @@
-from objects.block import block
-import import_objects as o
-import import_sprites as s
+from blocks.block import block
+import all_blocks as o
+import all_sprites as s
 
 class block_portal(block):
     def __init__(self, screen, stage, state_index, pos, destination=None):

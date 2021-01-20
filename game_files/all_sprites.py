@@ -17,13 +17,13 @@ temp_sprites["block_arrow_2"] = pygame.image.load('sprites/blocks/arrow.bmp').co
 temp_sprites["block_arrow_2"] = pygame.transform.rotate(temp_sprites["block_arrow_2"], 180)
 temp_sprites["block_arrow_3"] = pygame.image.load('sprites/blocks/arrow.bmp').convert()
 temp_sprites["block_arrow_3"] = pygame.transform.rotate(temp_sprites["block_arrow_3"], 270)
-temp_sprites["block_jump_2"] = pygame.image.load('sprites/blocks/jump.bmp').convert()
+temp_sprites["block_jump_2"] = pygame.image.load('sprites/blocks/jump2.bmp').convert()
 temp_sprites["block_lift"] = pygame.image.load('sprites/blocks/lift.bmp').convert()
-temp_sprites["player"] = pygame.image.load('sprites/player3.gif').convert()
+temp_sprites["player"] = pygame.image.load('sprites/player.gif').convert()
 temp_sprites["block_portal"] = pygame.image.load('sprites/blocks/portal.bmp').convert()
 temp_sprites["block_dummy"] = pygame.image.load('sprites/blocks/dummy.bmp').convert()
-temp_sprites["block_lamp_on"] = pygame.image.load('sprites/blocks/lampon.bmp').convert()
-temp_sprites["block_lamp_off"] = pygame.image.load('sprites/blocks/lampoff.bmp').convert()
+temp_sprites["block_lamp_on"] = pygame.image.load('sprites/blocks/lamp_on.bmp').convert()
+temp_sprites["block_lamp_off"] = pygame.image.load('sprites/blocks/lamp_off.bmp').convert()
 temp_sprites["block_bridge"] = pygame.image.load('sprites/blocks/bridge.bmp').convert()
 temp_sprites["block_numeric_3"] = pygame.image.load('sprites/blocks/3.bmp').convert()
 temp_sprites["block_numeric_4"] = pygame.image.load('sprites/blocks/4.bmp').convert()
@@ -31,15 +31,15 @@ temp_sprites["block_numeric_5"] = pygame.image.load('sprites/blocks/5.bmp').conv
 temp_sprites["block_numeric_6"] = pygame.image.load('sprites/blocks/6.bmp').convert()
 temp_sprites["block_numeric_7"] = pygame.image.load('sprites/blocks/7.bmp').convert()
 temp_sprites["block_numeric_8"] = pygame.image.load('sprites/blocks/8.bmp').convert()
-temp_sprites["block_entrance_hub"] = pygame.image.load('sprites/blocks/entrancehub.bmp').convert()
-temp_sprites["block_entrance_zone"] = pygame.image.load('sprites/blocks/entrancezone.bmp').convert()
-temp_sprites["block_entrance_level"] = pygame.image.load('sprites/blocks/entrancelevel.bmp').convert()
-temp_sprites["level_available"] = pygame.image.load('sprites/blocks/levelavailable.bmp').convert()
-temp_sprites["level_unavailable"] = pygame.image.load('sprites/blocks/levelunavailable.bmp').convert()
-temp_sprites["block_map_bridge_off"] = pygame.image.load('sprites/blocks/mapbridgeoff.bmp').convert()
-temp_sprites["block_map_bridge_on"] = pygame.image.load('sprites/blocks/mapbridgeon.bmp').convert()
+temp_sprites["block_entrance_hub"] = pygame.image.load('sprites/blocks/entrance_hub.bmp').convert()
+temp_sprites["block_entrance_zone"] = pygame.image.load('sprites/blocks/entrance_zone.bmp').convert()
+temp_sprites["block_entrance_level"] = pygame.image.load('sprites/blocks/entrance_level.bmp').convert()
+temp_sprites["level_available"] = pygame.image.load('sprites/blocks/level_available.bmp').convert()
+temp_sprites["level_unavailable"] = pygame.image.load('sprites/blocks/level_unavailable.bmp').convert()
+temp_sprites["block_map_bridge_off"] = pygame.image.load('sprites/blocks/map_bridge_off.bmp').convert()
+temp_sprites["block_map_bridge_on"] = pygame.image.load('sprites/blocks/map_bridge_on.bmp').convert()
 temp_sprites["block_ones"] = pygame.image.load('sprites/blocks/ones.bmp').convert()
-temp_sprites["block_jump_3"] = pygame.image.load('sprites/blocks/jump2.bmp').convert() # !!how convinient naming
+temp_sprites["block_jump_3"] = pygame.image.load('sprites/blocks/jump3.bmp').convert() # !!how convinient naming
 
 sprites = {}
 for name, sprite in temp_sprites.items():
@@ -69,7 +69,7 @@ for name, sprite in temp_sprites.items():
 
 sprites["background"] = pygame.image.load('sprites/background.jpg').convert()
 sprites["background"] = pygame.transform.scale(sprites["background"], (c.WINDOW_X, c.WINDOW_Y))
-sprites["you_died"] = pygame.image.load('sprites/youdied.jpg').convert()
+sprites["you_died"] = pygame.image.load('sprites/you_died.jpg').convert()
 sprites["you_died"] = pygame.transform.scale(sprites["you_died"], (c.WINDOW_X, c.WINDOW_Y))
 sprites["black"] = pygame.image.load('sprites/black.jpg').convert()
 sprites["black"] = pygame.transform.scale(sprites["black"], (c.WINDOW_X, c.WINDOW_Y))
@@ -78,7 +78,7 @@ sprites["witch"] = pygame.image.load('sprites/witch.png')
 sprites["witch"] = pygame.transform.scale(sprites["witch"], (c.WINDOW_X, c.WINDOW_Y))
 
 alternate = {}
-alternate["background"] = pygame.image.load('sprites/dudachuj.png').convert()
+alternate["background"] = pygame.image.load('sprites/background_duda_chuj.png').convert()
 alternate["background"] = pygame.transform.scale(alternate["background"], (c.WINDOW_X, c.WINDOW_Y))
 
 def swap(sprite_name):

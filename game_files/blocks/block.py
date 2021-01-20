@@ -1,5 +1,5 @@
 import abc
-import import_sprites as s
+import all_sprites as s
 
 class block(metaclass=abc.ABCMeta):
     def on_step_in(self):

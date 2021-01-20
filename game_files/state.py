@@ -2,8 +2,8 @@ from layer import layer
 from player import player
 from charmap import charmap
 import utils as u
-import import_objects as o
-import import_sprites as s
+import all_blocks as o
+import all_sprites as s
 
 class state:
     def __init__(self, screen, stage, state_index):

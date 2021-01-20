@@ -1,4 +1,4 @@
-from witch_stuff.witch_event import witch_event
+from witch.witch_event import witch_event
 
 events = []
 

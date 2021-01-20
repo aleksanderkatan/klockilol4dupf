@@ -1,4 +1,4 @@
-import import_objects as o
+import all_blocks as o
 import config as c
 import utils as u
 

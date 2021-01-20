@@ -1,5 +1,5 @@
-from objects.block import block
-import import_sprites as s
+from blocks.block import block
+import all_sprites as s
 import utils as u
 from save_state import global_save_state
 

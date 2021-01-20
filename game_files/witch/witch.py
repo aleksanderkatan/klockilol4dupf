@@ -1,8 +1,8 @@
-from witch_stuff.events import events
+from witch.events import events
 from save_state import global_save_state
 import pygame as pg
-import import_sprites as s
-from witch_stuff.witch_box import witch_box
+import all_sprites as s
+from witch.witch_box import witch_box
 import config as c
 
 class witch:

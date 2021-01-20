@@ -1,6 +1,6 @@
-from objects.block import block
-from objects.block_empty import block_empty
-import import_sprites as s
+from blocks.block import block
+from blocks.block_empty import block_empty
+import all_sprites as s
 
 class block_numeric(block):
     def __init__(self, screen, stage, state_index, pos, number=-1):
