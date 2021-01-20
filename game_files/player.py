@@ -5,7 +5,7 @@ import utils as u
 class player:
     def __init__(self, pos, screen, stage, state_index):
         self.pos = pos
-        self.sprite = s.sprites["obj_player"][0]
+        self.sprite = s.sprites["player"][0]
         self.screen = screen
         self.stage = stage
         self.state_index = state_index

@@ -1,4 +1,4 @@
-from objects.obj_block import block
+from objects.block import block
 import import_objects as o
 import import_sprites as s
 
@@ -6,7 +6,7 @@ class block_portal(block):
     def __init__(self, screen, stage, state_index, pos, destination=None):
         super().__init__(screen, stage, state_index, pos)
         self.state_index = state_index
-        self.sprite = s.sprites["obj_block_portal"]
+        self.sprite = s.sprites["block_portal"]
         self.destination = destination
 
     def copy(self, new_state_index):

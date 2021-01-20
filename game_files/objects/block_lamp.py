@@ -1,4 +1,4 @@
-from objects.obj_block import block
+from objects.block import block
 import import_sprites as s
 
 class block_lamp(block):
@@ -19,6 +19,6 @@ class block_lamp(block):
 
     def evaluate_sprite(self, on):
         if on:
-            return s.sprites["obj_block_lamp_on"]
+            return s.sprites["block_lamp_on"]
         else:
-            return s.sprites["obj_block_lamp_off"]
+            return s.sprites["block_lamp_off"]

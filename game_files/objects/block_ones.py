@@ -1,11 +1,11 @@
-from objects.obj_block import block
+from objects.block import block
 import import_sprites as s
 from import_objects import block_numeric
 
 class block_ones(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
-        self.sprite = s.sprites["obj_block_ones"]
+        self.sprite = s.sprites["block_ones"]
 
     def copy(self, new_state_index):
         return block_ones(self.screen, self.stage, new_state_index, self.pos)

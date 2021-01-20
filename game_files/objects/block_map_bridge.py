@@ -1,4 +1,4 @@
-from objects.obj_block import block
+from objects.block import block
 import import_sprites as s
 import utils as u
 from save_state import global_save_state
@@ -23,6 +23,6 @@ class block_map_bridge(block):
             return
 
         if global_save_state.is_set_completed(level_set):
-            self.sprite = s.sprites["obj_block_map_bridge_on"]
+            self.sprite = s.sprites["block_map_bridge_on"]
         else:
-            self.sprite = s.sprites["obj_block_map_bridge_off"]
+            self.sprite = s.sprites["block_map_bridge_off"]

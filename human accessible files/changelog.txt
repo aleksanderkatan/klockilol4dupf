@@ -1,3 +1,6 @@
+0.27.2
+- removed the "obj_" prefix since there are no other prefixes in the project
+
 0.27.1
 - moved all game files to separate folder
 
@@ -52,7 +55,7 @@
 - level name appears in right upper corner
 
 0.16
-- added level-changing block (obj_block_entrance)
+- added level-changing block (block_entrance)
 - added lobby for stage 1 (with some spaghetti and a pint of bullshit, please don't judge if it works it works)
 - progress is now automatically saved via save_state class
 - reset_progress command
@@ -101,7 +104,7 @@
 0.6
 - all blocks now know their exact position
 - added README.md and changelog.txt
-- added check functionality for obj_block_end
+- added check functionality for block_end
 
 SIMPLIFIED CHANGES BEFORE ADDING CHANGELOG:
 

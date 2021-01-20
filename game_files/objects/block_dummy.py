@@ -1,12 +1,12 @@
-from objects.obj_block import block
-from objects.obj_block_empty import block_empty
+from objects.block import block
+from objects.block_empty import block_empty
 import import_sprites as s
 
 class block_dummy(block):
     def __init__(self, screen, stage, state_index, pos,):
         super().__init__(screen, stage, state_index, pos)
         self.state_index = state_index
-        self.sprite = s.sprites['obj_block_dummy']
+        self.sprite = s.sprites['block_dummy']
 
     def copy(self, new_state_index):
         return block_dummy(self.screen, self.stage, new_state_index, self.pos)

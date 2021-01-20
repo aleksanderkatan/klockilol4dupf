@@ -1,19 +1,19 @@
-from objects.obj_block_perma import block_perma
-from objects.obj_block_empty import block_empty
-from objects.obj_block_start import block_start
-from objects.obj_block_end import block_end
-from objects.obj_block_numeric import block_numeric
-from objects.obj_block_ice import block_ice
-from objects.obj_block_arrow import block_arrow
-from objects.obj_block_jump import block_jump
-from objects.obj_block_lift import block_lift
-from objects.obj_block_portal import block_portal
-from objects.obj_block_dummy import block_dummy
-from objects.obj_block_lamp import block_lamp
-from objects.obj_block_bridge import block_bridge
-from objects.obj_block_entrance import block_entrance
-from objects.obj_block_map_bridge import block_map_bridge
-from objects.obj_block_ones import block_ones
+from objects.block_perma import block_perma
+from objects.block_empty import block_empty
+from objects.block_start import block_start
+from objects.block_end import block_end
+from objects.block_numeric import block_numeric
+from objects.block_ice import block_ice
+from objects.block_arrow import block_arrow
+from objects.block_jump import block_jump
+from objects.block_lift import block_lift
+from objects.block_portal import block_portal
+from objects.block_dummy import block_dummy
+from objects.block_lamp import block_lamp
+from objects.block_bridge import block_bridge
+from objects.block_entrance import block_entrance
+from objects.block_map_bridge import block_map_bridge
+from objects.block_ones import block_ones
 
 standables = set()
 standables.add(block_perma)

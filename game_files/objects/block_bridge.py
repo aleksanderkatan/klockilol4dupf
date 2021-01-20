@@ -1,11 +1,11 @@
-from objects.obj_block import block
+from objects.block import block
 import import_sprites as s
 import utils as u
 
 class block_bridge(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
-        self.sprite = s.sprites["obj_block_bridge"]
+        self.sprite = s.sprites["block_bridge"]
         self.direction = None
 
     def copy(self, new_state_index):

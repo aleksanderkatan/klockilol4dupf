@@ -1,5 +1,5 @@
-from objects.obj_block import block
-from objects.obj_block_empty import block_empty
+from objects.block import block
+from objects.block_empty import block_empty
 import import_sprites as s
 
 class block_arrow(block):
@@ -17,6 +17,6 @@ class block_arrow(block):
     def set_direction(self, direction):
         self.direction = direction
         if 0 <= direction <= 3:
-            self.sprite = s.sprites["obj_block_arrow_" + str(direction)]
+            self.sprite = s.sprites["block_arrow_" + str(direction)]
         else:
             self.sprite = s.sprites["error"]

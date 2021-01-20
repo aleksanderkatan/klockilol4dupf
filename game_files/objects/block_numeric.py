@@ -1,5 +1,5 @@
-from objects.obj_block import block
-from objects.obj_block_empty import block_empty
+from objects.block import block
+from objects.block_empty import block_empty
 import import_sprites as s
 
 class block_numeric(block):
@@ -25,6 +25,6 @@ class block_numeric(block):
     def set_number(self, number):
         self.number = number
         if 1 <= number <= 8:
-            self.sprite = s.sprites["obj_block_numeric_" + str(number)]
+            self.sprite = s.sprites["block_numeric_" + str(number)]
         else:
             self.sprite = s.sprites["error"]

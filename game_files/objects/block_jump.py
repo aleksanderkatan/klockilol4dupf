@@ -1,5 +1,5 @@
-from objects.obj_block import block
-from objects.obj_block_empty import block_empty
+from objects.block import block
+from objects.block_empty import block_empty
 import import_sprites as s
 
 class block_jump(block):
@@ -17,6 +17,6 @@ class block_jump(block):
     def set_boost(self, boost):
         self.boost = boost
         if 2 <= boost <= 3:
-            self.sprite = s.sprites["obj_block_jump_" + str(boost)]
+            self.sprite = s.sprites["block_jump_" + str(boost)]
         else:
             self.sprite = s.sprites["error"]

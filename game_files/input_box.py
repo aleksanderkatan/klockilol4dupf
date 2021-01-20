@@ -27,17 +27,13 @@ class input_box:
 
         if not self.active:
             return
-
         elif event.key == pg.K_BACKSPACE:
             self.text = self.text[:-1]
         else:
-            if len(self.text) < c.MAX_COMMAND_LENGTH:
+            if len(self.text) < c.MAX_COMMAND_LENGTH and event.key != pg.K_RETURN:
                 self.text += event.unicode
-        # Re-render the text.
         self.txt_surface = FONT.render(self.text, True, self.color)
 
     def draw(self, screen):
-        # Blit the text.
         screen.blit(self.txt_surface, (self.rect.x+c.WITCH_FONT_OFFSET, self.rect.y+c.WITCH_FONT_OFFSET*0.5)) # !! another constant
-        # Blit the rect.
         pg.draw.rect(screen, self.color, self.rect, 2)

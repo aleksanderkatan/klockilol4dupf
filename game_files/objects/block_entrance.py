@@ -1,4 +1,4 @@
-from objects.obj_block import block
+from objects.block import block
 import import_sprites as s
 import config as c
 import levels as l
@@ -20,11 +20,11 @@ class block_entrance(block):
             return
         self.target_level = target_level
         if l.is_hub(target_level):
-            self.sprite = s.sprites["obj_block_entrance_hub"]
+            self.sprite = s.sprites["block_entrance_hub"]
         if l.is_zone(target_level):
-            self.sprite = s.sprites["obj_block_entrance_zone"]
+            self.sprite = s.sprites["block_entrance_zone"]
         if l.is_level(target_level):
-            self.sprite = s.sprites["obj_block_entrance_level"]
+            self.sprite = s.sprites["block_entrance_level"]
 
     def on_step_in(self):
         if global_save_state.is_available(self.target_level):
