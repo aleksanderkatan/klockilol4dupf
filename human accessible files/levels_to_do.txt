@@ -1,9 +1,0 @@
-hubs completed:
-1 2
-
-zones level 0 completed:
-1 2 3 4 6
-
-missing levels:
-2 for zone 3
-all for zone 5, 6, 7
