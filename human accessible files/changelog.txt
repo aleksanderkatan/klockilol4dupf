@@ -1,3 +1,6 @@
+0.27.1
+- moved all game files to separate folder
+
 0.26
 - added more levels for zone 5, implemented levels into game
 - made game window scalable via config (also, made config way more confusing, to be fixed later)
