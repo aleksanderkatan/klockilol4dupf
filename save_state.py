@@ -109,7 +109,7 @@ class save_state:
         return level - 1 in self.save_data.completed[level_set]
 
     def complete_all(self):
-        self.reset()
+        self.reset_completed()
         for key, val in l.levs.items():
             if key == 2138:
                 continue

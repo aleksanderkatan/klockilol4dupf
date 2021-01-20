@@ -1,9 +1,9 @@
 import pygame
 from state import state
-import utils as u
+import config as c
 import levels as l
 
-FONT = pygame.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", 64)
+FONT = pygame.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", c.LEVEL_FONT_SIZE)
 
 class stage:
     def __init__(self, screen, level_index, last_level_index):
@@ -21,7 +21,8 @@ class stage:
         else:
             self.latest_state().draw_one_layer(single_layer)
         txt_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
-        self.screen.blit(txt_surface, (16, 16))
+        if not self.latest_state().player.dead:
+            self.screen.blit(txt_surface, (c.LEVEL_FONT_OFFSET, c.LEVEL_FONT_OFFSET))
 
     def latest_state(self):
         return self.states[len(self.states) - 1]

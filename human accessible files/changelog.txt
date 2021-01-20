@@ -1,3 +1,7 @@
+0.26
+- added more levels for zone 5, implemented levels into game
+- made game window scalable via config (also, made config way more confusing, to be fixed later)
+
 0.25
 - added some levels for zone 1 and 5
 - minor other changes: sprite for jump 3, bugfix in state

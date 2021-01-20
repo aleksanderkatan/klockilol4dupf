@@ -3,7 +3,7 @@ import config as c
 
 COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
-FONT = pg.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", 32)
+FONT = pg.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", c.WITCH_FONT_SIZE)
 
 class input_box:
     def __init__(self, x, y, w, h, stage, text=''):
@@ -36,13 +36,8 @@ class input_box:
         # Re-render the text.
         self.txt_surface = FONT.render(self.text, True, self.color)
 
-    def update(self):
-        # Resize the box if the text is too long.
-        width = max(200, self.txt_surface.get_width()+10)
-        self.rect.w = width
-
     def draw(self, screen):
         # Blit the text.
-        screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y-4)) # !! another constant
+        screen.blit(self.txt_surface, (self.rect.x+c.WITCH_FONT_OFFSET, self.rect.y+c.WITCH_FONT_OFFSET*0.5)) # !! another constant
         # Blit the rect.
         pg.draw.rect(screen, self.color, self.rect, 2)

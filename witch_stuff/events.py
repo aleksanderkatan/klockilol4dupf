@@ -34,10 +34,26 @@ events[-1].messages.append("Świetnie ci idzie. Czy wiesz, że tylko 0.000001% l
 
 events.append(witch_event())
 events[-1].where = ((1, 9), None)
-events[-1].messages.append("Ten poziom jest prostszy niż się wydaje. Spróbuj wczuć się w rytm.")
+events[-1].messages.append("Wszystkie poziomy są do przejścia. Sprawdzałam 6 razy.")
 
 events.append(witch_event())
 events[-1].where = ((1, 10), None)
+events[-1].messages.append("Pamiętasz, kiedy mówiłam że tylko 0.000001% ludzi dochodzi tak daleko?")
+events[-1].messages.append("Kłamałam.")
+events[-1].messages.append("0.000001% ludzi nie dochodzi tak daleko.")
+events[-1].messages.append("Najczęstsze przyczyny to: znudzenie, odcięcie prądu i śmierć ze starości.")
+events[-1].messages.append("Ale i tak radzisz sobie świetnie!")
+
+events.append(witch_event())
+events[-1].where = ((1, 11), None)
+events[-1].messages.append("DFS, mówi ci to coś, panie Ferdku?")
+
+events.append(witch_event())
+events[-1].where = ((1, 12), None)
+events[-1].messages.append("Ten poziom jest prostszy niż się wydaje. Spróbuj wczuć się w rytm.")
+
+events.append(witch_event())
+events[-1].where = ((1, 13), None)
 events[-1].messages.append("Super, to ostatni poizom z tego zone.")
 events[-1].messages.append("Wygląda znajomo, nie?")
 events[-1].messages.append("Mam nadzieję, że poprzedni poziom cię czegoś nauczył.")

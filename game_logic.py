@@ -15,7 +15,10 @@ class game_logic:
         self.screen = screen
         self.keys_registered = []
         self.single_layer = None
-        self.input_box = input_box(0, c.WINDOW_Y - 32, c.WINDOW_X, 32, self, "elo")
+        self.input_box = input_box(
+            0, c.WINDOW_Y - (c.WITCH_FONT_SIZE + 2*c.WITCH_FONT_OFFSET),
+            c.WINDOW_X, c.WITCH_FONT_SIZE + 2*c.WITCH_FONT_OFFSET, self, "elo"
+        )
         self.level_index = None
         self.witch = witch(screen)
 

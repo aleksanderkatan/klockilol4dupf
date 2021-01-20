@@ -8,7 +8,7 @@ hubs[2] = [4, 5, 6, 7]
 
 levs = {}
 levs[0] = 19
-levs[1] = 10
+levs[1] = 13
 levs[2] = 10
 levs[3] = 7
 levs[4] = 9

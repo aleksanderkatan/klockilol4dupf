@@ -1,11 +1,10 @@
 import pygame as pg
 import config as c
-import os
 
 COLOR = pg.Color('lightskyblue3')
 COLOR_BACK = pg.Color('black')
-FONT_SIZE = 32
-FONT_OFFSET = 8
+FONT_SIZE = c.WITCH_FONT_SIZE
+FONT_OFFSET = c.WITCH_FONT_OFFSET
 FONT = pg.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE)
 
 
