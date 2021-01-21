@@ -1,6 +1,6 @@
-from blocks.block import block
-from blocks.block_empty import block_empty
-import all_sprites as s
+from game_files.blocks.block import block
+from game_files.blocks.block_empty import block_empty
+import game_files.all_sprites as s
 
 class block_jump(block):
     def __init__(self, screen, stage, state_index, pos, boost=-1):

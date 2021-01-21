@@ -1,5 +1,5 @@
-from blocks.block import block
-import all_sprites as s
+from game_files.blocks.block import block
+import game_files.all_sprites as s
 
 class block_perma(block):
     def __init__(self, screen, stage, state_index, pos):

@@ -1,7 +1,8 @@
 import os
 import json
-import levels as l
+import game_files.levels as l
 
+SAVE_FILE_PATH = 'game_files/data/completed.txt'
 
 class save_data:
     def __init__(self, dic=None):
@@ -53,12 +54,12 @@ class save_state:
         self.save()
 
     def save(self):
-        with open('data/completed.txt', 'w') as file:
+        with open(SAVE_FILE_PATH, 'w') as file:
             json.dump(self.save_data.__dict__, file)
 
     def restore(self):
-        if os.path.exists('data/completed.txt'):
-            with open('data/completed.txt', 'r') as file:
+        if os.path.exists(SAVE_FILE_PATH):
+            with open(SAVE_FILE_PATH, 'r') as file:
                 self.save_data = save_data(json.load(file))
         else:
             self.reset()

@@ -1,4 +1,4 @@
-import all_blocks as o
+import game_files.all_blocks as o
 
 charmap = {}
 charmap['.'] = o.block_empty

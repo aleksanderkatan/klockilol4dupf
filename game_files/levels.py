@@ -1,4 +1,4 @@
-from save_state import global_save_state
+from game_files.save_state import global_save_state
 #!! levels of level_set 0 are for debugging
 
 hubs = {}
@@ -31,7 +31,7 @@ def levels(level_index):
     level_set, level = level_index
     if level_set not in levs or not 0 <= level <= levs[level_set]:
         return level_error_path
-    return 'levels/' + str(level_set) + '/' + str(level) + '.txt'
+    return 'game_files/levels/' + str(level_set) + '/' + str(level) + '.txt'
 
 
 def next_level(level_index):

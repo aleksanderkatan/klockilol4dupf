@@ -1,3 +1,6 @@
+0.27.5
+- moved main.py out of the game_files folder, changed every single import to be nested in game_files
+
 0.27.4
 - replaced spaces with '_' in folder names
 

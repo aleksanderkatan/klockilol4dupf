@@ -1,7 +1,7 @@
-from blocks.block import block
-import all_sprites as s
-import utils as u
-import levels as l
+from game_files.blocks.block import block
+import game_files.all_sprites as s
+import game_files.utils as u
+import game_files.levels as l
 
 class block_end(block):
     def __init__(self, screen, stage, state_index, pos):

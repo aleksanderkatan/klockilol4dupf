@@ -1,19 +1,19 @@
-from blocks.block_perma import block_perma
-from blocks.block_empty import block_empty
-from blocks.block_start import block_start
-from blocks.block_end import block_end
-from blocks.block_numeric import block_numeric
-from blocks.block_ice import block_ice
-from blocks.block_arrow import block_arrow
-from blocks.block_jump import block_jump
-from blocks.block_lift import block_lift
-from blocks.block_portal import block_portal
-from blocks.block_dummy import block_dummy
-from blocks.block_lamp import block_lamp
-from blocks.block_bridge import block_bridge
-from blocks.block_entrance import block_entrance
-from blocks.block_map_bridge import block_map_bridge
-from blocks.block_ones import block_ones
+from game_files.blocks.block_perma import block_perma
+from game_files.blocks.block_empty import block_empty
+from game_files.blocks.block_start import block_start
+from game_files.blocks.block_end import block_end
+from game_files.blocks.block_numeric import block_numeric
+from game_files.blocks.block_ice import block_ice
+from game_files.blocks.block_arrow import block_arrow
+from game_files.blocks.block_jump import block_jump
+from game_files.blocks.block_lift import block_lift
+from game_files.blocks.block_portal import block_portal
+from game_files.blocks.block_dummy import block_dummy
+from game_files.blocks.block_lamp import block_lamp
+from game_files.blocks.block_bridge import block_bridge
+from game_files.blocks.block_entrance import block_entrance
+from game_files.blocks.block_map_bridge import block_map_bridge
+from game_files.blocks.block_ones import block_ones
 
 standables = set()
 standables.add(block_perma)

@@ -1,6 +1,6 @@
-import all_blocks as o
-import config as c
-import utils as u
+import game_files.all_blocks as o
+import game_files.config as c
+import game_files.utils as u
 
 class layer:
     def __init__(self, sizex, sizey, screen, stage, stateindex):

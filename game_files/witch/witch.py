@@ -1,9 +1,9 @@
-from witch.events import events
-from save_state import global_save_state
+from game_files.witch.events import events
+from game_files.save_state import global_save_state
 import pygame as pg
-import all_sprites as s
-from witch.witch_box import witch_box
-import config as c
+import game_files.all_sprites as s
+from game_files.witch.witch_box import witch_box
+import game_files.config as c
 
 class witch:
     def __init__(self, screen):

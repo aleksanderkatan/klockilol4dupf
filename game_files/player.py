@@ -1,5 +1,5 @@
-import all_sprites as s
-import utils as u
+import game_files.all_sprites as s
+import game_files.utils as u
 
 
 class player:

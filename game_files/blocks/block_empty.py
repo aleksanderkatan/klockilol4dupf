@@ -1,4 +1,4 @@
-from blocks.block import block
+from game_files.blocks.block import block
 
 class block_empty(block):
     def draw(self, pos, where_is_player):

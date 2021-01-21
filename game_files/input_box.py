@@ -1,9 +1,9 @@
 import pygame as pg
-import config as c
+import game_files.config as c
 
 COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
-FONT = pg.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", c.WITCH_FONT_SIZE)
+FONT = pg.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", c.WITCH_FONT_SIZE)
 
 class input_box:
     def __init__(self, x, y, w, h, stage, text=''):

@@ -1,6 +1,6 @@
 import pygame
-import config as c
-import all_blocks as o
+import game_files.config as c
+import game_files.all_blocks as o
 
 # returns position on screen for certain index
 def index_to_position(x, y, z, size_x, size_y, size_z):

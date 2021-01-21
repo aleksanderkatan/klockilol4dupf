@@ -1,9 +1,9 @@
-from layer import layer
-from player import player
-from charmap import charmap
-import utils as u
-import all_blocks as o
-import all_sprites as s
+from game_files.layer import layer
+from game_files.player import player
+from game_files.charmap import charmap
+import game_files.utils as u
+import game_files.all_blocks as o
+import game_files.all_sprites as s
 
 class state:
     def __init__(self, screen, stage, state_index):

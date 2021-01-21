@@ -1,4 +1,4 @@
-from witch.witch_event import witch_event
+from game_files.witch.witch_event import witch_event
 
 events = []
 

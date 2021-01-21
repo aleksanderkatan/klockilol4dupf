@@ -1,13 +1,13 @@
 import pygame
 import sys
-from stage import stage
-from input_box import input_box
-import utils as u
-import all_sprites as s
-import config as c
-import levels as l
-from save_state import global_save_state
-from witch.witch import witch
+from game_files.stage import stage
+from game_files.input_box import input_box
+import game_files.utils as u
+import game_files.all_sprites as s
+import game_files.config as c
+import game_files.levels as l
+from game_files.save_state import global_save_state
+from game_files.witch.witch import witch
 
 class game_logic:
     def __init__(self, screen):

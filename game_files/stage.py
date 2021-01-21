@@ -1,9 +1,9 @@
 import pygame
-from state import state
-import config as c
-import levels as l
+from game_files.state import state
+import game_files.config as c
+import game_files.levels as l
 
-FONT = pygame.font.Font("fonts/mono/ttf/JetBrainsMono-Regular.ttf", c.LEVEL_FONT_SIZE)
+FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", c.LEVEL_FONT_SIZE)
 
 class stage:
     def __init__(self, screen, level_index, last_level_index):
