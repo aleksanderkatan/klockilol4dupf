@@ -1,3 +1,7 @@
+0.28
+- added few levels (beginning of zone 7 and extra 2)
+- bugfix
+
 0.27.5
 - moved main.py out of the game_files folder, changed every single import to be nested in game_files
 

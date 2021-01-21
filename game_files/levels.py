@@ -3,8 +3,8 @@ from game_files.save_state import global_save_state
 
 hubs = {}
 hubs[0] = [1]
-hubs[1] = [1000, 2, 3, 69]
-hubs[2] = [4, 5, 6, 7]
+hubs[1] = [1001, 2, 3, 69]
+hubs[2] = [1002, 4, 5, 6, 7]
 
 levs = {}
 levs[0] = 19
@@ -15,11 +15,12 @@ levs[4] = 9
 levs[5] = 10
 levs[6] = 12
 levs[7] = 10
-levs[1000] = 3
+levs[1001] = 3
+levs[1002] = 3
 levs[2138] = 2136
 levs[69] = 136
 
-level_error_path = 'levels/0/1.txt'
+level_error_path = 'game_files/levels/0/1.txt'
 
 level_error = (0, 0)
 level_zero = (0, 0)

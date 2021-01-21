@@ -161,7 +161,7 @@ class state:
 
     def get_block(self, pos):
         x, y, z = pos
-        if u.out_of_range(x, y, self.x, self.y):
+        if u.out_of_range(x, y, self.x, self.y) or z < 0 or z > len(self.layers):
             return None
         return self.layers[z].grid[x][y]
 

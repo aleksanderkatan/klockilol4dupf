@@ -13,6 +13,9 @@ class witch:
         self.text_box = witch_box(self.screen)
 
     def check_for_events(self, level_index, stage):
+        if c.WITCH is False:
+            return
+
         if self.active_event is not None:
             return
 
