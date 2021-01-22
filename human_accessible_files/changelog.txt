@@ -1,3 +1,7 @@
+0.29
+- added less simple level generator (ice, jump, arrow, most likely its expandable)
+- generated some levels for zone 7
+
 0.28
 - added few levels (beginning of zone 7 and extra 2)
 - bugfix

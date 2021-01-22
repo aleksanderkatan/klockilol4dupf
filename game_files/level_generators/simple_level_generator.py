@@ -62,7 +62,7 @@ class level_generator:
             return self.generate(index)
         grid[x][y] = -2137
 
-        f = open("levels/69/" + str(index) + ".txt", 'w')
+        f = open("../levels/69/" + str(index) + ".txt", 'w')
         f.write(str(size)+"\n")
         f.write(str(size)+"\n")
         f.write("1\n")
@@ -87,7 +87,7 @@ class level_generator:
 
     def clean(self, amount):
         for i in range(1, amount+1):
-            os.remove("levels/69/" + str(i) + ".txt")
+            os.remove("../levels/69/" + str(i) + ".txt")
 
 
 generator = level_generator()
