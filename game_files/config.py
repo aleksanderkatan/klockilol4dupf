@@ -7,6 +7,7 @@ VISIBLE_LAYERS_UP = 2
 CHEATS = True
 MAX_COMMAND_LENGTH = 32
 WITCH = False
+THREED = False # !! does not quite work
 
 WINDOW_X = int(1280*SCALE)
 WINDOW_Y = int(960*SCALE)

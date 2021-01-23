@@ -14,6 +14,7 @@ from game_files.blocks.block_bridge import block_bridge
 from game_files.blocks.block_entrance import block_entrance
 from game_files.blocks.block_map_bridge import block_map_bridge
 from game_files.blocks.block_ones import block_ones
+from game_files.blocks.block_bridge_blocker import block_bridge_blocker
 
 standables = set()
 standables.add(block_perma)

@@ -3,36 +3,44 @@ import game_files.config as c
 import game_files.utils as u
 
 class layer:
-    def __init__(self, sizex, sizey, screen, stage, stateindex):
-        self.sizex = sizex
-        self.sizey = sizey
+    def __init__(self, size_x, size_y, screen, stage, state_index):
+        self.size_x = size_x
+        self.size_y = size_y
         self.screen = screen
         self.stage = stage
-        self.stateindex = stateindex
+        self.state_index = state_index
         self.grid = []
-        for i in range(sizex):
+        for i in range(size_x):
             array = []
-            for j in range(sizey):
-                array.append(o.block_empty(screen, stage, stateindex, (i, j, stateindex)))
+            for j in range(size_y):
+                array.append(o.block_empty(screen, stage, state_index, (i, j, state_index)))
             self.grid.append(array)
 
         # print(self.grid)
         # for i in range(sizex):
         #     for j in range(sizey):
         #         self.grid[i][j]= (o.block_empty(screen, stage) if (i+j)%2==0 else o.block(screen, stage))
+    def draw_once(self, height, layers_amount, where_is_player, x_offset, y_offset):
+        for i in range(self.size_x):
+            for j in range(self.size_y):
+                x, y = u.index_to_position(i, j, height, self.size_x, self.size_y, layers_amount)
+                self.grid[i][j].draw(
+                    (x+x_offset, y+y_offset), where_is_player
+                )
 
-    def draw(self, height, layersamount, whereisplayer):
-        for i in range(self.sizex):
-            for j in range(self.sizey):
-                self.grid[i][j].draw(u.index_to_position(i, j, height, self.sizex, self.sizey, layersamount), whereisplayer)
+    def draw(self, height, layers_amount, where_is_player):
+        if c.THREED:
+            self.draw_once(height, layers_amount, where_is_player, 0, 8)
+            self.draw_once(height, layers_amount, where_is_player, 0, 4)
+        self.draw_once(height, layers_amount, where_is_player, 0, 0)
 
     def update(self, x, y, block):
         self.grid[x][y] = block
-        block.state_index = self.stateindex
+        block.state_index = self.state_index
 
-    def copy(self, newstateindex):
-        lay = layer( self.sizex, self.sizey, self.screen, self.stage, newstateindex)
-        for i in range(self.sizex):
-            for j in range(self.sizey):
-                lay.update(i, j, self.grid[i][j].copy(newstateindex))
+    def copy(self, new_state_index):
+        lay = layer(self.size_x, self.size_y, self.screen, self.stage, new_state_index)
+        for i in range(self.size_x):
+            for j in range(self.size_y):
+                lay.update(i, j, self.grid[i][j].copy(new_state_index))
         return lay

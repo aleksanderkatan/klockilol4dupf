@@ -35,7 +35,7 @@ class block_entrance(block):
 
     def draw(self, pos, where_is_player):
         if where_is_player is not None:
-            self.screen.blit(self.sprite[where_is_player], pos)
+            super().draw(pos, where_is_player)
 
             completion_pos = (pos[0]+c.LEVEL_COMPLETION_OFFSET, pos[1]+c.LEVEL_COMPLETION_OFFSET)
 

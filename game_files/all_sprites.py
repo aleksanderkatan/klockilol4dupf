@@ -39,7 +39,8 @@ temp_sprites["level_unavailable"] = pygame.image.load('game_files/sprites/blocks
 temp_sprites["block_map_bridge_off"] = pygame.image.load('game_files/sprites/blocks/map_bridge_off.bmp').convert()
 temp_sprites["block_map_bridge_on"] = pygame.image.load('game_files/sprites/blocks/map_bridge_on.bmp').convert()
 temp_sprites["block_ones"] = pygame.image.load('game_files/sprites/blocks/ones.bmp').convert()
-temp_sprites["block_jump_3"] = pygame.image.load('game_files/sprites/blocks/jump3.bmp').convert() # !!how convinient naming
+temp_sprites["block_jump_3"] = pygame.image.load('game_files/sprites/blocks/jump3.bmp').convert()
+temp_sprites["block_bridge_blocker"] = pygame.image.load('game_files/sprites/blocks/bridge_blocker.gif').convert()
 
 sprites = {}
 for name, sprite in temp_sprites.items():

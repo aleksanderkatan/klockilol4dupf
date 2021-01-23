@@ -1,3 +1,9 @@
+0.30
+- added 3d sprites option in config, sadly it doesn't look good (alpha messes things up)
+- more work put into zone 7
+- changed order of zone showing in single layer view
+- added bridge blocker block
+
 0.29
 - added less simple level generator (ice, jump, arrow, most likely its expandable)
 - generated some levels for zone 7

@@ -19,7 +19,7 @@ class stage:
         if single_layer is None:
             self.latest_state().draw()
         else:
-            self.latest_state().draw_one_layer(single_layer)
+            self.latest_state().draw_one_layer(len(self.latest_state().layers)-single_layer-1)
         txt_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
         if not self.latest_state().player.dead:
             self.screen.blit(txt_surface, (c.LEVEL_FONT_OFFSET, c.LEVEL_FONT_OFFSET))

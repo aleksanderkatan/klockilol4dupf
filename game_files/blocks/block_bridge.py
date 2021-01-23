@@ -1,4 +1,5 @@
 from game_files.blocks.block import block
+from game_files.blocks.block_bridge_blocker import block_bridge_blocker
 import game_files.all_sprites as s
 import game_files.utils as u
 
@@ -41,6 +42,8 @@ class block_bridge(block):
 
         if not self.stage.states[self.state_index].standable(next_step):
             swap_block = self.stage.states[self.state_index].get_block(next_step)
+            if type(swap_block) is block_bridge_blocker:
+                return
             self.stage.states[self.state_index].set_block(next_step, self)
             self.stage.states[self.state_index].set_block(self.pos, swap_block)
             swap_block.pos = self.pos
