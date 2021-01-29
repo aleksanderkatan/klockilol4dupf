@@ -29,3 +29,4 @@ charmap['e'] = o.block_entrance
 charmap['m'] = o.block_map_bridge
 charmap['O'] = o.block_ones
 charmap['u'] = o.block_bridge_blocker
+charmap['?'] = o.block_invisible

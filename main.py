@@ -9,7 +9,7 @@ from game_files.game_logic import game_logic
 
 clock = pygame.time.Clock()
 game = game_logic(screen)
-game.set_stage((2138, 0))
+game.set_stage((400, 0))
 
 while True:
     next_move = None

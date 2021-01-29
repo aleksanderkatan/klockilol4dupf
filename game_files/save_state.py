@@ -87,7 +87,7 @@ class save_state:
         return level in self.save_data.completed[level_set]
 
     def is_set_completed(self, level_set):
-        if level_set == 2138:
+        if level_set == 400:
             return False
 
         if level_set not in self.save_data.completed:
@@ -100,7 +100,7 @@ class save_state:
 
     def is_available(self, level_index):
         level_set, level = level_index
-        if level_set >= 1000:
+        if level_set >= 100:
             return True
 
         if level == 1 or level == 0:
@@ -112,7 +112,7 @@ class save_state:
     def complete_all(self):
         self.reset_completed()
         for key, val in l.levs.items():
-            if key == 2138:
+            if key == 400:
                 continue
             for i in range(1, val + 1):
                 self.complete((key, i))

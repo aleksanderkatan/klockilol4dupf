@@ -12,10 +12,10 @@ temp_sprites["error"] = pygame.image.load('game_files/sprites/blocks/error.bmp')
 temp_sprites["block_ice"] = pygame.image.load('game_files/sprites/blocks/ice.bmp').convert()
 temp_sprites["block_arrow_0"] = pygame.image.load('game_files/sprites/blocks/arrow.bmp').convert()
 temp_sprites["block_arrow_1"] = pygame.image.load('game_files/sprites/blocks/arrow.bmp').convert()
-temp_sprites["block_arrow_1"] = pygame.transform.rotate(temp_sprites["block_arrow_1"], 90)
 temp_sprites["block_arrow_2"] = pygame.image.load('game_files/sprites/blocks/arrow.bmp').convert()
-temp_sprites["block_arrow_2"] = pygame.transform.rotate(temp_sprites["block_arrow_2"], 180)
 temp_sprites["block_arrow_3"] = pygame.image.load('game_files/sprites/blocks/arrow.bmp').convert()
+temp_sprites["block_arrow_1"] = pygame.transform.rotate(temp_sprites["block_arrow_1"], 90)
+temp_sprites["block_arrow_2"] = pygame.transform.rotate(temp_sprites["block_arrow_2"], 180)
 temp_sprites["block_arrow_3"] = pygame.transform.rotate(temp_sprites["block_arrow_3"], 270)
 temp_sprites["block_jump_2"] = pygame.image.load('game_files/sprites/blocks/jump2.bmp').convert()
 temp_sprites["block_lift"] = pygame.image.load('game_files/sprites/blocks/lift.bmp').convert()
@@ -41,6 +41,13 @@ temp_sprites["block_map_bridge_on"] = pygame.image.load('game_files/sprites/bloc
 temp_sprites["block_ones"] = pygame.image.load('game_files/sprites/blocks/ones.bmp').convert()
 temp_sprites["block_jump_3"] = pygame.image.load('game_files/sprites/blocks/jump3.bmp').convert()
 temp_sprites["block_bridge_blocker"] = pygame.image.load('game_files/sprites/blocks/bridge_blocker.gif').convert()
+temp_sprites["ones_one_0"] = pygame.image.load('game_files/sprites/blocks/ones_one.gif').convert()
+temp_sprites["ones_one_1"] = pygame.image.load('game_files/sprites/blocks/ones_one.gif').convert()
+temp_sprites["ones_one_2"] = pygame.image.load('game_files/sprites/blocks/ones_one.gif').convert()
+temp_sprites["ones_one_3"] = pygame.image.load('game_files/sprites/blocks/ones_one.gif').convert()
+temp_sprites["ones_one_1"] = pygame.transform.rotate(temp_sprites["ones_one_1"], 90)
+temp_sprites["ones_one_2"] = pygame.transform.rotate(temp_sprites["ones_one_2"], 180)
+temp_sprites["ones_one_3"] = pygame.transform.rotate(temp_sprites["ones_one_3"], 270)
 
 sprites = {}
 for name, sprite in temp_sprites.items():
@@ -53,7 +60,7 @@ for name, sprite in temp_sprites.items():
         new_sprite = pygame.transform.scale(sprite, (c.BLOCK_SIZE, c.BLOCK_SIZE))
 
     sprites[name] = {}
-    #!! SYF xD
+    # !! SYF xD
     sprites[name][0] = new_sprite
     sprites[name][1] = new_sprite.copy()
     sprites[name][1].set_alpha(64)

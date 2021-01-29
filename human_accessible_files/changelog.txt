@@ -1,3 +1,8 @@
+0.31
+- added invisible block
+- updated ones to have options
+- refactored all zones
+
 0.30
 - added 3d sprites option in config, sadly it doesn't look good (alpha messes things up)
 - more work put into zone 7

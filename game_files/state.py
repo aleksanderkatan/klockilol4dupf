@@ -28,6 +28,7 @@ class state:
         jumps = []
         entrances = []
         map_bridges = []
+        ones = []
 
         for i in range(self.z):
             new_layer = layer(self.x, self.y, self.screen, self.stage, self.state_index)
@@ -59,6 +60,8 @@ class state:
                         entrances.append(blo)
                     if obj == o.block_map_bridge:
                         map_bridges.append(blo)
+                    if obj == o.block_ones:
+                        ones.append(blo)
 
                     new_layer.update(k, j, blo)
 
@@ -100,6 +103,12 @@ class state:
             for i in range(len(map_bridges)):
                 map_bridges[i].set_level_set(int(map_bridge_options[i]))
 
+        if 'ones' in options:
+            print("Configuring ones")
+            ones_options = options['ones']
+            for i in range(len(ones)):
+                ones[i].set_ones(int(ones_options[i]))
+
         starting_point = self.find_level_entrance(last_level_index)
         if starting_point is not None:
             self.teleport_player(starting_point, False)
@@ -132,7 +141,7 @@ class state:
         if self.player.dead:
             self.screen.blit(s.sprites['you_died'], (0, 0))
 
-    def draw_one_layer(self, layer_index):  #!! can't be used above
+    def draw_one_layer(self, layer_index):  # !! can't be used above
         if self.player.dead or layer_index >= len(self.layers):
             self.draw()
             return

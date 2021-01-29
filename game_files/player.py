@@ -45,7 +45,7 @@ class player:
         else:
             self.this_move_direction = direction_suggestion
         
-    def move(self): #!!set_next_move_direction must be called first
+    def move(self): # !!set_next_move_direction must be called first
         x, y, z = self.pos
         move_length = self.next_move_length
         move_direction = self.this_move_direction

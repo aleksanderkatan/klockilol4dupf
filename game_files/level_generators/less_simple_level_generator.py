@@ -1,9 +1,9 @@
 import random
-#!! this file is supposed to work independently
-#!! this is a simple 2d numeric, perma, ice, jump and arrow level generator
+# !! this file is supposed to work independently
+# !! this is a simple 2d numeric, perma, ice, jump and arrow level generator
 
 class better_level_generator:
-    def __init__(self, x, y, ice, jump, arrow, length, redirect):
+    def __init__(self, x, y, ice, jump2, jump3, arrow, length, redirect):
         self.x = x
         self.y = y
         self.length = length
@@ -20,10 +20,15 @@ class better_level_generator:
             y = random.randint(1, self.y-2)
             self.grid[x][y] = (0, "I")
 
-        for i in range(jump):
+        for i in range(jump2):
             x = random.randint(2, self.x-3)
             y = random.randint(2, self.y-3)
-            self.grid[x][y] = (0, "J")
+            self.grid[x][y] = (0, "J2")
+
+        for i in range(jump3):
+            x = random.randint(3, self.x-4)
+            y = random.randint(3, self.y-4)
+            self.grid[x][y] = (0, "J3")
 
         for i in range(arrow):
             x = random.randint(1, self.x-2)
@@ -95,7 +100,7 @@ class better_level_generator:
                 direction = 2
             elif self.grid[x][y][1] == 'v':
                 direction = 3
-            elif random.randint(0, self.redirect) == 0:
+            elif random.randint(0, self.redirect) == 0 or (x == 0 or y == 0 or x == self.x-1 or y == self.y - 1):
                 direction = random.randint(0, 4)
 
             new_direction = direction
@@ -104,10 +109,14 @@ class better_level_generator:
             direction = new_direction
             # direction is set
 
-            if self.grid[x][y][1] == 'J':
+            if self.grid[x][y][1] == 'J2':
                 new_x, new_y = \
                     better_level_generator.next_pos(better_level_generator.next_pos((x, y), direction), direction)
+            elif self.grid[x][y][1] == 'J3':
+                new_x, new_y = \
+                    better_level_generator.next_pos(better_level_generator.next_pos(better_level_generator.next_pos((x, y), direction), direction), direction)
             else:
+
                 new_x, new_y = better_level_generator.next_pos((x, y), direction)
 
             self.grid[x][y] = (self.grid[x][y][0]+1, self.grid[x][y][1])
@@ -119,6 +128,11 @@ class better_level_generator:
         self.grid[x][y] = (self.grid[x][y][0], 'E')
 
         self.grid = better_level_generator.transpose(self.grid)
+
+        maks = 0
+        total = 0
+
+        jumps = []
 
         f = open(file, 'w')
         f.write(str(self.x)+"\n")
@@ -134,20 +148,45 @@ class better_level_generator:
                     if nam == '-':
                         if num < 9:
                             s += str(num)
+                            total += num
                         else:
                             s += '0'
+                        maks = max(maks, num)
                     else:
-                        s += nam
+                        if nam[0] == 'J':
+                            s += nam[0]
+                            jumps.append(nam[1])
+                        else:
+                            s += nam
 
             f.write(s + "\n")
-        return "SUCCESS"
+        f.write("\n")
+        f.write("jumps ")
+        for j in jumps:
+            f.write(j + " ")
+        f.write("\n")
+        f.close()
 
+        return maks, total
 
-for ind in range(1, 50):
+def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=None, min_total=None):
     while True:
-        generator = better_level_generator(x=9, y=9, ice=5, jump=0, arrow=15, length=40, redirect=7)
-        res = generator.generate("../levels/69/" + str(ind) + ".txt")
-        if res == "SUCCESS":
+        generator = better_level_generator(x, y, ice, jump2, jump3, arrow, length, redirect)
+        res = generator.generate("../levels/102/" + str(index) + ".txt")
+        if res != "FAIL":
+            maks, total = res
+            if max_num is not None and maks > max_num:
+                print(ind, "num fail")
+                continue
+            if min_total is not None and total < min_total:
+                print(ind, "length fail")
+                continue
             print(ind, "success")
             break
-        print(ind, "fail")
+        print(ind, "S/E fail")
+
+
+for ind in range(1, 2):
+    #generate(index=ind, x=9, y=9, ice=0, jump2=0, jump3=15, arrow=0, length=50, redirect=7, max_num=3, min_total=30)
+    #generate(index=ind, x=11, y=11, ice=10, jump2=0, jump3=0, arrow=20, length=60, redirect=7, max_num=3, min_total=30)
+    generate(index=ind, x=100, y=100, ice=0, jump2=0, jump3=0, arrow=0, length=5000, redirect=15, max_num=7, min_total=30)

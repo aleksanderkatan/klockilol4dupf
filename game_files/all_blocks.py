@@ -15,6 +15,7 @@ from game_files.blocks.block_entrance import block_entrance
 from game_files.blocks.block_map_bridge import block_map_bridge
 from game_files.blocks.block_ones import block_ones
 from game_files.blocks.block_bridge_blocker import block_bridge_blocker
+from game_files.blocks.block_invisible import block_invisible
 
 standables = set()
 standables.add(block_perma)
@@ -32,6 +33,7 @@ standables.add(block_bridge)
 standables.add(block_entrance)
 standables.add(block_map_bridge)
 standables.add(block_ones)
+standables.add(block_invisible)
 
 preventing_win = set()
 preventing_win.add(block_numeric)

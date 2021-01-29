@@ -97,7 +97,7 @@ class game_logic:
         if not c.CHEATS:
             return
 
-        #!! some bullshit down here, don't look down
+        # !! some bullshit down here, don't look down
         print("executing:", command)
         if command == '':
             return
@@ -132,7 +132,7 @@ class game_logic:
         elif command[0] == 'ra':
             print("Erradicating save file")
             global_save_state.reset()
-            self.set_stage((2138, 0))
+            self.set_stage((400, 0))
         elif command[0] == 're':
             print("Resetting events")
             global_save_state.reset_events()
