@@ -28,6 +28,11 @@ class stage:
         return self.states[len(self.states) - 1]
 
     def move(self, direction=None):
+        if len(self.states) > c.MOVE_LIMIT:
+            print('Move limit exceeded, resetting...')
+            self.reset()
+            return
+
         if direction is None and not self.latest_state().player.has_something_enqueued():
             return
 

@@ -1,10 +1,12 @@
 SCALE = 1
 FRAMERATE = 30
+MOVE_LIMIT = 1024
 
 VISIBLE_LAYERS_DOWN = 3
 VISIBLE_LAYERS_UP = 2
 
 CHEATS = True
+PASSWORD_HASH = b'(M\xc0\x04\x90Y\xaa\xa0\x00!\xb4\xd9\xa5SUj\xd1\xc6\tQ\xf3\xe5\xaf\xbe)\x1f\xb4\xee\xc9Lw\xf0'
 MAX_COMMAND_LENGTH = 32
 WITCH = False
 THREED = False # !! does not quite work

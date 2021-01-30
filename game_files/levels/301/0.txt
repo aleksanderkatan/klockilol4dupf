@@ -5,4 +5,4 @@
 .I.I.I.I.I
 e0I0I0I0I0
 
-entrances 301/1 301/2 301/3 400/1
+entrances 301/1 301/2 301/3 400/2

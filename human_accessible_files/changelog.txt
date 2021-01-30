@@ -1,3 +1,8 @@
+0.32
+- added max move limit in order to prevent memory from overflowing, game is running smoothly at 100fps, but in future I might replace block empty with None
+- rebuild and renamed all hubs
+- added password for commands, but doesn't work
+
 0.31
 - added invisible block
 - updated ones to have options

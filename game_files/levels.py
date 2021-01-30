@@ -7,9 +7,9 @@ from game_files.save_state import global_save_state
 # 400 - lobbies
 
 hubs = {}
-hubs[0] = [1]
-hubs[1] = [301, 2, 3, 101]
-hubs[2] = [302, 4, 5, 6, 7, 102]
+hubs[1] = [1]
+hubs[2] = [301, 2, 3, 101]
+hubs[3] = [302, 4, 5, 6, 102]
 
 levs = {}
 levs[0] = 19
@@ -21,9 +21,10 @@ levs[5] = 10
 levs[6] = 12
 levs[7] = 14
 levs[101] = 136
+levs[102] = 136
 levs[301] = 3
 levs[302] = 3
-levs[400] = 2136
+levs[400] = 5
 
 
 level_error_path = 'game_files/levels/0/1.txt'
@@ -38,6 +39,8 @@ def levels(level_index):
     level_set, level = level_index
     if level_set not in levs or not 0 <= level <= levs[level_set]:
         return level_error_path
+    if level_set == 400 and level_index == 0:
+        return  level_error_path
     return 'game_files/levels/' + str(level_set) + '/' + str(level) + '.txt'
 
 
@@ -63,7 +66,7 @@ def previous_level(level_index):
 def hub_of_set(level_set):
     print("SET", level_set)
     if level_set == 400:
-        return 400, 0
+        return level_set, 1
     for hub, sets in hubs.items():
         if level_set in sets:
             return 400, hub
@@ -110,6 +113,6 @@ def level_name(level_index):
         return "Zone extra " + str(level_set - 300)
 
     if level_set == 400:
-        return "Hub " + str(level+1)
+        return "Hub " + str(level)
 
     return "error"

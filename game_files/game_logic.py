@@ -1,5 +1,6 @@
 import pygame
 import sys
+import hashlib
 from game_files.stage import stage
 from game_files.input_box import input_box
 import game_files.utils as u
@@ -21,6 +22,7 @@ class game_logic:
         )
         self.level_index = None
         self.witch = witch(screen)
+        self.hasher = hashlib.sha256()
 
     def set_stage(self, level_index):
         self.stage = stage(self.screen, level_index, self.level_index)
@@ -72,7 +74,9 @@ class game_logic:
                 self.stage.reset()
 
             if key == pygame.K_ESCAPE:
-                if self.level_index[1] != 0:
+                if self.level_index[0] == 400:
+                    self.stage.reset()
+                elif self.level_index[1] != 0:
                     self.set_stage((self.level_index[0], 0))
                 else:
                     self.set_stage(l.hub_of_set(self.level_index[0]))
@@ -95,6 +99,14 @@ class game_logic:
 
     def execute_command(self, command):
         if not c.CHEATS:
+            self.hasher.digest()
+            self.hasher.update(bytes(command, "utf-16"))
+            pw_hash = self.hasher.digest()
+            if pw_hash != c.PASSWORD_HASH:
+                print("WRONG PASSWORD!")
+            else:
+                print("Cheats enabled")
+                c.CHEATS = True
             return
 
         # !! some bullshit down here, don't look down
@@ -129,14 +141,14 @@ class game_logic:
         elif command[0].lower() in ['exit', 'quit', 'halt', 'shutdown', 'poweroff', 'q']:
             pygame.quit()
             sys.exit(0)
-        elif command[0] == 'ra':
+        elif command[0] == 'reset_all':
             print("Erradicating save file")
             global_save_state.reset()
-            self.set_stage((400, 0))
-        elif command[0] == 're':
+            self.set_stage((400, 1))
+        elif command[0] == 'reset_events':
             print("Resetting events")
             global_save_state.reset_events()
-        elif command[0] == 'all':
+        elif command[0] == 'complete_all':
             print("Completing all levels")
             global_save_state.complete_all()
         elif command[0] == 'c':
