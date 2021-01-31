@@ -1,9 +1,9 @@
 import pygame
 from game_files.state import state
-import game_files.config as c
+import game_files.globals as g
 import game_files.levels as l
 
-FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", c.LEVEL_FONT_SIZE)
+FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", g.LEVEL_FONT_SIZE)
 
 class stage:
     def __init__(self, screen, level_index, last_level_index):
@@ -22,13 +22,13 @@ class stage:
             self.latest_state().draw_one_layer(len(self.latest_state().layers)-single_layer-1)
         txt_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
         if not self.latest_state().player.dead:
-            self.screen.blit(txt_surface, (c.LEVEL_FONT_OFFSET, c.LEVEL_FONT_OFFSET))
+            self.screen.blit(txt_surface, (g.LEVEL_FONT_OFFSET, g.LEVEL_FONT_OFFSET))
 
     def latest_state(self):
         return self.states[len(self.states) - 1]
 
     def move(self, direction=None):
-        if len(self.states) > c.MOVE_LIMIT:
+        if len(self.states) > g.MOVE_LIMIT:
             print('Move limit exceeded, resetting...')
             self.reset()
             return

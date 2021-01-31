@@ -3,7 +3,7 @@ from game_files.save_state import global_save_state
 import pygame as pg
 import game_files.all_sprites as s
 from game_files.witch.witch_box import witch_box
-import game_files.config as c
+import game_files.globals as g
 
 class witch:
     def __init__(self, screen):
@@ -13,7 +13,7 @@ class witch:
         self.text_box = witch_box(self.screen)
 
     def check_for_events(self, level_index, stage):
-        if c.WITCH is False:
+        if g.WITCH is False:
             return
 
         if self.active_event is not None:

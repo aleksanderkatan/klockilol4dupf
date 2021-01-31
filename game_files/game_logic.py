@@ -5,7 +5,7 @@ from game_files.stage import stage
 from game_files.input_box import input_box
 import game_files.utils as u
 import game_files.all_sprites as s
-import game_files.config as c
+import game_files.globals as g
 import game_files.levels as l
 from game_files.save_state import global_save_state
 from game_files.witch.witch import witch
@@ -17,12 +17,13 @@ class game_logic:
         self.keys_registered = []
         self.single_layer = None
         self.input_box = input_box(
-            0, c.WINDOW_Y - (c.WITCH_FONT_SIZE + 2*c.WITCH_FONT_OFFSET),
-            c.WINDOW_X, c.WITCH_FONT_SIZE + 2*c.WITCH_FONT_OFFSET, self, "elo"
+            0, g.WINDOW_Y - (g.WITCH_FONT_SIZE + 2*g.WITCH_FONT_OFFSET),
+            g.WINDOW_X, g.WITCH_FONT_SIZE + 2*g.WITCH_FONT_OFFSET, self, "empty"
         )
         self.level_index = None
         self.witch = witch(screen)
         self.hasher = hashlib.sha256()
+        self.grayness = s.sprites["grayness"]
 
     def set_stage(self, level_index):
         self.stage = stage(self.screen, level_index, self.level_index)
@@ -87,7 +88,7 @@ class game_logic:
         self.keys_registered = []
 
     def draw(self):
-        self.screen.blit(s.sprites['background'], (0, 0))
+        self.screen.blit(u.background_of_level(self.level_index), (0, 0))
         self.stage.draw(self.single_layer)
 
         if self.witch.is_active():
@@ -97,16 +98,18 @@ class game_logic:
             self.screen.blit(s.sprites['black'], (0, 0))
             self.input_box.draw(self.screen)
 
+        self.screen.blit(self.grayness, (0, 0))
+
     def execute_command(self, command):
-        if not c.CHEATS:
+        if not g.CHEATS:
             self.hasher.digest()
             self.hasher.update(bytes(command, "utf-16"))
             pw_hash = self.hasher.digest()
-            if pw_hash != c.PASSWORD_HASH:
+            if pw_hash != g.PASSWORD_HASH:
                 print("WRONG PASSWORD!")
             else:
                 print("Cheats enabled")
-                c.CHEATS = True
+                g.CHEATS = True
             return
 
         # !! some bullshit down here, don't look down
@@ -131,13 +134,13 @@ class game_logic:
             self.set_stage(l.previous_level(self.stage.level_index))
         elif command[0].lower() == 'duda' and command[1].lower() == 'chuj':
             print("Swapping background")
-            s.swap("background")
+            g.DUDA_CHUJ = not g.DUDA_CHUJ
         elif command[0] == 'yoffset':
             print("Changing y offset")
-            c.LAYER_Y_OFFSET = int(command[1])
+            g.LAYER_Y_OFFSET = int(command[1])
         elif command[0] == 'xoffset':
             print("Changing x offset")
-            c.LAYER_X_OFFSET = int(command[1])
+            g.LAYER_X_OFFSET = int(command[1])
         elif command[0].lower() in ['exit', 'quit', 'halt', 'shutdown', 'poweroff', 'q']:
             pygame.quit()
             sys.exit(0)

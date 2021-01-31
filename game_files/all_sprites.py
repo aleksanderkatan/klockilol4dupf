@@ -1,5 +1,5 @@
 import pygame
-import game_files.config as c
+import game_files.globals as g
 
 temp_sprites = {}
 
@@ -48,16 +48,17 @@ temp_sprites["ones_one_3"] = pygame.image.load('game_files/sprites/blocks/ones_o
 temp_sprites["ones_one_1"] = pygame.transform.rotate(temp_sprites["ones_one_1"], 90)
 temp_sprites["ones_one_2"] = pygame.transform.rotate(temp_sprites["ones_one_2"], 180)
 temp_sprites["ones_one_3"] = pygame.transform.rotate(temp_sprites["ones_one_3"], 270)
+temp_sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
 
 sprites = {}
 for name, sprite in temp_sprites.items():
     print(name, sprite)
     if name in ["level_available", "level_unavailable"]:
         new_sprite = pygame.transform.scale(
-            sprite, (int(c.BLOCK_SIZE*c.LEVEL_COMPLETION_SCALE), int(c.BLOCK_SIZE*c.LEVEL_COMPLETION_SCALE))
+            sprite, (int(g.BLOCK_SIZE*g.LEVEL_COMPLETION_SCALE), int(g.BLOCK_SIZE*g.LEVEL_COMPLETION_SCALE))
         )
     else:
-        new_sprite = pygame.transform.scale(sprite, (c.BLOCK_SIZE, c.BLOCK_SIZE))
+        new_sprite = pygame.transform.scale(sprite, (g.BLOCK_SIZE, g.BLOCK_SIZE))
 
     sprites[name] = {}
     # !! SYF xD
@@ -76,20 +77,22 @@ for name, sprite in temp_sprites.items():
     sprites[name][-3].set_alpha(64)
 
 sprites["background"] = pygame.image.load('game_files/sprites/background.jpg').convert()
-sprites["background"] = pygame.transform.scale(sprites["background"], (c.WINDOW_X, c.WINDOW_Y))
+sprites["background"] = pygame.transform.scale(sprites["background"], (g.WINDOW_X, g.WINDOW_Y))
+sprites["kono_dio_da"] = pygame.image.load('game_files/sprites/kono_dio_da.jpg').convert()
+sprites["kono_dio_da"] = pygame.transform.scale(sprites["kono_dio_da"], (g.WINDOW_X, g.WINDOW_Y))
 sprites["you_died"] = pygame.image.load('game_files/sprites/you_died.jpg').convert()
-sprites["you_died"] = pygame.transform.scale(sprites["you_died"], (c.WINDOW_X, c.WINDOW_Y))
+sprites["you_died"] = pygame.transform.scale(sprites["you_died"], (g.WINDOW_X, g.WINDOW_Y))
 sprites["black"] = pygame.image.load('game_files/sprites/black.jpg').convert()
-sprites["black"] = pygame.transform.scale(sprites["black"], (c.WINDOW_X, c.WINDOW_Y))
+sprites["black"] = pygame.transform.scale(sprites["black"], (g.WINDOW_X, g.WINDOW_Y))
 sprites["black"].set_alpha(192)
 sprites["witch"] = pygame.image.load('game_files/sprites/witch.png')
-sprites["witch"] = pygame.transform.scale(sprites["witch"], (c.WINDOW_X, c.WINDOW_Y))
+sprites["witch"] = pygame.transform.scale(sprites["witch"], (g.WINDOW_X, g.WINDOW_Y))
+sprites["duda_chuj"] = pygame.image.load('game_files/sprites/background_duda_chuj.png').convert()
+sprites["duda_chuj"] = pygame.transform.scale(sprites["duda_chuj"], (g.WINDOW_X, g.WINDOW_Y))
+sprites["grayness"] = pygame.image.load('game_files/sprites/black.jpg').convert()
+sprites["grayness"] = pygame.transform.scale(sprites["grayness"], (g.WINDOW_X, g.WINDOW_Y))
+sprites["grayness"].set_alpha(g.GRAYNESS*256)
 
-alternate = {}
-alternate["background"] = pygame.image.load('game_files/sprites/background_duda_chuj.png').convert()
-alternate["background"] = pygame.transform.scale(alternate["background"], (c.WINDOW_X, c.WINDOW_Y))
-
-def swap(sprite_name):
-    temp = sprites[sprite_name]
-    sprites[sprite_name] = alternate[sprite_name]
-    alternate[sprite_name] = temp
+sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
+sprites["block_invisible"] = pygame.transform.scale(sprites["block_invisible"], (g.BLOCK_SIZE, g.BLOCK_SIZE))
+sprites["block_invisible"].set_alpha(g.INVISIBLE_BLOCK_VISIBILITY*256)

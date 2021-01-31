@@ -1,6 +1,6 @@
 from game_files.blocks.block import block
 import game_files.all_sprites as s
-import game_files.config as c
+import game_files.globals as g
 import game_files.levels as l
 from game_files.save_state import global_save_state
 
@@ -37,7 +37,7 @@ class block_entrance(block):
         if where_is_player is not None:
             super().draw(pos, where_is_player)
 
-            completion_pos = (pos[0]+c.LEVEL_COMPLETION_OFFSET, pos[1]+c.LEVEL_COMPLETION_OFFSET)
+            completion_pos = (pos[0]+g.LEVEL_COMPLETION_OFFSET, pos[1]+g.LEVEL_COMPLETION_OFFSET)
 
             if global_save_state.is_completed(self.target_level):
                 self.screen.blit(self.sprite_av[where_is_player], completion_pos)

@@ -1,3 +1,10 @@
+0.33
+- added Dio easteregg
+- refactored config to globals since this is the function it fulfills
+- more changes to hubs
+- optimised empty block a
+- made invisible block slightly visible
+
 0.32
 - added max move limit in order to prevent memory from overflowing, game is running smoothly at 100fps, but in future I might replace block empty with None
 - rebuild and renamed all hubs

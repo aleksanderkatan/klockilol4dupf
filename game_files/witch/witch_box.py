@@ -1,10 +1,10 @@
 import pygame as pg
-import game_files.config as c
+import game_files.globals as g
 
 COLOR = pg.Color('lightskyblue3')
 COLOR_BACK = pg.Color('black')
-FONT_SIZE = c.WITCH_FONT_SIZE
-FONT_OFFSET = c.WITCH_FONT_OFFSET
+FONT_SIZE = g.WITCH_FONT_SIZE
+FONT_OFFSET = g.WITCH_FONT_OFFSET
 FONT = pg.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE)
 
 
@@ -20,7 +20,7 @@ class witch_box:
         self.text = self.wrap(text)
 
         self.rect = pg.Rect(
-            0, c.WINDOW_Y-FONT_SIZE*len(self.text)-2*FONT_OFFSET, c.WINDOW_X, FONT_SIZE*len(self.text)+2*FONT_OFFSET
+            0, g.WINDOW_Y-FONT_SIZE*len(self.text)-2*FONT_OFFSET, g.WINDOW_X, FONT_SIZE*len(self.text)+2*FONT_OFFSET
         )
         self.txt_surfaces = []
         for string in self.text:
@@ -40,7 +40,7 @@ class witch_box:
         words = string.split(' ')
         result = []
         current = ''
-        limit = int((c.WINDOW_X-FONT_OFFSET*2)/(FONT_SIZE*0.59)) # !!stupid constant in code
+        limit = int((g.WINDOW_X-FONT_OFFSET*2)/(FONT_SIZE*0.59)) # !!stupid constant in code
 
         for word in words:
             if len(current) + 1 + len(word) <= limit:

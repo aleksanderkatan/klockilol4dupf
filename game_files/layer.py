@@ -1,5 +1,5 @@
 import game_files.all_blocks as o
-import game_files.config as c
+import game_files.globals as g
 import game_files.utils as u
 
 class layer:
@@ -29,7 +29,7 @@ class layer:
                 )
 
     def draw(self, height, layers_amount, where_is_player):
-        if c.THREED:
+        if g.THREED:
             self.draw_once(height, layers_amount, where_is_player, 0, 8)
             self.draw_once(height, layers_amount, where_is_player, 0, 4)
         self.draw_once(height, layers_amount, where_is_player, 0, 0)

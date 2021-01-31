@@ -22,6 +22,7 @@ levs[6] = 12
 levs[7] = 14
 levs[101] = 136
 levs[102] = 136
+levs[201] = 0
 levs[301] = 3
 levs[302] = 3
 levs[400] = 5
@@ -38,6 +39,7 @@ def levels(level_index):
     print(level_index)
     level_set, level = level_index
     if level_set not in levs or not 0 <= level <= levs[level_set]:
+        print("Wrong level", level_index)
         return level_error_path
     if level_set == 400 and level_index == 0:
         return  level_error_path

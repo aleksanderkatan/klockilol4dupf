@@ -1,8 +1,8 @@
 import pygame
-import game_files.config as c
+import game_files.globals as g
 
 pygame.init()
-screen = pygame.display.set_mode((c.WINDOW_X, c.WINDOW_Y))
+screen = pygame.display.set_mode((g.WINDOW_X, g.WINDOW_Y))
 pygame.display.set_caption('klockilol4dupf')
 
 from game_files.game_logic import game_logic
@@ -20,4 +20,4 @@ while True:
     game.draw()
 
     pygame.display.update()
-    clock.tick(c.FRAMERATE)
+    clock.tick(g.FRAMERATE)
