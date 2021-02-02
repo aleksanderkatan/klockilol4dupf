@@ -10,7 +10,7 @@ GRAYNESS = 0.1
 CHEATS = True
 PASSWORD_HASH = b'(M\xc0\x04\x90Y\xaa\xa0\x00!\xb4\xd9\xa5SUj\xd1\xc6\tQ\xf3\xe5\xaf\xbe)\x1f\xb4\xee\xc9Lw\xf0'
 MAX_COMMAND_LENGTH = 32
-WITCH = False
+WITCH = True
 THREED = False # !! does not quite work
 DUDA_CHUJ = False
 

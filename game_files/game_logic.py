@@ -157,5 +157,8 @@ class game_logic:
         elif command[0] == 'c':
             print("Completing current level")
             self.complete()
+        elif command[0] == 'r':
+            print("Resetting current level")
+            self.set_stage(self.level_index)
         else:
             print("No such command")

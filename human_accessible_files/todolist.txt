@@ -1,8 +1,6 @@
 the lot
 
-- many players // i don't think so
 - thunder 2.0 (only for connected components)
 - yes/no blocks // are they even useful?
 - some god damn levels
-- refactor and reposition all the files
-- change ordering of layers for single layer display
+- update the fill method and probably move it somewhere else

@@ -1,3 +1,6 @@
+0.34
+- added some levels for zone 7
+
 0.33
 - added Dio easteregg
 - refactored config to globals since this is the function it fulfills
