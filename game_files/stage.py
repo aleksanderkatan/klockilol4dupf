@@ -2,6 +2,7 @@ import pygame
 from game_files.state import state
 import game_files.globals as g
 import game_files.levels as l
+from game_files.log import log
 
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", g.LEVEL_FONT_SIZE)
 
@@ -11,8 +12,11 @@ class stage:
         self.states = []
         first_state = state(screen, self, 0)
         self.level_index = level_index
-        first_state.fill(l.levels(self.level_index), last_level_index)
-        self.states.append(first_state)
+        self.successful = first_state.fill(l.levels(self.level_index), last_level_index)
+        if self.successful is False:
+            log.error("Stage " + str(level_index) + " failed to load")
+        else:
+            self.states.append(first_state)
         self.change_to = None
 
     def draw(self, single_layer=None):
@@ -29,7 +33,7 @@ class stage:
 
     def move(self, direction=None):
         if len(self.states) > g.MOVE_LIMIT:
-            print('Move limit exceeded, resetting...')
+            log.info('Move limit exceeded, resetting...')
             self.reset()
             return
 

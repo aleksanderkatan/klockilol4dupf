@@ -14,6 +14,10 @@ WITCH = True
 THREED = False # !! does not quite work
 DUDA_CHUJ = False
 
+LOG_INFO = False
+LOG_WARNINGS = True
+LOG_ERRORS = True
+
 WINDOW_X = int(1280*SCALE)
 WINDOW_Y = int(960*SCALE)
 BLOCK_SIZE = int(64*SCALE)

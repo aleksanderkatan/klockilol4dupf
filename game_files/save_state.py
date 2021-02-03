@@ -1,12 +1,13 @@
 import os
 import json
 import game_files.levels as l
+from game_files.log import log
 
 SAVE_FILE_PATH = 'game_files/data/completed.txt'
 
 class save_data:
     def __init__(self, dic=None):
-        print("IMPORTING DICT", dic)
+        log.info("Importing save file")
         self.completed = {}
         self.events = []
         if dic is None:

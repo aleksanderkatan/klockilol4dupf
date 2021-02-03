@@ -1,3 +1,7 @@
+0.35
+- added log and changed all prints to logs with categories info, warning and error
+- added some checks for level loading
+
 0.34
 - added some levels for zone 7
 

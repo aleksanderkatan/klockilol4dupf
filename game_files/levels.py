@@ -1,4 +1,4 @@
-from game_files.save_state import global_save_state
+from game_files.log import log
 # !! levels of level_set 0 are for debugging
 # 1 <= normal zones < 100
 # 100 < random zones < 200
@@ -38,10 +38,9 @@ level_infinity = (0, 0)
 
 
 def levels(level_index):
-    print(level_index)
     level_set, level = level_index
     if level_set not in levs or not 0 <= level <= levs[level_set]:
-        print("Wrong level", level_index)
+        log.warning("Wrong level index " + str(level_index))
         return level_error_path
     if level_set == 400 and level_index == 0:
         return  level_error_path
@@ -68,7 +67,6 @@ def previous_level(level_index):
     return level_set, level - 1
 
 def hub_of_set(level_set):
-    print("SET", level_set)
     if level_set == 400:
         return level_set, 1
     for hub, sets in hubs.items():

@@ -16,10 +16,6 @@ class layer:
                 array.append(o.block_empty(screen, stage, state_index, (i, j, state_index)))
             self.grid.append(array)
 
-        # print(self.grid)
-        # for i in range(sizex):
-        #     for j in range(sizey):
-        #         self.grid[i][j]= (o.block_empty(screen, stage) if (i+j)%2==0 else o.block(screen, stage))
     def draw_once(self, height, layers_amount, where_is_player, x_offset, y_offset):
         for i in range(self.size_x):
             for j in range(self.size_y):

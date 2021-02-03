@@ -9,6 +9,7 @@ import game_files.globals as g
 import game_files.levels as l
 from game_files.save_state import global_save_state
 from game_files.witch.witch import witch
+from game_files.log import log
 
 class game_logic:
     def __init__(self, screen):
@@ -26,7 +27,10 @@ class game_logic:
         self.grayness = s.sprites["grayness"]
 
     def set_stage(self, level_index):
-        self.stage = stage(self.screen, level_index, self.level_index)
+        new_stage = stage(self.screen, level_index, self.level_index)
+        if new_stage.successful is False:
+            return
+        self.stage = new_stage
         self.single_layer = None
         self.level_index = level_index
 
@@ -106,14 +110,14 @@ class game_logic:
             self.hasher.update(bytes(command, "utf-16"))
             pw_hash = self.hasher.digest()
             if pw_hash != g.PASSWORD_HASH:
-                print("WRONG PASSWORD!")
+                log.info("WRONG PASSWORD!")
             else:
-                print("Cheats enabled")
+                log.info("Cheats enabled")
                 g.CHEATS = True
             return
 
         # !! some bullshit down here, don't look down
-        print("executing:", command)
+        log.info("executing: " + command)
         if command == '':
             return
 
@@ -121,44 +125,45 @@ class game_logic:
 
         if command[0] == 'lv' or command[0] == 'cd':
             if len(command) == 2:
-                print("Changing level to:", 0, command[1])
+                log.info("Changing level to: 0 " + command[1])
                 self.set_stage((0, int(command[1])))
             else:
-                print("Changing level to:", command[1], command[2])
+                log.info("Changing level to: " + command[1] + " " + command[2])
                 self.set_stage((int(command[1]), int(command[2])))
         elif command[0] == 'n':
-            print("Next level")
+            log.info("Next level")
             self.set_stage(l.next_level(self.stage.level_index))
         elif command[0] == 'p':
-            print("Previous level")
+            log.info("Previous level")
             self.set_stage(l.previous_level(self.stage.level_index))
         elif command[0].lower() == 'duda' and command[1].lower() == 'chuj':
-            print("Swapping background")
+            log.info("Swapping background")
             g.DUDA_CHUJ = not g.DUDA_CHUJ
         elif command[0] == 'yoffset':
-            print("Changing y offset")
+            log.info("Changing y offset")
             g.LAYER_Y_OFFSET = int(command[1])
         elif command[0] == 'xoffset':
-            print("Changing x offset")
+            log.info("Changing x offset")
             g.LAYER_X_OFFSET = int(command[1])
         elif command[0].lower() in ['exit', 'quit', 'halt', 'shutdown', 'poweroff', 'q']:
+            log.info("Quitting")
             pygame.quit()
             sys.exit(0)
         elif command[0] == 'reset_all':
-            print("Erradicating save file")
+            log.warning("Erradicating save file")
             global_save_state.reset()
             self.set_stage((400, 1))
         elif command[0] == 'reset_events':
-            print("Resetting events")
+            log.info("Resetting events")
             global_save_state.reset_events()
         elif command[0] == 'complete_all':
-            print("Completing all levels")
+            log.info("Completing all levels")
             global_save_state.complete_all()
         elif command[0] == 'c':
-            print("Completing current level")
+            log.info("Completing current level")
             self.complete()
         elif command[0] == 'r':
-            print("Resetting current level")
+            log.info("Resetting current level")
             self.set_stage(self.level_index)
         else:
-            print("No such command")
+            log.info("No such command")

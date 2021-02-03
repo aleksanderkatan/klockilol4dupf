@@ -1,5 +1,6 @@
 import pygame
 import game_files.globals as g
+from game_files.log import log
 
 temp_sprites = {}
 
@@ -52,7 +53,6 @@ temp_sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0
 
 sprites = {}
 for name, sprite in temp_sprites.items():
-    print(name, sprite)
     if name in ["level_available", "level_unavailable"]:
         new_sprite = pygame.transform.scale(
             sprite, (int(g.BLOCK_SIZE*g.LEVEL_COMPLETION_SCALE), int(g.BLOCK_SIZE*g.LEVEL_COMPLETION_SCALE))

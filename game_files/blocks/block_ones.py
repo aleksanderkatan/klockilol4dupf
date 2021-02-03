@@ -28,7 +28,6 @@ class block_ones(block):
                 )
 
     def set_ones(self, val):
-        print(val)
         self.ones = [val // 1000 == 1, (val % 1000) // 100 == 1, (val % 100) // 10 == 1, (val % 10) == 1]
 
     def draw(self, pos, where_is_player):

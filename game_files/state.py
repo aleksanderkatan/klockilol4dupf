@@ -4,6 +4,7 @@ from game_files.charmap import charmap
 import game_files.utils as u
 import game_files.all_blocks as o
 import game_files.all_sprites as s
+from game_files.log import log
 
 class state:
     def __init__(self, screen, stage, state_index):
@@ -16,102 +17,6 @@ class state:
         self.z = -1
         self.state_index = state_index
         self.completed = False
-
-    def fill(self, filename, last_level_index=None):
-        print("loading level from:", filename)
-        f = open(filename)
-        self.x = int(f.readline())
-        self.y = int(f.readline())
-        self.z = int(f.readline())
-        self.player = player((0, 0, 0), self.screen, self.stage, self.state_index)
-        portals = []
-        jumps = []
-        entrances = []
-        map_bridges = []
-        ones = []
-
-        for i in range(self.z):
-            new_layer = layer(self.x, self.y, self.screen, self.stage, self.state_index)
-
-            for j in range(self.y):
-                line = f.readline()
-                print(line)
-
-                for k in range(self.x):
-                    char = line[k]
-                    obj = charmap[char]
-                    blo = obj(self.screen, self.stage, self.state_index, (k, j, i))
-
-                    if obj == o.block_start:
-                        self.teleport_player((k, j, i), False)
-                    if obj == o.block_numeric:
-                        blo.set_number(int(char) - int('0'))
-                    if obj == o.block_arrow:
-                        blo.set_direction(u.char_to_direction(char))
-                    if obj == o.block_jump:
-                        blo.set_boost(2)
-                        jumps.append(blo)
-                    if obj == o.block_portal:
-                        portals.append(blo)
-                    if obj == o.block_lamp:
-                        if char == 'B':
-                            blo.change_state()
-                    if obj == o.block_entrance:
-                        entrances.append(blo)
-                    if obj == o.block_map_bridge:
-                        map_bridges.append(blo)
-                    if obj == o.block_ones:
-                        ones.append(blo)
-
-                    new_layer.update(k, j, blo)
-
-            self.layers.append(new_layer)
-            f.readline()
-
-        options = {}
-        line = f.readline()
-        while len(line) > 2:
-            print(line)
-            line = line.split()
-            options[line[0]] = line[1:]
-            line = f.readline()
-        f.close()
-
-        if 'portals' in options:
-            print("Configuring portals")
-            portal_options = options['portals']
-            for i in range(len(portals)):
-                portals[i].destination = portals[int(portal_options[i])]
-
-        if 'jumps' in options:
-            print("Configuring jumps")
-            jump_options = options['jumps']
-            for i in range(len(jumps)):
-                jumps[i].set_boost(int(jump_options[i]))
-
-        if 'entrances' in options:
-            print("Configuring entrances")
-            entrance_options = options["entrances"]
-            for i in range(len(entrances)):
-                target_level = entrance_options[i].split('/')
-                target_level = (int(target_level[0]), int(target_level[1]))
-                entrances[i].set_target_level(target_level)
-
-        if 'map_bridges' in options:
-            print("Configuring map bridges")
-            map_bridge_options = options["map_bridges"]
-            for i in range(len(map_bridges)):
-                map_bridges[i].set_level_set(int(map_bridge_options[i]))
-
-        if 'ones' in options:
-            print("Configuring ones")
-            ones_options = options['ones']
-            for i in range(len(ones)):
-                ones[i].set_ones(int(ones_options[i]))
-
-        starting_point = self.find_level_entrance(last_level_index)
-        if starting_point is not None:
-            self.teleport_player(starting_point, False)
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)
@@ -201,3 +106,132 @@ class state:
                     if type(blo) is o.block_entrance and blo.target_level == level_index:
                         return blo.pos
         return None
+
+    def fill(self, filename, last_level_index=None):
+        log.info("loading level from: " + filename)
+
+        try:
+            f = open(filename)
+            self.x = int(f.readline())
+            self.y = int(f.readline())
+            self.z = int(f.readline())
+            self.player = player((0, 0, 0), self.screen, self.stage, self.state_index)
+            portals = []
+            jumps = []
+            entrances = []
+            map_bridges = []
+            ones = []
+
+            for i in range(self.z):
+                new_layer = layer(self.x, self.y, self.screen, self.stage, self.state_index)
+
+                for j in range(self.y):
+                    line = f.readline()
+                    if len(line) != self.x+1: # !! \n at the end
+                        log.error("Missing or excessive chars in level " + filename)
+                        return False
+
+                    for k in range(self.x):
+                        char = line[k]
+                        try:
+                            obj = charmap[char]
+                        except KeyError:
+                            log.error("Key error: " + str(char))
+                            return False
+
+                        blo = obj(self.screen, self.stage, self.state_index, (k, j, i))
+
+                        if obj == o.block_start:
+                            self.teleport_player((k, j, i), False)
+                        if obj == o.block_numeric:
+                            blo.set_number(int(char) - int('0'))
+                        if obj == o.block_arrow:
+                            blo.set_direction(u.char_to_direction(char))
+                        if obj == o.block_jump:
+                            blo.set_boost(2)
+                            jumps.append(blo)
+                        if obj == o.block_portal:
+                            portals.append(blo)
+                        if obj == o.block_lamp:
+                            if char == 'B':
+                                blo.change_state()
+                        if obj == o.block_entrance:
+                            entrances.append(blo)
+                        if obj == o.block_map_bridge:
+                            map_bridges.append(blo)
+                        if obj == o.block_ones:
+                            ones.append(blo)
+
+                        new_layer.update(k, j, blo)
+
+                self.layers.append(new_layer)
+                f.readline()
+
+            options = {}
+            line = f.readline()
+            while len(line) > 2:
+                line = line.split()
+                options[line[0]] = line[1:]
+                line = f.readline()
+            f.close()
+
+            if 'portals' in options:
+                log.info("Configuring portals")
+                portal_options = options['portals']
+                if len(portal_options) != len(portals):
+                    log.warning("Wrong amount of portal options")
+                    return False
+                for i in range(len(portals)):
+                    portals[i].destination = portals[int(portal_options[i])]
+            elif len(portals) != 0:
+                log.warning("No portal options")
+
+            if 'jumps' in options:
+                log.info("Configuring jumps")
+                jump_options = options['jumps']
+                if len(jump_options) != len(jumps):
+                    log.warning("Wrong amount of jumps options")
+                for i in range(len(jump_options)):
+                    jumps[i].set_boost(int(jump_options[i]))
+            elif len(jumps):
+                log.warning("No jump options")
+
+            if 'entrances' in options:
+                log.info("Configuring entrances")
+                entrance_options = options["entrances"]
+                if len(entrance_options) != len(entrances):
+                    log.warning("Wrong amount of entrances options")
+                for i in range(len(entrance_options)):
+                    target_level = entrance_options[i].split('/')
+                    target_level = (int(target_level[0]), int(target_level[1]))
+                    entrances[i].set_target_level(target_level)
+            elif len(entrances) != 0:
+                log.warning("No entrance options")
+
+            if 'map_bridges' in options:
+                log.info("Configuring map bridges")
+                map_bridge_options = options["map_bridges"]
+                if len(map_bridge_options) != len(map_bridges):
+                    log.warning("Wrong amount of map bridges options")
+                for i in range(len(map_bridge_options)):
+                    map_bridges[i].set_level_set(int(map_bridge_options[i]))
+            elif len(map_bridges) != 0:
+                log.warning("No map bridges options")
+
+            if 'ones' in options:
+                log.info("Configuring ones")
+                ones_options = options['ones']
+                if len(ones_options) != len(ones):
+                    log.warning("Wrong amount of ones options")
+                for i in range(len(ones_options)):
+                    ones[i].set_ones(int(ones_options[i]))
+            elif len(ones) != 0:
+                log.warning("No ones options")
+
+            starting_point = self.find_level_entrance(last_level_index)
+            if starting_point is not None:
+                self.teleport_player(starting_point, False)
+            return True
+        except:
+            log.error("Undefined error while loading stage")
+            return False

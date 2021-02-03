@@ -3,4 +3,5 @@ the lot
 - thunder 2.0 (only for connected components)
 - yes/no blocks // are they even useful?
 - some god damn levels
-- update the fill method and probably move it somewhere else
+- optimize loading of level options since it looks as if an 11 years old wrote it
+

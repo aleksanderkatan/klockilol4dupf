@@ -12,7 +12,6 @@ class block_numeric(block):
         return block_numeric(self.screen, self.stage, new_state_index, self.pos, self.number)
 
     def replaced_with(self):
-        print(self.number)
         if self.number > 1:
             return block_numeric(self.screen, self.stage, self.state_index, self.pos, self.number-1)
         else:

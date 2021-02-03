@@ -1,7 +1,7 @@
 from game_files.blocks.block import block
 import game_files.all_sprites as s
 import game_files.utils as u
-import game_files.levels as l
+from game_files.log import log
 
 class block_end(block):
     def __init__(self, screen, stage, state_index, pos):
@@ -21,6 +21,6 @@ class block_end(block):
 
     def on_step_in(self):
         completed = self.perform_check()
-        print("Level completed:", completed)
+        log.info("Level completed check: " + str(completed))
         if completed:
             self.stage.states[self.state_index].completed = True
