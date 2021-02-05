@@ -10,10 +10,16 @@ class block_entrance(block):
         self.sprite = s.sprites["error"]
         self.sprite_av = s.sprites["level_available"]
         self.sprite_unav = s.sprites["level_unavailable"]
+        self.target_level = None
         self.set_target_level(target_level)
 
     def copy(self, new_state_index):
         return block_entrance(self.screen, self.stage, new_state_index, self.pos, self.target_level)
+
+    def options(self, option):
+        target_level = option.split('/')
+        target_level = (int(target_level[0]), int(target_level[1]))
+        self.set_target_level(target_level)
 
     def set_target_level(self, target_level):
         if target_level is None:

@@ -29,10 +29,12 @@ class game_logic:
     def set_stage(self, level_index):
         new_stage = stage(self.screen, level_index, self.level_index)
         if new_stage.successful is False:
-            return
+            self.stage.reverse()
+            return False
         self.stage = new_stage
         self.single_layer = None
         self.level_index = level_index
+        return True
 
     def event_handler(self, event):
         if event.type == pygame.QUIT:
@@ -106,9 +108,7 @@ class game_logic:
 
     def execute_command(self, command):
         if not g.CHEATS:
-            self.hasher.digest()
-            self.hasher.update(bytes(command, "utf-16"))
-            pw_hash = self.hasher.digest()
+            pw_hash = u.hash_string(command)
             if pw_hash != g.PASSWORD_HASH:
                 log.info("WRONG PASSWORD!")
             else:
@@ -165,5 +165,15 @@ class game_logic:
         elif command[0] == 'r':
             log.info("Resetting current level")
             self.set_stage(self.level_index)
+        elif command[0] == 'load_all':
+            old_level_index = self.level_index
+            old_stage = self.stage
+            problems = []
+            for level_index in l.all_levels_iterator():
+                if not self.set_stage(level_index):
+                    problems.append(level_index)
+            self.stage = old_stage
+            self.level_index = old_level_index
+            log.error("Errors in stages: " + str(problems))
         else:
             log.info("No such command")

@@ -1,3 +1,8 @@
+0.36
+- added "load_all" command to search for errors, fixed all levels
+- added "options" method to most blocks to replace their individual setters and make layer.fill shorter
+- fixed password checking
+
 0.35
 - added log and changed all prints to logs with categories info, warning and error
 - added some checks for level loading

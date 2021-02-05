@@ -1,15 +1,16 @@
 import pygame
+import hashlib
 import game_files.globals as g
 import game_files.all_blocks as o
 import game_files.all_sprites as s
 
 # returns position on screen for certain index
 def index_to_position(x, y, z, size_x, size_y, size_z):
-    midx = g.WINDOW_X / 2
-    midy = g.WINDOW_Y / 2
-    highleft = (midx - size_x / 2 * g.BLOCK_SIZE, midy - size_y / 2 * g.BLOCK_SIZE)
+    mid_x = g.WINDOW_X / 2
+    mid_y = g.WINDOW_Y / 2
+    high_left = (mid_x - size_x / 2 * g.BLOCK_SIZE, mid_y - size_y / 2 * g.BLOCK_SIZE)
 
-    return highleft[0] + g.BLOCK_SIZE * x + (z - size_z / 2) * g.LAYER_X_OFFSET, highleft[1] + g.BLOCK_SIZE * y - (
+    return high_left[0] + g.BLOCK_SIZE * x + (z - size_z / 2) * g.LAYER_X_OFFSET, high_left[1] + g.BLOCK_SIZE * y - (
             z - size_z / 2) * g.LAYER_Y_OFFSET
 
 
@@ -90,3 +91,9 @@ def background_of_level(level_index):
     if g.DUDA_CHUJ:
         return s.sprites["duda_chuj"]
     return s.sprites["background"]
+
+def hash_string(string):
+    hasher = hashlib.sha256()
+    hasher.update(bytes(string, "utf-16"))
+    return hasher.digest()
+

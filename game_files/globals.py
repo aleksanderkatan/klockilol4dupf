@@ -7,14 +7,14 @@ VISIBLE_LAYERS_UP = 2
 INVISIBLE_BLOCK_VISIBILITY = 0.02
 GRAYNESS = 0.1
 
-CHEATS = True
-PASSWORD_HASH = b'(M\xc0\x04\x90Y\xaa\xa0\x00!\xb4\xd9\xa5SUj\xd1\xc6\tQ\xf3\xe5\xaf\xbe)\x1f\xb4\xee\xc9Lw\xf0'
+CHEATS = False
+PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7fx=jO\x01\x97T3_\xefK'
 MAX_COMMAND_LENGTH = 32
 WITCH = True
 THREED = False # !! does not quite work
 DUDA_CHUJ = False
 
-LOG_INFO = False
+LOG_INFO = True
 LOG_WARNINGS = True
 LOG_ERRORS = True
 

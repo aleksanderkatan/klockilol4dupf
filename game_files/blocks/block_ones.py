@@ -27,7 +27,8 @@ class block_ones(block):
                     poses[i], block_numeric(self.screen, self.stage, self.state_index, poses[i], 1)
                 )
 
-    def set_ones(self, val):
+    def options(self, option):
+        val = int(option)
         self.ones = [val // 1000 == 1, (val % 1000) // 100 == 1, (val % 100) // 10 == 1, (val % 10) == 1]
 
     def draw(self, pos, where_is_player):

@@ -186,7 +186,7 @@ def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=No
         print(ind, "S/E fail")
 
 
-for ind in range(1, 100):
-    #generate(index=ind, x=9, y=9, ice=0, jump2=0, jump3=15, arrow=0, length=50, redirect=7, max_num=3, min_total=30)
+for ind in range(1, 137):
+    #generate(index=ind, x=10, y=10, ice=0, jump2=0, jump3=0, arrow=0, length=80, redirect=7, max_num=None, min_total=30)
     generate(index=ind, x=11, y=11, ice=10, jump2=10, jump3=10, arrow=20, length=60, redirect=7, max_num=3, min_total=30)
     #generate(index=ind, x=100, y=100, ice=0, jump2=0, jump3=0, arrow=0, length=5000, redirect=15, max_num=7, min_total=30)

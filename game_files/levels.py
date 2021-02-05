@@ -10,6 +10,7 @@ hubs = {}
 hubs[1] = [1]
 hubs[2] = [301, 2, 3, 101]
 hubs[3] = [302, 4, 5, 6, 102]
+hubs[4] = [7, 8, 9]
 
 levs = {}
 levs[0] = 19
@@ -118,3 +119,10 @@ def level_name(level_index):
         return "Hub " + str(level)
 
     return "error"
+
+def all_levels_iterator():
+    for key, value in levs.items():
+        for i in range(value+1):
+            if i == 0 and key == 400:
+                continue
+            yield key, i

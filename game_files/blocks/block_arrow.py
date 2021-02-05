@@ -1,10 +1,11 @@
 from game_files.blocks.block import block
-from game_files.blocks.block_empty import block_empty
+import game_files.utils as u
 import game_files.all_sprites as s
 
 class block_arrow(block):
     def __init__(self, screen, stage, state_index, pos, direction=-1):
         super().__init__(screen, stage, state_index, pos)
+        self.direction = -1
         self.set_direction(direction)
         self.state_index = state_index
 
@@ -13,6 +14,9 @@ class block_arrow(block):
 
     def on_step_in(self):
         self.stage.states[self.state_index].player.enqueue_move(self.direction)
+
+    def options(self, option):
+        self.set_direction(u.char_to_direction(option[-1]))
 
     def set_direction(self, direction):
         self.direction = direction

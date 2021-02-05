@@ -5,7 +5,8 @@ import game_files.all_sprites as s
 class block_numeric(block):
     def __init__(self, screen, stage, state_index, pos, number=-1):
         super().__init__(screen, stage, state_index, pos)
-        self.set_number(number)
+        self.number = 0
+        self.options(str(number))
         self.state_index = state_index
 
     def copy(self, new_state_index):
@@ -21,9 +22,9 @@ class block_numeric(block):
         x, y, z = self.pos
         self.stage.states[self.state_index].layers[z].grid[x][y] = self.replaced_with()
 
-    def set_number(self, number):
-        self.number = number
-        if 1 <= number <= 8:
-            self.sprite = s.sprites["block_numeric_" + str(number)]
+    def options(self, option):
+        self.number = int(option[-1]) - int('0')
+        if 1 <= self.number <= 8:
+            self.sprite = s.sprites["block_numeric_" + str(self.number)]
         else:
             self.sprite = s.sprites["error"]

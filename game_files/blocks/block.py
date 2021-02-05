@@ -18,6 +18,9 @@ class block(metaclass=abc.ABCMeta):
     def replaced_with(self):
         return None
 
+    def options(self, option):
+        pass
+
     def draw(self, pos, where_is_player):
         if where_is_player is not None:
             self.screen.blit(self.sprite[where_is_player], pos)
