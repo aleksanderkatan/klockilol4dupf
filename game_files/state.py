@@ -126,7 +126,9 @@ class state:
 
                 for j in range(self.y):
                     line = f.readline()
-                    if len(line) != self.x + 1:  # !! \n at the end
+                    if line[-1] == '\n':
+                        line = line[:-1]
+                    if len(line) != self.x:
                         log.error("Missing or excessive chars in level " + filename)
                         return False
 

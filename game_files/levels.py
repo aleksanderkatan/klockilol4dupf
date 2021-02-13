@@ -20,7 +20,7 @@ levs[3] = 7
 levs[4] = 9
 levs[5] = 10
 levs[6] = 12
-levs[7] = 14
+levs[7] = 21
 levs[8] = 14
 levs[9] = 14
 levs[101] = 136
@@ -28,6 +28,7 @@ levs[102] = 136
 levs[201] = 0
 levs[301] = 3
 levs[302] = 3
+levs[303] = 5
 levs[400] = 5
 
 

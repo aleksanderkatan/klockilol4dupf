@@ -1,3 +1,7 @@
+0.37
+- added some more levels
+- minor fixes and changes (from now on I will list only bigger changes)
+
 0.36
 - added "load_all" command to search for errors, fixed all levels
 - added "options" method to most blocks to replace their individual setters and make layer.fill shorter
