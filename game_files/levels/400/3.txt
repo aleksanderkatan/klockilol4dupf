@@ -26,4 +26,4 @@ e000IIIIII0000.
 ...............
 
 entrances 4/0 6/0 400/2 5/0 302/0 102/0 400/4
-map_bridges 4 5 6 7
+map_bridges 4 4 5 6

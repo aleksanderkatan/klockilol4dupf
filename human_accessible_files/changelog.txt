@@ -1,3 +1,6 @@
+0.38
+- added thunder block along with particle generator
+
 0.37
 - added some more levels
 - minor fixes and changes (from now on I will list only bigger changes)

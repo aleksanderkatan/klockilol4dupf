@@ -1,6 +1,5 @@
 import pygame
 import game_files.globals as g
-from game_files.log import log
 
 temp_sprites = {}
 
@@ -41,7 +40,7 @@ temp_sprites["block_map_bridge_off"] = pygame.image.load('game_files/sprites/blo
 temp_sprites["block_map_bridge_on"] = pygame.image.load('game_files/sprites/blocks/map_bridge_on.bmp').convert()
 temp_sprites["block_ones"] = pygame.image.load('game_files/sprites/blocks/ones.bmp').convert()
 temp_sprites["block_jump_3"] = pygame.image.load('game_files/sprites/blocks/jump3.bmp').convert()
-temp_sprites["block_bridge_blocker"] = pygame.image.load('game_files/sprites/blocks/bridge_blocker.gif').convert()
+temp_sprites["block_blocker"] = pygame.image.load('game_files/sprites/blocks/blocker.gif').convert()
 temp_sprites["ones_one_0"] = pygame.image.load('game_files/sprites/blocks/ones_one.gif').convert()
 temp_sprites["ones_one_1"] = pygame.image.load('game_files/sprites/blocks/ones_one.gif').convert()
 temp_sprites["ones_one_2"] = pygame.image.load('game_files/sprites/blocks/ones_one.gif').convert()
@@ -50,6 +49,7 @@ temp_sprites["ones_one_1"] = pygame.transform.rotate(temp_sprites["ones_one_1"],
 temp_sprites["ones_one_2"] = pygame.transform.rotate(temp_sprites["ones_one_2"], 180)
 temp_sprites["ones_one_3"] = pygame.transform.rotate(temp_sprites["ones_one_3"], 270)
 temp_sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
+temp_sprites["block_thunder"] = pygame.image.load('game_files/sprites/blocks/thunder.bmp').convert()
 
 sprites = {}
 for name, sprite in temp_sprites.items():
@@ -92,6 +92,9 @@ sprites["duda_chuj"] = pygame.transform.scale(sprites["duda_chuj"], (g.WINDOW_X,
 sprites["grayness"] = pygame.image.load('game_files/sprites/black.jpg').convert()
 sprites["grayness"] = pygame.transform.scale(sprites["grayness"], (g.WINDOW_X, g.WINDOW_Y))
 sprites["grayness"].set_alpha(g.GRAYNESS*256)
+sprites["particle_1"] = pygame.image.load('game_files/sprites/particle_1.bmp').convert()
+sprites["particle_2"] = pygame.image.load('game_files/sprites/particle_2.bmp').convert()
+sprites["particle_3"] = pygame.image.load('game_files/sprites/particle_3.bmp').convert()
 
 sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
 sprites["block_invisible"] = pygame.transform.scale(sprites["block_invisible"], (g.BLOCK_SIZE, g.BLOCK_SIZE))
