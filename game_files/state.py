@@ -19,6 +19,7 @@ class state:
         self.z = -1
         self.state_index = state_index
         self.completed = False
+        self.pushers = []
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)
@@ -30,19 +31,41 @@ class state:
         sta.completed = self.completed
         for lay in self.layers:
             sta.layers.append(lay.copy(new_state_index))
+        pushers = []
+        for pusher in self.pushers:
+            pushers.append(pusher.copy(new_state_index))
+        sta.pushers = pushers
         return sta
 
     def move(self, direction):  # !!modifies current state instead of returning copy
         self.player.set_next_move_direction(direction)  # if something is enqueued, this will be ignored
-        self.get_block(self.player.pos).on_step_out()
+        direction = self.player.this_move_direction
+
+        new_pushers = []
+        for pusher in self.pushers:
+            pusher.move()
+            if not pusher.finished:
+                new_pushers.append(pusher)
+        self.pushers = new_pushers
+        if len(self.pushers) > 0 and not self.player.has_something_enqueued():
+            self.player.enqueue_move(None)
+
+        step_out_block = self.get_block(self.player.pos)
+        if step_out_block is not None and direction is not None:
+            step_out_block.on_step_out()
+
         self.player.move()
+
         step_in_block = self.get_block(self.player.pos)
-        if step_in_block is not None:
+        if step_in_block is not None and direction is not None:
             step_in_block.on_step_in()
 
     def draw(self):
         for i in range(len(self.layers)):
             self.layers[i].draw(i, len(self.layers), u.relative_to_player(i, self.player.pos[2]))
+        for pusher in self.pushers:
+            x, y = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y, len(self.layers))
+            pusher.draw((x, y))
         if not self.player.dead:
             self.draw_player()
         if self.player.dead:
@@ -177,6 +200,7 @@ class state:
                 o.block_entrance: 'entrances',
                 o.block_map_bridge: 'map_bridges',
                 o.block_ones: 'ones',
+                o.block_piston: 'pistons'
             }
 
             for key, value in blocks.items():

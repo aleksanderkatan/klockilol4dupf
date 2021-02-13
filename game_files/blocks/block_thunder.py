@@ -6,6 +6,7 @@ from game_files.blocks.block_blocker import block_blocker
 from game_files.blocks.block_dummy import block_dummy
 from game_files.blocks.block_lamp import block_lamp
 from game_files.blocks.block_numeric import block_numeric
+from game_files.blocks.block_piston import block_piston
 import game_files.all_sprites as s
 import queue
 import game_files.utils as u
@@ -21,6 +22,7 @@ class block_thunder(block):
 
     def on_step_in(self):
         state = self.stage.states[self.state_index]
+        state.player.enqueue_move(None) # !!
         array = [[0] * state.y for i in range(state.x)]
         Q = queue.Queue()
         px, py, pz = self.pos
@@ -45,7 +47,7 @@ class block_thunder(block):
         for i in range(state.x):
             for j in range(state.y):
                 if array[i][j] == 1:
-                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric]:
+                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric, block_piston]:
                         state.get_block((i, j, pz)).on_step_out()
                         x, y = u.index_to_position(i, j, pz, state.x, state.y, len(state.layers))
                         self.stage.particle_generator.generate(g.THUNDER_PARTICLES, (x+g.BLOCK_SIZE//2, y+g.BLOCK_SIZE//2))

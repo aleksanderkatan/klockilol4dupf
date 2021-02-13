@@ -50,6 +50,20 @@ temp_sprites["ones_one_2"] = pygame.transform.rotate(temp_sprites["ones_one_2"],
 temp_sprites["ones_one_3"] = pygame.transform.rotate(temp_sprites["ones_one_3"], 270)
 temp_sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
 temp_sprites["block_thunder"] = pygame.image.load('game_files/sprites/blocks/thunder.bmp').convert()
+temp_sprites["block_piston_0"] = pygame.image.load('game_files/sprites/blocks/piston.bmp').convert()
+temp_sprites["block_piston_1"] = pygame.image.load('game_files/sprites/blocks/piston.bmp').convert()
+temp_sprites["block_piston_2"] = pygame.image.load('game_files/sprites/blocks/piston.bmp').convert()
+temp_sprites["block_piston_3"] = pygame.image.load('game_files/sprites/blocks/piston.bmp').convert()
+temp_sprites["block_piston_1"] = pygame.transform.rotate(temp_sprites["block_piston_1"], 90)
+temp_sprites["block_piston_2"] = pygame.transform.rotate(temp_sprites["block_piston_2"], 180)
+temp_sprites["block_piston_3"] = pygame.transform.rotate(temp_sprites["block_piston_3"], 270)
+temp_sprites["pusher_0"] = pygame.image.load('game_files/sprites/pusher.gif').convert()
+temp_sprites["pusher_1"] = pygame.image.load('game_files/sprites/pusher.gif').convert()
+temp_sprites["pusher_2"] = pygame.image.load('game_files/sprites/pusher.gif').convert()
+temp_sprites["pusher_3"] = pygame.image.load('game_files/sprites/pusher.gif').convert()
+temp_sprites["pusher_1"] = pygame.transform.rotate(temp_sprites["pusher_1"], 90)
+temp_sprites["pusher_2"] = pygame.transform.rotate(temp_sprites["pusher_2"], 180)
+temp_sprites["pusher_3"] = pygame.transform.rotate(temp_sprites["pusher_3"], 270)
 
 sprites = {}
 for name, sprite in temp_sprites.items():

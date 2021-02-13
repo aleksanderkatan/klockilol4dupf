@@ -1,3 +1,7 @@
+0.39
+- added piston block
+- modified player movement scheme, now there are directions: cardinal (0-3), down (4), pass (None)
+
 0.38
 - added thunder block along with particle generator
 
@@ -21,7 +25,7 @@
 - added Dio easteregg
 - refactored config to globals since this is the function it fulfills
 - more changes to hubs
-- optimised empty block a
+- optimised empty block
 - made invisible block slightly visible
 
 0.32

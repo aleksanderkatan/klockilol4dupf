@@ -15,7 +15,8 @@ class block_portal(block):
     def on_step_in(self):
         self.stage.states[self.state_index].teleport_player(self.destination.pos, activate_step_in=False)
         player = self.stage.states[self.state_index].player
-        player.enqueue_move(player.last_move_direction)
+        if player.last_move_direction is not None and player.last_move_direction != 4:
+            player.enqueue_move(player.last_move_direction)
 
     def set_destination(self, destination):
         self.destination = destination

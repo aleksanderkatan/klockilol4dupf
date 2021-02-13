@@ -17,6 +17,7 @@ from game_files.blocks.block_ones import block_ones
 from game_files.blocks.block_blocker import block_blocker
 from game_files.blocks.block_thunder import block_thunder
 from game_files.blocks.block_invisible import block_invisible
+from game_files.blocks.block_piston import block_piston
 
 standables = set()
 standables.add(block_perma)
@@ -36,6 +37,7 @@ standables.add(block_map_bridge)
 standables.add(block_ones)
 standables.add(block_invisible)
 standables.add(block_thunder)
+standables.add(block_piston)
 
 preventing_win = set()
 preventing_win.add(block_numeric)

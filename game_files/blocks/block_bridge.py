@@ -14,7 +14,8 @@ class block_bridge(block):
 
     def on_step_in(self):
         self.direction = self.stage.states[self.state_index].player.last_move_direction
-        if self.stage.states[self.state_index].player.last_move_direction is not None:
+        dir = self.stage.states[self.state_index].player.last_move_direction
+        if dir is not None and dir != 4:
             self.stage.states[self.state_index].player.enqueue_move(self.stage.states[self.state_index].player.last_move_direction)
 
     def on_step_out(self):
@@ -32,7 +33,7 @@ class block_bridge(block):
             y -= 1
         elif direction == 2:
             x -= 1
-        else:
+        elif direction == 3:
             y += 1
 
         if u.out_of_range(x, y, sta.x, sta.y):

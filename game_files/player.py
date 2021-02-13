@@ -30,8 +30,6 @@ class player:
         return pla
 
     def enqueue_move(self, direction):
-        if direction is None:
-            return
         self.enqueued_moves.append(direction)
 
     def boost_next_move(self, amount):
@@ -44,30 +42,36 @@ class player:
             self.this_move_direction = direction
         else:
             self.this_move_direction = direction_suggestion
-        
-    def move(self): # !!set_next_move_direction must be called first
+
+    def move(self):  # !!set_next_move_direction must be called first
         x, y, z = self.pos
         move_length = self.next_move_length
         move_direction = self.this_move_direction
 
-        if move_direction == 0:
-            x += move_length
-        elif move_direction == 1:
-            y -= move_length
-        elif move_direction == 2:
-            x -= move_length
+        if move_direction is None:
+            pass
         else:
-            y += move_length
+            if move_direction == 0:
+                x += move_length
+            elif move_direction == 1:
+                y -= move_length
+            elif move_direction == 2:
+                x -= move_length
+            elif move_direction == 3:
+                y += move_length
+            else:
+                z -= 1
+
+            if z < 0:
+                self.dead = True
 
         self.next_move_length = 1
         self.last_move_direction = move_direction
         self.this_move_direction = None
-        while z >= 0 and not self.stage.states[self.state_index].standable((x, y, z)):
-            z -= 1
-            self.last_move_direction = None
-        if z < 0:
-            self.dead = True
         self.pos = (x, y, z)
+
+        if not self.stage.states[self.state_index].standable((x, y, z)):
+            self.enqueue_move(4)
 
     def has_something_enqueued(self):
         return len(self.enqueued_moves) != 0
