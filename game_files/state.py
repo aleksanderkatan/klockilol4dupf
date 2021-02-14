@@ -226,6 +226,16 @@ class state:
             starting_point = self.find_level_entrance(last_level_index)
             if starting_point is not None:
                 self.teleport_player(starting_point, False)
+
+            if type(self.get_block(self.player.pos)) not in o.standables:
+                log.warning("Player is not standing, finding nearest standable...")
+                for i in range(self.x):
+                    for j in range(self.y):
+                        for k in range(self.z):
+                            typ = type(self.get_block((i, j, k)))
+                            if typ in o.standables and typ != o.block_invisible:
+                                self.teleport_player((i, j, k), False)
+                                return True
             return True
         except:
             log.error("Undefined error while loading stage")

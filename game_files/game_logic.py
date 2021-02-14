@@ -62,13 +62,13 @@ class game_logic:
 
         next_move_direction = None
         for event in self.keys_registered:
+            witch_was_active = self.witch.is_active()
+            input_box_was_active = self.input_box.active
+
             self.input_box.handle_event(event)  # !! ignores until activated
             self.witch.handle_event(event)  # !! ignores until activated
 
-            if self.input_box.active:
-                continue
-
-            if self.witch.is_active():
+            if witch_was_active or input_box_was_active:
                 continue
 
             key = event.key

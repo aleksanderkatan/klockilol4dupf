@@ -15,7 +15,7 @@ class input_box:
         self.active = False
 
     def handle_event(self, event):
-        if event.key == pg.K_RSHIFT:
+        if event.key == pg.K_RSHIFT or event.key == pg.K_ESCAPE:
             self.active = False
             self.text = ''
 
