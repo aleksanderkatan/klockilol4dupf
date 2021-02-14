@@ -1,5 +1,8 @@
+0.42
+- added more levels
+
 0.41
-- finally added shrek
+- added shrek (finally)
 
 0.40
 - small changes (esc in commands, standing spawn, window icon)
