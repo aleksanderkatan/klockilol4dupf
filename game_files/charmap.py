@@ -33,3 +33,5 @@ charmap['?'] = o.block_invisible
 charmap['T'] = o.block_thunder
 charmap['N'] = o.block_piston
 
+charmap['K'] = o.block_shrek
+

@@ -152,6 +152,7 @@ class game_logic:
         elif command[0] == 'reset_all':
             log.warning("Erradicating save file")
             global_save_state.reset()
+            self.level_index = None
             self.set_stage((400, 1))
         elif command[0] == 'reset_events':
             log.info("Resetting events")

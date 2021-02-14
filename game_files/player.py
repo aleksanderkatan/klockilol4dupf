@@ -1,11 +1,12 @@
 import game_files.all_sprites as s
-import game_files.utils as u
-
+from game_files.save_state import global_save_state
 
 class player:
     def __init__(self, pos, screen, stage, state_index):
         self.pos = pos
-        self.sprite = s.sprites["player"][0]
+        self.sprites = {}
+        self.sprites[True] = s.sprites["player_shrek"][0]
+        self.sprites[False] = s.sprites["player"][0]
         self.screen = screen
         self.stage = stage
         self.state_index = state_index
@@ -16,7 +17,7 @@ class player:
         self.next_move_length = 1
 
     def draw(self, screen_pos):
-        self.screen.blit(self.sprite, screen_pos)
+        self.screen.blit(self.sprites[global_save_state.is_shrek()], screen_pos)
 
     def copy(self, new_state_index):
         pla = player(self.pos, self.screen, self.stage, new_state_index)

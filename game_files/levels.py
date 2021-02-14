@@ -30,7 +30,7 @@ levs[301] = 3
 levs[302] = 3
 levs[303] = 5
 levs[400] = 5
-
+levs[401] = 0
 
 level_error_path = 'game_files/levels/0/1.txt'
 
@@ -45,7 +45,7 @@ def levels(level_index):
         log.warning("Wrong level index " + str(level_index))
         return level_error_path
     if level_set == 400 and level_index == 0:
-        return  level_error_path
+        return level_error_path
     return 'game_files/levels/' + str(level_set) + '/' + str(level) + '.txt'
 
 
@@ -119,6 +119,8 @@ def level_name(level_index):
     if level_set == 400:
         return "Hub " + str(level)
 
+    if level_set == 401:
+        return ""
     return "error"
 
 def all_levels_iterator():

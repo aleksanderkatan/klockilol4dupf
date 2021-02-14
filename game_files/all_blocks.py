@@ -19,6 +19,8 @@ from game_files.blocks.block_thunder import block_thunder
 from game_files.blocks.block_invisible import block_invisible
 from game_files.blocks.block_piston import block_piston
 
+from game_files.blocks.other.block_shrek import block_shrek
+
 standables = set()
 standables.add(block_perma)
 standables.add(block_start)
@@ -38,6 +40,8 @@ standables.add(block_ones)
 standables.add(block_invisible)
 standables.add(block_thunder)
 standables.add(block_piston)
+
+standables.add(block_shrek)
 
 preventing_win = set()
 preventing_win.add(block_numeric)

@@ -10,6 +10,7 @@ class save_data:
         log.info("Importing save file")
         self.completed = {}
         self.events = []
+        self.is_shrek = False
         if dic is None:
             self.reset()
         else:
@@ -25,6 +26,7 @@ class save_data:
     def reset(self):
         self.reset_events()
         self.reset_completed()
+        self.is_shrek = False
 
     def de_string(self):
         new_completed = {}
@@ -75,8 +77,8 @@ class save_state:
         self.save()
 
     def reset(self):
-        self.reset_completed()
-        self.reset_events()
+        self.save_data.reset()
+        self.save()
 
     def is_completed(self, level_index):
         level_set, level = level_index
@@ -125,6 +127,13 @@ class save_state:
         if not self.is_event_completed(index):
             self.save_data.events.append(index)
             self.save()
+
+    def is_shrek(self):
+        return self.save_data.is_shrek
+
+    def change_shrek(self):
+        self.save_data.is_shrek = not self.save_data.is_shrek
+        self.save()
 
 
 global_save_state = save_state()

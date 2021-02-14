@@ -88,6 +88,8 @@ def background_of_level(level_index):
     level_set, level = level_index
     if level_set == 201 and level == 0:
         return s.sprites["kono_dio_da"]
+    if level_set == 401 and level == 0:
+        return s.sprites["swamp"]
     if g.DUDA_CHUJ:
         return s.sprites["duda_chuj"]
     return s.sprites["background"]
