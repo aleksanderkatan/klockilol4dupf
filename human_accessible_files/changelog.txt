@@ -1,3 +1,6 @@
+0.41
+- finally added shrek
+
 0.40
 - small changes (esc in commands, standing spawn, window icon)
 
