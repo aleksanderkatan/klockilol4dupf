@@ -132,6 +132,16 @@ class state:
                         return blo.pos
         return None
 
+    def find_portal(self, index):
+        for i in range(self.z):
+            for j in range(self.y):
+                for k in range(self.x):
+                    blo = self.get_block((k, j, i))
+                    if type(blo) is o.block_portal:
+                        if blo.my_index == index:
+                            return blo
+        return None
+
     def fill(self, filename, last_level_index=None):
         log.info("loading level from: " + filename)
 
@@ -218,7 +228,7 @@ class state:
 
                     if option_map[key] == 'portals':
                         for i in range(len(value)):
-                            value[i].set_destination(value[int(current_options[i])])
+                            value[i].options(str(i) + " " + current_options[i])
                     else:
                         for i in range(len(value)):
                             value[i].options(current_options[i])

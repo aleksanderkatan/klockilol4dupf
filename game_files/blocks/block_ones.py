@@ -28,8 +28,11 @@ class block_ones(block):
                 )
 
     def options(self, option):
-        val = int(option)
-        self.ones = [val // 1000 == 1, (val % 1000) // 100 == 1, (val % 100) // 10 == 1, (val % 10) == 1]
+        if option.find("1") >= 0:
+            val = int(option)
+            self.ones = [val // 1000 == 1, (val % 1000) // 100 == 1, (val % 100) // 10 == 1, (val % 10) == 1]
+        else:
+            self.ones = [option.find(">") >= 0, option.find("^") >= 0, option.find("<") >= 0, option.find("v") >= 0]
 
     def draw(self, pos, where_is_player):
         super().draw(pos, where_is_player)

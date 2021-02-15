@@ -1,3 +1,7 @@
+0.43
+- added more levels
+- fixed portal+piston and portal+ones, as well as added possibility to option ones by arrows (eg. "ones <> >^<v")
+
 0.42
 - added more levels
 

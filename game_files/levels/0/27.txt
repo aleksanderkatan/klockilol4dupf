@@ -1,0 +1,12 @@
+5
+5
+1
+S000E
+0POP0
+00000
+0P0NP
+00000
+
+pistons >
+ones <^
+portals 1 0 3 2
