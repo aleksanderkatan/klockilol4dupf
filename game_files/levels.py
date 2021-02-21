@@ -7,8 +7,8 @@ from game_files.log import log
 # 400 - lobbies
 
 hubs = {}
-hubs[1] = [1]
-hubs[2] = [301, 2, 3, 101]
+hubs[1] = [1, 201]
+hubs[2] = [301, 2, 3, 101, 202]
 hubs[3] = [302, 4, 5, 6, 102]
 hubs[4] = [303, 7, 8, 9]
 
