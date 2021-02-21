@@ -15,9 +15,17 @@ class player:
         self.dead = False
         self.enqueued_moves = []
         self.next_move_length = 1
+        self.flavour = 0 # 1 - orange, -1 - lemon
+        self.last_move_pos = None
 
     def draw(self, screen_pos):
-        self.screen.blit(self.sprites[global_save_state.is_shrek()], screen_pos)
+        if self.flavour in [-1, 1]:
+            if self.flavour == 1:
+                self.screen.blit(s.sprites["flavour_orange"][0], screen_pos)
+            else:
+                self.screen.blit(s.sprites["flavour_lemon"][0], screen_pos)
+        else:
+            self.screen.blit(self.sprites[global_save_state.is_shrek()], screen_pos)
 
     def copy(self, new_state_index):
         pla = player(self.pos, self.screen, self.stage, new_state_index)
@@ -26,8 +34,10 @@ class player:
         pla.dead = self.dead
         pla.enqueued_moves = []
         pla.next_move_length = self.next_move_length
+        pla.last_move_pos = self.last_move_pos
         for i in range(len(self.enqueued_moves)):
             pla.enqueued_moves.append(self.enqueued_moves[i])
+        pla.flavour = self.flavour
         return pla
 
     def enqueue_move(self, direction):
@@ -68,6 +78,7 @@ class player:
 
         self.next_move_length = 1
         self.last_move_direction = move_direction
+        self.last_move_pos = self.pos
         self.this_move_direction = None
         self.pos = (x, y, z)
 

@@ -10,7 +10,7 @@ hubs = {}
 hubs[1] = [1]
 hubs[2] = [301, 2, 3, 101]
 hubs[3] = [302, 4, 5, 6, 102]
-hubs[4] = [7, 8, 9]
+hubs[4] = [303, 7, 8, 9]
 
 levs = {}
 levs[0] = 30
@@ -23,12 +23,17 @@ levs[6] = 12
 levs[7] = 21
 levs[8] = 14
 levs[9] = 14
+
 levs[101] = 136
 levs[102] = 136
+
 levs[201] = 0
+levs[202] = 5
+
 levs[301] = 3
 levs[302] = 4
 levs[303] = 5
+
 levs[400] = 5
 levs[401] = 0
 
@@ -38,6 +43,7 @@ level_error = (0, 0)
 level_zero = (0, 0)
 level_infinity = (0, 0)
 
+back_to_hub_levels = [(202, 4)]
 
 def levels(level_index):
     level_set, level = level_index
@@ -55,7 +61,7 @@ def next_level(level_index):
         return level_error
     if level_set >= 300:
         return level_set, 0
-    if levs[level_set] == level:
+    if levs[level_set] == level or level_index in back_to_hub_levels:
         return level_set, 0
     return level_set, level + 1
 

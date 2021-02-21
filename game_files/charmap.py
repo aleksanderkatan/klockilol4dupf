@@ -34,4 +34,21 @@ charmap['T'] = o.block_thunder
 charmap['N'] = o.block_piston
 
 charmap['K'] = o.block_shrek
+charmap['p'] = o.block_undertale_purple
+charmap['i'] = o.block_undertale_pink   # p taken
+charmap['o'] = o.block_undertale_orange
+charmap['y'] = o.block_undertale_yellow
+charmap['g'] = o.block_undertale_green
+charmap['r'] = o.block_undertale_red
+charmap['l'] = o.block_undertale_blue   # b taken
+
+# letters left:
+# QWRYU
+# AFGHK
+# ZXCV
+#
+# qwt
+# asdfhjk
+# zxcn
+
 

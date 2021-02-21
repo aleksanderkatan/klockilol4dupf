@@ -65,6 +65,11 @@ temp_sprites["pusher_3"] = pygame.image.load('game_files/sprites/pusher.gif').co
 temp_sprites["pusher_1"] = pygame.transform.rotate(temp_sprites["pusher_1"], 90)
 temp_sprites["pusher_2"] = pygame.transform.rotate(temp_sprites["pusher_2"], 180)
 temp_sprites["pusher_3"] = pygame.transform.rotate(temp_sprites["pusher_3"], 270)
+temp_sprites["block_pink"] = pygame.image.load('game_files/sprites/blocks/pink.bmp').convert()
+temp_sprites["block_orange"] = pygame.image.load('game_files/sprites/blocks/orange.bmp').convert()
+temp_sprites["block_yellow"] = pygame.image.load('game_files/sprites/blocks/yellow.bmp').convert()
+temp_sprites["flavour_orange"] = pygame.image.load('game_files/sprites/flavour_orange.gif').convert()
+temp_sprites["flavour_lemon"] = pygame.image.load('game_files/sprites/flavour_lemon.gif').convert()
 
 sprites = {}
 for name, sprite in temp_sprites.items():
@@ -116,3 +121,4 @@ sprites["swamp"] = pygame.transform.scale(sprites["swamp"], (g.WINDOW_X, g.WINDO
 sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
 sprites["block_invisible"] = pygame.transform.scale(sprites["block_invisible"], (g.BLOCK_SIZE, g.BLOCK_SIZE))
 sprites["block_invisible"].set_alpha(g.INVISIBLE_BLOCK_VISIBILITY*256)
+

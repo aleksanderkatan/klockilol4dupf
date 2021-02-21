@@ -1,4 +1,4 @@
-SCALE = 1
+SCALE = 0.5
 FRAMERATE = 30
 MOVE_LIMIT = 1024
 
@@ -12,10 +12,10 @@ CHEATS = True
 PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7fx=jO\x01\x97T3_\xefK'
 MAX_COMMAND_LENGTH = 32
 WITCH = True
-THREED = False # !! does not quite work
+THREED = False  # !! does not quite work
 DUDA_CHUJ = False
 
-LOG_INFO = True
+LOG_INFO = False
 LOG_WARNINGS = True
 LOG_ERRORS = True
 

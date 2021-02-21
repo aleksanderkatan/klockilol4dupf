@@ -12,4 +12,4 @@ class block_ice(block):
     def on_step_in(self):
         dir = self.stage.states[self.state_index].player.last_move_direction
         if dir is not None and dir != 4:
-            self.stage.states[self.state_index].player.enqueue_move(self.stage.states[self.state_index].player.last_move_direction)
+            self.stage.states[self.state_index].player.enqueue_move(dir)

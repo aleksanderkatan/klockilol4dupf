@@ -1,3 +1,7 @@
+0.44
+- added fully functional 7 color undertale puzzle blocks alongside with secret zone with them
+- added brute-force level solver
+
 0.43
 - added more levels
 - fixed portal+piston and portal+ones, as well as added possibility to option ones by arrows (eg. "ones <> >^<v")

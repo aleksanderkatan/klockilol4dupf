@@ -11,7 +11,7 @@ pygame.display.set_caption('klockilol4dupf')
 
 clock = pygame.time.Clock()
 game = game_logic(screen)
-game.set_stage((7, 0))
+game.set_stage((202, 0))
 
 while True:
     next_move = None
