@@ -1,3 +1,9 @@
+0.45
+- added reset block
+- added KBcheat from klockilol3 (flight, doesn't trigger "on step in", triggers "on step out")
+- added possibility to move using arrow keys
+- added some levels (mostly bulb secret zone)
+
 0.44
 - added fully functional 7 color undertale puzzle blocks alongside with secret zone with them
 - added brute-force level solver

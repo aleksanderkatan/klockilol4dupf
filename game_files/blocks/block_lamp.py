@@ -18,7 +18,13 @@ class block_lamp(block):
         self.sprite = self.evaluate_sprite(self.on)
 
     def evaluate_sprite(self, on):
+        # if on:
+        #     return s.sprites["block_lamp_on"]
+        # else:
+        #     return s.sprites["block_lamp_off"]
+
         if on:
-            return s.sprites["block_lamp_on"]
+            return s.sprites["block_yellow"]
         else:
-            return s.sprites["block_lamp_off"]
+            return s.sprites["block_orange"]
+

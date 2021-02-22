@@ -1,5 +1,5 @@
 from game_files.blocks.block import block
-from game_files.blocks.other.block_undertale_yellow import block_undertale_yellow
+from game_files.blocks.undertale.block_undertale_yellow import block_undertale_yellow
 import game_files.all_sprites as s
 
 class block_undertale_blue(block):

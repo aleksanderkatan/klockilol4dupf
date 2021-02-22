@@ -5,6 +5,7 @@ from game_files.charmap import charmap
 import game_files.utils as u
 import game_files.all_blocks as o
 import game_files.all_sprites as s
+import game_files.globals as g
 from game_files.log import log
 
 
@@ -55,6 +56,9 @@ class state:
             step_out_block.on_step_out()
 
         self.player.move()
+
+        if g.CHEATS and g.KBcheat:
+            return
 
         step_in_block = self.get_block(self.player.pos)
         if step_in_block is not None and direction is not None:

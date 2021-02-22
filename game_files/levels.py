@@ -8,13 +8,13 @@ from game_files.log import log
 
 hubs = {}
 hubs[1] = [1, 201]
-hubs[2] = [301, 2, 3, 101, 202]
+hubs[2] = [301, 2, 3, 101, 203]
 hubs[3] = [302, 4, 5, 6, 102]
 hubs[4] = [303, 7, 8, 9]
 
 levs = {}
 levs[0] = 30
-levs[1] = 13
+levs[1] = 15
 levs[2] = 10
 levs[3] = 7
 levs[4] = 9
@@ -27,8 +27,9 @@ levs[9] = 14
 levs[101] = 136
 levs[102] = 136
 
-levs[201] = 0
-levs[202] = 5
+levs[201] = 0   # hub 1 to the left
+levs[202] = 5   # 8/0 second gap
+levs[203] = 5   # bub 2 bottom of the random zone
 
 levs[301] = 3
 levs[302] = 4
@@ -74,9 +75,14 @@ def previous_level(level_index):
         return level_set, 0
     return level_set, level - 1
 
-def hub_of_set(level_set):
+def up_in_hierarchy(level_index):
+    level_set, level = level_index
     if level_set == 400:
-        return level_set, 1
+        return 400, 1
+    if level != 0:
+        return level_set, 0
+    if level_set == 202:    # special case for undertale zone
+        return 8, 0
     for hub, sets in hubs.items():
         if level_set in sets:
             return 400, hub

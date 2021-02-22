@@ -15,13 +15,13 @@ def index_to_position(x, y, z, size_x, size_y, size_z):
 
 
 def key_to_direction(key):
-    if key == pygame.K_d:
+    if key in [pygame.K_d, pygame.K_RIGHT]:
         return 0
-    if key == pygame.K_w:
+    if key in [pygame.K_w, pygame.K_UP]:
         return 1
-    if key == pygame.K_a:
+    if key in [pygame.K_a, pygame.K_LEFT]:
         return 2
-    if key == pygame.K_s:
+    if key in [pygame.K_s, pygame.K_DOWN]:
         return 3
     return None
 

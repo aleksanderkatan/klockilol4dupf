@@ -18,15 +18,19 @@ from game_files.blocks.block_blocker import block_blocker
 from game_files.blocks.block_thunder import block_thunder
 from game_files.blocks.block_invisible import block_invisible
 from game_files.blocks.block_piston import block_piston
+from game_files.blocks.block_reset import block_reset
 
-from game_files.blocks.other.block_shrek import block_shrek
-from game_files.blocks.other.block_undertale_purple import block_undertale_purple
-from game_files.blocks.other.block_undertale_yellow import block_undertale_yellow
-from game_files.blocks.other.block_undertale_green import block_undertale_green
-from game_files.blocks.other.block_undertale_orange import block_undertale_orange
-from game_files.blocks.other.block_undertale_blue import block_undertale_blue
-from game_files.blocks.other.block_undertale_pink import block_undertale_pink
-from game_files.blocks.other.block_undertale_red import block_undertale_red
+from game_files.blocks.block_shrek import block_shrek
+from game_files.blocks.undertale.block_undertale_purple import block_undertale_purple
+from game_files.blocks.undertale.block_undertale_yellow import block_undertale_yellow
+from game_files.blocks.undertale.block_undertale_green import block_undertale_green
+from game_files.blocks.undertale.block_undertale_orange import block_undertale_orange
+from game_files.blocks.undertale.block_undertale_blue import block_undertale_blue
+from game_files.blocks.undertale.block_undertale_pink import block_undertale_pink
+from game_files.blocks.undertale.block_undertale_red import block_undertale_red
+
+block_empty
+block_blocker
 
 standables = set()
 standables.add(block_perma)
@@ -47,6 +51,7 @@ standables.add(block_ones)
 standables.add(block_invisible)
 standables.add(block_thunder)
 standables.add(block_piston)
+standables.add(block_reset)
 
 standables.add(block_shrek)
 standables.add(block_undertale_yellow)

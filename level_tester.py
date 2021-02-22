@@ -1,7 +1,7 @@
 import pygame
 import random
 pygame.init()
-tested_level = (202, 2)
+tested_level = (303, 5)
 screen = pygame.display.set_mode((50, 50))
 pygame.display.set_caption('level_tester')
 from game_files.stage import stage

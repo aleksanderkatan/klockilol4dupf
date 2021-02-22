@@ -33,7 +33,7 @@ class game_logic:
             return False
         self.stage = new_stage
         self.single_layer = None
-        self.level_index = level_index
+        self.level_index = self.stage.level_index
         return True
 
     def event_handler(self, event):
@@ -83,13 +83,13 @@ class game_logic:
             if key == pygame.K_ESCAPE:
                 if self.level_index[0] == 400:
                     self.stage.reset()
-                elif self.level_index[1] != 0:
-                    self.set_stage((self.level_index[0], 0))
                 else:
-                    self.set_stage(l.hub_of_set(self.level_index[0]))
+                    self.set_stage(l.up_in_hierarchy(self.level_index))
 
             self.single_layer = u.new_single_layer(self.single_layer, key)
 
+        keys = pygame.key.get_pressed()
+        g.KBcheat = (keys[pygame.K_b] and keys[pygame.K_k])
         self.stage.move(next_move_direction)
         self.keys_registered = []
 
@@ -177,4 +177,4 @@ class game_logic:
             self.level_index = old_level_index
             log.error("Errors in stages: " + str(problems))
         else:
-            log.info("No such command")
+            log.warning("No such command")

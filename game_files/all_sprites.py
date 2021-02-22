@@ -70,6 +70,7 @@ temp_sprites["block_orange"] = pygame.image.load('game_files/sprites/blocks/oran
 temp_sprites["block_yellow"] = pygame.image.load('game_files/sprites/blocks/yellow.bmp').convert()
 temp_sprites["flavour_orange"] = pygame.image.load('game_files/sprites/flavour_orange.gif').convert()
 temp_sprites["flavour_lemon"] = pygame.image.load('game_files/sprites/flavour_lemon.gif').convert()
+temp_sprites["block_reset"] = pygame.image.load('game_files/sprites/blocks/reset.bmp').convert()
 
 sprites = {}
 for name, sprite in temp_sprites.items():

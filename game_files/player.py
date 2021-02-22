@@ -1,5 +1,6 @@
 import game_files.all_sprites as s
 from game_files.save_state import global_save_state
+import game_files.globals as g
 
 class player:
     def __init__(self, pos, screen, stage, state_index):
@@ -81,6 +82,9 @@ class player:
         self.last_move_pos = self.pos
         self.this_move_direction = None
         self.pos = (x, y, z)
+
+        if g.CHEATS and g.KBcheat:
+            return
 
         if not self.stage.states[self.state_index].standable((x, y, z)):
             self.enqueue_move(4)

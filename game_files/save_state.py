@@ -103,7 +103,7 @@ class save_state:
 
     def is_available(self, level_index):
         level_set, level = level_index
-        if level_set >= 100:
+        if level_set >= 300:
             return True
 
         if level == 1 or level == 0:

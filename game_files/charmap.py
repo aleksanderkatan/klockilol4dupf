@@ -22,7 +22,7 @@ charmap['J'] = o.block_jump
 charmap['L'] = o.block_lift
 charmap['P'] = o.block_portal
 charmap['D'] = o.block_dummy
-charmap['B'] = o.block_lamp #stands for bulb since L is taken
+charmap['B'] = o.block_lamp     # stands for bulb since L is taken
 charmap['b'] = o.block_lamp
 charmap['M'] = o.block_bridge
 charmap['e'] = o.block_entrance
@@ -32,6 +32,7 @@ charmap['u'] = o.block_blocker
 charmap['?'] = o.block_invisible
 charmap['T'] = o.block_thunder
 charmap['N'] = o.block_piston
+charmap['R'] = o.block_reset
 
 charmap['K'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple
@@ -43,7 +44,7 @@ charmap['r'] = o.block_undertale_red
 charmap['l'] = o.block_undertale_blue   # b taken
 
 # letters left:
-# QWRYU
+# QWYU
 # AFGHK
 # ZXCV
 #
