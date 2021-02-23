@@ -1,7 +1,7 @@
 import pygame
 import random
 pygame.init()
-tested_level = (303, 5)
+tested_level = (9, 10)
 screen = pygame.display.set_mode((50, 50))
 pygame.display.set_caption('level_tester')
 from game_files.stage import stage
@@ -9,7 +9,7 @@ s = stage(None, tested_level, None)
 moves = []
 
 def test():
-    if len(moves) > 50:
+    if len(moves) > 15:
         return False
 
     this_move = [0, 1, 2, 3]

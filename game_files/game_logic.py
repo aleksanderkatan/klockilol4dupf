@@ -74,10 +74,10 @@ class game_logic:
             key = event.key
             next_move_direction = u.key_to_direction(key)
 
-            if key == pygame.K_q:
+            if key in [pygame.K_q, pygame.K_RSHIFT]:
                 self.stage.reverse()
 
-            if key == pygame.K_r:
+            if key in [pygame.K_r, pygame.K_SLASH]:
                 self.stage.reset()
 
             if key == pygame.K_ESCAPE:
@@ -86,7 +86,7 @@ class game_logic:
                 else:
                     self.set_stage(l.up_in_hierarchy(self.level_index))
 
-            self.single_layer = u.new_single_layer(self.single_layer, key)
+            self.single_layer = u.new_single_layer(self.single_layer, key, self.stage.latest_state().z)
 
         keys = pygame.key.get_pressed()
         g.KBcheat = (keys[pygame.K_b] and keys[pygame.K_k])
@@ -130,9 +130,6 @@ class game_logic:
             else:
                 log.info("Changing level to: " + command[1] + " " + command[2])
                 self.set_stage((int(command[1]), int(command[2])))
-        elif command[0] == 'n':
-            log.info("Next level")
-            self.set_stage(l.next_level(self.stage.level_index))
         elif command[0] == 'p':
             log.info("Previous level")
             self.set_stage(l.previous_level(self.stage.level_index))
@@ -160,7 +157,7 @@ class game_logic:
         elif command[0] == 'complete_all':
             log.info("Completing all levels")
             global_save_state.complete_all()
-        elif command[0] == 'c':
+        elif command[0] == 'c' or command[0] == 'n':
             log.info("Completing current level")
             self.complete()
         elif command[0] == 'r':

@@ -1,3 +1,8 @@
+0.46
+- added more levels (zone 8, 9)
+- changed sprites for level completion
+- completed second input scheme [(W,A,S,D,Q,R,ESC), (UP,LEFT,DOWN,RIGHT,LSHIFT,SLASH,ESC)]
+
 0.45
 - added reset block
 - added KBcheat from klockilol3 (flight, doesn't trigger "on step in", triggers "on step out")

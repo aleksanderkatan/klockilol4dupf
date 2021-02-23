@@ -63,9 +63,9 @@ def char_to_direction(key):
     return None
 
 
-def new_single_layer(current_single_layer, key):
+def new_single_layer(current_single_layer, key, total_layers):
     new_single_layer_index = -2137
-    for i in range(1, 10):
+    for i in range(1, total_layers+1):
         if pygame.key.name(key) == str(i):
             new_single_layer_index = i - 1
     if new_single_layer_index == -2137:

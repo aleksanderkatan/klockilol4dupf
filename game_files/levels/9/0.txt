@@ -1,6 +1,7 @@
-2
+3
 1
 1
-e0
+e0e
 
-entrances 400/4
+entrances 400/4 9/1
+

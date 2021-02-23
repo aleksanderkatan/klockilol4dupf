@@ -6,7 +6,7 @@ import game_files.utils as u
 class block_bridge(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
-        self.sprite = s.sprites["block_bridge"]
+        self.sprite = s.sprites["block_pink"]
         self.direction = None
 
     def copy(self, new_state_index):
