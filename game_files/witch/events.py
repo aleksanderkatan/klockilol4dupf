@@ -105,7 +105,9 @@ events[-1].where = ((2, 10), None)
 events[-1].messages.append("No dawaj, ostatni.")
 events[-1].messages.append("Jak przeszedłeś poprzedni to ten też dasz radę.")
 
-
+events.append(witch_event())
+events[-1].where = ((501, 0), None)
+events[-1].messages.append("O nie! To Giszowiec, Kolista! Szybko, uciekaj stąd zanim jakiś dres cię skroi!")
 
 
 for i in range(len(events)):

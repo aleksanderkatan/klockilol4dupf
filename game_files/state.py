@@ -2,6 +2,7 @@ import traceback
 from game_files.layer import layer
 from game_files.player import player
 from game_files.charmap import charmap
+from game_files.other.chav import chav
 import game_files.utils as u
 import game_files.all_blocks as o
 import game_files.all_sprites as s
@@ -21,6 +22,7 @@ class state:
         self.state_index = state_index
         self.completed = False
         self.pushers = []
+        self.chavs = []
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)
@@ -36,6 +38,10 @@ class state:
         for pusher in self.pushers:
             pushers.append(pusher.copy(new_state_index))
         sta.pushers = pushers
+        chavs = []
+        for chav in self.chavs:
+            chavs.append(chav.copy(new_state_index))
+        sta.chavs = chavs
         return sta
 
     def move(self, direction):  # !!modifies current state instead of returning copy
@@ -57,6 +63,10 @@ class state:
 
         self.player.move()
 
+        if not self.player.has_something_enqueued():
+            for chav in self.chavs:
+                chav.move()
+
         if g.CHEATS and g.KBcheat:
             return
 
@@ -70,6 +80,9 @@ class state:
         for pusher in self.pushers:
             x, y = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y, len(self.layers))
             pusher.draw((x, y))
+        for chav in self.chavs:
+            x, y = u.index_to_position(chav.pos[0], chav.pos[1], chav.pos[2], self.x, self.y, len(self.layers))
+            chav.draw((x, y), u.relative_to_player(chav.pos[2], self.player.pos[2]))
         if not self.player.dead:
             self.draw_player()
         if self.player.dead:
@@ -236,6 +249,15 @@ class state:
                     else:
                         for i in range(len(value)):
                             value[i].options(current_options[i])
+
+            self.chavs = []
+            if 'chavs' in options:
+                for option in options['chavs']:
+                    pos = option.split('/')
+                    x = int(pos[0])
+                    y = int(pos[1])
+                    z = int(pos[2])
+                    self.chavs.append(chav(self.screen, self.stage, self.state_index, (x, y, z)))
 
             starting_point = self.find_level_entrance(last_level_index)
             if starting_point is not None:

@@ -91,10 +91,12 @@ class game_logic:
         keys = pygame.key.get_pressed()
         g.KBcheat = (keys[pygame.K_b] and keys[pygame.K_k])
         self.stage.move(next_move_direction)
+        if g.AUTO_REVERSE and self.stage.latest_state().player.dead:
+            self.stage.reverse()
         self.keys_registered = []
 
     def draw(self):
-        self.screen.blit(u.background_of_level(self.level_index), (0, 0))
+        self.screen.blit(l.background_of_level(self.level_index), (0, 0))
         self.stage.draw(self.single_layer)
 
         if self.witch.is_active():

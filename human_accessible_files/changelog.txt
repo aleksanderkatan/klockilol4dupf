@@ -1,3 +1,7 @@
+0.47
+- added Giszowiec secret zone (mechanics and backgrounds, but no levels yet)
+- added some more levels
+
 0.46
 - added more levels (zone 8, 9)
 - changed sprites for level completion

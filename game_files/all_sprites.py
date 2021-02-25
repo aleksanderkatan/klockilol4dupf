@@ -71,6 +71,7 @@ temp_sprites["block_yellow"] = pygame.image.load('game_files/sprites/blocks/yell
 temp_sprites["flavour_orange"] = pygame.image.load('game_files/sprites/flavour_orange.gif').convert()
 temp_sprites["flavour_lemon"] = pygame.image.load('game_files/sprites/flavour_lemon.gif').convert()
 temp_sprites["block_reset"] = pygame.image.load('game_files/sprites/blocks/reset.bmp').convert()
+temp_sprites["chav"] = pygame.image.load('game_files/sprites/chav.gif').convert()
 
 sprites = {}
 for name, sprite in temp_sprites.items():
@@ -118,6 +119,12 @@ sprites["particle_2"] = pygame.image.load('game_files/sprites/particle_2.bmp').c
 sprites["particle_3"] = pygame.image.load('game_files/sprites/particle_3.bmp').convert()
 sprites["swamp"] = pygame.image.load('game_files/sprites/swamp.jpg').convert()
 sprites["swamp"] = pygame.transform.scale(sprites["swamp"], (g.WINDOW_X, g.WINDOW_Y))
+sprites["Giszowiec_1"] = pygame.image.load('game_files/sprites/giszowiec_1.jpg').convert()
+sprites["Giszowiec_1"] = pygame.transform.scale(sprites["Giszowiec_1"], (g.WINDOW_X, g.WINDOW_Y))
+sprites["Giszowiec_2"] = pygame.image.load('game_files/sprites/giszowiec_2.jpg').convert()
+sprites["Giszowiec_2"] = pygame.transform.scale(sprites["Giszowiec_2"], (g.WINDOW_X, g.WINDOW_Y))
+sprites["Giszowiec_3"] = pygame.image.load('game_files/sprites/giszowiec_3.jpg').convert()
+sprites["Giszowiec_3"] = pygame.transform.scale(sprites["Giszowiec_3"], (g.WINDOW_X, g.WINDOW_Y))
 
 sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
 sprites["block_invisible"] = pygame.transform.scale(sprites["block_invisible"], (g.BLOCK_SIZE, g.BLOCK_SIZE))
