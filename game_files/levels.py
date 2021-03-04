@@ -23,10 +23,11 @@ levs[2] = 10
 levs[3] = 7
 levs[4] = 9
 levs[5] = 11
-levs[6] = 12
+levs[6] = 13
 levs[7] = 23
 levs[8] = 14
 levs[9] = 14
+levs[10] = 14
 
 levs[101] = 136
 levs[102] = 136
@@ -108,6 +109,18 @@ def all_levels_iterator():
             if i == 0 and key == 400:
                 continue
             yield key, i
+
+def levels_ls():
+    ans = "Levels\n"
+    for level_set, levels in levs.items():
+        ans += str(level_set)
+        ans += " : "
+        for i in range(0 if level_set != 400 else 1, levels+1):
+            ans += str(i)
+            ans += ", "
+        ans = ans[:-2]
+        ans += "\n"
+    return ans
 
 
 def level_name(level_index):

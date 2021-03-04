@@ -227,7 +227,8 @@ class state:
                 o.block_entrance: 'entrances',
                 o.block_map_bridge: 'map_bridges',
                 o.block_ones: 'ones',
-                o.block_piston: 'pistons'
+                o.block_piston: 'pistons',
+                o.block_dual_arrow: 'dual_arrows'
             }
 
             for key, value in blocks.items():

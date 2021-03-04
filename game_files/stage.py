@@ -38,7 +38,7 @@ class stage:
 
     def move(self, direction=None):
         if len(self.states) > g.MOVE_LIMIT:
-            log.info('Move limit exceeded, resetting...')
+            log.warning('Move limit exceeded, resetting...')
             self.reset()
             return
 

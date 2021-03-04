@@ -62,6 +62,16 @@ def char_to_direction(key):
         return 3
     return None
 
+def reverse_direction(direction):
+    if direction == 0:
+        return 2
+    if direction == 1:
+        return 3
+    if direction == 2:
+        return 0
+    if direction == 3:
+        return 1
+    return None
 
 def new_single_layer(current_single_layer, key, total_layers):
     new_single_layer_index = -2137

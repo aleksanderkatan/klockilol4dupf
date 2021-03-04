@@ -30,6 +30,7 @@ class game_logic:
         new_stage = stage(self.screen, level_index, self.level_index)
         if new_stage.successful is False:
             self.stage.reverse()
+            self.stage.change_to = None
             return False
         self.stage = new_stage
         self.single_layer = None
@@ -175,5 +176,8 @@ class game_logic:
             self.stage = old_stage
             self.level_index = old_level_index
             log.error("Errors in stages: " + str(problems))
+        elif command[0] == 'ls':
+            message = l.levels_ls()
+            log.write(message)
         else:
-            log.warning("No such command")
+            log.write("No such command")

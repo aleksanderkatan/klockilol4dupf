@@ -33,6 +33,7 @@ charmap['?'] = o.block_invisible
 charmap['T'] = o.block_thunder
 charmap['N'] = o.block_piston
 charmap['R'] = o.block_reset
+charmap['A'] = o.block_dual_arrow
 
 charmap['K'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple
@@ -45,7 +46,7 @@ charmap['l'] = o.block_undertale_blue   # b taken
 
 # letters left:
 # QWYU
-# AFGHK
+# FGHK
 # ZXCV
 #
 # qwt

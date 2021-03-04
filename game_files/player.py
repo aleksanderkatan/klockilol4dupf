@@ -1,4 +1,5 @@
 import game_files.all_sprites as s
+import game_files.all_blocks as o
 from game_files.save_state import global_save_state
 import game_files.globals as g
 
@@ -34,6 +35,8 @@ class player:
         pla.this_move_direction = self.this_move_direction
         pla.dead = self.dead
         pla.enqueued_moves = []
+        # for move in self.enqueued_moves:
+        #     pla.enqueued_moves.append(move)
         pla.next_move_length = self.next_move_length
         pla.last_move_pos = self.last_move_pos
         for i in range(len(self.enqueued_moves)):
@@ -53,7 +56,11 @@ class player:
             self.enqueued_moves = self.enqueued_moves[1:]
             self.this_move_direction = direction
         else:
+            block = self.stage.states[self.state_index].get_block(self.pos)
             self.this_move_direction = direction_suggestion
+            if type(block) is o.block_dual_arrow:
+                if direction_suggestion not in [block.direction_1, block.direction_2]:
+                    self.this_move_direction = None
 
     def move(self):  # !!set_next_move_direction must be called first
         x, y, z = self.pos

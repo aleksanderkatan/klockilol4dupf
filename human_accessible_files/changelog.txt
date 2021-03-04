@@ -1,3 +1,9 @@
+0.48
+- added dual_arrow block
+- added "ls" command
+- added more levels (zone Giszowiec and hub 4)
+- bugfix (entering nonexistent level)
+
 0.47
 - added Giszowiec secret zone (mechanics and backgrounds, but no levels yet)
 - added some more levels

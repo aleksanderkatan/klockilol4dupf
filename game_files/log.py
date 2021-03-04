@@ -29,5 +29,8 @@ class log_class:
         if self.e:
             print(bcolors.ERROR + "ERROR: " + message + bcolors.ENDC)
 
+    def write(self, message):
+        print(message)
+
 
 log = log_class()
