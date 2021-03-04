@@ -3,6 +3,7 @@
 - added "ls" command
 - added more levels (zone Giszowiec and hub 4)
 - bugfix (entering nonexistent level)
+- cleaned up all_sprites.py
 
 0.47
 - added Giszowiec secret zone (mechanics and backgrounds, but no levels yet)
