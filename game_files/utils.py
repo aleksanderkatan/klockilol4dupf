@@ -2,7 +2,7 @@ import pygame
 import hashlib
 import game_files.globals as g
 import game_files.all_blocks as o
-import game_files.all_sprites as s
+from game_files.log import log
 
 # returns position on screen for certain index
 def index_to_position(x, y, z, size_x, size_y, size_z):
@@ -99,3 +99,24 @@ def hash_string(string):
     hasher.update(bytes(string, "utf-16"))
     return hasher.digest()
 
+def move_pos(pos, direction, move_length):
+    x, y, z = pos
+
+    if direction is None:
+        log.warning("Moving in None direction")
+        return pos
+    if direction == 5:
+        return pos
+    else:
+        if direction == 0:
+            x += move_length
+        elif direction == 1:
+            y -= move_length
+        elif direction == 2:
+            x -= move_length
+        elif direction == 3:
+            y += move_length
+        else:
+            z -= 1
+
+    return x, y, z

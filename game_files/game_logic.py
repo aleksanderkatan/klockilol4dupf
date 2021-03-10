@@ -23,7 +23,6 @@ class game_logic:
         )
         self.level_index = None
         self.witch = witch(screen)
-        self.hasher = hashlib.sha256()
         self.grayness = s.sprites["grayness"]
 
     def set_stage(self, level_index):

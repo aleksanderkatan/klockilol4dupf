@@ -32,7 +32,7 @@ class witch_box:
         for i in range(len(self.txt_surfaces)):
             self.screen.blit(
                 self.txt_surfaces[i], (self.rect.x + FONT_OFFSET, self.rect.y + i*FONT_SIZE + 0.5*FONT_OFFSET)
-            ) # !!wtf this shouldn't work
+            )   # !!wtf this shouldn't work
 
     def wrap(self, string):
         if string is None:

@@ -22,7 +22,7 @@ class block_thunder(block):
 
     def on_step_in(self):
         state = self.stage.states[self.state_index]
-        state.player.enqueue_move(None) # !!
+        state.player.enqueue_move(5)     # !!
         array = [[0] * state.y for i in range(state.x)]
         Q = queue.Queue()
         px, py, pz = self.pos

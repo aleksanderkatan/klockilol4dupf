@@ -1,3 +1,8 @@
+0.50
+- replaced level hierarchy with a real graph
+- replaced player's enqueued_moves with a single enqueued_move
+- dealt with the consequences of my previous mistakes (revamped piston block, other bugfixes)
+
 0.49
 - added more levels
 

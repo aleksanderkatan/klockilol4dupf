@@ -3,7 +3,7 @@ from game_files.blocks.block_empty import block_empty
 import game_files.utils as u
 import game_files.all_sprites as s
 
-class pusher:
+class pusher:   # !! while pushers exist, on_step_ins are not called
     def __init__(self, screen, stage, state_index, pos, direction):
         self.screen = screen
         self.stage = stage
@@ -13,47 +13,53 @@ class pusher:
         self.clinged = False
         self.finished = False
         self.sprite = s.sprites["pusher_" + str(self.direction)]
+        self.first_move = True
 
     def move(self):
+        if self.first_move:
+            state = self.stage.states[self.state_index]
+            blo = state.get_block(self.pos)
+            if type(blo) is not block_empty:
+                self.clinged = True
+            self.first_move = False
+
         if self.finished:
             return
 
-        ox, oy, z = self.pos
-        shifts = [(1, 0), (0, -1), (-1, 0), (0, 1)]
-        dx, dy = shifts[self.direction]
-        nx = ox+dx
-        ny = oy+dy
+        old_pos = self.pos
+        new_pos = u.move_pos(self.pos, self.direction, 1)
 
         state = self.stage.states[self.state_index]
+
         if self.clinged is False:
-            if u.out_of_range(nx, ny, state.x, state.y):
+            if u.out_of_range(new_pos[0], new_pos[1], state.x, state.y):
                 self.finished = True
-                self.pos = (nx, ny, z)
+                self.pos = new_pos
             else:
-                blo = state.get_block((nx, ny, z))
+                blo = state.get_block(new_pos)
                 if type(blo) is not block_empty:
                     self.clinged = True
         else:
-            if u.out_of_range(nx, ny, state.x, state.y):
-                state.set_block((ox, oy, z), block_empty(self.screen, self.stage, self.state_index, (nx, ny, z)))
+            if u.out_of_range(new_pos[0], new_pos[1], state.x, state.y):
+                state.set_block(old_pos, block_empty(self.screen, self.stage, self.state_index, new_pos))
                 self.finished = True
             else:
-                temp = state.get_block((nx, ny, z))
+                temp = state.get_block(new_pos)
                 if type(temp) is block_empty:
-                    state.set_block((nx, ny, z), state.get_block((ox, oy, z)))
-                    state.set_block((ox, oy, z), temp)
+                    state.set_block(new_pos, state.get_block(old_pos))
+                    state.set_block(old_pos, temp)
 
-                    state.get_block((nx, ny, z)).pos = (nx, ny, z)
-                    state.get_block((ox, oy, z)).pos = (ox, oy, z)
+                    state.get_block(new_pos).pos = new_pos
+                    state.get_block(old_pos).pos = old_pos
                 else:
                     self.finished = True
 
-        if state.player.pos == (ox, oy, z) and self.clinged:
+        if state.player.pos == old_pos and self.clinged:
             if self.finished:
                 state.player.enqueue_move(self.direction)
             else:
-                state.teleport_player((nx, ny, z), False)
-        self.pos = (nx, ny, z)
+                state.teleport_player(new_pos, False)
+        self.pos = new_pos
 
     def draw(self, pos):
         self.screen.blit(self.sprite[0], pos)
@@ -64,6 +70,7 @@ class pusher:
         res.finished = self.finished
         res.sprite = self.sprite
         return res
+
 
 class block_piston(block):
     def __init__(self, screen, stage, state_index, pos, direction=-1):
@@ -76,12 +83,13 @@ class block_piston(block):
         return block_piston(self.screen, self.stage, new_state_index, self.pos, self.direction)
 
     def on_step_out(self):
-        self.stage.states[self.state_index].pushers.append(
-            pusher(self.screen, self.stage, self.state_index, self.pos, self.direction)
-        )
+        pos = u.move_pos(self.pos, self.direction, 1)
+        my_pusher = pusher(self.screen, self.stage, self.state_index, pos, self.direction)
+        self.stage.states[self.state_index].pushers.append(my_pusher)
+
         player = self.stage.states[self.state_index].player
         if player.pos == self.pos:
-            player.enqueue_move(None)
+            player.enqueue_move(5)
 
     def options(self, option):
         self.set_direction(u.char_to_direction(option[-1]))

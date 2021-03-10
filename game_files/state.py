@@ -56,10 +56,10 @@ class state:
                 new_pushers.append(pusher)
         self.pushers = new_pushers
         if len(self.pushers) > 0 and not self.player.has_something_enqueued():
-            self.player.enqueue_move(None)
+            self.player.enqueue_move(5)
 
         step_out_block = self.get_block(self.player.pos)
-        if step_out_block is not None and direction is not None:
+        if step_out_block is not None and direction != 5:
             step_out_block.on_step_out()
 
         self.player.move()
@@ -72,7 +72,7 @@ class state:
             return
 
         step_in_block = self.get_block(self.player.pos)
-        if step_in_block is not None and direction is not None:
+        if step_in_block is not None and direction != 5 and len(self.pushers) == 0:
             step_in_block.on_step_in()
 
     def draw(self):
@@ -106,7 +106,7 @@ class state:
         self.player.enqueue_move(direction)
 
     def is_next_move_forced(self):
-        return len(self.player.enqueued_moves) != 0
+        return self.player.has_something_enqueued()
 
     def standable(self, pos):
         x, y, z = pos
