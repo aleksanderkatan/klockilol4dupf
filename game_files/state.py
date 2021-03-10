@@ -1,4 +1,5 @@
 import traceback
+import os
 from game_files.layer import layer
 from game_files.player import player
 from game_files.charmap import charmap
@@ -161,6 +162,10 @@ class state:
 
     def fill(self, filename, last_level_index=None):
         log.info("loading level from: " + filename)
+
+        if not os.path.exists(filename):
+            log.error("No such file " + str(filename))
+            return False
 
         try:
             f = open(filename)

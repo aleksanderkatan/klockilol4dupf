@@ -24,7 +24,8 @@ class block_dual_arrow(block):
         elif state.player.last_move_direction == 4:
             pass
         else:
-            state.teleport_player(state.player.last_move_pos)
+            self.stage.reverse()
+            # state.teleport_player(state.player.last_move_pos)
 
     def options(self, option):
         direction_1 = u.char_to_direction(option[0])
