@@ -1,3 +1,6 @@
+0.51.1
+- pushers are so broken I'll try to rewrite them, this is a backup of semi-working state
+
 0.50
 - replaced level hierarchy with a real graph
 - replaced player's enqueued_moves with a single enqueued_move

@@ -3,7 +3,8 @@ from game_files.blocks.block_empty import block_empty
 import game_files.utils as u
 import game_files.all_sprites as s
 
-class pusher:   # !! while pushers exist, on_step_ins are not called
+
+class pusher:  # !! while pushers exist, on_step_ins are not called
     def __init__(self, screen, stage, state_index, pos, direction):
         self.screen = screen
         self.stage = stage
@@ -21,7 +22,10 @@ class pusher:   # !! while pushers exist, on_step_ins are not called
             blo = state.get_block(self.pos)
             if type(blo) is not block_empty:
                 self.clinged = True
+                if state.player.pos == self.pos and self.clinged and self.first_move:
+                    state.get_block(self.pos).on_step_in()
             self.first_move = False
+
 
         if self.finished:
             return
@@ -54,11 +58,14 @@ class pusher:   # !! while pushers exist, on_step_ins are not called
                 else:
                     self.finished = True
 
-        if state.player.pos == old_pos and self.clinged:
+        if state.player.pos == old_pos and self.clinged and state.player.enqueued_move is None:
+            state.teleport_player(new_pos, False)
+
+        if state.player.pos == old_pos and self.clinged and state.player.enqueued_move is None:
             if self.finished:
-                state.player.enqueue_move(self.direction)
-            else:
-                state.teleport_player(new_pos, False)
+                state.get_block(old_pos).on_step_out()
+                print('out')
+
         self.pos = new_pos
 
     def draw(self, pos):
@@ -68,6 +75,7 @@ class pusher:   # !! while pushers exist, on_step_ins are not called
         res = pusher(self.screen, self.stage, new_state_index, self.pos, self.direction)
         res.clinged = self.clinged
         res.finished = self.finished
+        res.first_move = self.first_move
         res.sprite = self.sprite
         return res
 

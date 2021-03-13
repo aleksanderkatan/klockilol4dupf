@@ -51,7 +51,7 @@ hierarchy[(501, 0)] = (400, 4)
 # hubs[5] = [500]
 
 levs = {}
-levs[0] = 30
+levs[0] = 31
 levs[1] = 15
 levs[2] = 10
 levs[3] = 7

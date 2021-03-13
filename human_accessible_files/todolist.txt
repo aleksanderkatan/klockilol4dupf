@@ -6,4 +6,5 @@ the lot
 - in-game timer?
 - pack the game into container
 - add all the dialogue
-
+- think of something to do with time travel, so the 4d really stands for something
+- better management for random levels
