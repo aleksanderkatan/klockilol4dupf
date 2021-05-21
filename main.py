@@ -14,7 +14,6 @@ game = game_logic(screen)
 game.set_stage((400, 1))
 
 while True:
-    next_move = None
     for event in pygame.event.get():
         game.event_handler(event)
 

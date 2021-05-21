@@ -47,7 +47,12 @@ class block_thunder(block):
         for i in range(state.x):
             for j in range(state.y):
                 if array[i][j] == 1:
-                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric, block_piston]:
+                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric]:
                         state.get_block((i, j, pz)).on_step_out()
                         x, y = u.index_to_position(i, j, pz, state.x, state.y, len(state.layers))
                         self.stage.particle_generator.generate(g.THUNDER_PARTICLES, (x+g.BLOCK_SIZE//2, y+g.BLOCK_SIZE//2))
+                    if type(state.get_block((i, j, pz))) in [block_piston]:
+                        state.get_block((i, j, pz)).on_step_in()
+                        x, y = u.index_to_position(i, j, pz, state.x, state.y, len(state.layers))
+                        self.stage.particle_generator.generate(g.THUNDER_PARTICLES, (x+g.BLOCK_SIZE//2, y+g.BLOCK_SIZE//2))
+

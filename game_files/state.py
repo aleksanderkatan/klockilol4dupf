@@ -45,21 +45,6 @@ class state:
         sta.chavs = chavs
         return sta
 
-    def weird_but_sadly_necessary_check(self, blo):     # !!this is here to allow sliding on arrows and ice
-        ans = True
-        for pusher in self.pushers:
-            ans = False
-            if not pusher.first_move:
-                continue
-            if not pusher.pos == self.player.pos:
-                continue
-            if type(blo) in [o.block_ice]:
-                continue
-            if type(blo) == o.block_arrow and blo.direction == self.player.last_move_direction:
-                continue
-            return True
-        return ans
-
     def move(self, direction):  # !!modifies current state instead of returning copy
         self.player.set_next_move_direction(direction)  # if something is enqueued, this will be ignored
         direction = self.player.this_move_direction
@@ -75,7 +60,7 @@ class state:
             self.player.enqueue_move(5)
 
         step_out_block = self.get_block(self.player.pos)
-        if step_out_block is not None and direction != 5 and len(self.pushers) == 0:
+        if step_out_block is not None and direction != 5:
             step_out_block.on_step_out()
 
         self.player.move()
@@ -88,7 +73,7 @@ class state:
             return
 
         step_in_block = self.get_block(self.player.pos)
-        if step_in_block is not None and direction != 5 and self.weird_but_sadly_necessary_check(step_in_block):
+        if step_in_block is not None and direction != 5:
             step_in_block.on_step_in()
 
     def draw(self):

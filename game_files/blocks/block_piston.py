@@ -58,10 +58,10 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
                 else:
                     self.finished = True
 
-        if state.player.pos == old_pos and self.clinged and state.player.enqueued_move is None:
+        if state.player.pos == old_pos and self.clinged:
             state.teleport_player(new_pos, False)
 
-        if state.player.pos == old_pos and self.clinged and state.player.enqueued_move is None:
+        if state.player.pos == old_pos and self.clinged:
             if self.finished:
                 state.get_block(old_pos).on_step_out()
                 print('out')
@@ -90,14 +90,13 @@ class block_piston(block):
     def copy(self, new_state_index):
         return block_piston(self.screen, self.stage, new_state_index, self.pos, self.direction)
 
-    def on_step_out(self):
+    def on_step_in(self):
         pos = u.move_pos(self.pos, self.direction, 1)
         my_pusher = pusher(self.screen, self.stage, self.state_index, pos, self.direction)
         self.stage.states[self.state_index].pushers.append(my_pusher)
 
         player = self.stage.states[self.state_index].player
-        if player.pos == self.pos:
-            player.enqueue_move(5)
+        player.enqueue_move(5)
 
     def options(self, option):
         self.set_direction(u.char_to_direction(option[-1]))
