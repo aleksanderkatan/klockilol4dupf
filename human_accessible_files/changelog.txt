@@ -1,3 +1,6 @@
+0.52
+- added more levels (zone 10)
+
 0.51.2
 - I'm back!
 - pushers reworked, now they trigger on_step_in (still triggered by thunder, still move player when pressed by thunder)

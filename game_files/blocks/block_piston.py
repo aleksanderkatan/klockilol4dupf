@@ -1,5 +1,6 @@
 from game_files.blocks.block import block
 from game_files.blocks.block_empty import block_empty
+from game_files.blocks.block_blocker import block_blocker
 import game_files.utils as u
 import game_files.all_sprites as s
 
@@ -26,7 +27,6 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
                     state.get_block(self.pos).on_step_in()
             self.first_move = False
 
-
         if self.finished:
             return
 
@@ -41,6 +41,9 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
                 self.pos = new_pos
             else:
                 blo = state.get_block(new_pos)
+                if type(blo) is block_blocker:
+                    self.finished = True
+                    return
                 if type(blo) is not block_empty:
                     self.clinged = True
         else:

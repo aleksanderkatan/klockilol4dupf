@@ -174,7 +174,8 @@ class game_logic:
                     problems.append(level_index)
             self.stage = old_stage
             self.level_index = old_level_index
-            log.error("Errors in stages: " + str(problems))
+            if len(problems) > 0:
+                log.error("Errors in stages: " + str(problems))
         elif command[0] == 'ls':
             message = l.levels_ls()
             log.write(message)
