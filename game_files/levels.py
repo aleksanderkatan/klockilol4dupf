@@ -52,9 +52,9 @@ hierarchy[(501, 0)] = (400, 4)
 
 levs = {}
 levs[0] = 31
-levs[1] = 15
-levs[2] = 10
-levs[3] = 7
+levs[1] = 16
+levs[2] = 14
+levs[3] = 11
 levs[4] = 9
 levs[5] = 11
 levs[6] = 20

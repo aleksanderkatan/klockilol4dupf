@@ -7,6 +7,7 @@ VISIBLE_LAYERS_UP = 2
 INVISIBLE_BLOCK_VISIBILITY = 0.02
 GRAYNESS = 0.1
 THUNDER_PARTICLES = 16
+AUTO_SAVE_INTERVAL = 1          # in seconds
 
 CHEATS = True
 KBcheat = False
@@ -16,6 +17,7 @@ WITCH = True
 AUTO_REVERSE = False
 THREED = False  # !! does not quite work
 DUDA_CHUJ = False
+TIMER = True
 
 LOG_INFO = False
 LOG_WARNINGS = True

@@ -11,6 +11,10 @@ from game_files.save_state import global_save_state
 from game_files.witch.witch import witch
 from game_files.log import log
 
+
+FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", g.LEVEL_FONT_SIZE)
+
+
 class game_logic:
     def __init__(self, screen):
         self.stage = None
@@ -52,11 +56,17 @@ class game_logic:
         self.set_stage(l.next_level(self.level_index))
 
     def move(self):
+        global_save_state.tick_timer()
+        if global_save_state.get_timer_ticks() % g.FRAMERATE * g.AUTO_SAVE_INTERVAL == 0:
+            global_save_state.save()
+
         if self.stage.latest_state().completed:
             self.complete()
+            return
 
         if self.stage.change_to is not None:
             self.set_stage(self.stage.change_to)
+            return
 
         self.witch.check_for_events(self.level_index, self.stage)
 
@@ -106,6 +116,14 @@ class game_logic:
             self.screen.blit(s.sprites['black'], (0, 0))
             self.input_box.draw(self.screen)
 
+        if g.TIMER:
+            ticks = global_save_state.get_timer_ticks()
+            time = u.ticks_to_time(ticks)
+            txt_surface = FONT.render(time, True, pygame.Color('black'))
+            self.screen.blit(txt_surface,
+                             (g.WINDOW_X - len(time) * g.LEVEL_FONT_SIZE * 0.6 - g.LEVEL_FONT_OFFSET, g.LEVEL_FONT_OFFSET)
+                             )  # !! constant in code
+
         self.screen.blit(self.grayness, (0, 0))
 
     def execute_command(self, command):
@@ -124,6 +142,7 @@ class game_logic:
             return
 
         command = command.split(' ')
+        command = [word.lower() for word in command]
 
         if command[0] == 'lv' or command[0] == 'cd':
             if len(command) == 2:
@@ -153,6 +172,9 @@ class game_logic:
             global_save_state.reset()
             self.level_index = None
             self.set_stage((400, 1))
+        elif command[0] == 'reset_timer':
+            log.info("Resetting timer")
+            global_save_state.reset_timer()
         elif command[0] == 'reset_events':
             log.info("Resetting events")
             global_save_state.reset_events()
@@ -163,7 +185,7 @@ class game_logic:
             log.info("Completing current level")
             self.complete()
         elif command[0] == 'r':
-            log.info("Resetting current level")
+            log.info("Resetting and refreshing current level")
             self.set_stage(self.level_index)
         elif command[0] == 'load_all':
             old_level_index = self.level_index
@@ -179,5 +201,7 @@ class game_logic:
         elif command[0] == 'ls':
             message = l.levels_ls()
             log.write(message)
+        elif command[0] == 'timer':
+            g.TIMER = not g.TIMER
         else:
             log.write("No such command")

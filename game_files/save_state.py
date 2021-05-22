@@ -11,6 +11,7 @@ class save_data:
         self.completed = {}
         self.events = []
         self.is_shrek = False
+        self.time = 0
         if dic is None:
             self.reset()
         else:
@@ -23,9 +24,13 @@ class save_data:
     def reset_events(self):
         self.events = []
 
+    def reset_timer(self):
+        self.time = 0
+
     def reset(self):
         self.reset_events()
         self.reset_completed()
+        self.reset_timer()
         self.is_shrek = False
 
     def de_string(self):
@@ -133,6 +138,16 @@ class save_state:
 
     def change_shrek(self):
         self.save_data.is_shrek = not self.save_data.is_shrek
+        self.save()
+
+    def tick_timer(self):       # !! doesn't save
+        self.save_data.time += 1
+
+    def get_timer_ticks(self):
+        return self.save_data.time
+
+    def reset_timer(self):
+        self.save_data.reset_timer()
         self.save()
 
 

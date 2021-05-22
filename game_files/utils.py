@@ -120,3 +120,24 @@ def move_pos(pos, direction, move_length):
             z -= 1
 
     return x, y, z
+
+def extend(number, length):
+    ans = ""
+    for i in range(length):
+        ans += str((number % pow(10, length-i))//pow(10, length-i-1))
+    return ans
+
+
+def ticks_to_time(ticks):
+    milliseconds = int(ticks * (1/g.FRAMERATE) * 1000)
+    seconds = milliseconds // 1000
+    milliseconds %= 1000
+    minutes = seconds // 60
+    seconds %= 60
+    hours = minutes // 60
+    minutes %= 60
+
+    ans = extend(hours, 2) + ":" + extend(minutes, 2) + ":" + extend(seconds, 2) + ":" + extend(milliseconds, 3)
+    return ans
+
+

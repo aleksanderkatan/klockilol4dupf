@@ -1,3 +1,7 @@
+0.53
+- added in-game timer (based on frames, not real time)
+- added more levels (zone 1, 2, 3)
+
 0.52
 - added more levels (zone 10)
 
