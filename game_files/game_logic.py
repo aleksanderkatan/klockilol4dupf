@@ -12,7 +12,11 @@ from game_files.witch.witch import witch
 from game_files.log import log
 
 
-FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", g.LEVEL_FONT_SIZE)
+FONT_SIZE_2 = g.LEVEL_FONT_SIZE//2
+FONT_2 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
+
+FONT_SIZE_4 = g.LEVEL_FONT_SIZE//4
+FONT_4 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
 
 
 class game_logic:
@@ -119,10 +123,16 @@ class game_logic:
         if g.TIMER:
             ticks = global_save_state.get_timer_ticks()
             time = u.ticks_to_time(ticks)
-            txt_surface = FONT.render(time, True, pygame.Color('black'))
+            txt_surface = FONT_2.render(time, True, pygame.Color('black'))
             self.screen.blit(txt_surface,
-                             (g.WINDOW_X - len(time) * g.LEVEL_FONT_SIZE * 0.6 - g.LEVEL_FONT_OFFSET, g.LEVEL_FONT_OFFSET)
-                             )  # !! constant in code
+                             (g.WINDOW_X - len(time) * FONT_SIZE_2 * 0.58 - g.LEVEL_FONT_OFFSET,
+                              g.LEVEL_FONT_OFFSET)
+                             )
+            txt_surface = FONT_4.render(g.VERSION, True, pygame.Color('black'))
+            self.screen.blit(txt_surface,
+                             (g.WINDOW_X - len(g.VERSION) * FONT_SIZE_4 * g.FONT_RATIO - g.LEVEL_FONT_OFFSET,
+                              g.LEVEL_FONT_OFFSET * 2 + FONT_SIZE_2)
+                             )
 
         self.screen.blit(self.grayness, (0, 0))
 

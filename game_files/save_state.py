@@ -1,6 +1,7 @@
 import os
 import json
 import game_files.levels as l
+import game_files.globals as g
 from game_files.log import log
 
 SAVE_FILE_PATH = 'game_files/data/completed.txt'
@@ -72,6 +73,7 @@ class save_state:
         else:
             self.reset()
         self.save_data.de_string()
+        self.save_data.time += g.FRAMERATE          # to prevent cheesing with TASes
 
     def reset_completed(self):
         self.save_data.reset_completed()

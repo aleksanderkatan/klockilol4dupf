@@ -35,5 +35,5 @@ class input_box:
         self.txt_surface = FONT.render(self.text, True, self.color)
 
     def draw(self, screen):
-        screen.blit(self.txt_surface, (self.rect.x+g.WITCH_FONT_OFFSET, self.rect.y+g.WITCH_FONT_OFFSET*0.5)) # !! another constant
+        screen.blit(self.txt_surface, (self.rect.x+g.WITCH_FONT_OFFSET, self.rect.y+g.WITCH_FONT_OFFSET*0.5))   # !! another constant
         pg.draw.rect(screen, self.color, self.rect, 2)

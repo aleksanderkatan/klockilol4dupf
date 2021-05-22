@@ -26,5 +26,5 @@ class block(metaclass=abc.ABCMeta):
             self.screen.blit(self.sprite[where_is_player], pos)
 
     @abc.abstractmethod
-    def copy(self, new_state_index): # !! copy is only for duplicating states
+    def copy(self, new_state_index):    # !! copy is only for duplicating states
         pass

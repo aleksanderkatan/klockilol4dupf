@@ -1,3 +1,5 @@
+VERSION = "v0.54"
+
 SCALE = 1
 FRAMERATE = 30
 MOVE_LIMIT = 1024
@@ -5,9 +7,10 @@ MOVE_LIMIT = 1024
 VISIBLE_LAYERS_DOWN = 3
 VISIBLE_LAYERS_UP = 2
 INVISIBLE_BLOCK_VISIBILITY = 0.02
-GRAYNESS = 0.1
+GRAYNESS = 0.2
 THUNDER_PARTICLES = 16
 AUTO_SAVE_INTERVAL = 1          # in seconds
+FONT_RATIO = 0.58               # width to height for mono, sadly isn't 0.5
 
 CHEATS = True
 KBcheat = False

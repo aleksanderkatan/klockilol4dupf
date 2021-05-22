@@ -40,7 +40,7 @@ class witch_box:
         words = string.split(' ')
         result = []
         current = ''
-        limit = int((g.WINDOW_X-FONT_OFFSET*2)/(FONT_SIZE*0.59)) # !!stupid constant in code
+        limit = int((g.WINDOW_X-FONT_OFFSET*2)/(FONT_SIZE*g.FONT_RATIO))
 
         for word in words:
             if len(current) + 1 + len(word) <= limit:
