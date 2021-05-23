@@ -12,7 +12,7 @@ events[-1].messages.append("
 """
 
 events.append(witch_event())
-events[-1].where = ((400, 0), None)
+events[-1].where = ((400, 1), None)
 events[-1].messages.append("MUAHUAEHEUAHEUHAHUEHA!! [space]")
 events[-1].messages.append("Znowu wpadłeś w moją pułapkę!")
 events[-1].messages.append("Tym razem udało mi się zamknąć cię w grze komputerowej i zmienić cię w marny, czarny żeton!")
@@ -67,9 +67,10 @@ events.append(witch_event())
 events[-1].where = ((101, 0), None)
 events[-1].messages.append("To zone z poziomami generowanymi losowo.")
 events[-1].messages.append("Za jego skończenie nie czeka cię absolutnie nic, ale możesz się poćwiczyć w tym najprostszym rodzaju poziomów.")
+events[-1].messages.append("Idź stond. Kiedyś to będzie wyglądało lepiej.")
 
 events.append(witch_event())
-events[-1].where = ((400, 1), (5, 5, 0))
+events[-1].where = ((400, 2), (5, 9, 0))
 events[-1].messages.append("Masz przed sobą rozwidlenie.")
 events[-1].messages.append("Jak możesz się domyślać, możesz kończyć te zone'y w dowolnej kolejności, ale i tak potrzebujesz przejsć oba")
 

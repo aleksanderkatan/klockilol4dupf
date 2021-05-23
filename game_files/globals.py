@@ -1,4 +1,4 @@
-VERSION = "v0.54"
+VERSION = "v0.55"
 
 SCALE = 1
 FRAMERATE = 30
@@ -13,7 +13,6 @@ AUTO_SAVE_INTERVAL = 1          # in seconds
 FONT_RATIO = 0.58               # width to height for mono, sadly isn't 0.5
 
 CHEATS = True
-KBcheat = False
 PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7fx=jO\x01\x97T3_\xefK'
 MAX_COMMAND_LENGTH = 32
 WITCH = True
@@ -37,3 +36,5 @@ WITCH_FONT_SIZE = int(32*SCALE)
 WITCH_FONT_OFFSET = int(8*SCALE)
 LEVEL_FONT_SIZE = int(64*SCALE)
 LEVEL_FONT_OFFSET = int(16*SCALE)
+
+KBcheat = False                 # don't change

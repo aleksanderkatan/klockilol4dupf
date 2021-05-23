@@ -2,7 +2,7 @@ the lot
 
 - way more levels!!
 - main menu
-- update some sprites
+- update some (most) sprites
 - pack the game into container
 - add all the dialogue
 - think of something to do with time travel, so the 4d really stands for something

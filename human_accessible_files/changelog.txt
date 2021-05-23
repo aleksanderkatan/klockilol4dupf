@@ -1,3 +1,7 @@
+0.55
+- revamped commands
+- added "help", "enable_cheats", "witch" commands
+
 0.54
 - version is now visible below timer
 - anti-cheese for timer quit outs

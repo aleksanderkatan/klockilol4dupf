@@ -141,3 +141,18 @@ def ticks_to_time(ticks):
     return ans
 
 
+def list_of_commands(commands):
+    assert type(commands) is dict
+    d = {}
+    for command, function in commands.items():
+        if function not in d:
+            d[function] = []
+        d[function].append(command)
+    ans = ""
+    for function, commands in d.items():
+        for command in commands:
+            ans += command
+            ans += ", "
+        ans = ans[:-2]
+        ans += "\n"
+    return ans

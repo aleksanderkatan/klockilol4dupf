@@ -7,6 +7,7 @@ import game_files.utils as u
 import game_files.all_sprites as s
 import game_files.globals as g
 import game_files.levels as l
+import game_files.commands as c
 from game_files.save_state import global_save_state
 from game_files.witch.witch import witch
 from game_files.log import log
@@ -137,81 +138,23 @@ class game_logic:
         self.screen.blit(self.grayness, (0, 0))
 
     def execute_command(self, command):
-        if not g.CHEATS:
-            pw_hash = u.hash_string(command)
-            if pw_hash != g.PASSWORD_HASH:
-                log.info("WRONG PASSWORD!")
-            else:
-                log.info("Cheats enabled")
-                g.CHEATS = True
-            return
-
-        # !! some bullshit down here, don't look down
-        log.info("executing: " + command)
         if command == '':
             return
 
         command = command.split(' ')
         command = [word.lower() for word in command]
 
-        if command[0] == 'lv' or command[0] == 'cd':
-            if len(command) == 2:
-                log.info("Changing level to: 0 " + command[1])
-                self.set_stage((0, int(command[1])))
+        if not g.CHEATS:
+            if command[0] not in c.public_commands:
+                log.info("No such command")
             else:
-                log.info("Changing level to: " + command[1] + " " + command[2])
-                self.set_stage((int(command[1]), int(command[2])))
-        elif command[0] == 'p':
-            log.info("Previous level")
-            self.set_stage(l.previous_level(self.stage.level_index))
-        elif command[0].lower() == 'duda' and command[1].lower() == 'chuj':
-            log.info("Swapping background")
-            g.DUDA_CHUJ = not g.DUDA_CHUJ
-        elif command[0] == 'yoffset':
-            log.info("Changing y offset")
-            g.LAYER_Y_OFFSET = int(command[1])
-        elif command[0] == 'xoffset':
-            log.info("Changing x offset")
-            g.LAYER_X_OFFSET = int(command[1])
-        elif command[0].lower() in ['exit', 'quit', 'halt', 'shutdown', 'poweroff', 'q']:
-            log.info("Quitting")
-            pygame.quit()
-            sys.exit(0)
-        elif command[0] == 'reset_all':
-            log.warning("Erradicating save file")
-            global_save_state.reset()
-            self.level_index = None
-            self.set_stage((400, 1))
-        elif command[0] == 'reset_timer':
-            log.info("Resetting timer")
-            global_save_state.reset_timer()
-        elif command[0] == 'reset_events':
-            log.info("Resetting events")
-            global_save_state.reset_events()
-        elif command[0] == 'complete_all':
-            log.info("Completing all levels")
-            global_save_state.complete_all()
-        elif command[0] == 'c' or command[0] == 'n':
-            log.info("Completing current level")
-            self.complete()
-        elif command[0] == 'r':
-            log.info("Resetting and refreshing current level")
-            self.set_stage(self.level_index)
-        elif command[0] == 'load_all':
-            old_level_index = self.level_index
-            old_stage = self.stage
-            problems = []
-            for level_index in l.all_levels_iterator():
-                if not self.set_stage(level_index):
-                    problems.append(level_index)
-            self.stage = old_stage
-            self.level_index = old_level_index
-            if len(problems) > 0:
-                log.error("Errors in stages: " + str(problems))
-        elif command[0] == 'ls':
-            message = l.levels_ls()
-            log.write(message)
-        elif command[0] == 'timer':
-            g.TIMER = not g.TIMER
+                log.info("executing: " + command[0])
+                c.public_commands[command[0]](self, command)
         else:
-            log.write("No such command")
+            if command[0] in c.root_commands:
+                c.root_commands[command[0]](self, command)
+            elif command[0] in c.public_commands:
+                c.public_commands[command[0]](self, command)        # intentional, command overloading
+            else:
+                log.info("No such command")
+
