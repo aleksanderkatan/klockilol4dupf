@@ -73,7 +73,7 @@ class save_state:
         else:
             self.reset()
         self.save_data.de_string()
-        self.save_data.time += g.FRAMERATE          # to prevent cheesing with TASes
+        self.save_data.time += g.FRAMERATE*g.AUTO_SAVE_INTERVAL          # to prevent cheesing with TASes
 
     def reset_completed(self):
         self.save_data.reset_completed()

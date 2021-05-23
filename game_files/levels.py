@@ -54,7 +54,7 @@ levs = {}
 levs[0] = 31
 levs[1] = 16
 levs[2] = 14
-levs[3] = 11
+levs[3] = 14
 levs[4] = 9
 levs[5] = 11
 levs[6] = 20
@@ -71,7 +71,7 @@ levs[202] = 5   # 8/0 second gap
 levs[203] = 5   # hub 2 bottom of the random zone
 levs[204] = 5   # hub 3 right to the entrance
 
-levs[301] = 3
+levs[301] = 4
 levs[302] = 4
 levs[303] = 5
 

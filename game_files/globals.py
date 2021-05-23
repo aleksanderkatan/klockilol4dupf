@@ -1,4 +1,4 @@
-VERSION = "v0.55"
+VERSION = "v0.56"
 
 SCALE = 1
 FRAMERATE = 30
@@ -9,8 +9,8 @@ VISIBLE_LAYERS_UP = 2
 INVISIBLE_BLOCK_VISIBILITY = 0.02
 GRAYNESS = 0.2
 THUNDER_PARTICLES = 16
-AUTO_SAVE_INTERVAL = 1          # in seconds
-FONT_RATIO = 0.58               # width to height for mono, sadly isn't 0.5
+AUTO_SAVE_INTERVAL = 10          # in seconds
+FONT_RATIO = 0.59               # width to height for mono, sadly isn't 0.5
 
 CHEATS = True
 PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7fx=jO\x01\x97T3_\xefK'
@@ -21,7 +21,7 @@ THREED = False  # !! does not quite work
 DUDA_CHUJ = False
 TIMER = True
 
-LOG_INFO = False
+LOG_INFO = True
 LOG_WARNINGS = True
 LOG_ERRORS = True
 

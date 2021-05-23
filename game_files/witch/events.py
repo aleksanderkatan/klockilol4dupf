@@ -46,20 +46,26 @@ events[-1].messages.append("Ale i tak radzisz sobie świetnie!")
 
 events.append(witch_event())
 events[-1].where = ((1, 11), None)
-events[-1].messages.append("DFS, mówi ci to coś, panie Ferdku?")
+events[-1].messages.append("Próbuj zauważać, jakie ruchy są przegrywające.")
 
 events.append(witch_event())
 events[-1].where = ((1, 12), None)
-events[-1].messages.append("Ten poziom jest prostszy niż się wydaje. Spróbuj wczuć się w rytm.")
+events[-1].messages.append("Taki mały poziom nie może być trudny, nie?")
 
 events.append(witch_event())
-events[-1].where = ((1, 13), None)
-events[-1].messages.append("Super, to ostatni poizom z tego zone.")
-events[-1].messages.append("Wygląda znajomo, nie?")
-events[-1].messages.append("Mam nadzieję, że poprzedni poziom cię czegoś nauczył.")
+events[-1].where = ((1, 14), None)
+events[-1].messages.append("Zapamiętaj ten poziom.")
+events[-1].messages.append("Kto wie, może zupełnym przypadkiem przyda ci się on za kilka godzin?")
 
 events.append(witch_event())
-events[-1].where = ((400, 0), (6, 2, 0))
+events[-1].where = ((1, 16), None)
+events[-1].messages.append("No i ostatni poziom. Wygląda bardzo podobnie do siódmego, co nie?")
+events[-1].messages.append("Możesz się...")
+events[-1].messages.append("Wrócić...")
+events[-1].messages.append("I zastanowić nad różnicą...")
+
+events.append(witch_event())
+events[-1].where = ((400, 1), (13, 6, 0))
 events[-1].messages.append("No i zajebiście.")
 events[-1].messages.append("Przed tobą następny hub.")
 
