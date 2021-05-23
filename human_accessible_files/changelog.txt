@@ -1,6 +1,6 @@
 0.56
 - added "pos" command
-- revamped zone 3 levels
+- revamped zone 1 and 3 levels
 
 0.55
 - revamped commands
