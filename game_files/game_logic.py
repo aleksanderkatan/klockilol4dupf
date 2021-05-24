@@ -62,7 +62,7 @@ class game_logic:
 
     def move(self):
         global_save_state.tick_timer()
-        if global_save_state.get_timer_ticks() % g.FRAMERATE * g.AUTO_SAVE_INTERVAL == 0:
+        if global_save_state.get_timer_ticks() % (g.FRAMERATE * g.AUTO_SAVE_INTERVAL) == 0:
             global_save_state.save()
 
         if self.stage.latest_state().completed:

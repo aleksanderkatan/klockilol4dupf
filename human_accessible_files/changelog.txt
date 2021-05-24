@@ -1,3 +1,8 @@
+0.57
+- added more levels (zone 10)
+- added installation guide for windows
+- added .bat file for windows users with python
+
 0.56
 - added "pos" command
 - revamped zone 1 and 3 levels

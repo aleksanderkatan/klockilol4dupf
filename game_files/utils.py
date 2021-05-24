@@ -122,6 +122,8 @@ def move_pos(pos, direction, move_length):
     return x, y, z
 
 def extend(number, length):
+    if len(str(number)) >= length:
+        return str(number)
     ans = ""
     for i in range(length):
         ans += str((number % pow(10, length-i))//pow(10, length-i-1))

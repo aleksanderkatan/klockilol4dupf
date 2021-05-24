@@ -61,7 +61,9 @@ levs[6] = 20
 levs[7] = 23
 levs[8] = 20
 levs[9] = 14
-levs[10] = 14
+levs[10] = 20
+
+levs[11] = 1
 
 levs[101] = 136
 levs[102] = 136
