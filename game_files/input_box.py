@@ -1,9 +1,10 @@
 import pygame as pg
 import game_files.globals as g
+from game_files.view_constants import global_view_constants as v
 
 COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
-FONT = pg.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", g.WITCH_FONT_SIZE)
+FONT = pg.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.WITCH_FONT_SIZE)
 
 class input_box:
     def __init__(self, x, y, w, h, stage, text=''):
@@ -35,5 +36,5 @@ class input_box:
         self.txt_surface = FONT.render(self.text, True, self.color)
 
     def draw(self, screen):
-        screen.blit(self.txt_surface, (self.rect.x+g.WITCH_FONT_OFFSET, self.rect.y+g.WITCH_FONT_OFFSET*0.5))   # !! another constant
+        screen.blit(self.txt_surface, (self.rect.x+v.WITCH_FONT_OFFSET, self.rect.y+v.WITCH_FONT_OFFSET*0.5))   # !! another constant
         pg.draw.rect(screen, self.color, self.rect, 2)

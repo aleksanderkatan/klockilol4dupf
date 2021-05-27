@@ -29,8 +29,13 @@ def command_switch_witch(game_logic, command):
     g.WITCH = not g.WITCH
 
 def command_help_public(game_logic, command):
-    message = "public commands:\n"
+    message = "Public commands:\n"
     message += u.list_of_commands(public_commands)
+    log.write(message)
+
+def command_completion(game_logic, command):
+    message = "Completion: "
+    message += str(global_save_state.get_completion())
     log.write(message)
 
 def command_enable_cheats(game_logic, command):
@@ -63,6 +68,8 @@ public_commands["timer"] = command_switch_timer
 public_commands["witch"] = command_switch_witch
 
 public_commands["help"] = command_help_public
+
+public_commands["completion"] = command_completion
 
 public_commands["enable_cheats"] = command_enable_cheats
 
@@ -132,9 +139,9 @@ def command_ls(game_logic, command):
     log.write(message)
 
 def command_help_root(game_logic, command):
-    message = "public commands:\n"
+    message = "Public commands:\n"
     message += u.list_of_commands(public_commands)
-    message += "\nroot commands:\n"
+    message += "\nRoot commands:\n"
     message += u.list_of_commands(root_commands)
     log.write(message)
 

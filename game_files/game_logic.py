@@ -1,6 +1,5 @@
 import pygame
 import sys
-import hashlib
 from game_files.stage import stage
 from game_files.input_box import input_box
 import game_files.utils as u
@@ -8,15 +7,16 @@ import game_files.all_sprites as s
 import game_files.globals as g
 import game_files.levels as l
 import game_files.commands as c
+from game_files.view_constants import global_view_constants as v
 from game_files.save_state import global_save_state
 from game_files.witch.witch import witch
 from game_files.log import log
 
 
-FONT_SIZE_2 = g.LEVEL_FONT_SIZE//2
+FONT_SIZE_2 = v.LEVEL_FONT_SIZE//2
 FONT_2 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
 
-FONT_SIZE_4 = g.LEVEL_FONT_SIZE//4
+FONT_SIZE_4 = v.LEVEL_FONT_SIZE//4
 FONT_4 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
 
 
@@ -27,8 +27,8 @@ class game_logic:
         self.keys_registered = []
         self.single_layer = None
         self.input_box = input_box(
-            0, g.WINDOW_Y - (g.WITCH_FONT_SIZE + 2*g.WITCH_FONT_OFFSET),
-            g.WINDOW_X, g.WITCH_FONT_SIZE + 2*g.WITCH_FONT_OFFSET, self, "empty"
+            0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2*v.WITCH_FONT_OFFSET),
+            v.WINDOW_X, v.WITCH_FONT_SIZE + 2*v.WITCH_FONT_OFFSET, self, "empty"
         )
         self.level_index = None
         self.witch = witch(screen)
@@ -111,7 +111,7 @@ class game_logic:
         self.keys_registered = []
 
     def draw(self):
-        self.screen.blit(l.background_of_level(self.level_index), (0, 0))
+        self.screen.blit(s.sprites[l.background_of_level(self.level_index)], (0, 0))
         self.stage.draw(self.single_layer)
 
         if self.witch.is_active():
@@ -126,13 +126,13 @@ class game_logic:
             time = u.ticks_to_time(ticks)
             txt_surface = FONT_2.render(time, True, pygame.Color('black'))
             self.screen.blit(txt_surface,
-                             (g.WINDOW_X - len(time) * FONT_SIZE_2 * 0.58 - g.LEVEL_FONT_OFFSET,
-                              g.LEVEL_FONT_OFFSET)
+                             (v.WINDOW_X - len(time) * FONT_SIZE_2 * 0.58 - v.LEVEL_FONT_OFFSET,
+                              v.LEVEL_FONT_OFFSET)
                              )
             txt_surface = FONT_4.render(g.VERSION, True, pygame.Color('black'))
             self.screen.blit(txt_surface,
-                             (g.WINDOW_X - len(g.VERSION) * FONT_SIZE_4 * g.FONT_RATIO - g.LEVEL_FONT_OFFSET,
-                              g.LEVEL_FONT_OFFSET * 2 + FONT_SIZE_2)
+                             (v.WINDOW_X - len(g.VERSION) * FONT_SIZE_4 * g.FONT_RATIO - v.LEVEL_FONT_OFFSET,
+                              v.LEVEL_FONT_OFFSET * 2 + FONT_SIZE_2)
                              )
 
         self.screen.blit(self.grayness, (0, 0))

@@ -1,5 +1,4 @@
 from game_files.log import log
-import game_files.all_sprites as s
 import game_files.globals as g
 
 # !! levels of level_set 0 are for debugging
@@ -204,16 +203,16 @@ def level_name(level_index):
 def background_of_level(level_index):
     level_set, level = level_index
     if level_set == 201 and level == 0:
-        return s.sprites["kono_dio_da"]
+        return "kono_dio_da"
     if level_set == 500:
-        return s.sprites["swamp"]
+        return "swamp"
     if level_set == 501:
-        return s.sprites["Giszowiec_1"]
+        return "Giszowiec_1"
     if level_set == 204 and level == 0:
-        return s.sprites["Giszowiec_2"]
+        return "Giszowiec_2"
     if level_set == 204:
-        return s.sprites["Giszowiec_3"]
+        return "Giszowiec_3"
     if g.DUDA_CHUJ:
-        return s.sprites["duda_chuj"]
-    return s.sprites["background"]
+        return "duda_chuj"
+    return "background"
 

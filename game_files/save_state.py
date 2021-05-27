@@ -153,5 +153,15 @@ class save_state:
         self.save_data.reset_timer()
         self.save()
 
+    def get_completion(self):
+        result = 0
+        total = 0
+        for i in range(1, 10+1):
+            total += l.levs[i]
+            for j in range(1, l.levs[i]):
+                if self.is_completed((i, j)):
+                    result += 1
+        return result/total
+
 
 global_save_state = save_state()

@@ -1,8 +1,9 @@
 import pygame
 import game_files.globals as g
+from game_files.view_constants import global_view_constants as v
 
 pygame.init()
-screen = pygame.display.set_mode((g.WINDOW_X, g.WINDOW_Y))
+screen = pygame.display.set_mode((v.WINDOW_X, v.WINDOW_Y))
 import game_files.all_sprites as s
 from game_files.game_logic import game_logic
 pygame.display.set_icon(s.sprites["block_numeric_1"][0])

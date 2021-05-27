@@ -9,3 +9,4 @@ the lot
 - better management for random levels
 - rumianek zone
 - plp zone
+- english translation and implementation of languages

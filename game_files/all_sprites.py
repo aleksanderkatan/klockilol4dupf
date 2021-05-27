@@ -1,5 +1,6 @@
 import pygame
 import game_files.globals as g
+from game_files.view_constants import global_view_constants as v
 
 directed_block_sprites = {}
 block_sprites = {}
@@ -74,10 +75,10 @@ block_sprites["block_invisible"].set_alpha(g.INVISIBLE_BLOCK_VISIBILITY*256)
 for name, sprite in block_sprites.items():
     if name in ["level_available", "level_unavailable"]:
         new_sprite = pygame.transform.scale(
-            sprite, (int(g.BLOCK_SIZE*g.LEVEL_COMPLETION_SCALE), int(g.BLOCK_SIZE*g.LEVEL_COMPLETION_SCALE))
+            sprite, (int(v.BLOCK_X_SIZE*v.LEVEL_COMPLETION_SCALE), int(v.BLOCK_Y_SIZE*v.LEVEL_COMPLETION_SCALE))
         )
     else:
-        new_sprite = pygame.transform.scale(sprite, (g.BLOCK_SIZE, g.BLOCK_SIZE))
+        new_sprite = pygame.transform.scale(sprite, (v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE))
 
     sprites[name] = {}
     # !! SYF xD
@@ -113,7 +114,7 @@ background_sprites["Giszowiec_3"] = pygame.image.load('game_files/sprites/giszow
 
 
 for name, sprite in background_sprites.items():
-    sprites[name] = pygame.transform.scale(sprite, (g.WINDOW_X, g.WINDOW_Y))
+    sprites[name] = pygame.transform.scale(sprite, (v.WINDOW_X, v.WINDOW_Y))
 
 
 sprites["particle_1"] = pygame.image.load('game_files/sprites/particle_1.bmp').convert()

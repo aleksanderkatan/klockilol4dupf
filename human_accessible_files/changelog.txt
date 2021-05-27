@@ -1,3 +1,9 @@
+0.58
+- added a game launcher
+- moved view constants to new class
+- many other refactors
+- added completion percentage (levels from main 10 zones only)
+
 0.57
 - added more levels (zone 10)
 - added installation guide for windows
