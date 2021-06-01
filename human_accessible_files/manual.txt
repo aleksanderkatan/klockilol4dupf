@@ -9,3 +9,4 @@ ESCAPE - go back in level hierarchy (Zone hubs contain zones, zones contain actu
 dependencies:
 numpy
 pygame
+tkinter

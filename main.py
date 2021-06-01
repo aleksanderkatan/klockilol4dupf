@@ -23,3 +23,4 @@ while True:
 
     pygame.display.update()
     clock.tick(g.FRAMERATE)
+

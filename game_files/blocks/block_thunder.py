@@ -11,6 +11,7 @@ import game_files.all_sprites as s
 import queue
 import game_files.utils as u
 import game_files.globals as g
+from game_files.view_constants import global_view_constants as v
 
 class block_thunder(block):
     def __init__(self, screen, stage, state_index, pos):
@@ -47,12 +48,14 @@ class block_thunder(block):
         for i in range(state.x):
             for j in range(state.y):
                 if array[i][j] == 1:
+                    trigger = False;
                     if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric]:
                         state.get_block((i, j, pz)).on_step_out()
-                        x, y = u.index_to_position(i, j, pz, state.x, state.y, len(state.layers))
-                        self.stage.particle_generator.generate(g.THUNDER_PARTICLES, (x+g.BLOCK_SIZE//2, y+g.BLOCK_SIZE//2))
+                        trigger = True
                     if type(state.get_block((i, j, pz))) in [block_piston]:
                         state.get_block((i, j, pz)).on_step_in()
+                        trigger = True
+                    if trigger:
                         x, y = u.index_to_position(i, j, pz, state.x, state.y, len(state.layers))
-                        self.stage.particle_generator.generate(g.THUNDER_PARTICLES, (x+g.BLOCK_SIZE//2, y+g.BLOCK_SIZE//2))
+                        self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES, (x+v.BLOCK_X_SIZE//2, y+v.BLOCK_Y_SIZE//2))
 

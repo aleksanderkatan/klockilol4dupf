@@ -1,6 +1,7 @@
 import traceback
 import os
 from game_files.layer import layer
+from game_files.other.bomb import bomb
 from game_files.player import player
 from game_files.charmap import charmap
 from game_files.other.chav import chav
@@ -24,6 +25,7 @@ class state:
         self.completed = False
         self.pushers = []
         self.chavs = []
+        self.bombs = []
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)
@@ -43,6 +45,10 @@ class state:
         for chav in self.chavs:
             chavs.append(chav.copy(new_state_index))
         sta.chavs = chavs
+        bombs = []
+        for bomb in self.bombs:
+            bombs.append(bomb.copy(new_state_index))
+        sta.bombs = bombs
         return sta
 
     def move(self, direction):  # !!modifies current state instead of returning copy
@@ -65,12 +71,19 @@ class state:
 
         self.player.move()
 
+        if g.CHEATS and g.KBcheat:
+            return
+
         if not self.player.has_something_enqueued():
             for chav in self.chavs:
                 chav.move()
 
-        if g.CHEATS and g.KBcheat:
-            return
+        new_bombs = []
+        for bomb in self.bombs:
+            bomb.move()
+            if not bomb.finished:
+                new_bombs.append(bomb)
+        self.bombs = new_bombs
 
         step_in_block = self.get_block(self.player.pos)
         if step_in_block is not None and direction != 5:
@@ -85,6 +98,10 @@ class state:
         for chav in self.chavs:
             x, y = u.index_to_position(chav.pos[0], chav.pos[1], chav.pos[2], self.x, self.y, len(self.layers))
             chav.draw((x, y), u.relative_to_player(chav.pos[2], self.player.pos[2]))
+        for bomb in self.bombs:
+            x, y = u.index_to_position(bomb.pos[0], bomb.pos[1], bomb.pos[2], self.x, self.y, len(self.layers))
+            bomb.draw((x, y), u.relative_to_player(bomb.pos[2], self.player.pos[2]))
+
         if not self.player.dead:
             self.draw_player()
         if self.player.dead:
@@ -265,6 +282,16 @@ class state:
                     y = int(pos[1])
                     z = int(pos[2])
                     self.chavs.append(chav(self.screen, self.stage, self.state_index, (x, y, z)))
+
+            self.bombs = []
+            if 'bombs' in options:
+                for option in options['bombs']:
+                    option = option.split('/')
+                    x = int(option[0])
+                    y = int(option[1])
+                    z = int(option[2])
+                    ticks = int(option[3])
+                    self.bombs.append(bomb(self.screen, self.stage, self.state_index, (x, y, z), ticks))
 
             starting_point = self.find_level_entrance(last_level_index)
             if starting_point is not None:

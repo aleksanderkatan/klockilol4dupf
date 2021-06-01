@@ -28,6 +28,7 @@ hierarchy[(201, 0)] = (400, 1)
 hierarchy[(202, 0)] = (8, 0)
 hierarchy[(203, 0)] = (400, 2)
 hierarchy[(204, 0)] = (501, 0)
+hierarchy[(277, 0)] = (400, 1)
 
 hierarchy[(301, 0)] = (400, 2)
 hierarchy[(302, 0)] = (400, 3)
@@ -71,6 +72,8 @@ levs[201] = 0   # hub 1 to the left
 levs[202] = 5   # 8/0 second gap
 levs[203] = 5   # hub 2 bottom of the random zone
 levs[204] = 5   # hub 3 right to the entrance
+levs[205] = 20  # no entrance yet
+levs[277] = 20  # no entrance, extra levels without zone assigned (yet)
 
 levs[301] = 4
 levs[302] = 4

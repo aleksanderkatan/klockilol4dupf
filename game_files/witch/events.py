@@ -116,6 +116,12 @@ events.append(witch_event())
 events[-1].where = ((501, 0), None)
 events[-1].messages.append("O nie! To Giszowiec, Kolista! Szybko, uciekaj stąd zanim jakiś dres cię skroi!")
 
+events.append(witch_event())
+events[-1].where = ((205, 3), None)
+events[-1].messages.append("OUR level")
+
+
+
 
 for i in range(len(events)):
     events[i].index = i

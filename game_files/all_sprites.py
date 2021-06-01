@@ -70,6 +70,7 @@ block_sprites["block_reset"] = pygame.image.load('game_files/sprites/blocks/rese
 block_sprites["chav"] = pygame.image.load('game_files/sprites/chav.gif').convert()
 block_sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
 block_sprites["block_invisible"].set_alpha(g.INVISIBLE_BLOCK_VISIBILITY*256)
+block_sprites["bomb"] = pygame.image.load('game_files/sprites/bomb.gif').convert()
 
 
 for name, sprite in block_sprites.items():

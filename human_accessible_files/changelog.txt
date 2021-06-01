@@ -1,3 +1,7 @@
+0.59
+- added bombs
+- added more levels
+
 0.58
 - added a game launcher
 - moved view constants to new class

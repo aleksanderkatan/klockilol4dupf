@@ -24,13 +24,12 @@ class stage:
         self.particle_generator = particle_generator(self.screen)
 
     def draw(self, single_layer=None):
-        self.particle_generator.step()
-        self.particle_generator.draw()
-
         if single_layer is None:
             self.latest_state().draw()
         else:
             self.latest_state().draw_one_layer(len(self.latest_state().layers)-single_layer-1)
+        self.particle_generator.step()
+        self.particle_generator.draw()
         txt_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
         if not self.latest_state().player.dead:
             self.screen.blit(txt_surface, (v.LEVEL_FONT_OFFSET, v.LEVEL_FONT_OFFSET))
