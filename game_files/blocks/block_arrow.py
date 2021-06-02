@@ -6,6 +6,7 @@ class block_arrow(block):
     def __init__(self, screen, stage, state_index, pos, direction=-1):
         super().__init__(screen, stage, state_index, pos)
         self.direction = -1
+        self.sprite = s.sprites["error"]
         self.set_direction(direction)
         self.state_index = state_index
 

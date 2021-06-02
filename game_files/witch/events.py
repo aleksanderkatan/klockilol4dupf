@@ -113,15 +113,49 @@ events[-1].messages.append("No dawaj, ostatni.")
 events[-1].messages.append("Jak przeszedłeś poprzedni to ten też dasz radę.")
 
 events.append(witch_event())
-events[-1].where = ((501, 0), None)
-events[-1].messages.append("O nie! To Giszowiec, Kolista! Szybko, uciekaj stąd zanim jakiś dres cię skroi!")
+events[-1].where = ((205, 0), None)
+events[-1].messages.append("Znalazłam flashówkę, która zainspirowała mnie 10 lat temu do zrobienia tej gry")
+events[-1].messages.append("...po czym bezapelacyjnie podpierdoliłam wszystkie mechaniki i poziomy i wsadziłam je tutaj!")
+
+events.append(witch_event())
+events[-1].where = ((205, 1), None)
+events[-1].messages.append("Ty już dobrze wiesz co masz robić.")
+
+events.append(witch_event())
+events[-1].where = ((205, 2), None)
+events[-1].messages.append("Nadal musisz zniszczyć wszystkie klocki.")
 
 events.append(witch_event())
 events[-1].where = ((205, 3), None)
-events[-1].messages.append("OUR level")
+events[-1].messages.append("Ciekawe co znaczą liczby na tych klockach?")
 
+events.append(witch_event())
+events[-1].where = ((205, 6), None)
+events[-1].messages.append("Czyżby szarych klocków nie dało się zniszczyć?")
 
+events.append(witch_event())
+events[-1].where = ((205, 7), None)
+events[-1].messages.append("Trzy jest następnikiem dwójki.")
+events[-1].messages.append("Wiadomo, {∅, {∅}, {∅, {∅}}} = {{∅, {∅}}} u {∅, {∅}}")
 
+events.append(witch_event())
+events[-1].where = ((205, 9), None)
+events[-1].messages.append("To inne strzałki niż te które znasz.")
+events[-1].messages.append("Nie możesz na nie wskoczyć wbrew kierunkowi który wskazują.")
+events[-1].messages.append("Podobnie jak bariery z klockówlolunoduo")
+
+events.append(witch_event())
+events[-1].where = ((205, 11), None)
+events[-1].messages.append("Bomby odliczają twoje kroki.")
+events[-1].messages.append("Kopnij Bombę zanim rozpierdoli platfromę w drobny mak!")
+
+events.append(witch_event())
+events[-1].where = ((205, 20), None)
+events[-1].messages.append("Ostatni poziom. Najlepszy!")
+
+events.append(witch_event())
+events[-1].where = ((501, 0), None)
+events[-1].messages.append("O nie! To Giszowiec, Kolista! Szybko, uciekaj stąd zanim jakiś dres cię skroi!")
 
 for i in range(len(events)):
     events[i].index = i

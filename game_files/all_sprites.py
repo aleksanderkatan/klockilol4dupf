@@ -15,6 +15,7 @@ directed_block_sprites["ones_one_"] = pygame.image.load('game_files/sprites/bloc
 directed_block_sprites["block_piston_"] = pygame.image.load('game_files/sprites/blocks/piston.bmp').convert()
 directed_block_sprites["pusher_"] = pygame.image.load('game_files/sprites/pusher.gif').convert()
 directed_block_sprites["block_dual_arrow_"] = pygame.image.load('game_files/sprites/blocks/dual_arrow.bmp').convert()
+directed_block_sprites["block_birdy_arrow_"] = pygame.image.load('game_files/sprites/blocks/birdy_arrow.bmp').convert()
 
 for name, sprite in directed_block_sprites.items():
     block_sprites[name + "0"] = sprite.copy()
@@ -71,6 +72,8 @@ block_sprites["chav"] = pygame.image.load('game_files/sprites/chav.gif').convert
 block_sprites["block_invisible"] = pygame.image.load('game_files/sprites/blocks/0.bmp').convert()
 block_sprites["block_invisible"].set_alpha(g.INVISIBLE_BLOCK_VISIBILITY*256)
 block_sprites["bomb"] = pygame.image.load('game_files/sprites/bomb.gif').convert()
+block_sprites["block_fragile_start"] = pygame.image.load('game_files/sprites/blocks/fragile_start.bmp')
+block_sprites["block_fragile_end"] = pygame.image.load('game_files/sprites/blocks/fragile_end.bmp')
 
 
 for name, sprite in block_sprites.items():

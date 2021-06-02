@@ -44,13 +44,20 @@ charmap['g'] = o.block_undertale_green
 charmap['r'] = o.block_undertale_red
 charmap['l'] = o.block_undertale_blue   # b taken
 
+charmap['s'] = o.block_birdy_fragile_start
+charmap['f'] = o.block_birdy_fragile_end
+charmap['['] = o.block_birdy_arrow
+charmap[']'] = o.block_birdy_arrow
+charmap['-'] = o.block_birdy_arrow
+charmap['_'] = o.block_birdy_arrow
+
 # letters left:
 # QWYU
 # FGHK
 # ZXCV
 #
 # qwt
-# asdfhjk
+# adhjk
 # zxcn
 
 

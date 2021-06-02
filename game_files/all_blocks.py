@@ -30,8 +30,9 @@ from game_files.blocks.undertale.block_undertale_blue import block_undertale_blu
 from game_files.blocks.undertale.block_undertale_pink import block_undertale_pink
 from game_files.blocks.undertale.block_undertale_red import block_undertale_red
 
-block_empty
-block_blocker
+from game_files.blocks.birdy.block_birdy_fragile_start import block_birdy_fragile_start
+from game_files.blocks.birdy.block_birdy_fragile_end import block_birdy_fragile_end
+from game_files.blocks.birdy.block_birdy_arrow import block_birdy_arrow
 
 standables = set()
 standables.add(block_perma)
@@ -64,6 +65,11 @@ standables.add(block_undertale_purple)
 standables.add(block_undertale_pink)
 standables.add(block_undertale_green)
 
+standables.add(block_birdy_fragile_start)
+standables.add(block_birdy_fragile_end)
+standables.add(block_birdy_arrow)
+
 preventing_win = set()
 preventing_win.add(block_numeric)
+preventing_win.add(block_birdy_fragile_start)
 # lamp block is checked individually since it doesn't directly prevent win

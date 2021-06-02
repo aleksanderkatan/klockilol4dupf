@@ -1,3 +1,8 @@
+0.60
+- added birdy start, birdy end and birdy arrows
+- added invaliding of states (block_undertale_red, block_birdy_arrow, block_dual_arrow)
+- added Birdy zone with dialogue
+
 0.59
 - added bombs
 - added more levels

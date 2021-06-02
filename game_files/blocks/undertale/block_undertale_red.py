@@ -12,5 +12,6 @@ class block_undertale_red(block):
     def on_step_in(self):
         # self.stage.reverse()    # !! sketchy and doesn't work
         # self.stage.states[self.state_index].player.dead = True
-        player = self.stage.latest_state().player
-        self.stage.latest_state().teleport_player(player.last_move_pos)
+        # player = self.stage.latest_state().player
+        # self.stage.latest_state().teleport_player(player.last_move_pos)
+        self.stage.states[self.state_index].invalid = True

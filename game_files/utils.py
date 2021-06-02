@@ -53,13 +53,13 @@ def relative_to_player(layer_z, player_z):
 
 
 def char_to_direction(key):
-    if key == '>':
+    if key in ['>', ']']:
         return 0
-    if key == '^':
+    if key in ['^', '-']:
         return 1
-    if key == '<':
+    if key in ['<', '[']:
         return 2
-    if key == 'v':
+    if key in ['v', '_']:
         return 3
     return None
 

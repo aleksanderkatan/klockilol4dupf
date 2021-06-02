@@ -23,6 +23,7 @@ class state:
         self.z = -1
         self.state_index = state_index
         self.completed = False
+        self.invalid = False
         self.pushers = []
         self.chavs = []
         self.bombs = []
@@ -35,6 +36,7 @@ class state:
         sta.player = self.player.copy(new_state_index)
         sta.layers = []
         sta.completed = self.completed
+        sta.invalid = self.invalid
         for lay in self.layers:
             sta.layers.append(lay.copy(new_state_index))
         pushers = []
@@ -215,15 +217,17 @@ class state:
 
                         blo = obj(self.screen, self.stage, self.state_index, (k, j, i))
 
-                        if obj == o.block_start:
+                        if issubclass(obj, o.block_start):
                             self.teleport_player((k, j, i), False)
-                        if obj == o.block_numeric:
+                        if issubclass(obj, o.block_numeric):
                             blo.options(str(char))
-                        if obj == o.block_arrow:
+                        if issubclass(obj, o.block_arrow):
                             blo.options(str(char))
-                        if obj == o.block_jump:
+                        if issubclass(obj, o.block_birdy_arrow):
+                            blo.options(str(char))
+                        if issubclass(obj, o.block_jump):
                             blo.options(2)
-                        if obj == o.block_lamp:
+                        if issubclass(obj, o.block_lamp):
                             if char == 'B':
                                 blo.change_state()
 

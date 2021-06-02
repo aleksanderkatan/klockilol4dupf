@@ -19,8 +19,7 @@ class block_numeric(block):
             return block_empty(self.screen, self.stage, self.state_index, self.pos)
 
     def on_step_out(self):
-        x, y, z = self.pos
-        self.stage.states[self.state_index].layers[z].grid[x][y] = self.replaced_with()
+        self.stage.states[self.state_index].set_block(self.pos, self.replaced_with())
 
     def options(self, option):
         self.number = int(option[-1]) - int('0')

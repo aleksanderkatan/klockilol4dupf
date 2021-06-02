@@ -51,6 +51,9 @@ class stage:
         new_state = self.latest_state().copy(len(self.states))
         self.states.append(new_state)
         new_state.move(direction)
+        if new_state.invalid:
+            log.info("Invalid move performed")
+            self.reverse()
 
     def reverse(self):
         if len(self.states) > 1:

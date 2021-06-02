@@ -1,7 +1,6 @@
 the lot
 
 - way more levels!!
-- main menu
 - update some (most) sprites
 - pack the game into container
 - add all the dialogue
@@ -10,3 +9,4 @@ the lot
 - rumianek zone
 - plp zone
 - english translation and implementation of languages
+- invisible more visible the more levels you complete

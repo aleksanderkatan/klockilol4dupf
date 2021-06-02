@@ -12,3 +12,8 @@ So, if you want to add some more blocks or levels, feel free.
 Stolen code:
 - input_box from stack
 - code coloring class
+
+The (most likely) original flash game's name is 
+Birdy's Rainy Day Skipathon
+by
+Jess Hansen

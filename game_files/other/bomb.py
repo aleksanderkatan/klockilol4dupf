@@ -50,7 +50,12 @@ class bomb:
             txt_surface = FONT.render(str(self.ticks), True, pygame.Color('white'))
             x, y = pos
             off = (1-font_scale)/2
-            x = x + off * v.BLOCK_X_SIZE
+            if self.ticks < 10:
+                x = x + off * v.BLOCK_X_SIZE
+            elif self.ticks < 100:
+                x = x + off * v.BLOCK_X_SIZE - font_scale * v.BLOCK_X_SIZE * 0.25
+            else:
+                x = x + off * v.BLOCK_X_SIZE - font_scale * v.BLOCK_X_SIZE * 0.5
             y = y + off * v.BLOCK_Y_SIZE
             self.screen.blit(txt_surface, (x, y))
 
