@@ -27,6 +27,7 @@ class state:
         self.pushers = []
         self.chavs = []
         self.bombs = []
+        self.dark_visibility = 1
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)
@@ -51,7 +52,19 @@ class state:
         for bomb in self.bombs:
             bombs.append(bomb.copy(new_state_index))
         sta.bombs = bombs
+        sta.dark_visibility = self.dark_visibility
         return sta
+
+    def block_iterator(self):
+        for l in self.layers:
+            for row in l.grid:
+                for blo in row:
+                    yield blo
+
+    def update_dark_visibility(self):
+        for blo in self.block_iterator():
+            if issubclass(type(blo), o.block_numeric_dark):
+                blo.update_visibility()
 
     def move(self, direction):  # !!modifies current state instead of returning copy
         self.player.set_next_move_direction(direction)  # if something is enqueued, this will be ignored
@@ -72,6 +85,8 @@ class state:
             step_out_block.on_step_out()
 
         self.player.move()
+
+        self.update_dark_visibility()
 
         if g.CHEATS and g.KBcheat:
             return
@@ -227,6 +242,9 @@ class state:
                             blo.options(str(char))
                         if issubclass(obj, o.block_jump):
                             blo.options(2)
+                        if issubclass(obj, o.block_numeric_dark):
+                            print(char)
+                            blo.options(str(char))
                         if issubclass(obj, o.block_lamp):
                             if char == 'B':
                                 blo.change_state()
@@ -303,13 +321,11 @@ class state:
 
             if type(self.get_block(self.player.pos)) not in o.standables:
                 log.warning("Player is not standing, finding nearest standable...")
-                for i in range(self.x):
-                    for j in range(self.y):
-                        for k in range(self.z):
-                            typ = type(self.get_block((i, j, k)))
-                            if typ in o.standables and typ != o.block_invisible:
-                                self.teleport_player((i, j, k), False)
-                                return True
+                for blo in self.block_iterator():
+                    typ = type(blo)
+                    if typ in o.standables and typ != o.block_invisible:
+                        self.teleport_player(blo.pos, False)
+                        break
             return True
         except:
             log.error("Undefined error while loading stage")

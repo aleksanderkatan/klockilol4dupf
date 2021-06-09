@@ -87,14 +87,6 @@ def new_single_layer(current_single_layer, key, total_layers):
         ans = new_single_layer_index
     return ans
 
-
-def prevents_win(blo):
-    if type(blo) in o.preventing_win:
-        return True
-    if type(blo) == o.block_lamp and not blo.on:
-        return True
-    return False
-
 def hash_string(string):
     hasher = hashlib.sha256()
     hasher.update(bytes(string, "utf-16"))

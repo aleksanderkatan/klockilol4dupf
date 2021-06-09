@@ -20,6 +20,7 @@ class stage:
             log.error("Stage " + str(level_index) + " failed to load")
         else:
             self.states.append(first_state)
+            first_state.update_dark_visibility()
         self.change_to = None
         self.particle_generator = particle_generator(self.screen)
 

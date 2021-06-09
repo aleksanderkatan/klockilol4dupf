@@ -11,4 +11,4 @@ class block_invisible(block):
 
     def draw(self, pos, where_is_player):
         if where_is_player is not None:
-            self.screen.blit(self.sprite[0], pos)
+            self.screen.blit(self.sprite[0], pos)   # scaling visibility

@@ -1,7 +1,18 @@
 from game_files.blocks.block import block
 import game_files.all_sprites as s
+import game_files.all_blocks as o
 import game_files.utils as u
 from game_files.log import log
+
+
+def prevents_win(block):
+    if issubclass(type(block), o.block_numeric):
+        return True
+    if issubclass(type(block), o.block_lamp):
+        return block.on
+    if issubclass(type(block), o.block_numeric_dark):
+        return block.visible
+    return False
 
 class block_end(block):
     def __init__(self, screen, stage, state_index, pos):
@@ -15,7 +26,7 @@ class block_end(block):
         for lay in self.stage.states[self.state_index].layers:
             for row in lay.grid:
                 for blo in row:
-                    if u.prevents_win(blo):
+                    if prevents_win(blo):
                         return False
         return True
 

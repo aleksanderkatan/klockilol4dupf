@@ -35,6 +35,11 @@ class game_logic:
         self.grayness = s.sprites["grayness"]
 
     def set_stage(self, level_index):
+        # update invisible visibility
+        new_visibility = ((g.INVISIBLE_BLOCK_1_VISIBILITY - g.INVISIBLE_BLOCK_0_VISIBILITY)
+                          * global_save_state.get_completion() + g.INVISIBLE_BLOCK_0_VISIBILITY) * 255
+        s.sprites["block_invisible"][0].set_alpha(new_visibility)
+
         new_stage = stage(self.screen, level_index, self.level_index)
         if new_stage.successful is False:
             self.stage.reverse()

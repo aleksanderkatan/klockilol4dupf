@@ -34,6 +34,11 @@ charmap['T'] = o.block_thunder
 charmap['N'] = o.block_piston
 charmap['R'] = o.block_reset
 charmap['A'] = o.block_dual_arrow
+charmap['X'] = o.block_numeric_dark
+charmap['Y'] = o.block_numeric_dark
+charmap['Z'] = o.block_numeric_dark
+charmap['+'] = o.block_plus
+charmap['/'] = o.block_minus
 
 charmap['K'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple
@@ -51,10 +56,11 @@ charmap[']'] = o.block_birdy_arrow
 charmap['-'] = o.block_birdy_arrow
 charmap['_'] = o.block_birdy_arrow
 
+
 # letters left:
-# QWYU
+# QWU
 # FGHK
-# ZXCV
+# CV
 #
 # qwt
 # adhjk

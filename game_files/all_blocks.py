@@ -20,6 +20,9 @@ from game_files.blocks.block_invisible import block_invisible
 from game_files.blocks.block_piston import block_piston
 from game_files.blocks.block_reset import block_reset
 from game_files.blocks.block_dual_arrow import block_dual_arrow
+from game_files.blocks.block_numeric_dark import block_numeric_dark
+from game_files.blocks.block_plus import block_plus
+from game_files.blocks.block_minus import block_minus
 
 from game_files.blocks.block_shrek import block_shrek
 from game_files.blocks.undertale.block_undertale_purple import block_undertale_purple
@@ -55,6 +58,9 @@ standables.add(block_thunder)
 standables.add(block_piston)
 standables.add(block_reset)
 standables.add(block_dual_arrow)
+standables.add(block_numeric_dark)
+standables.add(block_plus)
+standables.add(block_minus)
 
 standables.add(block_shrek)
 standables.add(block_undertale_yellow)
