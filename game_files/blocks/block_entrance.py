@@ -1,6 +1,5 @@
 from game_files.blocks.block import block
 import game_files.all_sprites as s
-import game_files.globals as g
 import game_files.levels as l
 from game_files.view_constants import global_view_constants as v
 from game_files.save_state import global_save_state

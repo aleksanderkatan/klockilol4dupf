@@ -54,7 +54,12 @@ class stage:
         new_state.move(direction)
         if new_state.invalid:
             log.info("Invalid move performed")
-            self.reverse()
+            self.soft_reverse()
+
+    def soft_reverse(self):
+        if len(self.states) > 1:
+            del self.states[-1]
+            self.latest_state().player.set_next_move_direction(None)
 
     def reverse(self):
         if len(self.states) > 1:

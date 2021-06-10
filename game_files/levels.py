@@ -73,6 +73,7 @@ levs[202] = 5   # 8/0 second gap
 levs[203] = 5   # hub 2 bottom of the random zone
 levs[204] = 5   # hub 3 right to the entrance
 levs[205] = 20  # no entrance yet
+levs[206] = 16  # no entrance, special case to be available
 levs[277] = 20  # no entrance, extra levels without zone assigned (yet)
 
 levs[301] = 4

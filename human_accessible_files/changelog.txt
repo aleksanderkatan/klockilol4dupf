@@ -1,3 +1,7 @@
+0.62
+- added maze secret zone
+- fixed state invalidation (SIII[E)
+
 0.61
 - invisible block now more visible the more levels you've completed
 - added dark numeric block, plus block and minus block
