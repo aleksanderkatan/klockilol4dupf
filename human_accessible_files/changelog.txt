@@ -1,3 +1,7 @@
+0.63.2
+- moved state filling to new file and revamped it
+- comments in files (new lines starting with #)
+
 0.63.1
 - moving files in repo
 

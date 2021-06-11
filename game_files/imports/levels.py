@@ -93,7 +93,7 @@ level_infinity = (0, 0)
 
 back_in_hierarchy_levels = [(202, 4)]
 
-def levels(level_index):
+def level_path(level_index):
     level_set, level = level_index
     if level_set not in levs or not 0 <= level <= levs[level_set]:
         log.warning("Wrong level index " + str(level_index))

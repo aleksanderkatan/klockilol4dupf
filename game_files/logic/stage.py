@@ -5,6 +5,7 @@ import game_files.imports.levels as l
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.other.particle_generator import particle_generator
 from game_files.imports.log import log
+from game_files.logic.state_filler import fill
 
 
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)
@@ -15,7 +16,7 @@ class stage:
         self.states = []
         first_state = state(screen, self, 0)
         self.level_index = level_index
-        self.successful = first_state.fill(l.levels(self.level_index), last_level_index)
+        self.successful = fill(first_state, level_index, last_level_index)
         if self.successful is False:
             log.error("Stage " + str(level_index) + " failed to load")
         else:
