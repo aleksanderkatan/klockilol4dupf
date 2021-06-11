@@ -1,5 +1,5 @@
-from game_files.log import log
-import game_files.globals as g
+from game_files.imports.log import log
+import game_files.imports.globals as g
 
 # !! levels of level_set 0 are for debugging
 # 1 <= normal zones < 100
@@ -76,7 +76,7 @@ levs[205] = 20  # no entrance yet
 levs[206] = 16  # no entrance, special case to be available
 levs[277] = 20  # no entrance, extra levels without zone assigned (yet)
 
-levs[301] = 4
+levs[301] = 5
 levs[302] = 4
 levs[303] = 5
 

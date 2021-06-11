@@ -1,4 +1,4 @@
-from game_files.save_state import global_save_state
+from game_files.imports.save_state import global_save_state
 # where - ((level_set, level), (x, y, z))
 
 class witch_event:

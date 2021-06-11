@@ -1,6 +1,6 @@
 from game_files.blocks.block import block
-import game_files.all_sprites as s
-from game_files.all_blocks import block_numeric
+import game_files.imports.all_sprites as s
+from game_files.imports.all_blocks import block_numeric
 
 
 class block_ones(block):

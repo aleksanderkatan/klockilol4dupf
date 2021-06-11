@@ -1,7 +1,6 @@
 from game_files.blocks.block import block
-import game_files.all_sprites as s
-import game_files.utils as u
-from game_files.save_state import global_save_state
+import game_files.imports.all_sprites as s
+from game_files.imports.save_state import global_save_state
 
 class block_map_bridge(block):
     def __init__(self, screen, stage, state_index, pos, level_set=None):

@@ -1,6 +1,6 @@
 from game_files.blocks.block import block
 from game_files.blocks.undertale.block_undertale_yellow import block_undertale_yellow
-import game_files.all_sprites as s
+import game_files.imports.all_sprites as s
 
 class block_undertale_blue(block):
     def __init__(self, screen, stage, state_index, pos):

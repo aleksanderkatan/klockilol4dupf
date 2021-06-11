@@ -1,4 +1,4 @@
-import game_files.all_sprites as s
+import game_files.imports.all_sprites as s
 
 
 class chav:

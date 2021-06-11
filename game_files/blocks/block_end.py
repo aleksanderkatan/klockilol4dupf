@@ -1,15 +1,14 @@
 from game_files.blocks.block import block
-import game_files.all_sprites as s
-import game_files.all_blocks as o
-import game_files.utils as u
-from game_files.log import log
+import game_files.imports.all_sprites as s
+import game_files.imports.all_blocks as o
+from game_files.imports.log import log
 
 
 def prevents_win(block):
     if issubclass(type(block), o.block_numeric):
         return True
     if issubclass(type(block), o.block_lamp):
-        return block.on
+        return not block.on
     if issubclass(type(block), o.block_numeric_dark):
         return block.visible
     return False

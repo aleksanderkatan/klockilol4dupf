@@ -1,6 +1,6 @@
 from game_files.blocks.block import block
 from game_files.blocks.block_empty import block_empty
-import game_files.all_sprites as s
+import game_files.imports.all_sprites as s
 
 class block_dummy(block):
     def __init__(self, screen, stage, state_index, pos,):

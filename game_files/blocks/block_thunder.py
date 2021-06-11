@@ -7,11 +7,11 @@ from game_files.blocks.block_dummy import block_dummy
 from game_files.blocks.block_lamp import block_lamp
 from game_files.blocks.block_numeric import block_numeric
 from game_files.blocks.block_piston import block_piston
-import game_files.all_sprites as s
+import game_files.imports.all_sprites as s
 import queue
-import game_files.utils as u
-import game_files.globals as g
-from game_files.view_constants import global_view_constants as v
+import game_files.imports.utils as u
+import game_files.imports.globals as g
+from game_files.imports.view_constants import global_view_constants as v
 
 class block_thunder(block):
     def __init__(self, screen, stage, state_index, pos):

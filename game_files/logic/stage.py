@@ -1,10 +1,10 @@
 import pygame
-from game_files.state import state
-import game_files.globals as g
-import game_files.levels as l
-from game_files.view_constants import global_view_constants as v
+from game_files.logic.state import state
+import game_files.imports.globals as g
+import game_files.imports.levels as l
+from game_files.imports.view_constants import global_view_constants as v
 from game_files.other.particle_generator import particle_generator
-from game_files.log import log
+from game_files.imports.log import log
 
 
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)

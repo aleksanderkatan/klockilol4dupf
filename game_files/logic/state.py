@@ -1,15 +1,15 @@
 import traceback
 import os
-from game_files.layer import layer
+from game_files.logic.layer import layer
 from game_files.other.bomb import bomb
-from game_files.player import player
-from game_files.charmap import charmap
+from game_files.logic.player import player
+from game_files.imports.charmap import charmap
 from game_files.other.chav import chav
-import game_files.utils as u
-import game_files.all_blocks as o
-import game_files.all_sprites as s
-import game_files.globals as g
-from game_files.log import log
+import game_files.imports.utils as u
+import game_files.imports.all_blocks as o
+import game_files.imports.all_sprites as s
+import game_files.imports.globals as g
+from game_files.imports.log import log
 
 
 class state:

@@ -1,4 +1,4 @@
-from game_files.log import log
+from game_files.imports.log import log
 
 class view_constants:
     def __init__(self, x_scale=1, y_scale=1):

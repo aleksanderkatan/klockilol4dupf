@@ -1,6 +1,6 @@
 import pygame
-import game_files.globals as g
-from game_files.view_constants import global_view_constants as v
+import game_files.imports.globals as g
+from game_files.imports.view_constants import global_view_constants as v
 
 directed_block_sprites = {}
 numeric_block_sprites = {}

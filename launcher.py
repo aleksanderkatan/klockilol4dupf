@@ -3,9 +3,8 @@ pygame.init()
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox as tkm
-import game_files.globals as g
-from game_files.save_state import global_save_state
-from game_files.view_constants import global_view_constants as v
+from game_files.imports.save_state import global_save_state
+from game_files.imports.view_constants import global_view_constants as v
 
 
 window = tk.Tk()
@@ -55,10 +54,11 @@ def bt_reset_method():
 
 def bt_start_method():
     window.withdraw()
+
     x, y, _ = resolutions[combo_res.current()]
     resolution = (x, y)
     v.change_resolution(resolution)
-    import main                             # !! jank
+    import main
 
 
 tk.Button(window, text="Reset save", command=bt_reset_method, width=10).grid(column=1, row=3)

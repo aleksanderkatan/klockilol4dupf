@@ -1,9 +1,8 @@
 import pygame
 import hashlib
-import game_files.globals as g
-import game_files.all_blocks as o
-from game_files.log import log
-from game_files.view_constants import global_view_constants as v
+import game_files.imports.globals as g
+from game_files.imports.log import log
+from game_files.imports.view_constants import global_view_constants as v
 
 # returns position on screen for certain index
 def index_to_position(x, y, z, size_x, size_y, size_z):

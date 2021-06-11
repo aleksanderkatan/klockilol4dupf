@@ -1,8 +1,8 @@
 from game_files.blocks.block import block
 from game_files.blocks.block_empty import block_empty
 from game_files.blocks.block_blocker import block_blocker
-import game_files.utils as u
-import game_files.all_sprites as s
+import game_files.imports.utils as u
+import game_files.imports.all_sprites as s
 
 
 class pusher:  # !! while pushers exist, on_step_ins are not called

@@ -1,16 +1,16 @@
 import pygame
 import sys
-from game_files.stage import stage
-from game_files.input_box import input_box
-import game_files.utils as u
-import game_files.all_sprites as s
-import game_files.globals as g
-import game_files.levels as l
-import game_files.commands as c
-from game_files.view_constants import global_view_constants as v
-from game_files.save_state import global_save_state
+from game_files.logic.stage import stage
+from game_files.logic.input_box import input_box
+import game_files.imports.utils as u
+import game_files.imports.all_sprites as s
+import game_files.imports.globals as g
+import game_files.imports.levels as l
+import game_files.logic.commands as c
+from game_files.imports.view_constants import global_view_constants as v
+from game_files.imports.save_state import global_save_state
 from game_files.witch.witch import witch
-from game_files.log import log
+from game_files.imports.log import log
 
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE//2

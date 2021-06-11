@@ -1,4 +1,4 @@
-import game_files.globals as g
+import game_files.imports.globals as g
 
 class bcolors:
     HEADER = '\033[95m'

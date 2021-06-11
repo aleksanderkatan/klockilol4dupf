@@ -1,8 +1,8 @@
-import game_files.all_sprites as s
-import game_files.all_blocks as o
-from game_files.save_state import global_save_state
-import game_files.globals as g
-import game_files.utils as u
+import game_files.imports.all_sprites as s
+import game_files.imports.all_blocks as o
+from game_files.imports.save_state import global_save_state
+import game_files.imports.globals as g
+import game_files.imports.utils as u
 
 class player:
     def __init__(self, pos, screen, stage, state_index):

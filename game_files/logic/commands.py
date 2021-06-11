@@ -1,10 +1,10 @@
 import pygame
 import sys
-from game_files.log import log
-import game_files.levels as l
-import game_files.globals as g
-import game_files.utils as u
-from game_files.save_state import global_save_state
+from game_files.imports.log import log
+import game_files.imports.levels as l
+import game_files.imports.globals as g
+import game_files.imports.utils as u
+from game_files.imports.save_state import global_save_state
 
 
 public_commands = {}

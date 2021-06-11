@@ -1,6 +1,6 @@
 from game_files.blocks.block import block
 from game_files.blocks.block_empty import block_empty
-import game_files.all_sprites as s
+import game_files.imports.all_sprites as s
 
 d = {'X': 1, 'Y': 2, 'Z': 3}
 d1 = {1: 'X', 2: 'Y', 3: 'Z'}
@@ -30,7 +30,6 @@ class block_numeric_dark(block):
         dist = 0
         for a, b in zip(player.pos, self.pos):
             dist = max(dist, abs(a-b))
-        print(dist)
         self.visible = state.dark_visibility >= dist
         self.evaluate_sprite()
 

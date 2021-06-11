@@ -1,7 +1,7 @@
 from game_files.blocks.block import block
 from game_files.blocks.block_blocker import block_blocker
-import game_files.all_sprites as s
-import game_files.utils as u
+import game_files.imports.all_sprites as s
+import game_files.imports.utils as u
 
 class block_bridge(block):
     def __init__(self, screen, stage, state_index, pos):

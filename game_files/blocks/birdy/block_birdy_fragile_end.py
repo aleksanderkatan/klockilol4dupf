@@ -1,6 +1,6 @@
 from game_files.blocks.block_end import block_end
 from game_files.blocks.block_empty import block_empty
-import game_files.all_sprites as s
+import game_files.imports.all_sprites as s
 
 class block_birdy_fragile_end(block_end):
     def __init__(self, screen, stage, state_index, pos):

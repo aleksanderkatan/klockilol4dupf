@@ -1,8 +1,8 @@
 from game_files.blocks.block import block
-import game_files.all_sprites as s
-import game_files.levels as l
-from game_files.view_constants import global_view_constants as v
-from game_files.save_state import global_save_state
+import game_files.imports.all_sprites as s
+import game_files.imports.levels as l
+from game_files.imports.view_constants import global_view_constants as v
+from game_files.imports.save_state import global_save_state
 
 class block_entrance(block):
     def __init__(self, screen, stage, state_index, pos, target_level=None):

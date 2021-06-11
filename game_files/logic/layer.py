@@ -1,6 +1,6 @@
-import game_files.all_blocks as o
-import game_files.globals as g
-import game_files.utils as u
+import game_files.imports.all_blocks as o
+import game_files.imports.globals as g
+import game_files.imports.utils as u
 
 class layer:
     def __init__(self, size_x, size_y, screen, stage, state_index):
