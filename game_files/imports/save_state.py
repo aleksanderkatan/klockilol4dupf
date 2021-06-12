@@ -50,7 +50,7 @@ class save_data:
 
 class save_state:
     def __init__(self):
-        self.save_data = None
+        self.save_data = save_data()
         self.restore()
 
     def complete(self, level_index):
