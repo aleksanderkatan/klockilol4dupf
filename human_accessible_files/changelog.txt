@@ -1,3 +1,9 @@
+0.64.5
+- updated log, now it can take multiple arguments
+
+0.64.4
+- refactored levels to have ".lv" extension
+
 0.64.3
 - changed all other sprites to gifs
 

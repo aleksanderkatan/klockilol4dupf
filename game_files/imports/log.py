@@ -1,6 +1,6 @@
 import game_files.imports.globals as g
 
-class bcolors:
+class colors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
@@ -17,20 +17,34 @@ class log_class:
         self.w = g.LOG_WARNINGS
         self.e = g.LOG_ERRORS
 
-    def info(self, message):
-        if self.i:
+    def _write(self, log_type, args):
+        message = ""
+        for arg in args:
+            message = message + str(arg) + " "
+
+        if log_type == "INFO":
             print("INFO:", message)
+        elif log_type == "WARNING":
+            print(colors.WARNING + "WARNING: " + message + colors.ENDC)
+        elif log_type == "ERROR":
+            print(colors.ERROR + "ERROR: " + message + colors.ENDC)
+        elif log_type == "PRINT":
+            print(message)
 
-    def warning(self, message):
+    def info(self, *args):
+        if self.i:
+            self._write("INFO", args)
+
+    def warning(self, *args):
         if self.w:
-            print(bcolors.WARNING + "WARNING: " + message + bcolors.ENDC)
+            self._write("WARNING", args)
 
-    def error(self, message):
+    def error(self, *args):
         if self.e:
-            print(bcolors.ERROR + "ERROR: " + message + bcolors.ENDC)
+            self._write("ERROR", args)
 
-    def write(self, message):
-        print(message)
+    def print(self, *args):
+        self._write("PRINT", args)
 
 
 log = log_class()
