@@ -151,7 +151,7 @@ def command_disable_cheats(game_logic, command):
 
 def command_position(game_logic, command):
     pos = game_logic.stage.latest_state().player.pos
-    log.write("Player position: " + str(pos))
+    log.write("Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index))
 
 
 root_commands["lv"] = command_lv

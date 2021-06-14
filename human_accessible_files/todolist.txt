@@ -9,4 +9,5 @@ the lot
 - rumianek zone
 - plp zone
 - english translation and implementation of languages
-- invisible more visible the more levels you complete
+- many arguments in log
+

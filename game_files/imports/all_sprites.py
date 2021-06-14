@@ -91,16 +91,20 @@ block_sprites["block_fragile_end"] = pygame.image.load('game_files/sprites/block
 block_sprites["block_plus"] = pygame.image.load('game_files/sprites/blocks/plus.bmp')
 block_sprites["block_minus"] = pygame.image.load('game_files/sprites/blocks/minus.bmp')
 
+if g.THREED:
+    alphas = {-3: 255, -2: 255, -1: 255, 0: 255, 1: 64, 2: 48, 3: 32}
+else:
+    alphas = {-3: 64, -2: 96, -1: 128, 0: 255, 1: 64, 2: 48, 3: 32}
+
 for name, sprite in block_sprites.items():
     if name in ["level_available", "level_unavailable"]:  # has to have alphas
-        new_sprite = pygame.transform.scale(
+        new_sprite = pygame.transform.smoothscale(
             sprite, (int(v.BLOCK_X_SIZE * v.LEVEL_COMPLETION_SCALE), int(v.BLOCK_Y_SIZE * v.LEVEL_COMPLETION_SCALE))
         )
     else:
         new_sprite = pygame.transform.scale(sprite, (v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE))
 
     sprites[name] = {}
-    alphas = {-3: 64, -2: 96, -1: 128, 0: 255, 1: 64, 2: 48, 3: 32}
 
     for key, value in alphas.items():
         s = new_sprite.copy()
