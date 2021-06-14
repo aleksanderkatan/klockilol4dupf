@@ -1,3 +1,6 @@
+0.64.3
+- changed all other sprites to gifs
+
 0.64.2
 - changed all blocks to gifs
 

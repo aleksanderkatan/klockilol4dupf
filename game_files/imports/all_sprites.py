@@ -116,23 +116,23 @@ for name, sprite in block_sprites.items():
 
 # BACKGROUND SPRITES
 
-background_sprites["background"] = pygame.image.load('game_files/sprites/background.jpg').convert()
-background_sprites["kono_dio_da"] = pygame.image.load('game_files/sprites/kono_dio_da.jpg').convert()
-background_sprites["you_died"] = pygame.image.load('game_files/sprites/you_died.jpg').convert()
-background_sprites["black"] = pygame.image.load('game_files/sprites/black.jpg').convert()
+background_sprites["background"] = pygame.image.load('game_files/sprites/background.gif').convert()
+background_sprites["kono_dio_da"] = pygame.image.load('game_files/sprites/kono_dio_da.gif').convert()
+background_sprites["you_died"] = pygame.image.load('game_files/sprites/you_died.gif').convert()
+background_sprites["black"] = pygame.image.load('game_files/sprites/black.gif').convert()
 background_sprites["black"].set_alpha(192)
-background_sprites["witch"] = pygame.image.load('game_files/sprites/witch.png')
-background_sprites["duda_chuj"] = pygame.image.load('game_files/sprites/background_duda_chuj.png').convert()
-background_sprites["grayness"] = pygame.image.load('game_files/sprites/black.jpg').convert()
+background_sprites["witch"] = pygame.image.load('game_files/sprites/witch.gif')
+background_sprites["duda_chuj"] = pygame.image.load('game_files/sprites/background_duda_chuj.gif').convert()
+background_sprites["grayness"] = pygame.image.load('game_files/sprites/black.gif').convert()
 background_sprites["grayness"].set_alpha(g.GRAYNESS * 256)
-background_sprites["swamp"] = pygame.image.load('game_files/sprites/swamp.jpg').convert()
-background_sprites["Giszowiec_1"] = pygame.image.load('game_files/sprites/giszowiec_1.jpg').convert()
-background_sprites["Giszowiec_2"] = pygame.image.load('game_files/sprites/giszowiec_2.jpg').convert()
-background_sprites["Giszowiec_3"] = pygame.image.load('game_files/sprites/giszowiec_3.jpg').convert()
+background_sprites["swamp"] = pygame.image.load('game_files/sprites/swamp.gif').convert()
+background_sprites["Giszowiec_1"] = pygame.image.load('game_files/sprites/giszowiec_1.gif').convert()
+background_sprites["Giszowiec_2"] = pygame.image.load('game_files/sprites/giszowiec_2.gif').convert()
+background_sprites["Giszowiec_3"] = pygame.image.load('game_files/sprites/giszowiec_3.gif').convert()
 
 for name, sprite in background_sprites.items():
     sprites[name] = pygame.transform.scale(sprite, (v.WINDOW_X, v.WINDOW_Y))
 
-sprites["particle_1"] = pygame.image.load('game_files/sprites/particle_1.bmp').convert()
-sprites["particle_2"] = pygame.image.load('game_files/sprites/particle_2.bmp').convert()
-sprites["particle_3"] = pygame.image.load('game_files/sprites/particle_3.bmp').convert()
+sprites["particle_1"] = pygame.image.load('game_files/sprites/particle_1.gif').convert()
+sprites["particle_2"] = pygame.image.load('game_files/sprites/particle_2.gif').convert()
+sprites["particle_3"] = pygame.image.load('game_files/sprites/particle_3.gif').convert()
