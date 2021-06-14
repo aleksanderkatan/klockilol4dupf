@@ -1,3 +1,6 @@
+0.64.2
+- changed all blocks to gifs
+
 0.64.1
 - preps for modifying images
 

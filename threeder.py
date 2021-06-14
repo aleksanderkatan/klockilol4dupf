@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\game_files\\sprites\\blocks\\"
+root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\game_files\\sprites\\"
 
 
 def remove_extension(s):
@@ -17,7 +17,6 @@ for p in image_iter():
     im = Image.open(p)
     im.save(remove_extension(p) + ".gif")
 
-    break
 
 
 
