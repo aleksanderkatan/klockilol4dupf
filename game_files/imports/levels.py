@@ -98,9 +98,9 @@ def level_path(level_index):
     if level_set not in levs or not 0 <= level <= levs[level_set]:
         log.warning("Wrong level index " + str(level_index))
         return level_error_path
-    if level_set == 400 and level_index == 0:
+    if level_index in [(400, 0)]:
         return level_error_path
-    return 'game_files/levels/' + str(level_set) + '/' + str(level) + '.txt'
+    return 'game_files/levels/' + str(level_set) + '/' + str(level) + '.lv'
 
 
 def next_level(level_index):
