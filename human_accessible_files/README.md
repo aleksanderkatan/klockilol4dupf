@@ -5,7 +5,7 @@ Second and third were GameMakerStudio 2 projects.
 My licence for GameMaker expired, and I could no longer work on the third version (which actually was quite elaborate), so I've decided to write it all again with different mechanics in Python.
 I purposely, from the beginning chose to not do any animations.
 They may cause the game to be more clear, however I have some very traumatic memories with animations from versions second and third.
-Moreover, I finally knew what I was getting into, so I wrote this in the most expandable way I could've thought of.
+Moreover, I finally knew what I was getting into, so I wrote this in the most expandable way I could've thought of.*
 Level editors are hard to code, so why not just have a way to write down every level to .txt and vice versa?
 So, if you want to add some more blocks or levels, feel free.
 
@@ -17,3 +17,8 @@ The (most likely) original flash game's name is
 Birdy's Rainy Day Skipathon
 by
 Jess Hansen
+
+    
+.* jesus christ this code organization is terrible. Redundancy, cycles everywhere, view and model mixed into oblivion,
+constants in code, no factories where obviously needed, I guess part 5 incoming... maybe.
+At least adding blocks isn't O(n^2) like it was in klockilol

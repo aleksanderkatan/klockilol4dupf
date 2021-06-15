@@ -10,7 +10,7 @@ from game_files.imports.view_constants import global_view_constants as v
 window = tk.Tk()
 window.title("klockilol4dupf launcher")
 window.minsize(width=300, height=200)
-window.iconbitmap("game_files/sprites/icon.ico")
+window.iconbitmap("game_files/sprites/other/icon.ico")
 
 for i in range(0, 4+1+1):
     window.grid_rowconfigure(i, weight=1)
