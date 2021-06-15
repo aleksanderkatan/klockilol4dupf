@@ -20,7 +20,7 @@ for key, value in d.items():
 print()
 
 
-for ext in ["txt", "py", "md"]:
+for ext in ["md", "txt", "lv", "py"]:
     files = 0
     lines = 0
     characters = 0

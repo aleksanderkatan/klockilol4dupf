@@ -1,3 +1,7 @@
+0.64.7
+- new scripts
+- importing new sprites automatically
+
 0.64.6
 - organised sprites into 3 categories
 

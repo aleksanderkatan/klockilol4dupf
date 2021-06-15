@@ -17,17 +17,12 @@ class layer:
             self.grid.append(array)
 
     def draw_once(self, height, layers_amount, where_is_player, x_offset, y_offset):
-        for i in range(self.size_x):
-            for j in range(self.size_y):
+        for j in range(self.size_y):
+            for i in range(self.size_x):
                 x, y = u.index_to_position(i, j, height, self.size_x, self.size_y, layers_amount)
-                self.grid[i][j].draw(
-                    (x+x_offset, y+y_offset), where_is_player
-                )
+                self.grid[i][j].draw((x+x_offset, y+y_offset), where_is_player)
 
     def draw(self, height, layers_amount, where_is_player):
-        if g.THREED:
-            self.draw_once(height, layers_amount, where_is_player, 0, 8)
-            self.draw_once(height, layers_amount, where_is_player, 0, 4)
         self.draw_once(height, layers_amount, where_is_player, 0, 0)
 
     def update(self, x, y, block):

@@ -31,12 +31,12 @@ def command_switch_witch(game_logic, command):
 def command_help_public(game_logic, command):
     message = "Public commands:\n"
     message += u.list_of_commands(public_commands)
-    log.write(message)
+    log.print(message)
 
 def command_completion(game_logic, command):
     message = "Completion: "
     message += str(global_save_state.get_completion())
-    log.write(message)
+    log.print(message)
 
 def command_enable_cheats(game_logic, command):
     if g.CHEATS:
@@ -138,14 +138,14 @@ def command_load_all(game_logic, command):
 
 def command_ls(game_logic, command):
     message = l.levels_ls()
-    log.write(message)
+    log.print(message)
 
 def command_help_root(game_logic, command):
     message = "Public commands:\n"
     message += u.list_of_commands(public_commands)
     message += "\nRoot commands:\n"
     message += u.list_of_commands(root_commands)
-    log.write(message)
+    log.print(message)
 
 def command_disable_cheats(game_logic, command):
     log.info("Disabling cheats")
@@ -153,7 +153,7 @@ def command_disable_cheats(game_logic, command):
 
 def command_position(game_logic, command):
     pos = game_logic.stage.latest_state().player.pos
-    log.write("Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index))
+    log.print("Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index))
 
 
 root_commands["lv"] = command_lv
