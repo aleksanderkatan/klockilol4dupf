@@ -29,7 +29,7 @@ class witch:
                 return
 
     def draw(self):
-        self.screen.blit(s.sprites["black"], (0, 0))
+        self.screen.blit(s.sprites["background_black"], (0, 0))
         self.screen.blit(s.sprites["witch"], (0, 0))
         self.text_box.draw()
 

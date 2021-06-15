@@ -32,7 +32,7 @@ class game_logic:
         )
         self.level_index = None
         self.witch = witch(screen)
-        self.grayness = s.sprites["grayness"]
+        self.grayness = s.sprites["background_grayness"]
 
     def set_stage(self, level_index):
         # update invisible visibility
@@ -123,7 +123,7 @@ class game_logic:
             self.witch.draw()
 
         if self.input_box.active:
-            self.screen.blit(s.sprites['black'], (0, 0))
+            self.screen.blit(s.sprites['background_black'], (0, 0))
             self.input_box.draw(self.screen)
 
         if g.TIMER:

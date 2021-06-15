@@ -207,16 +207,16 @@ def level_name(level_index):
 def background_of_level(level_index):
     level_set, level = level_index
     if level_set == 201 and level == 0:
-        return "kono_dio_da"
+        return "background_kono_dio_da"
     if level_set == 500:
-        return "swamp"
+        return "background_swamp"
     if level_set == 501:
-        return "Giszowiec_1"
+        return "background_giszowiec_1"
     if level_set == 204 and level == 0:
-        return "Giszowiec_2"
+        return "background_giszowiec_2"
     if level_set == 204:
-        return "Giszowiec_3"
+        return "background_giszowiec_3"
     if g.DUDA_CHUJ:
-        return "duda_chuj"
-    return "background"
+        return "background_duda_chuj"
+    return "background_default"
 

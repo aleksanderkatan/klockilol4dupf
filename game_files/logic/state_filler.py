@@ -73,7 +73,6 @@ def _fill(s, level, last_level_index):
                     if issubclass(obj, o.block_jump):
                         blo.options(2)
                     if issubclass(obj, o.block_numeric_dark):
-                        print(char)
                         blo.options(str(char))
                     if issubclass(obj, o.block_lamp):
                         if char == 'B':

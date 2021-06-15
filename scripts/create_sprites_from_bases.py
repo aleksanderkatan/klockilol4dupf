@@ -7,6 +7,8 @@ root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\game_files\\sprites\\"
 old_path = root + "blocks_bases\\"
 new_path = root + "blocks\\"
 
+empty = Image.open(old_path + "empty.gif").convert("RGBA")
+
 def remove_extension(s):
     return s[:s.rfind('.')]
 
@@ -32,7 +34,8 @@ for path, name in image_iter():
         enhancer = ImageEnhance.Brightness(im)
         im = enhancer.enhance(0.5)
         im.save(new_path + name + "_dark" + ".gif")
-        im.putalpha(64)
+        im = im.convert("RGBA")
+        im = Image.blend(empty, im, alpha=.3)
         im.save(new_path + name + "_invisible_dark" + ".gif")
     else:
         im.save(new_path + name + ".gif")
