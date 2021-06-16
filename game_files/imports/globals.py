@@ -1,4 +1,4 @@
-VERSION = "v0.64.8"
+VERSION = "v0.64.9"
 
 FRAMERATE = 30
 MOVE_LIMIT = 1024
@@ -17,7 +17,7 @@ PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7
 MAX_COMMAND_LENGTH = 32
 WITCH = True
 AUTO_REVERSE = True
-THREED = False  # !! does not quite work
+THREED = True  # !! does not quite work
 TIMER = True
 
 LOG_INFO = True

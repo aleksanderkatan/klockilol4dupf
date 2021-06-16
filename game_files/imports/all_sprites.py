@@ -28,7 +28,7 @@ for name, sprite in block_sprites.items():
             sprite, (int(v.BLOCK_X_SIZE * v.LEVEL_COMPLETION_SCALE), int(v.BLOCK_Y_SIZE * v.LEVEL_COMPLETION_SCALE))
         )
     else:
-        new_sprite = pygame.transform.scale(sprite, (v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE + 0))
+        new_sprite = pygame.transform.scale(sprite, (v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE + (0 if not g.THREED else v.BLOCK_3D_DIFFERENCE)))
 
     sprites[name] = {}
 

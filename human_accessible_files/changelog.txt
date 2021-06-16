@@ -1,3 +1,6 @@
+0.64.9
+- paste kind of works
+
 0.64.8
 - script for invisible dark numeric
 - importing new backgrounds automatically

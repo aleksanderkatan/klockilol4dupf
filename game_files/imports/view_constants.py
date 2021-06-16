@@ -10,7 +10,7 @@ class view_constants:
 
         self.WINDOW_X = self.WINDOW_Y = self.BLOCK_X_SIZE = self.BLOCK_Y_SIZE = self.LAYER_Y_OFFSET = \
             self.LAYER_X_OFFSET = self.WITCH_FONT_SIZE = self.WITCH_FONT_OFFSET = self.LEVEL_FONT_SIZE = \
-            self.LEVEL_FONT_OFFSET = 0
+            self.LEVEL_FONT_OFFSET = self.BLOCK_3D_DIFFERENCE = 0
 
         self.update()
 
@@ -25,6 +25,7 @@ class view_constants:
         self.WITCH_FONT_OFFSET = int(8 * self.Y_SCALE)
         self.LEVEL_FONT_SIZE = int(64 * self.Y_SCALE)
         self.LEVEL_FONT_OFFSET = int(16 * self.Y_SCALE)
+        self.BLOCK_3D_DIFFERENCE = int(16 * self.Y_SCALE)
 
     def set_scales(self, x_scale, y_scale):
         self.X_SCALE = x_scale

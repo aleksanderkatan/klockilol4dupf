@@ -22,6 +22,7 @@ rotatable = ["block_arrow", "ones_one", "block_piston", "pusher", "block_dual_ar
 
 for path, name in image_iter():
     im = Image.open(path)
+    # im = im.convert("RGB")
     if name in rotatable:
         for i in range(4):
             im.save(new_path + name + "_" + str(i) + ".gif")
