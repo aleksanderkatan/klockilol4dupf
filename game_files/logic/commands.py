@@ -5,6 +5,7 @@ import game_files.imports.levels as l
 import game_files.imports.globals as g
 import game_files.imports.utils as u
 from game_files.imports.save_state import global_save_state
+from game_files.imports.view_constants import global_view_constants as v
 
 
 public_commands = {}
@@ -100,11 +101,11 @@ def command_duda_chuj(game_logic, command):
 
 def command_y_offset(game_logic, command):
     log.info("Changing y offset")
-    g.LAYER_Y_OFFSET = int(command[1])
+    v.LAYER_Y_OFFSET = int(command[1])
 
 def command_x_offset(game_logic, command):
     log.info("Changing x offset")
-    g.LAYER_X_OFFSET = int(command[1])
+    v.LAYER_X_OFFSET = int(command[1])
 
 def command_reset_timer(game_logic, command):
     log.info("Resetting timer")

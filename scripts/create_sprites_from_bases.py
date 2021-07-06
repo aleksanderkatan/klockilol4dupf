@@ -18,7 +18,8 @@ def image_iter():
             yield os.path.join(path, name), remove_extension(name)
 
 
-rotatable = ["block_arrow", "ones_one", "block_piston", "pusher", "block_dual_arrow", "block_birdy_arrow"]
+rotatable = ["block_arrow", "ones_one", "block_piston",
+             "pusher", "block_dual_arrow", "block_birdy_arrow", "block_moving_arrow"]
 
 for path, name in image_iter():
     im = Image.open(path)

@@ -21,6 +21,8 @@ hierarchy[(8, 0)] = (400, 4)
 hierarchy[(9, 0)] = (400, 4)
 hierarchy[(10, 0)] = (400, 5)
 
+hierarchy[(11, 0)] = (400, 5)
+
 hierarchy[(101, 0)] = (400, 2)
 hierarchy[(102, 0)] = (400, 3)
 
@@ -51,7 +53,7 @@ hierarchy[(501, 0)] = (400, 4)
 # hubs[5] = [500]
 
 levs = {}
-levs[0] = 37
+levs[0] = 40
 levs[1] = 16
 levs[2] = 14
 levs[3] = 14
@@ -63,7 +65,7 @@ levs[8] = 20
 levs[9] = 14
 levs[10] = 20
 
-levs[11] = 1
+levs[11] = 10
 
 levs[101] = 136
 levs[102] = 136

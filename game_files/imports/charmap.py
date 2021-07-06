@@ -39,6 +39,7 @@ charmap['Y'] = o.block_numeric_dark
 charmap['Z'] = o.block_numeric_dark
 charmap['+'] = o.block_plus
 charmap['/'] = o.block_minus
+charmap['a'] = o.block_moving_arrow
 
 charmap['K'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple
@@ -63,7 +64,7 @@ charmap['_'] = o.block_birdy_arrow
 # CV
 #
 # qwt
-# adhjk
+# dhjk
 # zxcn
 
 

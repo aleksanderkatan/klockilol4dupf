@@ -7,6 +7,7 @@ from game_files.blocks.block_dummy import block_dummy
 from game_files.blocks.block_lamp import block_lamp
 from game_files.blocks.block_numeric import block_numeric
 from game_files.blocks.block_piston import block_piston
+from game_files.blocks.block_moving_arrow import block_moving_arrow
 import game_files.imports.all_sprites as s
 import queue
 import game_files.imports.utils as u
@@ -48,8 +49,8 @@ class block_thunder(block):
         for i in range(state.x):
             for j in range(state.y):
                 if array[i][j] == 1:
-                    trigger = False;
-                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric]:
+                    trigger = False
+                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric, block_moving_arrow]:
                         state.get_block((i, j, pz)).on_step_out()
                         trigger = True
                     if type(state.get_block((i, j, pz))) in [block_piston]:

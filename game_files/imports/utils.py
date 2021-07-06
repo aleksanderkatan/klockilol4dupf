@@ -71,7 +71,7 @@ def reverse_direction(direction):
         return 0
     if direction == 3:
         return 1
-    return None
+    return None     # direction may not be in [4]
 
 def new_single_layer(current_single_layer, key, total_layers):
     new_single_layer_index = -2137
@@ -91,7 +91,7 @@ def hash_string(string):
     hasher.update(bytes(string, "utf-16"))
     return hasher.digest()
 
-def move_pos(pos, direction, move_length):
+def move_pos(pos, direction, move_length=1):
     x, y, z = pos
 
     if direction is None:

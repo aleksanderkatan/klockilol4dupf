@@ -154,6 +154,7 @@ class state:
         if u.out_of_range(x, y, self.x, self.y):
             return
         self.layers[z].grid[x][y] = block
+        block.pos = pos
 
     def get_size(self):
         return self.x, self.y, len(self.layers)
