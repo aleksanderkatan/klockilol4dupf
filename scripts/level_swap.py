@@ -25,4 +25,4 @@ def insert_before(level_1, level_2):
             swap_levels((level_1[0], i), (level_1[0], i+1))
 
 
-insert_before((11, 3), (11, 1))
+swap_levels((11, 6), (11, 9))

@@ -39,13 +39,14 @@ class block_bridge(block):
         if u.out_of_range(x, y, sta.x, sta.y):
             sta.player.dead = True
             return
-        next_step = (x, y, z)
 
-        if not self.stage.states[self.state_index].standable(next_step):
-            swap_block = self.stage.states[self.state_index].get_block(next_step)
+        new_pos = (x, y, z)
+        old_pos = self.pos
+
+        state = self.stage.states[self.state_index]
+        if not state.standable(new_pos):
+            swap_block = state.get_block(new_pos)
             if type(swap_block) is block_blocker:
                 return
-            self.stage.states[self.state_index].set_block(next_step, self)
-            self.stage.states[self.state_index].set_block(self.pos, swap_block)
-            swap_block.pos = self.pos
-            self.pos = next_step
+            state.set_block(new_pos, self)
+            state.set_block(old_pos, swap_block)

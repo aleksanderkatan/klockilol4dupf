@@ -1,6 +1,11 @@
+0.66
+- bridge bugfix
+- dust generated when arrow goes out of boundary or when pushed block does the same
+- added more levels
+
 0.65
 - gave up on 3d
-- more levels
+- added more levels
 - added level_swap.py script
 - added moving_arrow block
 
