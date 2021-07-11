@@ -54,21 +54,21 @@ hierarchy[(501, 0)] = (400, 4)
 
 levs = {}
 levs[0] = 40
-levs[1] = 16
+levs[1] = 17
 levs[2] = 14
 levs[3] = 14
-levs[4] = 9
-levs[5] = 11
+levs[4] = 11
+levs[5] = 12
 levs[6] = 20
-levs[7] = 23
+levs[7] = 24
 levs[8] = 20
 levs[9] = 14
 levs[10] = 20
 
 levs[11] = 10
 
-levs[101] = 136
-levs[102] = 136
+levs[101] = 0
+levs[102] = 0
 
 levs[201] = 0   # hub 1 to the left
 levs[202] = 5   # 8/0 second gap
@@ -93,7 +93,11 @@ level_error = (0, 0)
 level_zero = (0, 0)
 level_infinity = (0, 0)
 
-back_in_hierarchy_levels = [(202, 4)]
+back_in_hierarchy_levels = [
+    (202, 4),
+    (101, 0),
+    (102, 0)
+]
 
 def level_path(level_index):
     level_set, level = level_index
@@ -111,7 +115,9 @@ def next_level(level_index):
         return level_error
     if level_set >= 300:
         return level_set, 0
-    if levs[level_set] == level or level_index in back_in_hierarchy_levels:
+    if level_index in back_in_hierarchy_levels:
+        return up_in_hierarchy(level_index)
+    if levs[level_set] == level:
         return level_set, 0
     return level_set, level + 1
 
@@ -133,7 +139,7 @@ def is_hub(level_index):
 def is_zone(level_index):
     level_set, level = level_index
     if not is_hub(level_index):
-        if level == 0:
+        if level == 0 and not (100 < level_set < 200):
             return True
     return False
 
@@ -148,6 +154,8 @@ def all_levels_iterator():
     for key, value in levs.items():
         for i in range(value+1):
             if i == 0 and key == 400:
+                continue
+            if i == 0 and key == -1:
                 continue
             yield key, i
 
@@ -176,15 +184,20 @@ def up_in_hierarchy(level_index):
 
 def level_name(level_index):
     level_set, level = level_index
-    if level_set < 100:
+
+    if level_set == -1:
+        return "How did you get here?"
+
+    if level_set == 0:
+        return "Debug zone level " + str(level)
+
+    if 0 < level_set < 100:
         if level == 0:
             return "Zone " + str(level_set)
         return "Zone " + str(level_set) + " level " + str(level)
 
     if 100 < level_set < 200:
-        if level != 0:
-            return "Zone random " + str(level_set-100) + " level " + str(level)
-        return "Zone random " + str(level_set-100)
+        return "Random level"
 
     if 200 < level_set < 300:
         return "???"

@@ -171,11 +171,10 @@ class state:
         if level_index is None:
             return None
 
-        for lay in self.layers:
-            for arr in lay.grid:
-                for blo in arr:
-                    if type(blo) is o.block_entrance and blo.target_level == level_index:
-                        return blo.pos
+        for blo in self.block_iterator():
+            if (issubclass(type(blo), o.block_entrance) or issubclass(type(blo), o.block_entrance_random))\
+                    and blo.get_target_level() == level_index:
+                return blo.pos
         return None
 
     def find_portal(self, index):

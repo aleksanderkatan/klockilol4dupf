@@ -95,7 +95,9 @@ def _fill(s, level, last_level_index):
                 if len(line) < 2:
                     break
                 line = line.split()
-                options[line[0]] = line[1:]
+                if line[0] not in options:
+                    options[line[0]] = []
+                options[line[0]].extend(line[1:])
         except StopIteration:
             pass
 
@@ -107,7 +109,8 @@ def _fill(s, level, last_level_index):
             o.block_ones: 'ones',
             o.block_piston: 'pistons',
             o.block_dual_arrow: 'dual_arrows',
-            o.block_moving_arrow: 'moving_arrows'
+            o.block_moving_arrow: 'moving_arrows',
+            o.block_entrance_random: 'entrances_random'
         }
 
         for key, value in blocks.items():

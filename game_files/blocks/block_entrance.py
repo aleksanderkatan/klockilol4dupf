@@ -32,6 +32,9 @@ class block_entrance(block):
         if l.is_level(target_level):
             self.sprite = s.sprites["block_entrance_level"]
 
+    def get_target_level(self):
+        return self.target_level
+
     def on_step_in(self):
         if global_save_state.is_available(self.target_level):
             self.stage.change_to = self.target_level

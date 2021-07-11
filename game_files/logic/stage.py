@@ -37,7 +37,7 @@ class stage:
             self.screen.blit(txt_surface, (v.LEVEL_FONT_OFFSET, v.LEVEL_FONT_OFFSET))
 
     def latest_state(self):
-        return self.states[len(self.states) - 1]
+        return self.states[-1]
 
     def move(self, direction=None):
         if len(self.states) > g.MOVE_LIMIT:

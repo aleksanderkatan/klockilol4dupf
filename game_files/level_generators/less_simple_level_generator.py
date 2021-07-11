@@ -1,7 +1,9 @@
 import random
-# !! this file is supposed to work independently
-# !! this is a simple 2d numeric, perma, ice, jump and arrow level generator
+from game_files.imports.log import log
 
+levels_path = "game_files/levels/"
+
+# this is a simple 2d numeric, perma, ice, jump and arrow level generator
 class better_level_generator:
     def __init__(self, x, y, ice, jump2, jump3, arrow, length, redirect):
         self.x = x
@@ -172,21 +174,21 @@ class better_level_generator:
 def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=None, min_total=None):
     while True:
         generator = better_level_generator(x, y, ice, jump2, jump3, arrow, length, redirect)
-        res = generator.generate("../levels/102/" + str(index) + ".txt")
+        res = generator.generate(levels_path + str(index[0]) + "/" + str(index[1]) + ".lv")
         if res != "FAIL":
             maks, total = res
             if max_num is not None and maks > max_num:
-                print(ind, "num fail")
+                log.info(index, "num fail")
                 continue
             if min_total is not None and total < min_total:
-                print(ind, "length fail")
+                log.info(index, "length fail")
                 continue
-            print(ind, "success")
+            log.info(index, "success")
             break
-        print(ind, "S/E fail")
+        log.info(index, "S/E fail")
 
 
-for ind in range(1, 137):
-    #generate(index=ind, x=10, y=10, ice=0, jump2=0, jump3=0, arrow=0, length=80, redirect=7, max_num=None, min_total=30)
-    generate(index=ind, x=11, y=11, ice=10, jump2=10, jump3=10, arrow=20, length=60, redirect=7, max_num=3, min_total=30)
-    #generate(index=ind, x=100, y=100, ice=0, jump2=0, jump3=0, arrow=0, length=5000, redirect=15, max_num=7, min_total=30)
+# for ind in range(1, 137):
+#     generate(index=ind, x=10, y=10, ice=0, jump2=0, jump3=0, arrow=0, length=80, redirect=7, max_num=None, min_total=30)
+#     generate(index=ind, x=11, y=11, ice=10, jump2=10, jump3=10, arrow=20, length=60, redirect=7, max_num=3, min_total=30)
+#     generate(index=ind, x=100, y=100, ice=0, jump2=0, jump3=0, arrow=0, length=5000, redirect=15, max_num=7, min_total=30)

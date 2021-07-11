@@ -1,4 +1,4 @@
-VERSION = "v0.66"
+VERSION = "v0.67"
 
 FRAMERATE = 30
 MOVE_LIMIT = 1024
@@ -20,7 +20,7 @@ AUTO_REVERSE = True
 THREED = False  # !! does not quite work
 TIMER = True
 
-LOG_INFO = False
+LOG_INFO = True
 LOG_WARNINGS = True
 LOG_ERRORS = True
 

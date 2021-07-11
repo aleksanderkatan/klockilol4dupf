@@ -53,14 +53,15 @@ class save_state:
         self.save_data = save_data()
         self.restore()
 
-    def complete(self, level_index):
+    def complete(self, level_index, save=True):
         level_set, level = level_index
         if level_set not in self.save_data.completed:
             self.save_data.completed[level_set] = []
         if level not in self.save_data.completed[level_set]:
             self.save_data.completed[level_set].append(level)
 
-        self.save()
+        if save:
+            self.save()
 
     def save(self):
         log.info("saving")
@@ -124,10 +125,11 @@ class save_state:
     def complete_all(self):
         self.reset_completed()
         for key, val in l.levs.items():
-            if key == 400:
+            if key == 400 or (100 < key < 200):
                 continue
             for i in range(1, val + 1):
-                self.complete((key, i))
+                self.complete((key, i), False)
+        self.save()
 
     def is_event_completed(self, index):
         return index in self.save_data.events

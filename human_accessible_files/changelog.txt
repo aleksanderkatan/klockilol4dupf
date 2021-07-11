@@ -1,3 +1,9 @@
+0.67
+- level options may now be spread into multiple lines (each starting with option name), and have spaces in between
+- added entrance_random levels are now generated on demand
+- optimization for complete_all command
+- moved levels from 277 to their respective zones
+
 0.66
 - bridge bugfix
 - dust generated when arrow goes out of boundary or when pushed block does the same
