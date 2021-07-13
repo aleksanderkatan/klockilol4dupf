@@ -25,6 +25,7 @@ from game_files.blocks.block_plus import block_plus
 from game_files.blocks.block_minus import block_minus
 from game_files.blocks.block_moving_arrow import block_moving_arrow
 from game_files.blocks.block_entrance_random import block_entrance_random
+from game_files.blocks.block_perma_unsteppable import block_perma_unsteppable
 
 from game_files.blocks.block_shrek import block_shrek
 from game_files.blocks.undertale.block_undertale_purple import block_undertale_purple
@@ -65,6 +66,7 @@ standables.add(block_plus)
 standables.add(block_minus)
 standables.add(block_moving_arrow)
 standables.add(block_entrance_random)
+standables.add(block_perma_unsteppable)
 
 standables.add(block_shrek)
 standables.add(block_undertale_yellow)

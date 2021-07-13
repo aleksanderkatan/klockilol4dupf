@@ -12,6 +12,8 @@ class view_constants:
             self.LAYER_X_OFFSET = self.WITCH_FONT_SIZE = self.WITCH_FONT_OFFSET = self.LEVEL_FONT_SIZE = \
             self.LEVEL_FONT_OFFSET = self.BLOCK_3D_DIFFERENCE = 0
 
+        self.DECORATION_BASE_SIZE = 32
+
         self.update()
 
     def update(self):
@@ -39,6 +41,9 @@ class view_constants:
         x_scale = x/self.WINDOW_X
         y_scale = y/self.WINDOW_Y
         self.set_scales(x_scale, y_scale)
+
+    def get_decoration_rescale(self):
+        return self.BLOCK_X_SIZE/self.DECORATION_BASE_SIZE, self.BLOCK_Y_SIZE/self.DECORATION_BASE_SIZE
 
 
 global_view_constants = view_constants()

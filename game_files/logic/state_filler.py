@@ -8,6 +8,8 @@ from game_files.imports.charmap import charmap
 from game_files.other.chav import chav
 import game_files.imports.all_blocks as o
 import game_files.imports.levels as l
+import game_files.imports.all_sprites as sprites
+from game_files.other.decoration import decoration
 
 def _preprocess_level(level_index):
     path = l.level_path(level_index)
@@ -151,6 +153,18 @@ def _fill(s, level, last_level_index):
                 z = int(option[2])
                 ticks = int(option[3])
                 s.bombs.append(bomb(s.screen, s.stage, s.state_index, (x, y, z), ticks))
+
+        s.decorations = []
+        if 'decorations' in options:
+            for option in options['decorations']:
+                option = option.split('/')      # 0/3/3/decoration_1x2_tree/mid/low
+                x = int(option[0])
+                y = int(option[1])
+                z = int(option[2])
+                sprite = sprites.sprites[option[3]]
+                h_align = option[4]
+                v_align = option[5]
+                s.decorations.append(decoration(s.screen, s.stage, s.state_index, (x, y, z), sprite, h_align, v_align))
 
         starting_point = s.find_level_entrance(last_level_index)
         if starting_point is not None:

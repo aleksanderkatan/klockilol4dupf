@@ -1,6 +1,12 @@
+0.68
+- implemented decoration system
+- added some decorations and new Witch sprite
+- added unsteppable block that looks like perma
+
 0.67
 - level options may now be spread into multiple lines (each starting with option name), and have spaces in between
-- added entrance_random levels are now generated on demand
+- added entrance_random
+- random levels are now generated on demand
 - optimization for complete_all command
 - moved levels from 277 to their respective zones
 

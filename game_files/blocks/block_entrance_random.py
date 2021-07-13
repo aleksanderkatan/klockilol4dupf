@@ -32,11 +32,13 @@ class block_entrance_random(block):
 
     def on_step_in(self):
         if self.configuration == 1:
-            generate(index=self.target_level, x=10, y=10, ice=0, jump2=0, jump3=0, arrow=0, length=80, redirect=7, max_num=None,
+            generate(index=self.target_level, x=9, y=9, ice=0, jump2=0, jump3=0, arrow=0, length=60, redirect=6, max_num=4,
                      min_total=30)
         elif self.configuration == 2:
-            generate(index=self.target_level, x=11, y=11, ice=10, jump2=10, jump3=10, arrow=20, length=60, redirect=7, max_num=3,
-                     min_total=30)
+            # generate(index=self.target_level, x=11, y=11, ice=10, jump2=6, jump3=6, arrow=12, length=60, redirect=5, max_num=3,
+            #          min_total=30)
+            generate(index=self.target_level, x=6, y=6, ice=0, jump2=15, jump3=0, arrow=0, length=20, redirect=3, max_num=3,
+                     min_total=None)
 
         self.stage.change_to = self.target_level
 
