@@ -72,7 +72,6 @@ class game_logic:
 
         if self.stage.latest_state().completed:
             self.complete()
-            return
 
         if self.stage.change_to is not None:
             self.set_stage(self.stage.change_to)

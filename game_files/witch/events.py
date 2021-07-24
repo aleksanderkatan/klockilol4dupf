@@ -12,6 +12,11 @@ events[-1].messages.append("
 """
 
 events.append(witch_event())
+events[-1].where = ((0, 0), None)
+events[-1].messages.append("Jak się tu znalazłeś?")
+events[-1].messages.append("Zrestartuj grę. Jak ci się chce możesz napisać issue, najlepiej opisując jak się to stało.")
+
+events.append(witch_event())
 events[-1].where = ((400, 1), None)
 events[-1].messages.append("MUAHUAEHEUAHEUHAHUEHA!! [space]")
 events[-1].messages.append("Znowu wpadłeś w moją pułapkę!")

@@ -1,7 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 from game_files.imports.log import log
-from game_files.level_generators.less_simple_level_generator import generate
+import game_files.imports.all_random_level_generators as r
 
 
 class block_entrance_random(block):
@@ -20,7 +20,7 @@ class block_entrance_random(block):
         self.update_target_level()
 
     def update_target_level(self):
-        if self.configuration not in [1, 2]:
+        if self.configuration not in [1, 2, 3]:
             log.error("Random entrance configuration invalid")
             self.target_level = None
             return
@@ -29,17 +29,23 @@ class block_entrance_random(block):
             self.target_level = (101, 0)
         elif self.configuration == 2:
             self.target_level = (102, 0)
+        elif self.configuration == 3:
+            self.target_level = (103, 0)
 
     def on_step_in(self):
+        # also add above!
+        result = False
         if self.configuration == 1:
-            generate(index=self.target_level, x=9, y=9, ice=0, jump2=0, jump3=0, arrow=0, length=60, redirect=6, max_num=4,
-                     min_total=30)
+            result = r.generate_LSLG(index=self.target_level, x=9, y=9, ice=0, jump2=0, jump3=0, arrow=0, length=60,
+                                     redirect=6, max_num=4, min_total=30)
         elif self.configuration == 2:
-            # generate(index=self.target_level, x=11, y=11, ice=10, jump2=6, jump3=6, arrow=12, length=60, redirect=5, max_num=3,
-            #          min_total=30)
-            generate(index=self.target_level, x=6, y=6, ice=0, jump2=15, jump3=0, arrow=0, length=20, redirect=3, max_num=3,
-                     min_total=None)
+            result = r.generate_LSLG(index=self.target_level, x=6, y=6, ice=0, jump2=15, jump3=0, arrow=0, length=20,
+                                     redirect=4, max_num=3, min_total=None)
+        elif self.configuration == 3:
+            result = r.generate_PLG(index=self.target_level, x=7, y=7, portals=4, min_portals=2, pair_portals=True, length=30, redirect=4)
 
+        if result is None or not result:
+            return
         self.stage.change_to = self.target_level
 
     def on_step_out(self):
@@ -47,5 +53,3 @@ class block_entrance_random(block):
 
     def get_target_level(self):
         return self.target_level
-
-

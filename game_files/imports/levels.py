@@ -25,6 +25,7 @@ hierarchy[(11, 0)] = (400, 5)
 
 hierarchy[(101, 0)] = (400, 2)
 hierarchy[(102, 0)] = (400, 3)
+hierarchy[(103, 0)] = (400, 4)
 
 hierarchy[(201, 0)] = (400, 1)
 hierarchy[(202, 0)] = (8, 0)
@@ -58,7 +59,7 @@ levs[1] = 17
 levs[2] = 14
 levs[3] = 14
 levs[4] = 11
-levs[5] = 12
+levs[5] = 20
 levs[6] = 20
 levs[7] = 24
 levs[8] = 20
@@ -69,6 +70,7 @@ levs[11] = 10
 
 levs[101] = 0
 levs[102] = 0
+levs[103] = 0
 
 levs[201] = 0   # hub 1 to the left
 levs[202] = 5   # 8/0 second gap
@@ -90,13 +92,12 @@ levs[501] = 0
 level_error_path = 'game_files/levels/0/1.txt'
 
 level_error = (0, 0)
-level_zero = (0, 0)
-level_infinity = (0, 0)
 
 back_in_hierarchy_levels = [
     (202, 4),
     (101, 0),
-    (102, 0)
+    (102, 0),
+    (103, 0),
 ]
 
 def level_path(level_index):

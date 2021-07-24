@@ -83,7 +83,7 @@ class better_level_generator:
             result.append(arr)
         return result
 
-    def generate(self, file):
+    def try_generate(self, file):
         direction = random.randint(0, 4)
         x = random.randint(1, self.x-2)
         y = random.randint(1, self.y-2)
@@ -106,8 +106,12 @@ class better_level_generator:
                 direction = random.randint(0, 3)
 
             new_direction = direction
-            while self.out_of_range(better_level_generator.next_pos((x, y), new_direction)):
+            for j in range(100):
+                if not self.out_of_range(better_level_generator.next_pos((x, y), new_direction)):
+                    break
                 new_direction = random.randint(0, 3)
+                if j == 99:
+                    return "FAIL"
             direction = new_direction
             # direction is set
 
@@ -172,9 +176,9 @@ class better_level_generator:
         return maks, total
 
 def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=None, min_total=None):
-    while True:
+    for _ in range(100):
         generator = better_level_generator(x, y, ice, jump2, jump3, arrow, length, redirect)
-        res = generator.generate(levels_path + str(index[0]) + "/" + str(index[1]) + ".lv")
+        res = generator.try_generate(levels_path + str(index[0]) + "/" + str(index[1]) + ".lv")
         if res != "FAIL":
             maks, total = res
             if max_num is not None and maks > max_num:
@@ -184,11 +188,9 @@ def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=No
                 log.info(index, "length fail")
                 continue
             log.info(index, "success")
-            break
+            return True
         log.info(index, "S/E fail")
+    log.error("FAIL: too much failed generating tries")
+    return False
 
 
-# for ind in range(1, 137):
-#     generate(index=ind, x=10, y=10, ice=0, jump2=0, jump3=0, arrow=0, length=80, redirect=7, max_num=None, min_total=30)
-#     generate(index=ind, x=11, y=11, ice=10, jump2=10, jump3=10, arrow=20, length=60, redirect=7, max_num=3, min_total=30)
-#     generate(index=ind, x=100, y=100, ice=0, jump2=0, jump3=0, arrow=0, length=5000, redirect=15, max_num=7, min_total=30)

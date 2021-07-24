@@ -1,3 +1,7 @@
+0.69
+- portal level generator added
+- some level changes
+
 0.68
 - implemented decoration system
 - added some decorations and new Witch sprite
