@@ -24,3 +24,8 @@ e000000000mm000
 entrances_random 1
 entrances 2/0 301/0 400/1 3/0 400/3 203/0
 map_bridges 1 2 3
+decorations -2/12/0/decoration_1x3_tree/mid/down
+decorations 2/13/0/decoration_1x3_tree/mid/down
+decorations 4/15/0/decoration_1x3_tree/mid/down
+decorations 0/14.4/0/decoration_8x4_giant_branch/mid/down
+decorations 0/13/0/decoration_2x2_bird/mid/down

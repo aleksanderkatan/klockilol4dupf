@@ -1,18 +1,20 @@
-4
-7
+6
+9
 1
-SOOO
-OOOO
-OOOO
-OOOO
-OOOO
-OOOO
-OOOE
+......
+.SOOO.
+.OOOO.
+.OOOO.
+.OOOO.
+.OOOO.
+.OOOO.
+.OOOE.
+......
 
 ones   ^ ^ ^
-ones < < < <
-ones > > > >
-ones < < < <
-ones > > > >
-ones < < < <
-ones > > >
+ones v < < >
+ones > v <^ <
+ones < <^>v <^>v v
+ones < > > v
+ones < ^ < <
+ones v v v

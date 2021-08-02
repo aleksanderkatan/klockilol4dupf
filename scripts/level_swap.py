@@ -1,7 +1,7 @@
 import os
 
 levels_path = "../game_files/levels/"
-temp_path = levels_path + "-1/0.lv"
+temp_path = levels_path + "temp/0.lv"
 
 def level_path(level):
     return levels_path + str(level[0]) + "/" + str(level[1]) + ".lv"
@@ -28,4 +28,14 @@ def insert_before(level_1, level_2):
 # swap_levels((11, 6), (11, 9))
 # insert_before((5, 13), (5, 1))
 # insert_before((5, 14), (5, 2))
-swap_levels((5, 2), (5, 3))
+# swap_levels((5, 2), (5, 3))
+# insert_before((1, 19), (1, 2))
+# swap_levels((1, 6), (1, 5))
+# insert_before((1, 18), (1, 12))
+# swap_levels((1, 16), (1, 15))
+# insert_before((1, 19), (1, 16))
+# swap_levels((1, 17), (1, 18))
+# insert_before((1, 14), (1, 17))
+swap_levels((1, 16), (1, 15))
+
+

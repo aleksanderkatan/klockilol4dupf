@@ -60,10 +60,11 @@ class game_logic:
 
     def complete(self):
         if not l.is_level(self.level_index):
-            return
+            return False
 
         global_save_state.complete(self.level_index)
         self.set_stage(l.next_level(self.level_index))
+        return True
 
     def move(self):
         global_save_state.tick_timer()
@@ -71,7 +72,8 @@ class game_logic:
             global_save_state.save()
 
         if self.stage.latest_state().completed:
-            self.complete()
+            if self.complete():
+                return
 
         if self.stage.change_to is not None:
             self.set_stage(self.stage.change_to)

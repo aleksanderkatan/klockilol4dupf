@@ -158,9 +158,9 @@ def _fill(s, level, last_level_index):
         if 'decorations' in options:
             for option in options['decorations']:
                 option = option.split('/')      # 0/3/3/decoration_1x2_tree/mid/low
-                x = int(option[0])
-                y = int(option[1])
-                z = int(option[2])
+                x = float(option[0])
+                y = float(option[1])
+                z = float(option[2])
                 sprite = sprites.sprites[option[3]]
                 h_align = option[4]
                 v_align = option[5]

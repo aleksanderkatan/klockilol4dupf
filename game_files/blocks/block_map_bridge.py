@@ -14,7 +14,7 @@ class block_map_bridge(block):
 
     def on_step_in(self):
         if not global_save_state.is_set_completed(self.level_set):
-            self.stage.states[self.state_index].player.dead = True
+            self.stage.states[self.state_index].invalid = True
 
     def options(self, option):
         self.set_level_set(int(option))

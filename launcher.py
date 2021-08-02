@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import messagebox as tkm
 from game_files.imports.save_state import global_save_state
 from game_files.imports.view_constants import global_view_constants as v
+import main
 
 
 window = tk.Tk()
@@ -58,7 +59,7 @@ def bt_start_method():
     x, y, _ = resolutions[combo_res.current()]
     resolution = (x, y)
     v.change_resolution(resolution)
-    import main
+    main.run()
 
 
 tk.Button(window, text="Reset save", command=bt_reset_method, width=10).grid(column=1, row=3)

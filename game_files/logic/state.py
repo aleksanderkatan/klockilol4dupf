@@ -122,7 +122,7 @@ class state:
         if not self.player.dead:
             self.draw_player()
         if self.player.dead:
-            self.screen.blit(s.sprites['you_died'], (0, 0))
+            self.screen.blit(s.sprites['background_you_died'], (0, 0))
 
     def draw_one_layer(self, layer_index):  # !! can't be used above
         if self.player.dead or layer_index >= len(self.layers):

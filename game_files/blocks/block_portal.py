@@ -13,12 +13,13 @@ class block_portal(block):
         return block_portal(self.screen, self.stage, new_state_index, self.pos, self.destination_index, self.my_index)
 
     def on_step_in(self):
-        destination = self.stage.states[self.state_index].find_portal(self.destination_index)
+        state = self.stage.states[self.state_index]
+        destination = state.find_portal(self.destination_index)
         if destination is None:
             destination = self
 
-        self.stage.states[self.state_index].teleport_player(destination.pos, activate_step_in=False)
-        player = self.stage.states[self.state_index].player
+        state.teleport_player(destination.pos, activate_step_in=False)
+        player = state.player
         if player.last_move_direction is not None and player.last_move_direction != 4:
             player.enqueue_move(player.last_move_direction)
 

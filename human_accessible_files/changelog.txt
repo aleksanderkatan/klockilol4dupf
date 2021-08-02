@@ -1,3 +1,9 @@
+0.70
+- added more decorations
+- added more levels, changed some old levels
+- bugfixes
+- level swaps
+
 0.69
 - portal level generator added
 - some level changes
