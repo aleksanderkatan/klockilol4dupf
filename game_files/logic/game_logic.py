@@ -7,6 +7,7 @@ import game_files.imports.all_sprites as s
 import game_files.imports.globals as g
 import game_files.imports.levels as l
 import game_files.logic.commands as c
+import game_files.imports.keybindings as k
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.save_state import global_save_state
 from game_files.witch.witch import witch
@@ -18,6 +19,17 @@ FONT_2 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf",
 
 FONT_SIZE_4 = v.LEVEL_FONT_SIZE//4
 FONT_4 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
+
+def key_to_direction(key):
+    if k.is_right(key):
+        return 0
+    if k.is_up(key):
+        return 1
+    if k.is_left(key):
+        return 2
+    if k.is_down(key):
+        return 3
+    return None
 
 
 class game_logic:
@@ -45,6 +57,7 @@ class game_logic:
             self.stage.reverse()
             self.stage.change_to = None
             return False
+        log.info("setting stage to", new_stage.level_index)
         self.stage = new_stage
         self.single_layer = None
         self.level_index = self.stage.level_index
@@ -56,7 +69,7 @@ class game_logic:
             sys.exit(0)
 
         if event.type == pygame.KEYDOWN:
-            self.keys_registered.append(event)
+            self.keys_registered.append((event.key, event.unicode))
 
     def complete(self):
         if not l.is_level(self.level_index):
@@ -82,27 +95,31 @@ class game_logic:
         self.witch.check_for_events(self.level_index, self.stage)
 
         next_move_direction = None
-        for event in self.keys_registered:
+        for key, unicode in self.keys_registered:
             witch_was_active = self.witch.is_active()
             input_box_was_active = self.input_box.active
 
-            self.input_box.handle_event(event)  # !! ignores until activated
-            self.witch.handle_event(event)  # !! ignores until activated
+            if not witch_was_active:
+                self.input_box.handle_key_pressed(key, unicode)  # !! ignores unless active
+            if not input_box_was_active:
+                self.witch.handle_key_pressed(key)  # !! ignores unless active
 
             if witch_was_active or input_box_was_active:
                 continue
 
-            key = event.key
-            next_move_direction = u.key_to_direction(key)
+            next_move_direction = key_to_direction(key)
 
-            if key in [pygame.K_q, pygame.K_RSHIFT]:
+            if k.is_reverse(key):
                 self.stage.reverse()
 
-            if key in [pygame.K_r, pygame.K_SLASH]:
+            if k.is_reset(key):
+                log.info("Resetting")
                 self.stage.reset()
 
-            if key == pygame.K_ESCAPE:
-                if self.level_index[0] == 400:
+            if k.is_back_in_hierarchy(key):
+                target = l.up_in_hierarchy(self.level_index)
+                log.info("Going back to", target)
+                if target == self.level_index:
                     self.stage.reset()
                 else:
                     self.set_stage(l.up_in_hierarchy(self.level_index))

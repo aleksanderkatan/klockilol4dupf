@@ -8,4 +8,7 @@ the lot
 - rumianek zone
 - plp zone
 - english translation and implementation of languages
+- jump + dual_arrow interaction
+- export keybindings to another file
+
 

@@ -1,5 +1,6 @@
 import pygame as pg
 import game_files.imports.globals as g
+import game_files.imports.keybindings as k
 from game_files.imports.view_constants import global_view_constants as v
 
 COLOR_INACTIVE = pg.Color('lightskyblue3')
@@ -15,12 +16,13 @@ class input_box:
         self.txt_surface = FONT.render(text, True, self.color)
         self.active = False
 
-    def handle_event(self, event):
-        if event.key == pg.K_RSHIFT or event.key == pg.K_ESCAPE:
+    def handle_key_pressed(self, key, unicode):
+        if k.is_input_box_disable(key):
             self.active = False
             self.text = ''
+            return
 
-        if event.key == pg.K_RETURN:
+        if k.is_input_box_enable(key):
             self.active = not self.active
             if not self.active:
                 self.stage.execute_command(self.text)
@@ -28,11 +30,11 @@ class input_box:
 
         if not self.active:
             return
-        elif event.key == pg.K_BACKSPACE:
+        elif k.is_input_box_delete(key):
             self.text = self.text[:-1]
         else:
-            if len(self.text) < g.MAX_COMMAND_LENGTH and event.key != pg.K_RETURN:
-                self.text += event.unicode
+            if len(self.text) < g.MAX_COMMAND_LENGTH and not k.is_input_box_enable(key):
+                self.text += unicode
         self.txt_surface = FONT.render(self.text, True, self.color)
 
     def draw(self, screen):

@@ -14,18 +14,6 @@ def index_to_position(x, y, z, size_x, size_y, size_z):
             z - size_z / 2) * v.LAYER_Y_OFFSET
 
 
-def key_to_direction(key):
-    if key in [pygame.K_d, pygame.K_RIGHT]:
-        return 0
-    if key in [pygame.K_w, pygame.K_UP]:
-        return 1
-    if key in [pygame.K_a, pygame.K_LEFT]:
-        return 2
-    if key in [pygame.K_s, pygame.K_DOWN]:
-        return 3
-    return None
-
-
 def out_of_range(x, y, x_max, y_max):
     if x < 0:
         return True

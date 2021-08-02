@@ -1,9 +1,10 @@
-from game_files.witch.events import events
-from game_files.imports.save_state import global_save_state
 import pygame as pg
 import game_files.imports.all_sprites as s
-from game_files.witch.witch_box import witch_box
 import game_files.imports.globals as g
+import game_files.imports.keybindings as k
+from game_files.witch.witch_box import witch_box
+from game_files.witch.events import events
+from game_files.imports.save_state import global_save_state
 
 class witch:
     def __init__(self, screen):
@@ -37,8 +38,8 @@ class witch:
         if self.current_message() is not None:
             self.text_box.set_text(self.current_message())
 
-    def handle_event(self, event):
-        if event.key == pg.K_SPACE:
+    def handle_key_pressed(self, key):
+        if k.is_witch_continue(key):
             if self.active_event is not None:
                 self.active_event = self.active_event.advance()
         self.update_text_box()

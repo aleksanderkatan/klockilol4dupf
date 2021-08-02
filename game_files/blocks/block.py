@@ -15,9 +15,6 @@ class block(metaclass=abc.ABCMeta):
         self.state_index = state_index
         self.pos = pos
 
-    def replaced_with(self):
-        return None
-
     def options(self, option):
         pass
 
@@ -26,5 +23,5 @@ class block(metaclass=abc.ABCMeta):
             self.screen.blit(self.sprite[where_is_player], pos)
 
     @abc.abstractmethod
-    def copy(self, new_state_index):    # !! copy is only for duplicating states
+    def copy(self, new_state_index):    # copy is used only for duplicating states
         pass
