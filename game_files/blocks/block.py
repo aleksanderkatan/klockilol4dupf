@@ -22,6 +22,9 @@ class block(metaclass=abc.ABCMeta):
         if where_is_player is not None:
             self.screen.blit(self.sprite[where_is_player], pos)
 
+    def has_barrier(self, direction, into):
+        return False
+
     @abc.abstractmethod
     def copy(self, new_state_index):    # copy is used only for duplicating states
         pass

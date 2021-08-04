@@ -6,7 +6,7 @@ from tkinter import messagebox as tkm
 from game_files.imports.save_state import global_save_state
 from game_files.imports.view_constants import global_view_constants as v
 import main
-
+import threading
 
 window = tk.Tk()
 window.title("klockilol4dupf launcher")
@@ -53,13 +53,18 @@ def bt_reset_method():
     update_completion()
 
 
-def bt_start_method():
-    window.withdraw()
-
+def run_game():
     x, y, _ = resolutions[combo_res.current()]
     resolution = (x, y)
     v.change_resolution(resolution)
     main.run()
+
+
+def bt_start_method():
+    window.withdraw()
+
+    thread = threading.Thread(target=run_game())
+    thread.start()
 
 
 tk.Button(window, text="Reset save", command=bt_reset_method, width=10).grid(column=1, row=3)

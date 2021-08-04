@@ -59,7 +59,6 @@ charmap[']'] = o.block_birdy_arrow
 charmap['-'] = o.block_birdy_arrow
 charmap['_'] = o.block_birdy_arrow
 
-
 # letters left:
 # QWU
 # FGHK
@@ -68,5 +67,3 @@ charmap['_'] = o.block_birdy_arrow
 # qwt
 # dhjk
 # zc
-
-

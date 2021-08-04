@@ -135,7 +135,7 @@ def command_load_all(game_logic, command):
     if len(problems) > 0:
         log.error("Errors in stages: " + str(problems))
     else:
-        log.error("No errors!")
+        log.info("No errors!")
 
 def command_ls(game_logic, command):
     message = l.levels_ls()

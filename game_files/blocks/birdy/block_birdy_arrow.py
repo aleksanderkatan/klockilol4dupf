@@ -10,12 +10,6 @@ class block_birdy_arrow(block):
         self.sprite = s.sprites["error"]
         self.set_direction(direction)
 
-    def on_step_in(self):
-        player = self.stage.latest_state().player
-        if u.reverse_direction(player.last_move_direction) == self.direction:
-            self.stage.states[self.state_index].invalid = True
-            # self.stage.latest_state().teleport_player(player.last_move_pos)
-
     def set_direction(self, direction):
         self.direction = direction
         if 0 <= direction <= 3:
@@ -28,4 +22,7 @@ class block_birdy_arrow(block):
 
     def options(self, option):
         self.set_direction(u.char_to_direction(option[-1]))
+
+    def has_barrier(self, direction, into):
+        return direction == self.direction and into is True
 

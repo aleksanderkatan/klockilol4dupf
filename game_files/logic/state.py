@@ -151,6 +151,23 @@ class state:
             return True
         return False
 
+    def has_barrier(self, pos, direction):
+        if g.CHEATS and g.KBcheat:
+            return False
+        if direction not in [0, 1, 2, 3]:
+            return False
+        pos2 = u.move_pos(pos, direction)
+        blo1 = self.get_block(pos)
+        blo2 = self.get_block(pos2)
+
+        if blo1 is None and blo2 is None:
+            return False
+        if blo2 is None:
+            return blo1.has_barrier(direction, False)
+        if blo1 is None:
+            return blo2.has_barrier(u.reverse_direction(direction), True)
+        return blo1.has_barrier(direction, False) or blo2.has_barrier(u.reverse_direction(direction), True)
+
     def get_block(self, pos):
         x, y, z = pos
         if u.out_of_range(x, y, self.x, self.y) or z < 0 or z > len(self.layers):

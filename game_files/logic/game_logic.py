@@ -126,8 +126,7 @@ class game_logic:
 
             self.single_layer = u.new_single_layer(self.single_layer, key, self.stage.latest_state().z)
 
-        keys = pygame.key.get_pressed()
-        g.KBcheat = (keys[pygame.K_b] and keys[pygame.K_k])
+        g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
         self.stage.move(next_move_direction)
         if g.AUTO_REVERSE and self.stage.latest_state().player.dead:
             self.stage.reverse()

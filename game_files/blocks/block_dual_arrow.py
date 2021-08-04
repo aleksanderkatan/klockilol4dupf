@@ -16,17 +16,12 @@ class block_dual_arrow(block):
         return block_dual_arrow(self.screen, self.stage, new_state_index, self.pos, self.direction_1, self.direction_2)
 
     def on_step_in(self):
+        print(self.direction_1, self.direction_2)
         state = self.stage.states[self.state_index]
         if state.player.last_move_direction == u.reverse_direction(self.direction_1):
             state.player.enqueue_move(self.direction_2)
         elif state.player.last_move_direction == u.reverse_direction(self.direction_2):
             state.player.enqueue_move(self.direction_1)
-        elif state.player.last_move_direction == 4:
-            pass
-        else:
-            state.invalid = True
-            # self.stage.reverse()
-            # state.teleport_player(state.player.last_move_pos)
 
     def options(self, option):
         direction_1 = u.char_to_direction(option[0])
@@ -49,3 +44,7 @@ class block_dual_arrow(block):
             self.sprite = s.sprites["block_dual_arrow_3"]
         else:
             self.sprite = s.sprites["block_dual_arrow_" + str(self.direction_1)]
+
+    def has_barrier(self, direction, into):
+        barrier_directions = [i for i in range(4) if i not in [self.direction_1, self.direction_2]]
+        return direction in barrier_directions

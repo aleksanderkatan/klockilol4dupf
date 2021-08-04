@@ -72,7 +72,6 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
         if state.player.pos == old_pos and self.clinged:
             if self.finished:
                 state.get_block(old_pos).on_step_out()
-                print('out')
 
         self.pos = new_pos
 

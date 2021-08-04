@@ -8,8 +8,6 @@ class block_perma_unsteppable(block_perma):
     def copy(self, new_state_index):
         return block_perma_unsteppable(self.screen, self.stage, new_state_index, self.pos)
 
-    def on_step_in(self):
-        state = self.stage.states[self.state_index]
-        state.invalid = True
-
+    def has_barrier(self, direction, into):
+        return into
 

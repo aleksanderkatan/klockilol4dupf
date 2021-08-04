@@ -53,15 +53,23 @@ class player:
             self.this_move_direction = direction
             self.enqueued_move = None
         else:
-            block = self.stage.states[self.state_index].get_block(self.pos)
             self.this_move_direction = direction_suggestion
-            if type(block) is o.block_dual_arrow:
-                if direction_suggestion not in [block.direction_1, block.direction_2]:
-                    self.this_move_direction = None
 
-    def move(self):  # !!set_next_move_direction must be called first
+    def move(self):  # !! set_next_move_direction must be called first
+        state = self.stage.states[self.state_index]
         move_length = self.next_move_length
         move_direction = self.this_move_direction
+
+        temp_pos = self.pos
+        for i in range(move_length):
+            if state.has_barrier(temp_pos, move_direction):
+                move_length = i
+                break
+            temp_pos = u.move_pos(temp_pos, move_direction)
+
+        if move_length == 0:        # moves of length 0 are invalid! (would trigger on_step_out and on_step_in)
+            state.invalid = True
+            return
 
         new_pos = u.move_pos(self.pos, move_direction, move_length)
 
