@@ -18,13 +18,12 @@ def _write(log_type, args):
         message = message + str(arg) + " "
 
     if log_type == "INFO":
-        print("INFO:", message)
+        message = "INFO: " + message
     elif log_type == "WARNING":
-        print(colors.WARNING + "WARNING: " + message + colors.ENDC)
+        message = colors.WARNING + "WARNING: " + message + colors.ENDC
     elif log_type == "ERROR":
-        print(colors.ERROR + "ERROR: " + message + colors.ENDC)
-    elif log_type == "PRINT":
-        print(message)
+        message = colors.ERROR + "ERROR: " + message + colors.ENDC
+    print(message)
 
 
 class log_class:

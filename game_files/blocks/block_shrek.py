@@ -14,12 +14,12 @@ class block_shrek(block):
         return block_shrek(self.screen, self.stage, new_state_index, self.pos)
 
     def on_step_in(self):
-        global_save_state.change_shrek()
+        global_save_state.set("shrek", not global_save_state.get("shrek", False))
 
     def draw(self, pos, where_is_player):
         if where_is_player is not None:
             self.screen.blit(self.sprite[where_is_player], pos)
-            self.screen.blit(self.player_sprite[global_save_state.is_shrek()], pos)
+            self.screen.blit(self.player_sprite[global_save_state.get("shrek", False)], pos)
 
 
 

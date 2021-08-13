@@ -7,41 +7,57 @@ import game_files.imports.utils as u
 from game_files.imports.save_state import global_save_state
 from game_files.imports.view_constants import global_view_constants as v
 
-
 public_commands = {}
+
 
 def command_reset_all(game_logic, command):
     log.warning("Eradicating save file")
-    global_save_state.reset()
+    global_save_state.hard_erase_all()
     game_logic.level_index = None
     game_logic.set_stage((400, 1))
 
+
 def command_quit(game_logic, command):
     log.info("Quitting")
-    pygame.quit()
-    sys.exit(0)
+    exit_game()
+
 
 def command_switch_timer(game_logic, command):
     log.info("Switching timer")
     g.TIMER = not g.TIMER
 
+
 def command_switch_witch(game_logic, command):
     log.info("Switching witch")
     g.WITCH = not g.WITCH
 
+
 def command_help_public(game_logic, command):
     message = "Public commands:\n"
-    message += u.list_of_commands(public_commands)
+    message += list_of_commands(public_commands)
     log.print(message)
+
 
 def command_completion(game_logic, command):
     message = "Completion: "
     message += str(global_save_state.get_completion())
     log.print(message)
 
+
+def command_logged_keys(game_logic, command):
+    message = "Remembered moves:\n"
+    t = {0: "right", 1: "up", 2: "left", 3: "down"}
+    for key, value in t.items():
+        message += value + ": " + str(global_save_state.get("moves_direction_" + str(key), 0)) + "\n"
+    message += "reverses: " + str(global_save_state.get("reverses", 0)) + "\n"
+    message += "resets: " + str(global_save_state.get("resets", 0)) + "\n"
+    message += "escapes: " + str(global_save_state.get("escapes", 0)) + "\n"
+    log.print(message)
+
+
 def command_enable_cheats(game_logic, command):
     if g.CHEATS:
-        log.info("Cheats already enabled")
+        log.info("Cheats already enabled\nIf you want to disable them, use another command")
         return
     log.info("Attempting to enable cheats")
     if len(command) != 2:
@@ -51,8 +67,8 @@ def command_enable_cheats(game_logic, command):
     if pw_hash != g.PASSWORD_HASH:
         log.info("WRONG PASSWORD!")
     else:
-        log.info("Cheats enabled")
         g.CHEATS = True
+        log.info("Cheats enabled")
 
 
 public_commands["reset_all"] = command_reset_all
@@ -73,13 +89,16 @@ public_commands["help"] = command_help_public
 
 public_commands["completion"] = command_completion
 
+public_commands["logged_keys"] = command_logged_keys
+public_commands["lk"] = command_logged_keys
+
 public_commands["enable_cheats"] = command_enable_cheats
 public_commands["ec"] = command_enable_cheats
-
 
 # second section (root needed)
 
 root_commands = {}
+
 
 def command_lv(game_logic, command):
     for arg in command[1:]:
@@ -93,48 +112,62 @@ def command_lv(game_logic, command):
         log.info("Changing level to: " + command[1] + " " + command[2])
         game_logic.set_stage((int(command[1]), int(command[2])))
 
+
 def command_previous(game_logic, command):
     log.info("Previous level")
     game_logic.set_stage(l.previous_level(game_logic.stage.level_index))
+
 
 def command_next(game_logic, command):
     log.info("Completing current level")
     game_logic.complete()
 
+
 def command_duda_chuj(game_logic, command):
     log.info("Swapping background")
     g.DUDA_CHUJ = not g.DUDA_CHUJ
+
 
 def command_y_offset(game_logic, command):
     log.info("Changing y offset")
     v.LAYER_Y_OFFSET = int(command[1])
 
+
 def command_x_offset(game_logic, command):
     log.info("Changing x offset")
     v.LAYER_X_OFFSET = int(command[1])
 
+
 def command_reset_timer(game_logic, command):
     log.info("Resetting timer")
-    global_save_state.reset_timer()
+    global_save_state.hard_save("time", 0)
+
 
 def command_reset_events(game_logic, command):
     log.info("Resetting events")
-    global_save_state.reset_events()
+    global_save_state.hard_save("events", set())
+
 
 def command_complete_zone(game_logic, command):
     if len(command) != 2:
         log.error("Wrong command length, give one argument")
         return
+    if not u.check_if_int(command[1]):
+        log.error("Argument not integer")
+        return
     log.info("Completing zone", command[1])
     global_save_state.complete_zone(int(command[1]))
+
 
 def command_complete_all(game_logic, command):
     log.info("Completing all levels")
     global_save_state.complete_all()
 
+
 def command_refresh(game_logic, command):
     log.info("Resetting and refreshing current level")
     game_logic.set_stage(game_logic.level_index)
+
 
 def command_load_all(game_logic, command):
     old_level_index = game_logic.level_index
@@ -150,9 +183,11 @@ def command_load_all(game_logic, command):
     else:
         log.info("No errors!")
 
+
 def command_ls(game_logic, command):
     message = l.levels_ls()
     log.print(message)
+
 
 def command_help_root(game_logic, command):
     message = "Public commands:\n"
@@ -161,13 +196,20 @@ def command_help_root(game_logic, command):
     message += list_of_commands(root_commands)
     log.print(message)
 
+
 def command_disable_cheats(game_logic, command):
     log.info("Disabling cheats")
     g.CHEATS = False
 
+
 def command_position(game_logic, command):
     pos = game_logic.stage.latest_state().player.pos
     log.print("Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index))
+
+
+def command_raise_exception(game_logic, command):
+    log.info("Raising runtime exception")
+    raise RuntimeError
 
 
 root_commands["lv"] = command_lv
@@ -216,7 +258,26 @@ root_commands["dc"] = command_disable_cheats
 root_commands["pos"] = command_position
 root_commands["position"] = command_position
 
+root_commands["raise_exception"] = command_raise_exception
+root_commands["runtime_exception"] = command_raise_exception
+root_commands["re"] = command_raise_exception
+
+
 # helpful functions
+
+def exit_game():
+    # called: quit command entered, window closed by x, process killed from manager (SIGKILL?)
+    # not called: exception was raised (game works in one thread), stop button in pycharm (SIGTERM?), exited from launcher
+    # do those signals even exist on Windows?
+    # does my game even work on Linux?
+    # who are we? where are we going
+
+    log.info("Saving before exiting")
+    global_save_state.hard_save_all()
+    log.info("Exiting gracefully")
+    pygame.quit()
+    sys.exit(0)
+
 
 def list_of_commands(commands):
     assert type(commands) is dict

@@ -36,7 +36,7 @@ class block_entrance(block):
         return self.target_level
 
     def on_step_in(self):
-        if global_save_state.is_available(self.target_level):
+        if global_save_state.is_level_available(self.target_level):
             self.stage.change_to = self.target_level
 
     def on_step_out(self):
@@ -48,9 +48,9 @@ class block_entrance(block):
 
             completion_pos = (pos[0]+v.LEVEL_COMPLETION_OFFSET, pos[1]+v.LEVEL_COMPLETION_OFFSET)
 
-            if global_save_state.is_completed(self.target_level):
+            if global_save_state.is_level_completed(self.target_level):
                 self.screen.blit(self.sprite_av[where_is_player], completion_pos)
-            elif global_save_state.is_available(self.target_level):
+            elif global_save_state.is_level_available(self.target_level):
                 pass
             else:
                 self.screen.blit(self.sprite_unav[where_is_player], completion_pos)

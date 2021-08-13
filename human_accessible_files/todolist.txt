@@ -5,7 +5,7 @@ the lot
 - pack the game into container
 - add all the dialogue
 # - think of something to do with time travel, so the 4d really stands for something
-- rumianek zone
+- rumianek zone (maybe stories in all of zones?)
 - plp zone
 - english translation and implementation of languages
 - jump + dual_arrow interaction

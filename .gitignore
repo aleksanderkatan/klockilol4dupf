@@ -1,4 +1,3 @@
-._DIYgit
 venv
 .idea
-game_files/data/completed.txt
+*.pk

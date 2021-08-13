@@ -28,7 +28,7 @@ class player:
             else:
                 self.screen.blit(s.sprites["flavour_lemon"][0], screen_pos)
         else:
-            self.screen.blit(self.sprites[global_save_state.is_shrek()], screen_pos)
+            self.screen.blit(self.sprites[global_save_state.get("shrek", False)], screen_pos)
 
     def copy(self, new_state_index):
         pla = player(self.pos, self.screen, self.stage, new_state_index)

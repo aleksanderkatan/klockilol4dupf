@@ -31,7 +31,6 @@ def key_to_direction(key):
         return 3
     return None
 
-
 class game_logic:
     def __init__(self, screen):
         self.stage = None
@@ -65,8 +64,7 @@ class game_logic:
 
     def event_handler(self, event):
         if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit(0)
+            c.exit_game()
 
         if event.type == pygame.KEYDOWN:
             self.keys_registered.append((event.key, event.unicode))
@@ -75,14 +73,15 @@ class game_logic:
         if not l.is_level(self.level_index):
             return False
 
-        global_save_state.complete(self.level_index)
+        global_save_state.complete_level(self.level_index, hard_save=True)
         self.set_stage(l.next_level(self.level_index))
         return True
 
     def move(self):
-        global_save_state.tick_timer()
-        if global_save_state.get_timer_ticks() % (g.FRAMERATE * g.AUTO_SAVE_INTERVAL) == 0:
-            global_save_state.save()
+        # might be a little... hard to understand
+        global_save_state.increase_value("time", default_data=0)
+        if global_save_state.get("time", 0) % (g.FRAMERATE * g.AUTO_SAVE_INTERVAL) == 0:
+            global_save_state.hard_save_all()
 
         if self.stage.latest_state().completed:
             if self.complete():
@@ -94,6 +93,7 @@ class game_logic:
 
         self.witch.check_for_events(self.level_index, self.stage)
 
+        # has to iterate over every key, imagine pressing at once K, B and W, this should work
         next_move_direction = None
         for key, unicode in self.keys_registered:
             witch_was_active = self.witch.is_active()
@@ -107,14 +107,21 @@ class game_logic:
             if witch_was_active or input_box_was_active:
                 continue
 
-            next_move_direction = key_to_direction(key)
+            direction = key_to_direction(key)
+            if next_move_direction is None and direction is not None:
+                next_move_direction = direction
+                continue
 
             if k.is_reverse(key):
                 self.stage.reverse()
+                global_save_state.log_reverse()
+                continue
 
             if k.is_reset(key):
                 log.info("Resetting")
                 self.stage.reset()
+                global_save_state.log_reset()
+                continue
 
             if k.is_back_in_hierarchy(key):
                 target = l.up_in_hierarchy(self.level_index)
@@ -123,11 +130,13 @@ class game_logic:
                     self.stage.reset()
                 else:
                     self.set_stage(l.up_in_hierarchy(self.level_index))
+                global_save_state.log_escape()
+                continue
 
-            self.single_layer = u.new_single_layer(self.single_layer, key, self.stage.latest_state().z)
+            self.single_layer = u.new_single_layer(self.single_layer, key, self.stage.latest_state().z)     # returns none or integer
 
         g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
-        self.stage.move(next_move_direction)
+        self.stage.move(next_move_direction)    # has to be called, None if no move pressed
         if g.AUTO_REVERSE and self.stage.latest_state().player.dead:
             self.stage.reverse()
         self.keys_registered = []
@@ -144,7 +153,7 @@ class game_logic:
             self.input_box.draw(self.screen)
 
         if g.TIMER:
-            ticks = global_save_state.get_timer_ticks()
+            ticks = global_save_state.get("time", 0)
             time = u.ticks_to_time(ticks)
             txt_surface = FONT_2.render(time, True, pygame.Color('black'))
             # txt_surface.get_rect().right = 100

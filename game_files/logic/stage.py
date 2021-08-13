@@ -6,6 +6,7 @@ from game_files.imports.view_constants import global_view_constants as v
 from game_files.other.particle_generator import particle_generator
 from game_files.imports.log import log
 from game_files.logic.state_filler import fill
+from game_files.imports.save_state import global_save_state
 
 
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)
@@ -50,12 +51,15 @@ class stage:
 
         if self.latest_state().player.dead:
             return
+
         new_state = self.latest_state().copy(len(self.states))
         self.states.append(new_state)
         new_state.move(direction)
         if new_state.invalid:
             log.info("Invalid move performed")
             self.soft_reverse()
+            return
+        global_save_state.log_move(direction)
 
     def soft_reverse(self):
         if len(self.states) > 1:

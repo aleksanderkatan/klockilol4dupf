@@ -1,3 +1,8 @@
+0.74
+- completely revamped save mechanics (from writing in jsons to pickle)
+- added saving before exiting
+- game now remembers amount of moves, reverses, resets and escapes (under "logged_keys" command)
+
 0.73
 - added complete_zone command
 - added swapping blocks and swapping trigger
