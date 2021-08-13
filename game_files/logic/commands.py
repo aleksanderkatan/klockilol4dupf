@@ -61,6 +61,7 @@ public_commands["q"] = command_quit
 public_commands["exit"] = command_quit
 public_commands["quit"] = command_quit
 public_commands["poweroff"] = command_quit
+public_commands["power-off"] = command_quit
 public_commands["shutdown"] = command_quit
 public_commands["halt"] = command_quit
 
@@ -73,17 +74,22 @@ public_commands["help"] = command_help_public
 public_commands["completion"] = command_completion
 
 public_commands["enable_cheats"] = command_enable_cheats
+public_commands["ec"] = command_enable_cheats
 
 
-# second section
+# second section (root needed)
 
 root_commands = {}
 
 def command_lv(game_logic, command):
+    for arg in command[1:]:
+        if not u.check_if_int(arg):
+            log.error("Arguments not integer")
+            return
     if len(command) == 2:
         log.info("Changing level to: 0 " + command[1])
         game_logic.set_stage((0, int(command[1])))
-    else:
+    elif len(command) == 3:
         log.info("Changing level to: " + command[1] + " " + command[2])
         game_logic.set_stage((int(command[1]), int(command[2])))
 
@@ -115,6 +121,13 @@ def command_reset_events(game_logic, command):
     log.info("Resetting events")
     global_save_state.reset_events()
 
+def command_complete_zone(game_logic, command):
+    if len(command) != 2:
+        log.error("Wrong command length, give one argument")
+        return
+    log.info("Completing zone", command[1])
+    global_save_state.complete_zone(int(command[1]))
+
 def command_complete_all(game_logic, command):
     log.info("Completing all levels")
     global_save_state.complete_all()
@@ -143,9 +156,9 @@ def command_ls(game_logic, command):
 
 def command_help_root(game_logic, command):
     message = "Public commands:\n"
-    message += u.list_of_commands(public_commands)
+    message += list_of_commands(public_commands)
     message += "\nRoot commands:\n"
-    message += u.list_of_commands(root_commands)
+    message += list_of_commands(root_commands)
     log.print(message)
 
 def command_disable_cheats(game_logic, command):
@@ -170,6 +183,7 @@ root_commands["complete"] = command_next
 
 root_commands["duda"] = command_duda_chuj
 root_commands["duda_chuj"] = command_duda_chuj
+root_commands["chuda_duj"] = command_duda_chuj
 
 root_commands["yoffset"] = command_y_offset
 root_commands["y_offset"] = command_y_offset
@@ -180,6 +194,8 @@ root_commands["x_offset"] = command_x_offset
 root_commands["reset_timer"] = command_reset_timer
 
 root_commands["reset_events"] = command_reset_events
+
+root_commands["complete_zone"] = command_complete_zone
 
 root_commands["complete_all"] = command_complete_all
 
@@ -199,3 +215,21 @@ root_commands["dc"] = command_disable_cheats
 
 root_commands["pos"] = command_position
 root_commands["position"] = command_position
+
+# helpful functions
+
+def list_of_commands(commands):
+    assert type(commands) is dict
+    d = {}
+    for command, function in commands.items():
+        if function not in d:
+            d[function] = []
+        d[function].append(command)
+    ans = ""
+    for function, commands in d.items():
+        for command in commands:
+            ans += command
+            ans += ", "
+        ans = ans[:-2]
+        ans += "\n"
+    return ans

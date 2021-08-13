@@ -1,3 +1,5 @@
+# definitely the only way to do this
+
 from game_files.blocks.block_perma import block_perma
 from game_files.blocks.block_empty import block_empty
 from game_files.blocks.block_start import block_start
@@ -26,6 +28,8 @@ from game_files.blocks.block_minus import block_minus
 from game_files.blocks.block_moving_arrow import block_moving_arrow
 from game_files.blocks.block_entrance_random import block_entrance_random
 from game_files.blocks.block_perma_unsteppable import block_perma_unsteppable
+from game_files.blocks.block_swapping import block_swapping
+from game_files.blocks.block_swapping_trigger import block_swapping_trigger
 
 from game_files.blocks.block_shrek import block_shrek
 from game_files.blocks.undertale.block_undertale_purple import block_undertale_purple
@@ -67,6 +71,8 @@ standables.add(block_minus)
 standables.add(block_moving_arrow)
 standables.add(block_entrance_random)
 standables.add(block_perma_unsteppable)
+standables.add(block_swapping)
+standables.add(block_swapping_trigger)
 
 standables.add(block_shrek)
 standables.add(block_undertale_yellow)

@@ -1,15 +1,18 @@
 import pygame
 import random
+import time
 pygame.init()
-tested_level = (5, 16)
-screen = pygame.display.set_mode((50, 50))
+tested_level = (277, 4)
+screen = pygame.display.set_mode((100, 100))
 pygame.display.set_caption('level_tester')
+import game_files.imports.globals as g
+g.LOG_INFO = False
 from game_files.logic.stage import stage
-s = stage(None, tested_level, None)
+s = stage(screen, tested_level, (0, 0))
 moves = []
 
 def test():
-    if len(moves) > 30:
+    if len(moves) > 34:
         return False
 
     this_move = [0, 1, 2, 3]
@@ -17,6 +20,8 @@ def test():
     for mov in this_move:
         moves.append(mov)
         s.move(mov)
+        # s.draw()
+        # time.sleep(1)
         while s.latest_state().is_next_move_forced() and not s.latest_state().player.dead and not s.latest_state().completed:
             s.move()
 

@@ -1,3 +1,7 @@
+0.73
+- added complete_zone command
+- added swapping blocks and swapping trigger
+
 0.72
 - implemented on-block barriers
 - added interaction between barriers and jumps

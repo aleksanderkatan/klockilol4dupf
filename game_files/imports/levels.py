@@ -54,7 +54,7 @@ hierarchy[(501, 0)] = (400, 4)
 # hubs[5] = [500]
 
 levs = {}
-levs[0] = 40
+levs[0] = 50
 levs[1] = 20
 levs[2] = 16
 levs[3] = 17
@@ -90,7 +90,7 @@ levs[400] = 5
 levs[500] = 0
 levs[501] = 0
 
-level_error_path = 'game_files/levels/0/1.txt'
+level_error_path = 'game_files/levels/0/0.lv'
 
 level_error = (0, 0)
 

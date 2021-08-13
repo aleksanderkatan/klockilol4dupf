@@ -119,23 +119,18 @@ def ticks_to_time(ticks):
     hours = minutes // 60
     minutes %= 60
 
-    ans = extend(hours, 2) + ":" + extend(minutes, 2) + ":" + extend(seconds, 2) + ":" + extend(milliseconds, 3)
+    ans = f"{extend(hours, 2)}:{extend(minutes, 2)}:{extend(seconds, 2)}:{extend(milliseconds, 3)}"
     return ans
 
 
-def list_of_commands(commands):
-    assert type(commands) is dict
-    d = {}
-    for command, function in commands.items():
-        if function not in d:
-            d[function] = []
-        d[function].append(command)
-    ans = ""
-    for function, commands in d.items():
-        for command in commands:
-            ans += command
-            ans += ", "
-        ans = ans[:-2]
-        ans += "\n"
-    return ans
+def check_if_int(x, min_val=None, max_val=None):
+    try:
+        val = int(x)
+    except ValueError:
+        return False
+    if min_val is None:
+        min_val = val
+    if max_val is None:
+        max_val = val
+    return min_val <= val <= max_val
 

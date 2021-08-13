@@ -15,7 +15,7 @@ def _preprocess_level(level_index):
     path = l.level_path(level_index)
     if not os.path.exists(path):
         log.error("No such file " + path)
-        return False
+        return None
 
     with open(path) as f:
         level = f.read().split('\n')
@@ -79,6 +79,8 @@ def _fill(s, level, last_level_index):
                     if issubclass(obj, o.block_lamp):
                         if char == 'B':
                             blo.change_state()
+                    if issubclass(obj, o.block_swapping):
+                        blo.options(str(char))
 
                     if obj not in blocks:
                         blocks[obj] = []
@@ -186,5 +188,7 @@ def _fill(s, level, last_level_index):
 
 def fill(s, level_index, last_level_index=None):
     preprocessed_level = _preprocess_level(level_index)
+    if preprocessed_level is None:
+        return False
     return _fill(s, preprocessed_level, last_level_index)
 

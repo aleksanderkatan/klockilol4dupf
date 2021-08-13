@@ -34,14 +34,17 @@ charmap['T'] = o.block_thunder
 charmap['N'] = o.block_piston
 charmap['R'] = o.block_reset
 charmap['A'] = o.block_dual_arrow
-charmap['X'] = o.block_numeric_dark
-charmap['Y'] = o.block_numeric_dark
-charmap['Z'] = o.block_numeric_dark
+charmap['X'] = o.block_numeric_dark     # 1
+charmap['Y'] = o.block_numeric_dark     # 2
+charmap['Z'] = o.block_numeric_dark     # 3
 charmap['+'] = o.block_plus
-charmap['/'] = o.block_minus
+charmap['/'] = o.block_minus            # - taken by birdy
 charmap['a'] = o.block_moving_arrow
 charmap['n'] = o.block_entrance_random
 charmap['x'] = o.block_perma_unsteppable
+charmap['q'] = o.block_swapping
+charmap['Q'] = o.block_swapping
+charmap['t'] = o.block_swapping_trigger
 
 charmap['K'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple
@@ -60,10 +63,10 @@ charmap['-'] = o.block_birdy_arrow
 charmap['_'] = o.block_birdy_arrow
 
 # letters left:
-# QWU
+# WU
 # FGHK
 # CV
 #
-# qwt
+# w
 # dhjk
 # zc

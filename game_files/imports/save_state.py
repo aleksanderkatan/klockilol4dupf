@@ -122,13 +122,21 @@ class save_state:
             return False
         return level - 1 in self.save_data.completed[level_set]
 
+    def complete_zone(self, zone_index, save=True):
+        if zone_index not in l.levs:
+            log.error("No such zone")
+            return
+        if zone_index == 400 or (100 < zone_index < 200):
+            return
+        for i in range(1, l.levs[zone_index] + 1):
+            self.complete((zone_index, i), False)
+        if save:
+            self.save()
+
     def complete_all(self):
         self.reset_completed()
-        for key, val in l.levs.items():
-            if key == 400 or (100 < key < 200):
-                continue
-            for i in range(1, val + 1):
-                self.complete((key, i), False)
+        for key in l.levs.keys():
+            self.complete_zone(key, False)
         self.save()
 
     def is_event_completed(self, index):
