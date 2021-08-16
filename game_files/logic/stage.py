@@ -59,7 +59,6 @@ class stage:
             log.info("Invalid move performed")
             self.soft_reverse()
             return
-        global_save_state.log_move(direction)
 
     def soft_reverse(self):
         if len(self.states) > 1:

@@ -212,6 +212,30 @@ def command_raise_exception(game_logic, command):
     raise RuntimeError
 
 
+def command_teleport(game_logic, command):
+    if command[1] == "up":
+        return command_teleport_up(game_logic, ["up"])
+    if len(command) != 4:
+        log.error("Wrong command length")
+        return
+    for arg in command[1:]:
+        if not u.check_if_int(arg):
+            log.error("Arguments not integer")
+            return
+    state = game_logic.stage.latest_state()
+    state.teleport_player((int(command[1]), int(command[2]), int(command[3])), False)
+
+
+def command_teleport_up(game_logic, command):
+    amount = 1 if len(command) == 1 else int(command[1])
+
+    state = game_logic.stage.latest_state()
+    x, y, z = state.player.pos
+    z += amount
+    state.teleport_player((x, y, z), False)
+    return
+
+
 root_commands["lv"] = command_lv
 root_commands["cd"] = command_lv
 
@@ -262,6 +286,10 @@ root_commands["raise_exception"] = command_raise_exception
 root_commands["runtime_exception"] = command_raise_exception
 root_commands["re"] = command_raise_exception
 
+root_commands["teleport"] = command_teleport
+root_commands["tp"] = command_teleport
+
+root_commands["up"] = command_teleport_up
 
 # helpful functions
 

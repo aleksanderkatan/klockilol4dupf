@@ -62,7 +62,7 @@ levs[4] = 11
 levs[5] = 20
 levs[6] = 20
 levs[7] = 24
-levs[8] = 20
+levs[8] = 25
 levs[9] = 14
 levs[10] = 20
 
@@ -79,7 +79,7 @@ levs[204] = 5   # hub 3 right to the entrance
 levs[205] = 20  # no entrance yet
 levs[206] = 16  # no entrance, special case to be available
 levs[207] = 10  # no entrance yet
-levs[277] = 20  # no entrance, extra levels without zone assigned (yet)
+levs[277] = 20  # extra levels without zone assigned (yet)
 
 levs[301] = 5
 levs[302] = 4
@@ -87,8 +87,7 @@ levs[303] = 5
 
 levs[400] = 5
 
-levs[500] = 0
-levs[501] = 0
+levs[500] = 2   # non hub, non lobby, non level stages
 
 level_error_path = 'game_files/levels/0/0.lv'
 
@@ -101,13 +100,21 @@ back_in_hierarchy_levels = [
     (103, 0),
 ]
 
-def level_path(level_index):
+def is_valid_stage(level_index):
     level_set, level = level_index
-    if level_set not in levs or not 0 <= level <= levs[level_set]:
-        log.warning("Wrong level index " + str(level_index))
-        return level_error_path
+    if level_set not in levs:
+        return False
+    if not 0 <= level <= levs[level_set]:
+        return False
     if level_index in [(400, 0)]:
+        return False
+    return True
+
+def level_path(level_index):
+    if not is_valid_stage(level_index):
+        log.error("Wrong level index " + str(level_index))
         return level_error_path
+    level_set, level = level_index
     return 'game_files/levels/' + str(level_set) + '/' + str(level) + '.lv'
 
 
@@ -141,7 +148,7 @@ def is_hub(level_index):
 def is_zone(level_index):
     level_set, level = level_index
     if not is_hub(level_index):
-        if level == 0 and not (100 < level_set < 200):
+        if level == 0 and not (100 < level_set < 200) and not level_set == 500:
             return True
     return False
 
@@ -150,14 +157,14 @@ def is_level(level_index):
         return False
     if is_zone(level_index):
         return False
+    if level_index[0] == 500:
+        return False
     return True
 
 def all_levels_iterator():
     for key, value in levs.items():
         for i in range(value+1):
             if i == 0 and key == 400:
-                continue
-            if i == 0 and key == -1:
                 continue
             yield key, i
 
@@ -187,52 +194,49 @@ def up_in_hierarchy(level_index):
 def level_name(level_index):
     level_set, level = level_index
 
-    if level_set == -1:
-        return "How did you get here?"
-
     if level_set == 0:
-        return "Debug zone level " + str(level)
+        return "Debug " + str(level)
 
     if 0 < level_set < 100:
-        if level == 0:
-            return "Zone " + str(level_set)
-        return "Zone " + str(level_set) + " level " + str(level)
+        return str(level_set) + ("" if level == 0 else "-" + str(level))
 
     if 100 < level_set < 200:
-        return "Random level"
+        return "Randomized level"
 
     if 200 < level_set < 300:
-        return "???"
+        return "?" + ("" if level == 0 else "-" + str(level))
 
     if 300 < level_set < 400:
-        if level != 0:
-            return "Zone extra " + str(level_set - 300) + " level " + str(level)
-        return "Zone extra " + str(level_set - 300)
+        return "extra " + str(level_set - 300) + ("" if level == 0 else "-" + str(level))
 
     if level_set == 400:
-        return "Hub " + str(level)
+        return "Lobby " + str(level)
 
-    if level_set == 500:
-        return "swamp"
+    if level_index == (500, 0):
+        return "The Swamp"
 
-    if level_set in [501, 204]:
+    if level_set == 204 or level_index == (500, 1):
         return "Giszowiec"
 
-    return "error"
+    if level_index in [(500, 2)]:
+        return ""
+
+    return "How did you get here?"
 
 
 def background_of_level(level_index):
     level_set, level = level_index
-    if level_set == 201 and level == 0:
-        return "background_kono_dio_da"
-    if level_set == 500:
+    if level_index == (500, 0):
         return "background_swamp"
-    if level_set == 501:
+    if level_index == (500, 1):
         return "background_giszowiec_1"
-    if level_set == 204 and level == 0:
+    if level_index == (500, 2):
+        return "background_kono_dio_da"
+    if level_index == (204, 0):
         return "background_giszowiec_2"
     if level_set == 204:
         return "background_giszowiec_3"
+
     if g.DUDA_CHUJ:
         return "background_duda_chuj"
     return "background_default"

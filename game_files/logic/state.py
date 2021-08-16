@@ -143,11 +143,13 @@ class state:
     def is_next_move_forced(self):
         return self.player.has_something_enqueued()
 
+    def get_size(self):
+        return self.x, self.y, len(self.layers)
+
     def standable(self, pos):
-        x, y, z = pos
-        if u.out_of_range(x, y, self.x, self.y):
+        if u.out_of_range_3(pos, self.get_size()):
             return False
-        if type(self.layers[z].grid[x][y]) in o.standables:
+        if type(self.get_block(pos)) in o.standables:
             return True
         return False
 
@@ -170,13 +172,13 @@ class state:
 
     def get_block(self, pos):
         x, y, z = pos
-        if u.out_of_range(x, y, self.x, self.y) or z < 0 or z > len(self.layers):
+        if u.out_of_range_3(pos, self.get_size()):
             return None
         return self.layers[z].grid[x][y]
 
     def set_block(self, pos, block):
         x, y, z = pos
-        if u.out_of_range(x, y, self.x, self.y):
+        if u.out_of_range_3(pos, self.get_size()):
             return
         self.layers[z].grid[x][y] = block
         block.pos = pos

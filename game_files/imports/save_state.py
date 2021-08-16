@@ -1,6 +1,5 @@
 import os
 import pickle
-import json
 import game_files.imports.levels as l
 import game_files.imports.globals as g
 from game_files.imports.log import log
@@ -35,6 +34,12 @@ class completed_levels:
     def is_set_completed(self, level_set):
         if level_set >= 400:
             return False
+
+        if level_set not in l.levs:
+            return False
+
+        if l.levs[level_set] == 0:
+            return True
 
         if level_set not in self.completed:
             return False
@@ -147,6 +152,8 @@ class new_save_state:
         self.hard_save("events", events)
 
     # key logging
+    # despite the name, this is used for logging actions
+    # (multiple key presses in a single frame and text inputting are omitted)
 
     def log_move(self, direction):
         key = "moves_direction_" + str(direction)
@@ -188,7 +195,6 @@ class new_save_state:
                 if self.is_level_completed((i, j)):
                     result += 1
         return result/total
-
 
 
 global_save_state = new_save_state()

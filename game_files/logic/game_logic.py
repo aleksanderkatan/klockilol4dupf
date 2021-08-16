@@ -56,7 +56,7 @@ class game_logic:
             self.stage.reverse()
             self.stage.change_to = None
             return False
-        log.info("setting stage to", new_stage.level_index)
+        log.info("Setting stage to", new_stage.level_index)
         self.stage = new_stage
         self.single_layer = None
         self.level_index = self.stage.level_index
@@ -137,6 +137,8 @@ class game_logic:
 
         g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
         self.stage.move(next_move_direction)    # has to be called, None if no move pressed
+        if next_move_direction is not None:
+            global_save_state.log_move(next_move_direction)
         if g.AUTO_REVERSE and self.stage.latest_state().player.dead:
             self.stage.reverse()
         self.keys_registered = []
@@ -173,12 +175,11 @@ class game_logic:
         if command == '':
             return
 
-        command = command.split(' ')
-        command = [word.lower() for word in command]
+        command = [word.lower() for word in command.split(' ')]
 
         if not g.CHEATS:
             if command[0] not in c.public_commands:
-                log.info("No such command")
+                log.info("No such command. For list of available commands type \"help\"")
             else:
                 log.info("executing: " + command[0])
                 c.public_commands[command[0]](self, command)

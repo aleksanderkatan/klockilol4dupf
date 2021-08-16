@@ -1,3 +1,7 @@
+0.75
+- many minor changes (block_entrance, commands, game_logic, stage, stats, utils)
+- added more levels
+
 0.74
 - completely revamped save mechanics (from writing in jsons to pickle)
 - added saving before exiting

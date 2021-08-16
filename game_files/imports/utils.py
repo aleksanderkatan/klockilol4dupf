@@ -13,6 +13,12 @@ def index_to_position(x, y, z, size_x, size_y, size_z):
     return high_left[0] + v.BLOCK_X_SIZE * x + (z - size_z / 2) * v.LAYER_X_OFFSET, high_left[1] + v.BLOCK_Y_SIZE * y - (
             z - size_z / 2) * v.LAYER_Y_OFFSET
 
+def out_of_range_3(pos, pos_max):
+    for i in range(3):
+        if not 0 <= pos[i] < pos_max[i]:
+            return True
+    return False
+
 
 def out_of_range(x, y, x_max, y_max):
     if x < 0:

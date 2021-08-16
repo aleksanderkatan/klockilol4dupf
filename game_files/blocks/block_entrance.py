@@ -22,15 +22,20 @@ class block_entrance(block):
         self.set_target_level(target_level)
 
     def set_target_level(self, target_level):
-        if target_level is None:
-            return
+        my_level = self.stage.level_index
         self.target_level = target_level
-        if l.is_hub(target_level):
-            self.sprite = s.sprites["block_entrance_hub"]
-        if l.is_zone(target_level):
-            self.sprite = s.sprites["block_entrance_zone"]
-        if l.is_level(target_level):
+        if None in [target_level, my_level]:
+            return
+
+        if l.is_level(target_level) or l.is_level(my_level):
             self.sprite = s.sprites["block_entrance_level"]
+            return
+        if l.is_zone(target_level) or l.is_zone(my_level):
+            self.sprite = s.sprites["block_entrance_zone"]
+            return
+        if l.is_hub(target_level) or l.is_hub(my_level):
+            self.sprite = s.sprites["block_entrance_hub"]
+            return
 
     def get_target_level(self):
         return self.target_level

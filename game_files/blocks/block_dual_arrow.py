@@ -16,7 +16,6 @@ class block_dual_arrow(block):
         return block_dual_arrow(self.screen, self.stage, new_state_index, self.pos, self.direction_1, self.direction_2)
 
     def on_step_in(self):
-        print(self.direction_1, self.direction_2)
         state = self.stage.states[self.state_index]
         if state.player.last_move_direction == u.reverse_direction(self.direction_1):
             state.player.enqueue_move(self.direction_2)

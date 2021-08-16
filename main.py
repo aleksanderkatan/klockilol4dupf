@@ -1,9 +1,7 @@
 def run():
-    import pygame
+    import pygame       # initialized somewhere else
     import game_files.imports.globals as g
     from game_files.imports.view_constants import global_view_constants as v
-
-    pygame.init()
     screen = pygame.display.set_mode((v.WINDOW_X, v.WINDOW_Y))
     import game_files.imports.all_sprites as s
     from game_files.logic.game_logic import game_logic

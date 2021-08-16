@@ -3,6 +3,7 @@ import random
 import time
 pygame.init()
 tested_level = (277, 4)
+max_moves = 34
 screen = pygame.display.set_mode((100, 100))
 pygame.display.set_caption('level_tester')
 import game_files.imports.globals as g
@@ -12,7 +13,7 @@ s = stage(screen, tested_level, (0, 0))
 moves = []
 
 def test():
-    if len(moves) > 34:
+    if len(moves) > max_moves:
         return False
 
     this_move = [0, 1, 2, 3]

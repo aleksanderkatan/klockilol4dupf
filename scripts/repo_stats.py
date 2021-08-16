@@ -1,8 +1,8 @@
 import os
 
-# root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\game_files"
+root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\game_files"
 # root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf"
-root = "D:\\Novvy_foldeer\\Studia\\sem22\\IO\\2\\project-team-8\\src\\main\\java\\model"
+# root = "D:\\Novvy_foldeer\\Studia\\sem22\\IO\\2\\project-team-8\\src\\main\\java\\model"
 # root = "D:\\Novvy_foldeer\\Studia\\sem22\\Mobilne\\Projekt"
 # root = "D:\\Novvy_foldeer\\Gry\\moje\\unoduo\\dupsko\\klockilolunoduo 8"
 
@@ -23,8 +23,8 @@ for key, value in d.items():
 print()
 
 
-for ext in ["java"]:
-# for ext in ["py", "lv", "txt"]:
+# for ext in ["java"]:
+for ext in ["py", "lv", "txt"]:
     files = 0
     lines = 0
     characters = 0
