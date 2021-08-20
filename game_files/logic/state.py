@@ -88,9 +88,9 @@ class state:
         if g.CHEATS and g.KBcheat:
             return
 
-        if not self.player.has_something_enqueued():
-            for chav in self.chavs:
-                chav.move()
+        # if not self.player.has_something_enqueued():
+        for chav in self.chavs:
+            chav.move()
 
         new_bombs = []
         for bomb in self.bombs:
@@ -142,9 +142,6 @@ class state:
 
     def is_next_move_forced(self):
         return self.player.has_something_enqueued()
-
-    def get_size(self):
-        return self.x, self.y, len(self.layers)
 
     def standable(self, pos):
         if u.out_of_range_3(pos, self.get_size()):

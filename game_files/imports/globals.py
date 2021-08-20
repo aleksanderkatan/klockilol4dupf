@@ -1,4 +1,4 @@
-VERSION = "v0.75"
+VERSION = "v0.76"
 
 FRAMERATE = 30
 MOVE_LIMIT = 2048
@@ -16,7 +16,7 @@ CHEATS = True
 PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7fx=jO\x01\x97T3_\xefK'
 MAX_COMMAND_LENGTH = 32
 WITCH = True
-AUTO_REVERSE = False
+AUTO_REVERSE = True
 THREED = False  # !! does not quite work
 TIMER = True
 
@@ -25,6 +25,6 @@ LOG_WARNINGS = True
 LOG_ERRORS = True
 
 
-# runtime constants
-KBcheat = False                 # don't change
+# runtime constants, don't change
+KBcheat = False
 DUDA_CHUJ = False

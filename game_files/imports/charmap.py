@@ -45,6 +45,7 @@ charmap['x'] = o.block_perma_unsteppable
 charmap['q'] = o.block_swapping
 charmap['Q'] = o.block_swapping
 charmap['t'] = o.block_swapping_trigger
+charmap['G'] = o.block_swapping_trigger_random
 
 charmap['K'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple

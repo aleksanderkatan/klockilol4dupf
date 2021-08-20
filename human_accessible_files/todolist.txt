@@ -7,8 +7,7 @@ the lot
 # - think of something to do with time travel, so the 4d really stands for something
 - rumianek zone (maybe stories in all of zones?)
 - plp zone
+- hanabi zone
 - english translation and implementation of languages
-- jump + dual_arrow interaction
-- export keybindings to another file
 
 

@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 from game_files.imports.save_state import global_save_state
+import game_files.logic.commands as c
 
 class block_shrek(block):
     def __init__(self, screen, stage, state_index, pos):
@@ -15,6 +16,7 @@ class block_shrek(block):
 
     def on_step_in(self):
         global_save_state.set("shrek", not global_save_state.get("shrek", False))
+        c.command_all_stats(None, "as")     # !! that's jank
 
     def draw(self, pos, where_is_player):
         if where_is_player is not None:

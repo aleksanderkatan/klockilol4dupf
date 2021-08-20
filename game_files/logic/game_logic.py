@@ -172,22 +172,5 @@ class game_logic:
         self.screen.blit(self.grayness, (0, 0))
 
     def execute_command(self, command):
-        if command == '':
-            return
-
-        command = [word.lower() for word in command.split(' ')]
-
-        if not g.CHEATS:
-            if command[0] not in c.public_commands:
-                log.info("No such command. For list of available commands type \"help\"")
-            else:
-                log.info("executing: " + command[0])
-                c.public_commands[command[0]](self, command)
-        else:
-            if command[0] in c.root_commands:
-                c.root_commands[command[0]](self, command)
-            elif command[0] in c.public_commands:
-                c.public_commands[command[0]](self, command)        # intentional, command overloading
-            else:
-                log.info("No such command")
+        return c.execute_command(self, command)
 

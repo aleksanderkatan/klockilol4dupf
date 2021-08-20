@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import messagebox as tkm
 from game_files.imports.save_state import global_save_state
 from game_files.imports.view_constants import global_view_constants as v
+import game_files.imports.globals as g
 import main
 import threading
 
@@ -30,7 +31,7 @@ combo_res.grid(column=2, row=1)
 
 tk.Label(window, text="Language").grid(column=1, row=2)
 combo_lan = ttk.Combobox(window, state="readonly", width=25)
-languages = ["Polish"]
+languages = ["Polish", "None"]
 combo_lan['values'] = languages
 combo_lan.current(0)
 combo_lan.grid(column=2, row=2)
@@ -57,6 +58,8 @@ def run_game():
     x, y, _ = resolutions[combo_res.current()]
     resolution = (x, y)
     v.change_resolution(resolution)
+    if combo_lan.current() == 1:
+        g.WITCH = False
     main.run()
 
 

@@ -45,7 +45,7 @@ def command_completion(game_logic, command):
 
 
 def command_logged_keys(game_logic, command):
-    message = "Remembered moves:\n"
+    message = "Remembered key presses:\n"
     t = {0: "right", 1: "up", 2: "left", 3: "down"}
     for key, value in t.items():
         message += value + ": " + str(global_save_state.get("moves_direction_" + str(key), 0)) + "\n"
@@ -54,6 +54,12 @@ def command_logged_keys(game_logic, command):
     message += "escapes: " + str(global_save_state.get("escapes", 0)) + "\n"
     log.print(message)
 
+
+def command_all_stats(game_logic, command):
+    message = f"Completion: {int(global_save_state.get_completion()*100)}%\n"
+    message += f"In-game time: " + u.ticks_to_time(global_save_state.get("time", 0))
+    log.print(message)
+    command_logged_keys(game_logic, ["lk"])
 
 def command_enable_cheats(game_logic, command):
     if g.CHEATS:
@@ -91,6 +97,9 @@ public_commands["completion"] = command_completion
 
 public_commands["logged_keys"] = command_logged_keys
 public_commands["lk"] = command_logged_keys
+
+public_commands["all_stats"] = command_all_stats
+public_commands["as"] = command_all_stats
 
 public_commands["enable_cheats"] = command_enable_cheats
 public_commands["ec"] = command_enable_cheats
@@ -156,7 +165,7 @@ def command_complete_zone(game_logic, command):
         log.error("Argument not integer")
         return
     log.info("Completing zone", command[1])
-    global_save_state.complete_zone(int(command[1]))
+    global_save_state.complete_zone(int(command[1]), True)
 
 
 def command_complete_all(game_logic, command):
@@ -262,8 +271,10 @@ root_commands["reset_timer"] = command_reset_timer
 root_commands["reset_events"] = command_reset_events
 
 root_commands["complete_zone"] = command_complete_zone
+root_commands["cz"] = command_complete_zone
 
 root_commands["complete_all"] = command_complete_all
+root_commands["ca"] = command_complete_all
 
 root_commands["r"] = command_refresh
 root_commands["refresh"] = command_refresh
@@ -322,3 +333,24 @@ def list_of_commands(commands):
         ans = ans[:-2]
         ans += "\n"
     return ans
+
+
+def execute_command(game_logic, command):
+    if command == '':
+        return
+
+    command = [word.lower() for word in command.split(' ')]
+
+    if not g.CHEATS:
+        if command[0] in public_commands:
+            log.info("executing: " + command[0])
+            public_commands[command[0]](game_logic, command)
+        else:
+            log.info("No such command. For list of available commands type \"help\"")
+    else:
+        if command[0] in root_commands:
+            root_commands[command[0]](game_logic, command)
+        elif command[0] in public_commands:
+            public_commands[command[0]](game_logic, command)        # intentional, command overloading
+        else:
+            log.info("No such command. For list of available commands type \"help\"")
