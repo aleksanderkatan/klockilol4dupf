@@ -1,3 +1,9 @@
+0.77
+- added more levels
+- reordered levels in zones 1-4
+- added keybindings for quick level switching
+-
+
 0.76
 - stats are now displayed after obtaining Shrek
 - signs added for unfinished zones

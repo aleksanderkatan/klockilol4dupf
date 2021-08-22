@@ -112,6 +112,14 @@ class game_logic:
                 next_move_direction = direction
                 continue
 
+            if g.CHEATS:
+                if k.is_next_cheat(key):
+                    c.execute_command(self, "c")
+                    continue
+                if k.is_prev_cheat(key):
+                    c.execute_command(self, "p")
+                    continue
+
             if k.is_reverse(key):
                 self.stage.reverse()
                 global_save_state.log_reverse()

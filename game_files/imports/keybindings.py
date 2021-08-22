@@ -39,3 +39,8 @@ def is_witch_continue(key):
 def is_KB_cheat(keys):      # keys is an bit mask
     return keys[pygame.K_b] and keys[pygame.K_k]
 
+def is_next_cheat(key):
+    return key in [pygame.K_PERIOD]
+
+def is_prev_cheat(key):
+    return key in [pygame.K_COMMA]

@@ -93,6 +93,7 @@ level_error_path = 'game_files/levels/0/0.lv'
 
 level_error = (0, 0)
 
+# all last-of-a-zone levels are automatically also back-in-hierarchy levels
 back_in_hierarchy_levels = [
     (202, 4),
     (101, 0),
@@ -237,6 +238,8 @@ def background_of_level(level_index):
     if level_set == 204:
         return "background_giszowiec_3"
 
+    if g.PAPOR:
+        return "background_2137"
     if g.DUDA_CHUJ:
         return "background_duda_chuj"
     return "background_default"

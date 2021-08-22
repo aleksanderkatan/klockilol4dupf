@@ -137,6 +137,11 @@ def command_duda_chuj(game_logic, command):
     g.DUDA_CHUJ = not g.DUDA_CHUJ
 
 
+def command_2137(game_logic, command):
+    log.info("Swapping background")
+    g.PAPOR = not g.PAPOR
+
+
 def command_y_offset(game_logic, command):
     log.info("Changing y offset")
     v.LAYER_Y_OFFSET = int(command[1])
@@ -259,6 +264,10 @@ root_commands["complete"] = command_next
 root_commands["duda"] = command_duda_chuj
 root_commands["duda_chuj"] = command_duda_chuj
 root_commands["chuda_duj"] = command_duda_chuj
+
+root_commands["2137"] = command_2137
+root_commands["21:37"] = command_2137
+root_commands["jp2gmd"] = command_2137
 
 root_commands["yoffset"] = command_y_offset
 root_commands["y_offset"] = command_y_offset

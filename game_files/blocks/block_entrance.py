@@ -5,7 +5,7 @@ from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.save_state import global_save_state
 
 class block_entrance(block):
-    def __init__(self, screen, stage, state_index, pos, target_level=None):
+    def __init__(self, screen, stage, state_index, pos, target_level=(0, 0)):
         super().__init__(screen, stage, state_index, pos)
         self.sprite = s.sprites["error"]
         self.sprite_av = s.sprites["level_available"]

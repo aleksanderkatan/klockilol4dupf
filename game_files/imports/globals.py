@@ -1,4 +1,4 @@
-VERSION = "v0.76"
+VERSION = "v0.77"
 
 FRAMERATE = 30
 MOVE_LIMIT = 2048
@@ -28,3 +28,5 @@ LOG_ERRORS = True
 # runtime constants, don't change
 KBcheat = False
 DUDA_CHUJ = False
+PAPOR = False
+
