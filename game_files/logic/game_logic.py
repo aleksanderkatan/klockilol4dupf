@@ -78,7 +78,7 @@ class game_logic:
         return True
 
     def move(self):
-        # might be a little... hard to understand
+        # now this part is bullshit and I will rework it at some point
         global_save_state.increase_value("time", default_data=0)
         if global_save_state.get("time", 0) % (g.FRAMERATE * g.AUTO_SAVE_INTERVAL) == 0:
             global_save_state.hard_save_all()
@@ -113,12 +113,20 @@ class game_logic:
                 continue
 
             if g.CHEATS:
-                if k.is_next_cheat(key):
-                    c.execute_command(self, "c")
-                    continue
-                if k.is_prev_cheat(key):
-                    c.execute_command(self, "p")
-                    continue
+                if g.FAST_LEVEL_SKIP:
+                    if k.is_next_cheat(key):
+                        c.execute_command(self, "c")
+                        continue
+                    if k.is_prev_cheat(key):
+                        c.execute_command(self, "p")
+                        continue
+                if g.FAST_LEVEL_SWAP:
+                    if k.is_next_swap(key):
+                        c.execute_command(self, "swap next")
+                        continue
+                    if k.is_prev_swap(key):
+                        c.execute_command(self, "swap prev")
+                        continue
 
             if k.is_reverse(key):
                 self.stage.reverse()

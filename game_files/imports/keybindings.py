@@ -44,3 +44,9 @@ def is_next_cheat(key):
 
 def is_prev_cheat(key):
     return key in [pygame.K_COMMA]
+
+def is_next_swap(key):
+    return key in [pygame.K_SEMICOLON]
+
+def is_prev_swap(key):
+    return key in [pygame.K_l]

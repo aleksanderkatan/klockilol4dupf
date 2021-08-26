@@ -1,5 +1,6 @@
 import pygame
 import sys
+import os
 from game_files.imports.log import log
 import game_files.imports.levels as l
 import game_files.imports.globals as g
@@ -124,12 +125,53 @@ def command_lv(game_logic, command):
 
 def command_previous(game_logic, command):
     log.info("Previous level")
-    game_logic.set_stage(l.previous_level(game_logic.stage.level_index))
+    level_index = game_logic.stage.level_index
+    prev_index = l.previous_level(level_index)
+    game_logic.set_stage(prev_index)
 
 
 def command_next(game_logic, command):
-    log.info("Completing current level")
-    game_logic.complete()
+    log.info("Next level")
+    level_index = game_logic.stage.level_index
+    next_index = l.next_level(level_index)
+    if level_index[1] != 0:
+        log.info("Completing current level")
+        game_logic.complete()
+    else:
+        log.info("Jumping to", next_index)
+        game_logic.set_stage(next_index)
+
+
+def command_swap(game_logic, command):      # !! I don't like this command, but it's useful
+    log.info("Swapping current level")
+    if len(command) < 2 or command[1] not in ["next", "prev"]:
+        log.error("Usage: \"swap next\" or \"swap prev\"")
+        return
+
+    mode = 1 if command[1] == "prev" else 0
+
+    level_index = game_logic.level_index
+
+    if mode == 1:
+        if level_index[1] > 1:
+            other = (level_index[0], level_index[1]-1)
+        else:
+            log.error("No previous level!")
+            return
+    else:
+        if level_index[1] < l.levs[level_index[0]]:
+            other = (level_index[0], level_index[1]+1)
+        else:
+            log.error("No next level!")
+            return
+
+    log.info("Swapping levels:", level_index, other)
+    swap_levels(level_index, other)
+
+    if mode == 1:
+        execute_command(game_logic, "p")
+    else:
+        execute_command(game_logic, "c")
 
 
 def command_duda_chuj(game_logic, command):
@@ -256,6 +298,8 @@ root_commands["cd"] = command_lv
 root_commands["p"] = command_previous
 root_commands["previous"] = command_previous
 
+root_commands["swap"] = command_swap
+
 root_commands["n"] = command_next
 root_commands["c"] = command_next
 root_commands["next"] = command_next
@@ -343,6 +387,17 @@ def list_of_commands(commands):
         ans += "\n"
     return ans
 
+
+def swap_levels(level_1, level_2):      # !! performs no checks
+    def level_path(level):
+        return "game_files/levels/" + str(level[0]) + "/" + str(level[1]) + ".lv"
+
+    temp_path = "game_files/levels/temp/0.lv"
+    path_1 = level_path(level_1)
+    path_2 = level_path(level_2)
+    os.rename(path_1, temp_path)
+    os.rename(path_2, path_1)
+    os.rename(temp_path, path_2)
 
 def execute_command(game_logic, command):
     if command == '':

@@ -137,7 +137,7 @@ def previous_level(level_index):
     if level_set not in levs:
         return level_error
     if level == 0:
-        return level_set, 0
+        return level_set, levs[level_set]
     return level_set, level - 1
 
 def is_hub(level_index):
