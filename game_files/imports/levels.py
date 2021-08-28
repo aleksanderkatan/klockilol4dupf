@@ -59,8 +59,8 @@ levs[1] = 20
 levs[2] = 16
 levs[3] = 17
 levs[4] = 17
-levs[5] = 21
-levs[6] = 20
+levs[5] = 19
+levs[6] = 19
 levs[7] = 24
 levs[8] = 25
 levs[9] = 14
@@ -80,9 +80,10 @@ levs[205] = 20  # no entrance yet
 levs[206] = 16  # no entrance, special case to be available
 levs[207] = 10  # no entrance yet
 levs[277] = 20  # extra levels without zone assigned (yet)
+levs[278] = 20  # discarded levels
 
 levs[301] = 5
-levs[302] = 4
+levs[302] = 5
 levs[303] = 5
 
 levs[400] = 5

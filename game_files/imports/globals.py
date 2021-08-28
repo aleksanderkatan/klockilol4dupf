@@ -1,4 +1,4 @@
-VERSION = "v0.78"
+VERSION = "v0.79"
 
 FRAMERATE = 30
 MOVE_LIMIT = 2048
@@ -15,11 +15,12 @@ FONT_RATIO = 0.59               # width to height for mono, sadly isn't 0.5
 MAX_COMMAND_LENGTH = 32
 PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7fx=jO\x01\x97T3_\xefK'
 
-CHEATS = True
 WITCH = True
 AUTO_REVERSE = True
-THREED = False  # !! does not quite work
 TIMER = True
+THREED = False  # !! does not quite work
+
+CHEATS = True
 FAST_LEVEL_SKIP = True
 FAST_LEVEL_SWAP = True
 
@@ -27,8 +28,7 @@ LOG_INFO = True
 LOG_WARNINGS = True
 LOG_ERRORS = True
 
-
-# runtime constants, don't change
+# runtime variables, don't change
 KBcheat = False
 DUDA_CHUJ = False
 PAPOR = False
