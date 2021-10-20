@@ -61,9 +61,9 @@ levs[3] = 17
 levs[4] = 17
 levs[5] = 19
 levs[6] = 19
-levs[7] = 24
-levs[8] = 25
-levs[9] = 14
+levs[7] = 23
+levs[8] = 20
+levs[9] = 16
 levs[10] = 20
 
 levs[11] = 10
@@ -79,6 +79,7 @@ levs[204] = 5   # hub 3 right to the entrance
 levs[205] = 20  # no entrance yet
 levs[206] = 16  # no entrance, special case to be available
 levs[207] = 10  # no entrance yet
+levs[208] = 20  # no entrance yet
 levs[277] = 20  # extra levels without zone assigned (yet)
 levs[278] = 20  # discarded levels
 

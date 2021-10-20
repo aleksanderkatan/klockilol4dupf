@@ -174,14 +174,13 @@ class game_logic:
             ticks = global_save_state.get("time", 0)
             time = u.ticks_to_time(ticks)
             txt_surface = FONT_2.render(time, True, pygame.Color('black'))
-            # txt_surface.get_rect().right = 100
             self.screen.blit(txt_surface,
-                             (v.WINDOW_X - len(time) * FONT_SIZE_2 * 0.58 - v.LEVEL_FONT_OFFSET,
+                             (v.WINDOW_X - txt_surface.get_rect().width - v.LEVEL_FONT_OFFSET,
                               v.LEVEL_FONT_OFFSET)
                              )
             txt_surface = FONT_4.render(g.VERSION, True, pygame.Color('black'))
             self.screen.blit(txt_surface,
-                             (v.WINDOW_X - len(g.VERSION) * FONT_SIZE_4 * g.FONT_RATIO - v.LEVEL_FONT_OFFSET,
+                             (v.WINDOW_X - txt_surface.get_rect().width - v.LEVEL_FONT_OFFSET,
                               v.LEVEL_FONT_OFFSET * 2 + FONT_SIZE_2)
                              )
 

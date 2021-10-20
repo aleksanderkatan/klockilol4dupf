@@ -1,3 +1,8 @@
+0.80
+- more levels and polishing for zone 7, 8, 9, zone placeholder for game recommendations
+- finally aligned the timer right
+- added reset_completed command
+
 0.79
 - more levels and polishing for zone 5 and 6 and minor changes for others
 

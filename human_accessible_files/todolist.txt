@@ -1,7 +1,7 @@
 the lot
 
 - way more levels!!
-- update some (most) sprites
+- update sprites
 - pack the game into container
 - add all the dialogue
 # - think of something to do with time travel, so the 4d really stands for something
@@ -9,5 +9,5 @@ the lot
 - plp zone
 - hanabi zone
 - english translation and implementation of languages
-
+- background for timer and zone name
 

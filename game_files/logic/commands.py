@@ -5,7 +5,7 @@ from game_files.imports.log import log
 import game_files.imports.levels as l
 import game_files.imports.globals as g
 import game_files.imports.utils as u
-from game_files.imports.save_state import global_save_state
+from game_files.imports.save_state import global_save_state, completed_levels
 from game_files.imports.view_constants import global_view_constants as v
 
 public_commands = {}
@@ -204,6 +204,11 @@ def command_reset_events(game_logic, command):
     global_save_state.hard_save("events", set())
 
 
+def command_reset_completed(game_logic, command):
+    log.info("Resetting completed levels")
+    global_save_state.hard_save("completed", completed_levels())
+
+
 def command_complete_zone(game_logic, command):
     if len(command) != 2:
         log.error("Wrong command length, give one argument")
@@ -322,6 +327,8 @@ root_commands["x_offset"] = command_x_offset
 root_commands["reset_timer"] = command_reset_timer
 
 root_commands["reset_events"] = command_reset_events
+
+root_commands["reset_completed"] = command_reset_completed
 
 root_commands["complete_zone"] = command_complete_zone
 root_commands["cz"] = command_complete_zone
