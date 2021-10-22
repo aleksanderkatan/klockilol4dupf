@@ -20,21 +20,18 @@ class input_box:
         if k.is_input_box_disable(key):
             self.active = False
             self.text = ''
-            return
-
-        if k.is_input_box_enable(key):
+        elif k.is_input_box_enable(key):
             self.active = not self.active
             if not self.active:
                 self.stage.execute_command(self.text)
             self.text = ''
-
-        if not self.active:
+        elif not self.active:
             return
         elif k.is_input_box_delete(key):
             self.text = self.text[:-1]
-        else:
-            if len(self.text) < g.MAX_COMMAND_LENGTH and not k.is_input_box_enable(key):
-                self.text += unicode
+        elif len(self.text) < g.MAX_COMMAND_LENGTH and not k.is_input_box_enable(key):
+            self.text += unicode
+
         self.txt_surface = FONT.render(self.text, True, self.color)
 
     def draw(self, screen):

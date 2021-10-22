@@ -1,3 +1,6 @@
+0.81
+- more levels and polishing for zone 9, 10
+
 0.80
 - more levels and polishing for zone 7, 8, 9, zone placeholder for game recommendations
 - finally aligned the timer right

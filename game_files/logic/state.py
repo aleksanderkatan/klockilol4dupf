@@ -103,9 +103,14 @@ class state:
         if step_in_block is not None and direction != 5:
             step_in_block.on_step_in()
 
-    def draw(self):             # !! update so that blocks from layer 2 overlap bombs and other stuff from layer 1
+    def draw(self):  # !! update so that blocks from layer 2 overlap bombs and other stuff from layer 1
+        # or not...
         for i in range(len(self.layers)):
             self.layers[i].draw(i, len(self.layers), u.relative_to_player(i, self.player.pos[2]))
+        for decoration in self.decorations:
+            x, y = u.index_to_position(decoration.pos[0], decoration.pos[1], decoration.pos[2], self.x, self.y,
+                                       len(self.layers))
+            decoration.draw((x, y), u.relative_to_player(decoration.pos[2], self.player.pos[2]))
         for pusher in self.pushers:
             x, y = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y, len(self.layers))
             pusher.draw((x, y))
@@ -115,9 +120,6 @@ class state:
         for bomb in self.bombs:
             x, y = u.index_to_position(bomb.pos[0], bomb.pos[1], bomb.pos[2], self.x, self.y, len(self.layers))
             bomb.draw((x, y), u.relative_to_player(bomb.pos[2], self.player.pos[2]))
-        for decoration in self.decorations:
-            x, y = u.index_to_position(decoration.pos[0], decoration.pos[1], decoration.pos[2], self.x, self.y, len(self.layers))
-            decoration.draw((x, y), u.relative_to_player(decoration.pos[2], self.player.pos[2]))
 
         if not self.player.dead:
             self.draw_player()
@@ -196,7 +198,7 @@ class state:
             return None
 
         for blo in self.block_iterator():
-            if (issubclass(type(blo), o.block_entrance) or issubclass(type(blo), o.block_entrance_random))\
+            if (issubclass(type(blo), o.block_entrance) or issubclass(type(blo), o.block_entrance_random)) \
                     and blo.get_target_level() == level_index:
                 return blo.pos
         return None
@@ -210,4 +212,3 @@ class state:
                         if blo.my_index == index:
                             return blo
         return None
-
