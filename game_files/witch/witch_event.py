@@ -7,7 +7,7 @@ class witch_event:
             messages = []
         self.where = where
         self.messages = messages
-        self.index = None
+        self.index = index
         self.current_message_index = None
 
     def activate(self):

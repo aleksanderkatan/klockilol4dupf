@@ -24,7 +24,7 @@ print()
 
 
 # for ext in ["java"]:
-for ext in ["py", "lv", "txt"]:
+for ext in ["py", "lv", "ev", "txt"]:
     files = 0
     lines = 0
     characters = 0

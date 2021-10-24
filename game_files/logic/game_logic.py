@@ -152,9 +152,10 @@ class game_logic:
             self.single_layer = u.new_single_layer(self.single_layer, key, self.stage.latest_state().z)     # returns none or integer
 
         g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
-        self.stage.move(next_move_direction)    # has to be called, None if no move pressed
-        if next_move_direction is not None:
-            global_save_state.log_move(next_move_direction)
+        if not self.witch.is_active():
+            self.stage.move(next_move_direction)    # has to be called, None if no move pressed
+            if next_move_direction is not None:
+                global_save_state.log_move(next_move_direction)
         if g.AUTO_REVERSE and self.stage.latest_state().player.dead:
             self.stage.reverse()
         self.keys_registered = []

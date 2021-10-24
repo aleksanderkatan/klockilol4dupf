@@ -1,3 +1,6 @@
+0.82
+- revamped witch so now it's lines are in a plain text file instead of .py one
+
 0.81
 - more levels and polishing for zone 9, 10
 
