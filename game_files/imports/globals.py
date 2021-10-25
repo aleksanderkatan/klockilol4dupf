@@ -1,4 +1,4 @@
-VERSION = "v0.82"
+VERSION = "v0.83"
 
 FRAMERATE = 30
 MOVE_LIMIT = 2048
@@ -28,7 +28,7 @@ LOG_INFO = True
 LOG_WARNINGS = True
 LOG_ERRORS = True
 
-# runtime variables, don't change
+# runtime variables with default setting, don't change
 KBcheat = False
 DUDA_CHUJ = False
 PAPOR = False

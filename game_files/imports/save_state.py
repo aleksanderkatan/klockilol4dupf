@@ -186,10 +186,15 @@ class new_save_state:
         events = self.get("events", set())
         return index in events
 
-    def get_completion(self):
+    def get_completion(self, true=False):
+        if not true:
+            zones = range(1, 10+1)
+        else:
+            zones = [i for i in l.levs.keys() if 0 < i < 400]
+
         result = 0
         total = 0
-        for i in range(1, 10+1):
+        for i in zones:
             total += l.levs[i]
             for j in range(1, l.levs[i]+1):
                 if self.is_level_completed((i, j)):

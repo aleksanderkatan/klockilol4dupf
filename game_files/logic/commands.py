@@ -56,12 +56,6 @@ def command_logged_keys(game_logic, command):
     log.print(message)
 
 
-def command_all_stats(game_logic, command):
-    message = f"Completion: {int(global_save_state.get_completion()*100)}%\n"
-    message += f"In-game time: " + u.ticks_to_time(global_save_state.get("time", 0))
-    log.print(message)
-    command_logged_keys(game_logic, ["lk"])
-
 def command_enable_cheats(game_logic, command):
     if g.CHEATS:
         log.info("Cheats already enabled\nIf you want to disable them, use another command")
@@ -98,9 +92,6 @@ public_commands["completion"] = command_completion
 
 public_commands["logged_keys"] = command_logged_keys
 public_commands["lk"] = command_logged_keys
-
-public_commands["all_stats"] = command_all_stats
-public_commands["as"] = command_all_stats
 
 public_commands["enable_cheats"] = command_enable_cheats
 public_commands["ec"] = command_enable_cheats
@@ -210,14 +201,12 @@ def command_reset_completed(game_logic, command):
 
 
 def command_complete_zone(game_logic, command):
-    if len(command) != 2:
-        log.error("Wrong command length, give one argument")
-        return
-    if not u.check_if_int(command[1]):
-        log.error("Argument not integer")
-        return
-    log.info("Completing zone", command[1])
-    global_save_state.complete_zone(int(command[1]), True)
+    for arg in command[1:]:
+        if not u.check_if_int(arg):
+            log.error("Argument not integer")
+            return
+        log.info("Completing zone", arg)
+        global_save_state.complete_zone(int(arg), True)
 
 
 def command_complete_all(game_logic, command):
@@ -297,6 +286,14 @@ def command_teleport_up(game_logic, command):
     return
 
 
+def command_all_stats(game_logic, command):
+    message = f"Completion: {int(global_save_state.get_completion()*100)}%\n"
+    message += f"True completion: {int(global_save_state.get_completion(True)*100)}%\n"
+    message += f"In-game time: " + u.ticks_to_time(global_save_state.get("time", 0))
+    log.print(message)
+    command_logged_keys(game_logic, ["lk"])
+
+
 root_commands["lv"] = command_lv
 root_commands["cd"] = command_lv
 
@@ -361,6 +358,9 @@ root_commands["teleport"] = command_teleport
 root_commands["tp"] = command_teleport
 
 root_commands["up"] = command_teleport_up
+
+root_commands["all_stats"] = command_all_stats
+root_commands["as"] = command_all_stats
 
 # helpful functions
 

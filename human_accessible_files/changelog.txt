@@ -1,3 +1,7 @@
+0.83
+- added true completion
+- some changes for zone 10
+
 0.82
 - revamped witch so now it's lines are in a plain text file instead of .py one
 

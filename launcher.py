@@ -42,9 +42,14 @@ completion_label = tk.Label(window, textvariable=text)
 completion_label.grid(column=2, row=3)
 
 def update_completion():
+    s = ""
     completion = global_save_state.get_completion()
-    completion = int(completion*100)
-    text.set(str(completion) + "% completion")
+    s += str(int(completion*100)) + "% completion"
+    if completion == 1:
+        true_completion = global_save_state.get_completion(True)
+        s += "\n"
+        s += str(int(true_completion*100)) + "% true completion"
+    text.set(s)
 
 
 def bt_reset_method():
