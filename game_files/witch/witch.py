@@ -12,6 +12,7 @@ class witch:
         self.screen = screen
         self.active_event = None
         self.text_box = witch_box(self.screen)
+        self.last_checked = (None, None)
 
     def check_for_events(self, level_index, stage):
         if g.WITCH is False:
@@ -20,10 +21,14 @@ class witch:
         if self.active_event is not None:
             return
 
+        if self.last_checked == (level_index, stage.get_player_index()):
+            return
+            # no need to search through this once again
+        self.last_checked = (level_index, stage.get_player_index())
+
         for event in self.events:
             if global_save_state.is_event_completed(event.index):
                 continue
-            print("elo")
             if event.where[0] == level_index and (event.where[1] is None or event.where[1] == stage.get_player_index()):
                 self.active_event = event
                 event.activate()
