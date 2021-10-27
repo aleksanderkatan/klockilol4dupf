@@ -27,8 +27,9 @@ for file_path in files(events_path):
                 line = l.strip()
 
                 if line == "":
-                    if None not in [level, pos] and messages != []:
+                    if None not in [level] and messages != []:
                         events.append(witch_event(where=(level, pos), messages=messages))
+                        print("elo")
                         level = None
                         pos = None
                         messages = []

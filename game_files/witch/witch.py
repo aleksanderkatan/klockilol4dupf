@@ -23,6 +23,7 @@ class witch:
         for event in self.events:
             if global_save_state.is_event_completed(event.index):
                 continue
+            print("elo")
             if event.where[0] == level_index and (event.where[1] is None or event.where[1] == stage.get_player_index()):
                 self.active_event = event
                 event.activate()

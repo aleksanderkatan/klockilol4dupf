@@ -1,3 +1,6 @@
+0.83.1
+- bugfix
+
 0.83
 - added true completion
 - some changes for zone 10

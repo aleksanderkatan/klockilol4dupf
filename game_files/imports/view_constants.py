@@ -30,6 +30,8 @@ class view_constants:
         self.BLOCK_3D_DIFFERENCE = int(16 * self.Y_SCALE)
 
     def set_scales(self, x_scale, y_scale):
+        if (x_scale, y_scale) == (self.X_SCALE, self.Y_SCALE):
+            return
         self.X_SCALE = x_scale
         self.Y_SCALE = y_scale
         self.update()
