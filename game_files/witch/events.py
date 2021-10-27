@@ -28,8 +28,7 @@ for file_path in files(events_path):
 
                 if line == "":
                     if messages:
-                        events.append(witch_event(where=(level, pos), messages=messages))
-                        print(messages)
+                        events.append(witch_event(where=(level, pos), messages=messages, index=len(events)))
                         level = None
                         pos = None
                         messages = []
@@ -52,6 +51,7 @@ for file_path in files(events_path):
             log.error("pos:", pos)
             log.error("messages:", messages)
             log.error("line:", line)
+            log.error("file:", file_path)
             raise RuntimeError("Error while loading witch events")
 
 

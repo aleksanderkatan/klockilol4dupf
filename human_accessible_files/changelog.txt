@@ -1,3 +1,7 @@
+0.84
+- another bugfix this time for real
+- added more witch events (zone 3)
+
 0.83.2
 - another bugfix
 - optimization for witch events check
