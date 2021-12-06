@@ -1,0 +1,25 @@
+6 2
+None
+Co? Znowu dwa takie same poziomy? Niemożliwe
+
+
+6 5
+None
+No dobra, to teraz trochę grubsze ciekawostki.
+Być może nauczyciel fizyki uczył cię kiedyś liczyć pierwiastek z liczby przy użyciu prostego kalkulatora.
+nowy_wynik = 1/2 * (stary_wynik + liczba_którą_pierwiastkujesz/stary_wynik)
+I tak sobie powtarzasz, zaczynając od byle czego, przybliżasz się do pierwiastka liczby. To się nazywa metodą Newtona i można nią liczyć wiele różnych funkcji.
+Twórcy Quake III Arena potrzebowali szybko liczyć 1/pierwiastek(a). Użyli podobnej metody, ale zoptymalizowali ją w opór. Teraz, jak wygooglujesz "quake what the fuck", dostaniesz w wynikach "fast inverse square root"! Wraz z tym paskudnym kawałkiem kodu.
+
+
+
+6 9
+None
+Nice.
+Rozwiązywałeś kiedyś Jolki?
+Powiedzmy, że masz daną krzyżówkę i już poprawnie odgadłeś, jakie hasła będziesz do niej wpisywał, tylko jeszcze nie wiesz które gdzie, bo podpowiedzi nie były obok slotów tylko pod krzyżówką.
+Jeżeli byłbyś w stanie efektywnie rozwiązywać ten problem (czyli odpowiadać "da się wypełnić" albo "nie da się wypełnić"), zawaliło by to świat informatyczny.
+Konsekwencją tego byłoby, że ogromna część programistów straciłaby pracę, a sporo algorytmów zostałoby drastycznie przyspieszonych.
+No i sporo systemów zabezpieczeń by siadło, ludzie by mogli czytać twoje maile i być może włamać się do twojego banku.
+Wszystko jest konsekwencją tego, że problem krzyżówki jest NP-zupełny.
+

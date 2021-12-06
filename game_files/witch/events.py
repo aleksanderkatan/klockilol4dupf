@@ -25,6 +25,8 @@ for file_path in files(events_path):
         try:
             for l in itertools.chain(f, [""]):
                 line = l.strip()
+                line = line.replace("\\t", "\t")
+                line = line.replace("\\n", "\n")
 
                 if line == "":
                     if messages:

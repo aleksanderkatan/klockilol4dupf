@@ -227,18 +227,25 @@ def level_name(level_index):
     return "How did you get here?"
 
 
+background_index = {
+    (500, 0): "background_swamp",
+    (500, 1): "background_giszowiec_1",
+    (500, 2): "background_kono_dio_da",
+    (204, 0): "background_giszowiec",
+    (4, 2): "background_kidney",
+}
+
+background_set = {
+    204: "background_giszowiec_3",
+}
+
 def background_of_level(level_index):
     level_set, level = level_index
-    if level_index == (500, 0):
-        return "background_swamp"
-    if level_index == (500, 1):
-        return "background_giszowiec_1"
-    if level_index == (500, 2):
-        return "background_kono_dio_da"
-    if level_index == (204, 0):
-        return "background_giszowiec_2"
-    if level_set == 204:
-        return "background_giszowiec_3"
+    if level_index in background_index:
+        return background_index[level_index]
+
+    if level_set in background_set:
+        return background_set[level_set]
 
     if g.PAPOR:
         return "background_2137"
