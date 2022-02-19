@@ -31,10 +31,10 @@ None
 Informatyczne ciekawostki to jest to! Tak się składa że mam ich kilka zebranych.
 Wiedziałeś, że ciąg Fibonnaciego może służyć do przybliżonej konwersji mili do kilometrów?
 3 mile to około 5km, dokładnie 4.83km
-5 mili to około 8km, dokładnie 8.04km
-8 mili to około 13km, dokładnie 12.87km
-13 mili to około 21km, dokładnie 20.92km
-Dzieje się tak, ponieważ zauważmy, że jak weźmiemy funkcję tworzącą ciągu Fibonacciego $$F(z) = \sum_{i=0}^{\infty} F_i z^i$$ i zauważymy, że $$F(z)-F(z)z-F(z)^2 = $$ ileśtam jakiś wielomian stopnia 2 lub mniej, następnie przekształcimy to żeby mieć zwarty wzór na $F(z)$ i rozbijemy go na te ułamki proste czy jak to się nazywa to po zastosowaniu podstawienia do jakichś podstawowych funkcji typu $G(X) = \frac{1}{1-x}$ dostaniemy zwarty wzór na n-tą liczbę Fibonacciego i z tego będziemy łatwo w stanie policzyć granicę ciągu ilorazów dwóch kolejnych wyrazów ciągu Fibonacciego równą złotej liczbie, czyli około 1.618, co jest zadziwiająco bliskie prawdziwemu przelicznikowi mil na kilometry, czyli 1.609 i stąd ta asymptotyczna bliskość tego przybliżenia.
++5 mili to około 8km, dokładnie 8.04km
++8 mili to około 13km, dokładnie 12.87km
++13 mili to około 21km, dokładnie 20.92km
+Dzieje się tak, ponieważ zauważmy, że jak weźmiemy funkcję tworzącą ciągu Fibonacciego $$F(z) = \sum_{i=0}^{\infty} F_i z^i$$ i zauważymy, że $$F(z)-F(z)z-F(z)^2 = $$ ileśtam jakiś wielomian stopnia 2 lub mniej, następnie przekształcimy to żeby mieć zwarty wzór na $F(z)$ i rozbijemy go na te ułamki proste czy jak to się nazywa to po zastosowaniu podstawienia do jakichś podstawowych funkcji typu $G(x) = \frac{1}{1-x}$ dostaniemy zwarty wzór na n-tą liczbę Fibonacciego i z tego będziemy łatwo w stanie policzyć granicę ciągu ilorazów dwóch kolejnych wyrazów ciągu Fibonacciego równą złotej liczbie, czyli około 1.618, co jest zadziwiająco bliskie prawdziwemu przelicznikowi mil na kilometry, czyli 1.609 i stąd ta asymptotyczna bliskość tego przybliżenia.
 
 
 4 10

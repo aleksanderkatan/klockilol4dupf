@@ -12,7 +12,6 @@ I tak sobie powtarzasz, zaczynając od byle czego, przybliżasz się do pierwias
 Twórcy Quake III Arena potrzebowali szybko liczyć 1/pierwiastek(a). Użyli podobnej metody, ale zoptymalizowali ją w opór. Teraz, jak wygooglujesz "quake what the fuck", dostaniesz w wynikach "fast inverse square root"! Wraz z tym paskudnym kawałkiem kodu.
 
 
-
 6 9
 None
 Nice.
@@ -22,4 +21,32 @@ Jeżeli byłbyś w stanie efektywnie rozwiązywać ten problem (czyli odpowiada�
 Konsekwencją tego byłoby, że ogromna część programistów straciłaby pracę, a sporo algorytmów zostałoby drastycznie przyspieszonych.
 No i sporo systemów zabezpieczeń by siadło, ludzie by mogli czytać twoje maile i być może włamać się do twojego banku.
 Wszystko jest konsekwencją tego, że problem krzyżówki jest NP-zupełny.
+A w tym poziomie lód jest postawiony nieprzypadkowo.
 
+
+6 13
+None
+Większość programów w c++ da się sprowadzić do równoważnych mających 1 średnik. Takim głównym trikiem jest wrzucenie wszystkiego do ifów.
+Zamiast
++a = 3;
++piszesz
++if(a=3) {}
+Zamiast
++cin >> s;
++piszesz
++if(cin >> s) {}
+Ten jeden średnik jest potrzebny do deklarowania zmiennych. int a, b, c[1000000];
+Jak chcesz inny typ danych, na przykład jednego stringa - nic trudnego!
+pair<int, string>a, b, c[1000000], s;
++Po prostu ignoruj ten dodatkowy syf.
+
+
+6 16
+None
+A jak już jesteśmy przy średnikach, w c# jest LINQ, czyli system zapytań zintegrowanych z językiem. Jest to taki śmieszny miks c# z SQLem i można w nim robić selecty itp.
+Da się napisać zapytanie, które wczytuje graf z stdina i wypisuje na stdout liczbę spójnych składowych i ich rozmiary.
+Kod bez forów, whilów czy rekurencji, nawet modyfikowania zmiennych. Mamy tylko deklarowanie zmiennych i Aggregate. Chcesz wczytać 10 liczb i wypisać ich sumę?
+let input = (from i in Enumerable.Range(0, 10) select Console.ReadLine().ToString()).ToList()
++let wynik = input.Aggregate((x, y) => x+y)
++select Console.WriteLine(wynik)
+No i to nam pozwala pisać kod w cpp-like języku z 1 średnikiem. Deklaracja go pochłania, potem invoke na tym można wywołać w ifie.

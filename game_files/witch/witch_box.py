@@ -38,17 +38,18 @@ class witch_box:
     def wrap(self, string):
         if string is None:
             return None
-        words = string.split(' ')
         result = []
-        current = ''
         limit = int((v.WINDOW_X-FONT_OFFSET*2)/(FONT_SIZE*g.FONT_RATIO))
 
-        for word in words:
-            if len(current) + 1 + len(word) <= limit:
-                current = current + word + " "
-            else:
-                result.append(current)
-                current = word + " "
-        result.append(current)
+        for sub in string.split("\\n"):
+            current = ''
+            words = sub.split(' ')
+            for word in words:
+                if len(current) + 1 + len(word) <= limit:
+                    current = current + word + " "
+                else:
+                    result.append(current)
+                    current = word + " "
+            result.append(current)
 
         return result

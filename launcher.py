@@ -76,7 +76,7 @@ def bt_start_method():
 
 
 tk.Button(window, text="Reset save", command=bt_reset_method, width=10).grid(column=1, row=3)
-tk.Button(window, text="Play", command=bt_start_method, width=10).grid(column=1, row=4)
+tk.Button(window, text="Play", command=bt_start_method, width=20, height=2).grid(columnspan=3, row=4)
 
 
 update_completion()

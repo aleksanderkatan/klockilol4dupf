@@ -21,12 +21,16 @@ for file_path in files(events_path):
         messages = []
         line = None
 
+        file = ""
+        for l in itertools.chain(f, ["\n"]):
+            file += l
+        # let + add to same message
+        file = file.replace("\n+", "\\n")
+
         mode = 0
         try:
-            for l in itertools.chain(f, [""]):
+            for l in file.split("\n"):
                 line = l.strip()
-                line = line.replace("\\t", "\t")
-                line = line.replace("\\n", "\n")
 
                 if line == "":
                     if messages:

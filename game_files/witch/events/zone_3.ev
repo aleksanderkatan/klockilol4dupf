@@ -19,7 +19,7 @@ Właśnie, może powiem o nich coś więcej?
 
 3 8
 None
-Pierwszą wersję ciężko w ogóle nazywać wercją.
+Pierwszą wersję ciężko w ogóle nazywać wersją.
 Napisana w C++, działała w konsoli i nie miała niczego poza klockami z cyferkami, startem i końcem.
 Była bardziej utrwaleniem konceptu niż grą - dane mi się było spotkać z flashówką opartą na tymże pomyśle jakieś 10 lat temu.
 Pomimo długich godzin poszukiwać przez webarchive i flash pointa nie udało mi się jej znaleźć, ale za to przynajmniej została w jakiś sposób uwieczniona.
@@ -50,7 +50,7 @@ Innymi słowy - czasami ten sam poziom był nie do przejścia jeżeli tylko znaj
 3 12
 None
 Swoją drogą jakbyś się jeszcze nie skapł to mówię głównie pierdoły i nie musisz tego czytać.
-Drugą z funckjonalności która w tej grze się nie pojawia to takie śmieszne odwrócone "Y", gracze The Witness wiedzą o czym mówię.
+Drugą z funckjonalności która w tej grze się nie pojawia to takie śmieszne odwrócone "Y", zajebane z The Witness.
 Klocek z "Y" pozwalał i jednocześnie zmuszał gracza do zostawienia jednego klocka z cyfrą obok niego.
 Frustrująca i trudna mechanika zarówno w odniesieniu do tworzenia jak i przechodzenia poziomów.
 A no i spaghetti code pozwalał na maks 1 taki klocek na mapę.
@@ -75,7 +75,7 @@ None
 Odpadły jeszcze duże klocki. Jak nazwa wskazuje - po prostu zajmowały większe pole niż 1x1.
 Chodzenie w kółko po jedynce rozmiaru 2x2 nie sprawiało, że spadała.
 Poziom który masz przed sobą jest kozacki - losowo podmieniłam klocki na lód i okazało się, że da się go przejść i to bez backtrackingu*! Znów, myśl które ruchy są przegrywające.
-*no dobra, to można uznać za backtracking z głębokością 1.
+*backtrackingu z dużą głębokością.
 
 
 3 16
