@@ -63,6 +63,8 @@ charmap[']'] = o.block_birdy_arrow
 charmap['-'] = o.block_birdy_arrow
 charmap['_'] = o.block_birdy_arrow
 
+charmap['U'] = o.block_pm_jump
+
 # letters left:
 # WU
 # FGHK

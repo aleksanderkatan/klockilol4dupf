@@ -140,3 +140,6 @@ def check_if_int(x, min_val=None, max_val=None):
         max_val = val
     return min_val <= val <= max_val
 
+
+def get_translation(pos1, pos2):
+    return pos2[0]-pos1[0], pos2[1]-pos1[1], pos2[2]-pos1[2]

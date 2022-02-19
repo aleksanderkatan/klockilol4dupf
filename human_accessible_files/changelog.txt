@@ -1,3 +1,6 @@
+0.87
+- implemented animations system alongside jump animation
+
 0.86
 - idk even, I did something and didn't push for months
 - I FOUND THE ORIGINAL! https://www.newgrounds.com/portal/view/360130 https://www.giercownia.pl/gra/7441/platform_maze

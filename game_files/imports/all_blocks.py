@@ -45,6 +45,8 @@ from game_files.blocks.birdy.block_birdy_fragile_start import block_birdy_fragil
 from game_files.blocks.birdy.block_birdy_fragile_end import block_birdy_fragile_end
 from game_files.blocks.birdy.block_birdy_arrow import block_birdy_arrow
 
+from game_files.blocks.platform_maze.block_pm_jump import block_pm_jump
+
 standables = set()
 standables.add(block_perma)
 standables.add(block_start)
@@ -88,6 +90,8 @@ standables.add(block_undertale_green)
 standables.add(block_birdy_fragile_start)
 standables.add(block_birdy_fragile_end)
 standables.add(block_birdy_arrow)
+
+standables.add(block_pm_jump)
 
 preventing_win = set()
 preventing_win.add(block_numeric)

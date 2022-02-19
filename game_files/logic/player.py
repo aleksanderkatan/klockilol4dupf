@@ -7,9 +7,6 @@ import game_files.imports.utils as u
 class player:
     def __init__(self, pos, screen, stage, state_index):
         self.pos = pos
-        self.sprites = {}
-        self.sprites[True] = s.sprites["player_shrek"][0]
-        self.sprites[False] = s.sprites["player"][0]
         self.screen = screen
         self.stage = stage
         self.state_index = state_index
@@ -20,15 +17,22 @@ class player:
         self.next_move_length = 1
         self.flavour = 0    # 1 - orange, -1 - lemon
         self.last_move_pos = None
+        self.ignore_draw = False
 
-    def draw(self, screen_pos):
+    def get_current_sprite(self):
         if self.flavour in [-1, 1]:
             if self.flavour == 1:
-                self.screen.blit(s.sprites["flavour_orange"][0], screen_pos)
+                return s.sprites["flavour_orange"]
             else:
-                self.screen.blit(s.sprites["flavour_lemon"][0], screen_pos)
-        else:
-            self.screen.blit(self.sprites[global_save_state.get("shrek", False)], screen_pos)
+                return s.sprites["flavour_lemon"]
+        if global_save_state.get("shrek", False):
+            return s.sprites["player_shrek"]
+        return s.sprites["player"]
+
+    def draw(self, screen_pos):
+        if self.ignore_draw:
+            return
+        self.screen.blit(self.get_current_sprite()[0], screen_pos)
 
     def copy(self, new_state_index):
         pla = player(self.pos, self.screen, self.stage, new_state_index)

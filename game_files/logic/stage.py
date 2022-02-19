@@ -6,6 +6,7 @@ from game_files.imports.view_constants import global_view_constants as v
 from game_files.other.particle_generator import particle_generator
 from game_files.imports.log import log
 from game_files.logic.state_filler import fill
+from game_files.animations.animation_manager import animation_manager
 from game_files.imports.save_state import global_save_state
 
 
@@ -25,6 +26,7 @@ class stage:
             first_state.update_dark_visibility()
         self.change_to = None
         self.particle_generator = particle_generator(self.screen)
+        self.animation_manager = animation_manager()
 
     def draw(self, single_layer=None):
         if single_layer is None:
@@ -33,6 +35,7 @@ class stage:
             self.latest_state().draw_one_layer(len(self.latest_state().layers)-single_layer-1)
         self.particle_generator.step()
         self.particle_generator.draw()
+        self.animation_manager.draw_and_advance()
         txt_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
         if not self.latest_state().player.dead:
             self.screen.blit(txt_surface, (v.LEVEL_FONT_OFFSET, v.LEVEL_FONT_OFFSET))
@@ -50,6 +53,9 @@ class stage:
             return
 
         if self.latest_state().player.dead:
+            return
+
+        if self.animation_manager.is_logic_prevented():
             return
 
         new_state = self.latest_state().copy(len(self.states))
@@ -71,6 +77,7 @@ class stage:
             while self.states[-1].is_next_move_forced():
                 del self.states[-1]
         self.particle_generator.reset()
+        self.animation_manager.reset()
 
     def reset(self):
         self.states = self.states[0:1]
