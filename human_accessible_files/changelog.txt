@@ -1,3 +1,8 @@
+0.92
+- added animation for disappearing blocks
+- added events for zone 209
+- improvements for speedrunning system
+
 0.91
 - implemented speedrunning system
 

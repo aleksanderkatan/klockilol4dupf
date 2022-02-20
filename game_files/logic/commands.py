@@ -8,7 +8,7 @@ import game_files.imports.utils as u
 from game_files.imports.save_state import global_save_state, completed_levels
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.platform_maze_passwords import passwords
-from game_files.speedruns.speedrun_pm import speedrun_mp
+from game_files.imports.all_speedruns import speedruns
 
 public_commands = {}
 
@@ -67,12 +67,23 @@ def command_resume_timer(game_logic, command):
 
 
 def command_speedrun(game_logic, command):
-    speedrun = speedrun_mp()
+    if len(command) < 2:
+        log.error("Enter name of a speedrun")
+        return
+
+    command, options = extract_options(command)
+    name = (' '.join(command[1:])).lower()
+    if name not in speedruns:
+        log.error("No such speedrun")
+        return
+
+    speedrun = speedruns[name](does_death_reset=("-d" not in options))
     log.print(f"Starting speedrun {speedrun.get_name()}")
     g.TIMER = True
     g.CHEATS = False
     global_save_state.hard_erase_all()
     stage, pos = speedrun.get_starting_stage_and_pos()
+    game_logic.set_stage((1, 1))
     game_logic.set_stage(stage)
     game_logic.stage.latest_state().teleport_player(pos, activate_step_in=False)
     game_logic.speedrun = speedrun
@@ -124,7 +135,10 @@ public_commands["password"] = command_password
 
 public_commands["resume_timer"] = command_resume_timer
 
+public_commands["speed_run"] = command_speedrun
 public_commands["speedrun"] = command_speedrun
+public_commands["sr"] = command_speedrun
+public_commands["s"] = command_speedrun
 
 public_commands["shrek"] = command_shrek
 
@@ -403,6 +417,17 @@ root_commands["stop_timer"] = command_stop_timer
 
 
 # helpful functions
+
+def extract_options(command):
+    options = set()
+    rest = []
+
+    for word in command:
+        if word[0] == '-':
+            options.add(word)
+        else:
+            rest.append(word)
+    return rest, options
 
 def exit_game():
     # called: quit command entered, window closed by x, process killed from manager (SIGKILL?)
