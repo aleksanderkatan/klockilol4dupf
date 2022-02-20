@@ -83,7 +83,7 @@ class game_logic:
             global_save_state.hard_save_all()
 
         # now this part is bullshit and I will rework it at some point
-        if self.stage.latest_state().completed:
+        if self.stage.latest_state().completed and not self.stage.animation_manager.is_logic_prevented():
             if self.complete():
                 return
 

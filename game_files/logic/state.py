@@ -21,6 +21,7 @@ class state:
         self.bombs = []
         self.decorations = []
         self.dark_visibility = 1
+        self.invalid_moves = []
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)

@@ -46,6 +46,8 @@ from game_files.blocks.birdy.block_birdy_fragile_end import block_birdy_fragile_
 from game_files.blocks.birdy.block_birdy_arrow import block_birdy_arrow
 
 from game_files.blocks.platform_maze.block_pm_jump import block_pm_jump
+from game_files.blocks.platform_maze.block_pm_portal import block_pm_portal
+from game_files.blocks.platform_maze.block_pm_arrow import block_pm_arrow
 
 standables = set()
 standables.add(block_perma)
@@ -92,6 +94,8 @@ standables.add(block_birdy_fragile_end)
 standables.add(block_birdy_arrow)
 
 standables.add(block_pm_jump)
+standables.add(block_pm_portal)
+standables.add(block_pm_arrow)
 
 preventing_win = set()
 preventing_win.add(block_numeric)

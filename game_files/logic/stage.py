@@ -58,9 +58,12 @@ class stage:
         if self.animation_manager.is_logic_prevented():
             return
 
-        new_state = self.latest_state().copy(len(self.states))
+        old_state = self.latest_state()
+        new_state = old_state.copy(len(self.states))
         self.states.append(new_state)
         new_state.move(direction)
+        if direction in old_state.invalid_moves:
+            new_state.invalid = True
         if new_state.invalid:
             log.info("Invalid move performed")
             self.soft_reverse()

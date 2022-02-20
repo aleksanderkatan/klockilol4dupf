@@ -1,4 +1,5 @@
 from game_files.blocks.block import block
+from game_files.imports.log import log
 import game_files.imports.all_blocks as o
 import game_files.imports.all_sprites as s
 
@@ -22,4 +23,8 @@ class block_lift(block):
             target_z += 1
 
         if target_z < bound_z:
-            self.stage.states[self.state_index].teleport_player((self.pos[0], self.pos[1], target_z))
+            log.info(self.pos[2], target_z)
+            player = self.stage.states[self.state_index].player
+            player.enqueue_move(4)
+            player.boost_next_move(target_z-self.pos[2])
+            # self.stage.states[self.state_index].teleport_player((self.pos[0], self.pos[1], target_z))

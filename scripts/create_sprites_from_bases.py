@@ -19,7 +19,8 @@ def image_iter():
 
 
 rotatable = ["block_arrow", "ones_one", "block_piston",
-             "pusher", "block_dual_arrow", "block_birdy_arrow", "block_moving_arrow"]
+             "pusher", "block_dual_arrow", "block_birdy_arrow", "block_moving_arrow",
+             "block_pm_arrow"]
 
 for path, name in image_iter():
     im = Image.open(path)

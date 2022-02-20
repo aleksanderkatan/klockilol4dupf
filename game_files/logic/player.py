@@ -1,6 +1,9 @@
 import game_files.imports.all_sprites as s
 import game_files.imports.all_blocks as o
+from game_files.imports.log import log
 from game_files.imports.save_state import global_save_state
+from game_files.animations.animation_player_move import animation_player_move
+from game_files.animations.animation_player_jump import animation_player_jump
 import game_files.imports.globals as g
 import game_files.imports.utils as u
 
@@ -43,6 +46,7 @@ class player:
         pla.next_move_length = self.next_move_length
         pla.last_move_pos = self.last_move_pos
         pla.flavour = self.flavour
+        pla.ignore_draw = self.ignore_draw
         return pla
 
     def enqueue_move(self, direction):
@@ -76,6 +80,12 @@ class player:
             return
 
         new_pos = u.move_pos(self.pos, move_direction, move_length)
+        translation = u.get_translation(self.pos, new_pos)
+        if move_length == 1 or move_direction in [4, 5]:
+            move_animation = animation_player_move(self.screen, self.stage, self.state_index, translation)
+        else:
+            move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation, move_length-1)
+        self.stage.animation_manager.register_animation(move_animation)
 
         if new_pos[2] < 0:
             self.dead = True
@@ -90,7 +100,7 @@ class player:
             return
 
         if not self.stage.states[self.state_index].standable(self.pos):
-            self.enqueue_move(4)
+            self.enqueue_move(5)
 
     def has_something_enqueued(self):
         return self.enqueued_move is not None

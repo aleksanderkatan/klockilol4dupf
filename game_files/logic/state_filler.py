@@ -114,7 +114,8 @@ def _fill(s, level, last_level_index):
             o.block_piston: 'pistons',
             o.block_dual_arrow: 'dual_arrows',
             o.block_moving_arrow: 'moving_arrows',
-            o.block_entrance_random: 'entrances_random'
+            o.block_entrance_random: 'entrances_random',
+            o.block_pm_arrow: 'pm_arrows',
         }
 
         for key, value in blocks.items():

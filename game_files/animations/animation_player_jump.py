@@ -6,7 +6,7 @@ import game_files.imports.utils as u
 
 
 class animation_player_jump(animation):
-    def __init__(self, screen, stage, state_index, translation):
+    def __init__(self, screen, stage, state_index, translation, height):
         self.screen = screen
         self.stage = stage
         self.state = stage.states[state_index]
@@ -27,17 +27,18 @@ class animation_player_jump(animation):
         B = v.BLOCK_Y_SIZE
         for i in range(g.JUMP_ANIMATION_LENGTH):
             x, y = self.positions[i]
-            self.positions[i] = x, y - (-8*B/F/F * (i**2) + 8*B/F * i + 0)
+            self.positions[i] = x, y - (-4*height*B/F/F * (i**2) + 4*height*B/F * i + 0)
 
         self.frame = 0
         self.player.ignore_draw = True
 
     def draw(self):
-        log.print(f"animation {self.frame}")
+        # log.print(f"animation {self.frame}")
         self.screen.blit(self.player.get_current_sprite()[0], self.positions[min(self.frame, len(self.positions))])
 
     def advance(self):
         self.frame += 1
+        self.player.ignore_draw = not self.has_ended()
 
     def prevents_logic(self):
         return True

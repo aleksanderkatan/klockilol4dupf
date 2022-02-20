@@ -4,14 +4,17 @@ import game_files.imports.globals as g
 from game_files.imports.log import log
 from game_files.imports.view_constants import global_view_constants as v
 
+
 # returns position on screen for certain index
 def index_to_position(x, y, z, size_x, size_y, size_z):
     mid_x = v.WINDOW_X / 2
     mid_y = v.WINDOW_Y / 2
     high_left = (mid_x - size_x / 2 * v.BLOCK_X_SIZE, mid_y - size_y / 2 * v.BLOCK_Y_SIZE)
 
-    return high_left[0] + v.BLOCK_X_SIZE * x + (z - size_z / 2) * v.LAYER_X_OFFSET, high_left[1] + v.BLOCK_Y_SIZE * y - (
-            z - size_z / 2) * v.LAYER_Y_OFFSET
+    size_z = size_z-1
+    return high_left[0] + v.BLOCK_X_SIZE * x + (z - size_z / 2) * v.LAYER_X_OFFSET, \
+           high_left[1] + v.BLOCK_Y_SIZE * y - (z - size_z / 2) * v.LAYER_Y_OFFSET
+
 
 def out_of_range_3(pos, pos_max):
     for i in range(3):
@@ -56,6 +59,7 @@ def char_to_direction(key):
         return 3
     return None
 
+
 def reverse_direction(direction):
     if direction == 0:
         return 2
@@ -65,11 +69,12 @@ def reverse_direction(direction):
         return 0
     if direction == 3:
         return 1
-    return None     # direction may not be in [4]
+    return None  # direction may not be in [4]
+
 
 def new_single_layer(current_single_layer, key, total_layers):
     new_single_layer_index = -2137
-    for i in range(1, total_layers+1):
+    for i in range(1, total_layers + 1):
         if pygame.key.name(key) == str(i):
             new_single_layer_index = i - 1
     if new_single_layer_index == -2137:
@@ -80,44 +85,47 @@ def new_single_layer(current_single_layer, key, total_layers):
         ans = new_single_layer_index
     return ans
 
+
 def hash_string(string):
     hasher = hashlib.sha256()
     hasher.update(bytes(string, "utf-16"))
     return hasher.digest()
 
+
 def move_pos(pos, direction, move_length=1):
     x, y, z = pos
 
     if direction is None:
-        log.warning("Moving in None direction")
-        return pos
-    if direction == 5:
+        log.info("Moving in None direction (skipping move)")
         return pos
     else:
-        if direction == 0:
+        if direction == 0:      # right
             x += move_length
-        elif direction == 1:
+        elif direction == 1:    # up
             y -= move_length
-        elif direction == 2:
+        elif direction == 2:    # left
             x -= move_length
-        elif direction == 3:
+        elif direction == 3:    # down
             y += move_length
-        else:
-            z -= 1
+        elif direction == 4:    # above
+            z += move_length
+        elif direction == 5:    # below
+            z -= move_length
 
     return x, y, z
+
 
 def extend(number, length):
     if len(str(number)) >= length:
         return str(number)
     ans = ""
     for i in range(length):
-        ans += str((number % pow(10, length-i))//pow(10, length-i-1))
+        ans += str((number % pow(10, length - i)) // pow(10, length - i - 1))
     return ans
 
 
 def ticks_to_time(ticks):
-    milliseconds = int(ticks * (1/g.FRAMERATE) * 1000)
+    milliseconds = int(ticks * (1 / g.FRAMERATE) * 1000)
     seconds = milliseconds // 1000
     milliseconds %= 1000
     minutes = seconds // 60
@@ -142,4 +150,4 @@ def check_if_int(x, min_val=None, max_val=None):
 
 
 def get_translation(pos1, pos2):
-    return pos2[0]-pos1[0], pos2[1]-pos1[1], pos2[2]-pos1[2]
+    return pos2[0] - pos1[0], pos2[1] - pos1[1], pos2[2] - pos1[2]

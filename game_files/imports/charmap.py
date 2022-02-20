@@ -64,12 +64,14 @@ charmap['-'] = o.block_birdy_arrow
 charmap['_'] = o.block_birdy_arrow
 
 charmap['U'] = o.block_pm_jump
+charmap['z'] = o.block_pm_portal
+charmap['V'] = o.block_pm_arrow
 
 # letters left:
-# WU
+# W
 # FGHK
-# CV
+# C
 #
 # w
 # dhjk
-# zc
+# c

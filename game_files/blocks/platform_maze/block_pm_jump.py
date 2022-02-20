@@ -6,7 +6,7 @@ from game_files.animations.animation_player_jump import animation_player_jump
 class block_pm_jump(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
-        self.sprite = s.sprites["error"]
+        self.sprite = s.sprites["block_pm_jump"]
         self.length = 4
 
     def copy(self, new_state_index):
@@ -23,4 +23,4 @@ class block_pm_jump(block):
 
         if dir is not None and dir != 4:
             self.stage.states[self.state_index].player.enqueue_move(dir)
-        self.stage.animation_manager.register_animation(animation_player_jump(self.screen, self.stage, self.state_index, translation))
+        # self.stage.animation_manager.register_animation(animation_player_jump(self.screen, self.stage, self.state_index, translation))

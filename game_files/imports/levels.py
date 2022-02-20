@@ -83,7 +83,6 @@ levs[208] = 20  # no entrance yet
 levs[209] = 20  # no entrance yet
 levs[277] = 20  # extra levels without zone assigned (yet)
 levs[278] = 20  # discarded levels
-
 levs[301] = 5
 levs[302] = 5
 levs[303] = 5
