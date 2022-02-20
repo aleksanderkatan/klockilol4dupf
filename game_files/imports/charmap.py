@@ -47,7 +47,7 @@ charmap['Q'] = o.block_swapping
 charmap['t'] = o.block_swapping_trigger
 charmap['G'] = o.block_swapping_trigger_random
 
-charmap['K'] = o.block_shrek
+charmap['F'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple
 charmap['i'] = o.block_undertale_pink   # p taken
 charmap['o'] = o.block_undertale_orange
@@ -74,7 +74,7 @@ charmap['k'] = o.block_pm_triggerable_off
 
 # letters left:
 # W
-# FGH
+# GH
 # C
 #
 # w

@@ -3,6 +3,7 @@ import pickle
 import game_files.imports.levels as l
 import game_files.imports.globals as g
 from game_files.imports.log import log
+import game_files.imports.utils as u
 
 SAVE_FILE_PATH = 'game_files/data/completed.txt'
 
@@ -200,6 +201,23 @@ class new_save_state:
                 if self.is_level_completed((i, j)):
                     result += 1
         return result/total
+
+    def get_logged_keys(self):
+        message = "Remembered key presses:\n"
+        t = {0: "right", 1: "up", 2: "left", 3: "down"}
+        for key, value in t.items():
+            message += value + ": " + str(self.get("moves_direction_" + str(key), 0)) + "\n"
+        message += "reverses: " + str(self.get("reverses", 0)) + "\n"
+        message += "resets: " + str(self.get("resets", 0)) + "\n"
+        message += "escapes: " + str(self.get("escapes", 0)) + "\n"
+        return message
+
+    def get_all_stats(self):
+        message = f"Completion: {int(self.get_completion() * 100)}%\n"
+        message += f"True completion: {int(self.get_completion(True) * 100)}%\n"
+        message += f"In-game time: " + u.ticks_to_time(self.get("time", 0)) + "\n"
+        message += self.get_logged_keys()
+        return message
 
 
 global_save_state = new_save_state()

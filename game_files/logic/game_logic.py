@@ -44,6 +44,7 @@ class game_logic:
         self.level_index = None
         self.witch = witch(screen)
         self.grayness = s.sprites["background_grayness"]
+        self.speedrun = None
 
     def set_stage(self, level_index):
         # update invisible visibility
@@ -73,14 +74,26 @@ class game_logic:
         if not l.is_level(self.level_index):
             return False
 
-        global_save_state.complete_level(self.level_index, hard_save=True)
-        self.set_stage(l.next_level(self.level_index))
+        completed = self.level_index
+        global_save_state.complete_level(completed, hard_save=True)
+        self.set_stage(l.next_level(completed))
+        if self.speedrun is not None:
+            time = u.ticks_to_time(global_save_state.get("time", -1))
+            log.print(f"Level {completed} completed at {time}")
+            if self.speedrun.is_condition_met():
+                global_save_state.hard_save_all()
+                name = self.speedrun.get_name()
+                log.print(f"Speedrun {name} completed!")
+                log.print(global_save_state.get_all_stats())
+                global_save_state.set("is_timer_stopped", True)
+                global_save_state.hard_save_all()
         return True
 
     def move(self):
-        global_save_state.increase_value("time", default_data=0)
-        if global_save_state.get("time", 0) % (g.FRAMERATE * g.AUTO_SAVE_INTERVAL) == 0:
-            global_save_state.hard_save_all()
+        if not global_save_state.get("is_timer_stopped", False):
+            global_save_state.increase_value("time", default_data=0)
+            if global_save_state.get("time", 0) % (g.FRAMERATE * g.AUTO_SAVE_INTERVAL) == 0:
+                global_save_state.hard_save_all()
 
         # now this part is bullshit and I will rework it at some point
         if self.stage.latest_state().completed and not self.stage.animation_manager.is_logic_prevented():

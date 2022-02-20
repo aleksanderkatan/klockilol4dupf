@@ -8,6 +8,7 @@ import game_files.imports.utils as u
 from game_files.imports.save_state import global_save_state, completed_levels
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.platform_maze_passwords import passwords
+from game_files.speedruns.speedrun_pm import speedrun_mp
 
 public_commands = {}
 
@@ -47,13 +48,7 @@ def command_completion(game_logic, command):
 
 
 def command_logged_keys(game_logic, command):
-    message = "Remembered key presses:\n"
-    t = {0: "right", 1: "up", 2: "left", 3: "down"}
-    for key, value in t.items():
-        message += value + ": " + str(global_save_state.get("moves_direction_" + str(key), 0)) + "\n"
-    message += "reverses: " + str(global_save_state.get("reverses", 0)) + "\n"
-    message += "resets: " + str(global_save_state.get("resets", 0)) + "\n"
-    message += "escapes: " + str(global_save_state.get("escapes", 0)) + "\n"
+    message = global_save_state.get_logged_keys()
     log.print(message)
 
 
@@ -64,6 +59,27 @@ def command_password(game_logic, command):
         game_logic.set_stage((209, level))
     else:
         log.error("Incorrect password!")
+
+
+def command_resume_timer(game_logic, command):
+    log.info("Resuming timer")
+    global_save_state.hard_save("is_timer_stopped", False)
+
+
+def command_speedrun(game_logic, command):
+    speedrun = speedrun_mp()
+    log.print(f"Starting speedrun {speedrun.get_name()}")
+    g.TIMER = True
+    g.CHEATS = False
+    global_save_state.hard_erase_all()
+    stage, pos = speedrun.get_starting_stage_and_pos()
+    game_logic.set_stage(stage)
+    game_logic.stage.latest_state().teleport_player(pos, activate_step_in=False)
+    game_logic.speedrun = speedrun
+
+
+def command_shrek(game_logic, command):
+    global_save_state.hard_save("shrek", True)
 
 
 def command_enable_cheats(game_logic, command):
@@ -79,7 +95,8 @@ def command_enable_cheats(game_logic, command):
         log.info("WRONG PASSWORD!")
     else:
         g.CHEATS = True
-        log.info("Cheats enabled")
+        game_logic.speedrun = None
+        log.info("Cheats enabled. If there was a speedrun running, it is now erased.")
 
 
 public_commands["reset_all"] = command_reset_all
@@ -104,6 +121,12 @@ public_commands["logged_keys"] = command_logged_keys
 public_commands["lk"] = command_logged_keys
 
 public_commands["password"] = command_password
+
+public_commands["resume_timer"] = command_resume_timer
+
+public_commands["speedrun"] = command_speedrun
+
+public_commands["shrek"] = command_shrek
 
 public_commands["enable_cheats"] = command_enable_cheats
 public_commands["ec"] = command_enable_cheats
@@ -145,7 +168,7 @@ def command_next(game_logic, command):
         game_logic.set_stage(next_index)
 
 
-def command_swap(game_logic, command):      # !! I don't like this command, but it's useful
+def command_swap(game_logic, command):  # !! I don't like this command, but it's useful
     log.info("Swapping current level")
     if len(command) < 2 or command[1] not in ["next", "prev"]:
         log.error("Usage: \"swap next\" or \"swap prev\"")
@@ -157,13 +180,13 @@ def command_swap(game_logic, command):      # !! I don't like this command, but 
 
     if mode == 1:
         if level_index[1] > 1:
-            other = (level_index[0], level_index[1]-1)
+            other = (level_index[0], level_index[1] - 1)
         else:
             log.error("No previous level!")
             return
     else:
         if level_index[1] < l.levs[level_index[0]]:
-            other = (level_index[0], level_index[1]+1)
+            other = (level_index[0], level_index[1] + 1)
         else:
             log.error("No next level!")
             return
@@ -299,11 +322,13 @@ def command_teleport_up(game_logic, command):
 
 
 def command_all_stats(game_logic, command):
-    message = f"Completion: {int(global_save_state.get_completion()*100)}%\n"
-    message += f"True completion: {int(global_save_state.get_completion(True)*100)}%\n"
-    message += f"In-game time: " + u.ticks_to_time(global_save_state.get("time", 0))
+    message = global_save_state.get_all_stats()
     log.print(message)
-    command_logged_keys(game_logic, ["lk"])
+
+
+def command_stop_timer(game_logic, command):
+    log.info("Stopping timer")
+    global_save_state.hard_save("is_timer_stopped", True)
 
 
 root_commands["lv"] = command_lv
@@ -374,6 +399,9 @@ root_commands["up"] = command_teleport_up
 root_commands["all_stats"] = command_all_stats
 root_commands["as"] = command_all_stats
 
+root_commands["stop_timer"] = command_stop_timer
+
+
 # helpful functions
 
 def exit_game():
@@ -403,11 +431,14 @@ def list_of_commands(commands):
             ans += command
             ans += ", "
         ans = ans[:-2]
+        if function == command_speedrun:
+            ans += "\tWARNING: this command wipes your savefile!"
         ans += "\n"
+
     return ans
 
 
-def swap_levels(level_1, level_2):      # !! performs no checks
+def swap_levels(level_1, level_2):  # !! performs no checks
     def level_path(level):
         return "game_files/levels/" + str(level[0]) + "/" + str(level[1]) + ".lv"
 
@@ -417,6 +448,7 @@ def swap_levels(level_1, level_2):      # !! performs no checks
     os.rename(path_1, temp_path)
     os.rename(path_2, path_1)
     os.rename(temp_path, path_2)
+
 
 def execute_command(game_logic, command):
     if command == '':
@@ -434,6 +466,6 @@ def execute_command(game_logic, command):
         if command[0] in root_commands:
             root_commands[command[0]](game_logic, command)
         elif command[0] in public_commands:
-            public_commands[command[0]](game_logic, command)        # intentional, command overloading
+            public_commands[command[0]](game_logic, command)  # intentional, command overloading
         else:
             log.info("No such command. For list of available commands type \"help\"")
