@@ -85,23 +85,19 @@ class player:
         move_length = self.next_move_length
         move_direction = self.this_move_direction
 
-        temp_pos = self.pos
-        for i in range(move_length):
-            if state.has_barrier(temp_pos, move_direction):
-                move_length = i
-                break
-            temp_pos = u.move_pos(temp_pos, move_direction)
-
-        if move_length == 0:        # moves of length 0 are invalid! (would trigger on_step_out and on_step_in)
-            state.invalid = True
-            return
+        # moves longer than 1 are considered jumps and therefore surpass barriers
+        if move_length == 1:
+            if state.has_barrier(self.pos, move_direction):
+                state.invalid = True
+                return
 
         new_pos = u.move_pos(self.pos, move_direction, move_length)
         translation = u.get_translation(self.pos, new_pos)
 
         move_animation = None
-        if self.stage.level_index[0] == 209 and (move_length == 1 or move_direction in [4, 5]):     # animate only in PM zone
-            move_animation = animation_player_move(self.screen, self.stage, self.state_index, translation)
+        if self.stage.level_index[0] == 209 and (move_length == 1 or move_direction in [4, 5]):     # animate only in PM zone... or not
+            pass
+            # move_animation = animation_player_move(self.screen, self.stage, self.state_index, translation)
         elif move_length != 1 and move_direction not in [4, 5]:
             move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation, (move_length-1)/2)
 

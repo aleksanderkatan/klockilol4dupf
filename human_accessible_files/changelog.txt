@@ -1,3 +1,7 @@
+0.90
+- added all levels from PM
+- jumping now goes over barriers
+
 0.89
 - added triggerer, triggerable, control switcher, flight and fake numeric blocks from PM
 - reimplemented arrow from PM to use barrier system

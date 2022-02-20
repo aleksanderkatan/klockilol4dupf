@@ -7,6 +7,7 @@ import game_files.imports.globals as g
 import game_files.imports.utils as u
 from game_files.imports.save_state import global_save_state, completed_levels
 from game_files.imports.view_constants import global_view_constants as v
+from game_files.imports.platform_maze_passwords import passwords
 
 public_commands = {}
 
@@ -56,6 +57,15 @@ def command_logged_keys(game_logic, command):
     log.print(message)
 
 
+def command_password(game_logic, command):
+    if command[1] in passwords:
+        level = passwords[command[1]]
+        log.info(f"Changing level to: 209, {level}")
+        game_logic.set_stage((209, level))
+    else:
+        log.error("Incorrect password!")
+
+
 def command_enable_cheats(game_logic, command):
     if g.CHEATS:
         log.info("Cheats already enabled\nIf you want to disable them, use another command")
@@ -92,6 +102,8 @@ public_commands["completion"] = command_completion
 
 public_commands["logged_keys"] = command_logged_keys
 public_commands["lk"] = command_logged_keys
+
+public_commands["password"] = command_password
 
 public_commands["enable_cheats"] = command_enable_cheats
 public_commands["ec"] = command_enable_cheats
