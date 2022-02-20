@@ -83,7 +83,7 @@ class game_logic:
             if self.speedrun.is_condition_met():
                 global_save_state.hard_save_all()
                 name = self.speedrun.get_name()
-                log.print(f"Speedrun {name} completed!")
+                log.print(f"Speedrun {name} completed! Deaths reset: {self.speedrun.does_death_reset()}")
                 log.print(global_save_state.get_all_stats())
                 global_save_state.set("is_timer_stopped", True)
                 global_save_state.hard_save_all()
@@ -169,8 +169,12 @@ class game_logic:
             self.stage.move(next_move_direction)    # has to be called, None if no move pressed
             if next_move_direction is not None:
                 global_save_state.log_move(next_move_direction)
-        if g.AUTO_REVERSE and self.stage.latest_state().player.dead:
-            self.stage.reverse()
+
+        if self.stage.latest_state().player.dead:
+            if self.speedrun is not None and self.speedrun.does_death_reset():
+                self.stage.reset()
+            elif g.AUTO_REVERSE:
+                self.stage.reverse()
         self.keys_registered = []
 
     def draw(self):

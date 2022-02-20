@@ -9,3 +9,6 @@ class speedrun(metaclass=abc.ABCMeta):
 
     def get_name(self):
         pass
+
+    def does_death_reset(self):
+        pass
