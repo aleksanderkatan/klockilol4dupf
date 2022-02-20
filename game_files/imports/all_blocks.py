@@ -48,6 +48,12 @@ from game_files.blocks.birdy.block_birdy_arrow import block_birdy_arrow
 from game_files.blocks.platform_maze.block_pm_jump import block_pm_jump
 from game_files.blocks.platform_maze.block_pm_portal import block_pm_portal
 from game_files.blocks.platform_maze.block_pm_arrow import block_pm_arrow
+from game_files.blocks.platform_maze.block_pm_flight import block_pm_flight
+from game_files.blocks.platform_maze.block_pm_numeric import block_pm_numeric
+from game_files.blocks.platform_maze.block_pm_control_switcher import block_pm_control_switcher
+from game_files.blocks.platform_maze.block_pm_triggerer import block_pm_triggerer
+from game_files.blocks.platform_maze.block_pm_triggerable_on import block_pm_triggerable_on
+from game_files.blocks.platform_maze.block_pm_triggerable_off import block_pm_triggerable_off
 
 standables = set()
 standables.add(block_perma)
@@ -96,6 +102,11 @@ standables.add(block_birdy_arrow)
 standables.add(block_pm_jump)
 standables.add(block_pm_portal)
 standables.add(block_pm_arrow)
+standables.add(block_pm_flight)
+standables.add(block_pm_numeric)
+standables.add(block_pm_control_switcher)
+standables.add(block_pm_triggerer)
+standables.add(block_pm_triggerable_on)
 
 preventing_win = set()
 preventing_win.add(block_numeric)

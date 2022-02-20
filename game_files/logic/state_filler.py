@@ -116,6 +116,8 @@ def _fill(s, level, last_level_index):
             o.block_moving_arrow: 'moving_arrows',
             o.block_entrance_random: 'entrances_random',
             o.block_pm_arrow: 'pm_arrows',
+            o.block_pm_numeric: 'pm_numeric',
+            o.block_pm_control_switcher: 'pm_control_switchers',
         }
 
         for key, value in blocks.items():

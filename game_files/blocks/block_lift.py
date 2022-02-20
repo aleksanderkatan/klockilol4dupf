@@ -23,7 +23,6 @@ class block_lift(block):
             target_z += 1
 
         if target_z < bound_z:
-            log.info(self.pos[2], target_z)
             player = self.stage.states[self.state_index].player
             player.enqueue_move(4)
             player.boost_next_move(target_z-self.pos[2])

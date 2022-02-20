@@ -66,12 +66,17 @@ charmap['_'] = o.block_birdy_arrow
 charmap['U'] = o.block_pm_jump
 charmap['z'] = o.block_pm_portal
 charmap['V'] = o.block_pm_arrow
+charmap['!'] = o.block_pm_flight
+charmap['9'] = o.block_pm_numeric
+charmap['c'] = o.block_pm_control_switcher
+charmap['K'] = o.block_pm_triggerer
+charmap['k'] = o.block_pm_triggerable_off
 
 # letters left:
 # W
-# FGHK
+# FGH
 # C
 #
 # w
-# dhjk
-# c
+# dhj
+#

@@ -21,7 +21,6 @@ class state:
         self.bombs = []
         self.decorations = []
         self.dark_visibility = 1
-        self.invalid_moves = []
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)
@@ -101,7 +100,9 @@ class state:
         self.bombs = new_bombs
 
         step_in_block = self.get_block(self.player.pos)
-        if step_in_block is not None and direction != 5:
+        if step_in_block is not None:
+            if type(step_in_block) in o.standables:
+                self.player.flight = -1
             step_in_block.on_step_in()
 
     def draw(self):  # !! update so that blocks from layer 2 overlap bombs and other stuff from layer 1

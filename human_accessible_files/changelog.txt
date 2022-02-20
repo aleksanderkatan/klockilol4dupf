@@ -1,6 +1,10 @@
+0.89
+- added triggerer, triggerable, control switcher, flight and fake numeric blocks from PM
+- reimplemented arrow from PM to use barrier system
+
 0.88
 - implemented a stub of moving animations. A lot of bugfixes to do, make it so that new state is visible in middle of animation instead of the beginning
-- implemented arrow and portal blocks from PM
+- added arrow and portal blocks from PM
 
 0.87
 - implemented animations system alongside jump animation

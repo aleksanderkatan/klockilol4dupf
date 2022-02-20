@@ -3,26 +3,42 @@ import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
 from game_files.animations.animation_player_jump import animation_player_jump
 
+
 class block_pm_arrow(block):
-    def __init__(self, screen, stage, state_index, pos, direction=-1):
+    def __init__(self, screen, stage, state_index, pos, directions=None):
         super().__init__(screen, stage, state_index, pos)
-        self.set_direction(direction)
+        if directions is None:
+            directions = []
+        self.directions = directions
+        self.barriers = []
+        self.set_directions(directions)
 
     def copy(self, new_state_index):
-        return block_pm_arrow(self.screen, self.stage, new_state_index, self.pos, self.direction)
+        return block_pm_arrow(self.screen, self.stage, new_state_index, self.pos, self.directions)
 
     def on_step_in(self):
-        state = self.stage.states[self.state_index]
-        state.invalid_moves = [i for i in range(6) if i != self.direction]
+        pass
 
     def options(self, option):
-        direction = u.char_to_direction(option[0])
-        self.set_direction(direction)
+        directions = [u.char_to_direction(elem) for elem in option]
+        self.set_directions(directions)
 
-    def set_direction(self, direction):
-        self.direction = direction
-        if 0 <= direction <= 3:
-            self.sprite = s.sprites["block_pm_arrow_" + str(direction)]
-        else:
-            self.sprite = s.sprites["error"]
+    def set_directions(self, directions):
+        self.sprite = s.sprites["error"]
+        self.directions = directions
+        if len(directions) == 1:  # single arrow
+            if 0 <= directions[0] <= 3:
+                self.barriers = [i for i in range(4) if i != directions[0]]
+                self.sprite = s.sprites["block_pm_arrow_" + str(directions[0])]
+        if len(directions) == 2:    # double arrow
+            if all(item in [0, 2] for item in directions):
+                self.barriers = [1, 3]
+                self.sprite = s.sprites["block_pm_dual_arrow_0"]
+            elif all(item in [1, 3] for item in directions):
+                self.barriers = [0, 2]
+                self.sprite = s.sprites["block_pm_dual_arrow_1"]
 
+    def has_barrier(self, direction, into):
+        if into:
+            return False
+        return direction in self.barriers
