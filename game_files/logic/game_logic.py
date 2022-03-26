@@ -70,6 +70,15 @@ class game_logic:
         if event.type == pygame.KEYDOWN:
             self.keys_registered.append((event.key, event.unicode))
 
+    def perform_speedrun_check(self):
+        if self.speedrun is not None and self.speedrun.is_condition_met():
+            global_save_state.hard_save_all()
+            name = self.speedrun.get_name()
+            log.print(f"Speedrun {name} completed! Deaths reset: {self.speedrun.does_death_reset()}")
+            log.print(global_save_state.get_all_stats())
+            global_save_state.set("is_timer_stopped", True)
+            global_save_state.hard_save_all()
+
     def complete(self):
         if not l.is_level(self.level_index):
             return False
@@ -80,13 +89,7 @@ class game_logic:
         if self.speedrun is not None:
             time = u.ticks_to_time(global_save_state.get("time", -1))
             log.print(f"Level {completed} completed at {time}")
-            if self.speedrun.is_condition_met():
-                global_save_state.hard_save_all()
-                name = self.speedrun.get_name()
-                log.print(f"Speedrun {name} completed! Deaths reset: {self.speedrun.does_death_reset()}")
-                log.print(global_save_state.get_all_stats())
-                global_save_state.set("is_timer_stopped", True)
-                global_save_state.hard_save_all()
+            self.perform_speedrun_check()
         return True
 
     def move(self):
@@ -144,7 +147,7 @@ class game_logic:
             if k.is_reverse(key):
                 self.stage.reverse()
                 global_save_state.log_reverse()
-                if self.speedrun is not None and self.speedrun.does_death_reset():
+                if self.speedrun is not None and self.speedrun.settings.does_death_reset:
                     self.stage.reset()
                 continue
 
@@ -172,10 +175,15 @@ class game_logic:
             if next_move_direction is not None:
                 global_save_state.log_move(next_move_direction)
 
+        if self.stage.speedrun_check_needed:
+            self.stage.speedrun_check_needed = False
+            self.perform_speedrun_check()
+
         if self.stage.latest_state().player.dead:
             if g.AUTO_REVERSE:
+                global_save_state.log_auto_reverse()
                 self.stage.reverse()
-            if self.speedrun is not None and self.speedrun.does_death_reset():
+            if self.speedrun is not None and self.speedrun.settings.does_death_reset:
                 self.stage.reset()
         self.keys_registered = []
 

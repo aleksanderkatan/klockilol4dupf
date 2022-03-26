@@ -163,6 +163,9 @@ class new_save_state:
     def log_reverse(self):
         self.increase_value("reverses", 0)
 
+    def log_auto_reverse(self):
+        self.increase_value("auto_reverses", 0)
+
     def log_reset(self):
         self.increase_value("resets", 0)
 
@@ -208,6 +211,7 @@ class new_save_state:
         for key, value in t.items():
             message += value + ": " + str(self.get("moves_direction_" + str(key), 0)) + "\n"
         message += "reverses: " + str(self.get("reverses", 0)) + "\n"
+        message += "auto-reverses: " + str(self.get("auto_reverses", 0)) + "\n"
         message += "resets: " + str(self.get("resets", 0)) + "\n"
         message += "escapes: " + str(self.get("escapes", 0)) + "\n"
         return message

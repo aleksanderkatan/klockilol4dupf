@@ -9,6 +9,7 @@ from game_files.imports.save_state import global_save_state, completed_levels
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.platform_maze_passwords import passwords
 from game_files.imports.all_speedruns import speedruns
+from game_files.speedruns.settings import settings as speedrun_settings
 
 public_commands = {}
 
@@ -61,11 +62,6 @@ def command_password(game_logic, command):
         log.error("Incorrect password!")
 
 
-def command_resume_timer(game_logic, command):
-    log.info("Resuming timer")
-    global_save_state.hard_save("is_timer_stopped", False)
-
-
 def command_speedrun(game_logic, command):
     if len(command) < 2:
         log.error("Enter name of a speedrun")
@@ -77,7 +73,8 @@ def command_speedrun(game_logic, command):
         log.error("No such speedrun")
         return
 
-    speedrun = speedruns[name](does_death_reset=("-d" not in options))
+    settings = speedrun_settings(does_death_reset=("-d" not in options))
+    speedrun = speedruns[name](settings)
     log.print(f"Starting speedrun {speedrun.get_name()}")
     g.TIMER = True
     g.CHEATS = False
@@ -132,8 +129,6 @@ public_commands["logged_keys"] = command_logged_keys
 public_commands["lk"] = command_logged_keys
 
 public_commands["password"] = command_password
-
-public_commands["resume_timer"] = command_resume_timer
 
 public_commands["speed_run"] = command_speedrun
 public_commands["speedrun"] = command_speedrun
@@ -340,6 +335,11 @@ def command_all_stats(game_logic, command):
     log.print(message)
 
 
+def command_resume_timer(game_logic, command):
+    log.info("Resuming timer")
+    global_save_state.hard_save("is_timer_stopped", False)
+
+
 def command_stop_timer(game_logic, command):
     log.info("Stopping timer")
     global_save_state.hard_save("is_timer_stopped", True)
@@ -413,6 +413,8 @@ root_commands["up"] = command_teleport_up
 root_commands["all_stats"] = command_all_stats
 root_commands["as"] = command_all_stats
 
+root_commands["resume_timer"] = command_resume_timer
+
 root_commands["stop_timer"] = command_stop_timer
 
 
@@ -479,7 +481,7 @@ def execute_command(game_logic, command):
     if command == '':
         return
 
-    command = [word.lower() for word in command.split(' ')]
+    command = [word.lower() for word in command.strip().split(' ')]
 
     if not g.CHEATS:
         if command[0] in public_commands:

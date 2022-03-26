@@ -1,6 +1,9 @@
 import abc
 
 class speedrun(metaclass=abc.ABCMeta):
+    def __init__(self, settings):
+        self.settings = settings
+
     def get_starting_stage_and_pos(self):
         pass
 

@@ -2,9 +2,6 @@ from game_files.speedruns.speedrun import speedrun
 from game_files.imports.save_state import global_save_state
 
 class speedrun_pm(speedrun):
-    def __init__(self, does_death_reset):
-        self.death_reset = does_death_reset
-
     def get_starting_stage_and_pos(self):
         return (209, 1), (8, 2, 0)
 
@@ -14,7 +11,4 @@ class speedrun_pm(speedrun):
 
     def get_name(self):
         return "Platform Maze"
-
-    def does_death_reset(self):
-        return self.death_reset
 

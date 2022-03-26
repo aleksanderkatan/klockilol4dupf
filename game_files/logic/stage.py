@@ -19,6 +19,7 @@ class stage:
         first_state = state(screen, self, 0)
         self.level_index = level_index
         self.successful = fill(first_state, level_index, last_level_index)
+        self.speedrun_check_needed = False
         if self.successful is False:
             log.error("Stage " + str(level_index) + " failed to load")
         else:
