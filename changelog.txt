@@ -1,3 +1,8 @@
+0.93.2
+- added proper README.md
+- bugfix for falling through ice block
+- removed certain inappropriate command
+
 0.93.1
 - changed file structure of the project
 
