@@ -1,0 +1,464 @@
+0.93.1
+- changed file structure of the project
+
+0.92.1
+- minor changes for speedrunning system
+
+0.92
+- added animation for disappearing blocks
+- added events for zone 209
+- improvements for speedrunning system
+
+0.91
+- implemented speedrunning system
+
+0.90
+- added all levels from PM
+- jumping now goes over barriers
+
+0.89
+- added triggerer, triggerable, control switcher, flight and fake numeric blocks from PM
+- reimplemented arrow from PM to use barrier system
+
+0.88
+- implemented a stub of moving animations. A lot of bugfixes to do, make it so that new state is visible in middle of animation instead of the beginning
+- added arrow and portal blocks from PM
+
+0.87
+- implemented animations system alongside jump animation
+
+0.86
+- idk even, I did something and didn't push for months
+- I FOUND THE ORIGINAL! https://www.newgrounds.com/portal/view/360130 https://www.giercownia.pl/gra/7441/platform_maze
+
+0.85
+- added witch events for zone 4 and 5
+
+0.84
+- another bugfix this time for real
+- added more witch events (zone 3)
+
+0.83.2
+- another bugfix
+- optimization for witch events check
+
+0.83.1
+- bugfix
+
+0.83
+- added true completion
+- some changes for zone 10
+
+0.82
+- revamped witch so now it's lines are in a plain text file instead of .py one
+
+0.81
+- more levels and polishing for zone 9, 10
+
+0.80
+- more levels and polishing for zone 7, 8, 9, zone placeholder for game recommendations
+- finally aligned the timer right
+- added reset_completed command
+
+0.79
+- more levels and polishing for zone 5 and 6 and minor changes for others
+
+0.78
+- added keybindings for quick level swapping
+- looped next/prev with hubs
+
+0.77
+- added more levels
+- reordered levels in zones 1-4
+- added keybindings for quick level switching
+
+0.76
+- stats are now displayed after obtaining Shrek
+- signs added for unfinished zones
+- added more levels for zone 4
+
+0.75
+- many minor changes (block_entrance, commands, game_logic, stage, stats, utils)
+- added more levels
+
+0.74
+- completely revamped save mechanics (from writing in jsons to pickle)
+- added saving before exiting
+- game now remembers amount of moves, reverses, resets and escapes (under "logged_keys" command)
+
+0.73
+- added complete_zone command
+- added swapping blocks and swapping trigger
+
+0.72
+- implemented on-block barriers
+- added interaction between barriers and jumps
+
+0.71
+- extracted all keybindings to another file
+- minor changes and bugfixes
+
+0.70
+- added more decorations
+- added more levels, changed some old levels
+- bugfixes
+- level swaps
+
+0.69
+- portal level generator added
+- some level changes
+
+0.68
+- implemented decoration system
+- added some decorations and new Witch sprite
+- added unsteppable block that looks like perma
+
+0.67
+- level options may now be spread into multiple lines (each starting with option name), and have spaces in between
+- added entrance_random
+- random levels are now generated on demand
+- optimization for complete_all command
+- moved levels from 277 to their respective zones
+
+0.66
+- bridge bugfix
+- dust generated when arrow goes out of boundary or when pushed block does the same
+- added more levels
+
+0.65
+- gave up on 3d
+- added more levels
+- added level_swap.py script
+- added moving_arrow block
+
+0.64.9
+- paste kind of works
+
+0.64.8
+- script for invisible dark numeric
+- importing new backgrounds automatically
+
+0.64.7
+- new scripts
+- importing new sprites automatically
+
+0.64.6
+- organised sprites into 3 categories
+
+0.64.5
+- updated log, now it can take multiple arguments
+
+0.64.4
+- refactored levels to have ".lv" extension
+
+0.64.3
+- changed all other sprites to gifs
+
+0.64.2
+- changed all blocks to gifs
+
+0.64.1
+- preps for modifying images
+
+0.63.3
+- added repo_stats.py to replace "wc" and "grep" commands on windows
+
+0.63.2
+- moved state filling to new file and revamped it
+- comments in files (new lines starting with #)
+
+0.63.1
+- moving files in repo
+
+0.62
+- added maze secret zone
+- fixed state invalidation (SIII[E)
+
+0.61
+- invisible block now more visible the more levels you've completed
+- added dark numeric block, plus block and minus block
+
+0.60
+- added birdy start, birdy end and birdy arrows
+- added invaliding of states (block_undertale_red, block_birdy_arrow, block_dual_arrow)
+- added Birdy zone with dialogue
+
+0.59
+- added bombs
+- added more levels
+
+0.58
+- added a game launcher
+- moved view constants to new class
+- many other refactors
+- added completion percentage (levels from main 10 zones only)
+
+0.57
+- added more levels (zone 10)
+- added installation guide for windows
+- added .bat file for windows users with python
+
+0.56
+- added "pos" command
+- revamped zone 1 and 3 levels
+
+0.55
+- revamped commands
+- added "help", "enable_cheats", "witch" commands
+
+0.54
+- version is now visible below timer
+- anti-cheese for timer quit outs
+
+0.53
+- added in-game timer (based on frames, not real time)
+- added more levels (zone 1, 2, 3)
+
+0.52
+- added more levels (zone 10)
+
+0.51.2
+- I'm back!
+- pushers reworked, now they trigger on_step_in (still triggered by thunder, still move player when pressed by thunder)
+
+0.51.1
+- pushers are so broken I'll try to rewrite them, this is a backup of semi-working state
+
+0.50
+- replaced level hierarchy with a real graph
+- replaced player's enqueued_moves with a single enqueued_move
+- dealt with the consequences of my previous mistakes (revamped piston block, other bugfixes)
+
+0.49
+- added more levels
+
+0.48
+- added dual_arrow block
+- added "ls" command
+- added more levels (zone Giszowiec and hub 4)
+- bugfix (entering nonexistent level)
+- cleaned up all_sprites.py
+
+0.47
+- added Giszowiec secret zone (mechanics and backgrounds, but no levels yet)
+- added some more levels
+
+0.46
+- added more levels (zone 8, 9)
+- changed sprites for level completion
+- completed second input scheme [(W,A,S,D,Q,R,ESC), (UP,LEFT,DOWN,RIGHT,LSHIFT,SLASH,ESC)]
+
+0.45
+- added reset block
+- added KBcheat from klockilol3 (flight, doesn't trigger "on step in", triggers "on step out")
+- added possibility to move using arrow keys
+- added some levels (mostly bulb secret zone)
+
+0.44
+- added fully functional 7 color undertale puzzle blocks alongside with secret zone with them
+- added brute-force level solver
+
+0.43
+- added more levels
+- fixed portal+piston and portal+ones, as well as added possibility to option ones by arrows (eg. "ones <> >^<v")
+
+0.42
+- added more levels
+
+0.41
+- added shrek (finally)
+
+0.40
+- small changes (esc in commands, standing spawn, window icon)
+
+0.39
+- added piston block
+- modified player movement scheme, now there are directions: cardinal (0-3), down (4), pass (None)
+
+0.38
+- added thunder block along with particle generator
+
+0.37
+- added some more levels
+- minor fixes and changes (from now on I will list only bigger changes)
+
+0.36
+- added "load_all" command to search for errors, fixed all levels
+- added "options" method to most blocks to replace their individual setters and make layer.fill shorter
+- fixed password checking
+
+0.35
+- added log and changed all prints to logs with categories info, warning and error
+- added some checks for level loading
+
+0.34
+- added some levels for zone 7
+
+0.33
+- added Dio easteregg
+- refactored config to globals since this is the function it fulfills
+- more changes to hubs
+- optimised empty block
+- made invisible block slightly visible
+
+0.32
+- added max move limit in order to prevent memory from overflowing, game is running smoothly at 100fps, but in future I might replace block empty with None
+- rebuild and renamed all hubs
+- added password for commands, but doesn't work
+
+0.31
+- added invisible block
+- updated ones to have options
+- refactored all zones
+
+0.30
+- added 3d sprites option in config, sadly it doesn't look good (alpha messes things up)
+- more work put into zone 7
+- changed order of zone showing in single layer view
+- added bridge blocker block
+
+0.29
+- added less simple level generator (ice, jump, arrow, most likely its expandable)
+- generated some levels for zone 7
+
+0.28
+- added few levels (beginning of zone 7 and extra 2)
+- bugfix
+
+0.27.5
+- moved main.py out of the game_files folder, changed every single import to be nested in game_files
+
+0.27.4
+- replaced spaces with '_' in folder names
+
+0.27.3
+- cleaned up sprites folder
+- renamed all sprites to match convention
+- renamed objects to blocks
+- replaced "import_" in files with "all_"
+- renamed "witch_stuff" to "witch"
+
+0.27.2
+- removed the "obj_" prefix since there are no other prefixes in the project
+
+0.27.1
+- moved all game files to separate folder
+
+0.26
+- added more levels for zone 5, implemented levels into game
+- made game window scalable via config (also, made config way more confusing, to be fixed later)
+
+0.25
+- added some levels for zone 1 and 5
+- minor other changes: sprite for jump 3, bugfix in state
+
+0.24
+- added text wrapper for mono
+- polished witch so now it looks pretty (text_box, not she herself)
+- added some witch events (zone 1, 2)
+- changed font to mono
+
+0.23
+- added some witch code so now it theoretically works
+
+0.22
+- added level generator (I use it and it won't be part of the game, just its output)
+- added ones block
+- added zone random with 119 (2*3*1 generated levels (which probably will be rerandomized at some point)
+- added new first zone hub and moved zone 1 there to make things less confusing
+- added 'c' command (complete current level)
+- changed many sprites
+
+0.21
+- finished hub 2
+- changed sprites for entrances so the zone entrance doesn't look the same as hub entrance
+
+0.20
+- another change to save_state
+- extra levels (possibility of adding them rather than levels themselves)
+- beginning of hub 2
+- zone 4 (zone 3 still missing levels)
+
+0.19
+- revamped hub 1, added more levels (up to zone 3 [still missing 2 levels])
+- crucial save bugfix
+- zone-hub backing now functions properly, but there is another thing in levels.py to manually change
+
+0.18
+- after coming back from a level player appears where he should
+- changed some sprites
+
+0.17
+- added first hub
+- added map bridge block
+- added second zone
+- level name appears in right upper corner
+
+0.16
+- added level-changing block (block_entrance)
+- added lobby for stage 1 (with some spaghetti and a pint of bullshit, please don't judge if it works it works)
+- progress is now automatically saved via save_state class
+- reset_progress command
+
+0.15
+- added sprites for remaining numeric blocks
+- update level options inputting
+- added levels 1/1 - 1/10
+
+0.14
+- tweaked move method of player a little
+- added bridge block
+
+0.13
+- added lamp block
+- fixed variable names in utils.py
+
+0.12
+- added portal blocks
+- added dummy blocks
+
+0.11
+- added lift block
+- commands for offsets
+- changes in variable naming (variablea -> variable_a)
+- config variables for visible layers amount
+- removed constant from code in sprite loading
+
+0.10
+- commands system implemented (uses text_box from stack)
+- better level management: autocompleting, commands, levels file, stage knows which level is loaded
+
+0.9
+- added death screen
+- added single layer view
+
+0.8
+- copied text_box from stack (currently unused)
+- added game_logic class to wrap up most of current main
+- changed test levels folder index to 0
+
+0.7
+- added jump blocks
+- move is now player's method instead of state's
+
+0.6
+- all blocks now know their exact position
+- added README.md and changelog.txt
+- added check functionality for block_end
+
+SIMPLIFIED CHANGES BEFORE ADDING CHANGELOG:
+
+0.5
+- arrow block added
+
+0.4
+- ice block added
+
+0.3
+- 3d system now works
+
+0.2
+- numeric block added
+
+0.1
+- you can now move and die

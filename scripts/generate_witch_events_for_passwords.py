@@ -1,4 +1,4 @@
-from game_files.imports.platform_maze_passwords import passwords
+from game.game_files.imports.platform_maze_passwords import passwords
 
 if __name__ == "__main__":
     for key, value in passwords.items():

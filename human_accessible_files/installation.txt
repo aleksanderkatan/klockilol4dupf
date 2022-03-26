@@ -1,6 +1,0 @@
-For Windows 10:
-
-1) Download this repo (code -> download as .zip)
-2) Create a new folder and unzip there
-3) Download python (preferably 3.9.5) from the bottom of this [https://www.python.org/downloads/release/python-395/] site
-4) Run klockilol4dupf.bat (double click, first run will be longer)
