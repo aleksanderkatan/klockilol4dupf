@@ -231,7 +231,7 @@ background_index = {
     (500, 0): "background_swamp",
     (500, 1): "background_giszowiec_1",
     (500, 2): "background_kono_dio_da",
-    (204, 0): "background_giszowiec",
+    (204, 0): "background_giszowiec_2",
     (4, 2): "background_kidney",
 }
 
@@ -249,7 +249,5 @@ def background_of_level(level_index):
 
     if g.PAPOR:
         return "background_2137"
-    if g.DUDA_CHUJ:
-        return "background_duda_chuj"
     return "background_default"
 

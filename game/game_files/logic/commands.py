@@ -209,11 +209,6 @@ def command_swap(game_logic, command):  # !! I don't like this command, but it's
         execute_command(game_logic, "c")
 
 
-def command_duda_chuj(game_logic, command):
-    log.info("Swapping background")
-    g.DUDA_CHUJ = not g.DUDA_CHUJ
-
-
 def command_2137(game_logic, command):
     log.info("Swapping background")
     g.PAPOR = not g.PAPOR
@@ -357,10 +352,6 @@ root_commands["n"] = command_next
 root_commands["c"] = command_next
 root_commands["next"] = command_next
 root_commands["complete"] = command_next
-
-root_commands["duda"] = command_duda_chuj
-root_commands["duda_chuj"] = command_duda_chuj
-root_commands["chuda_duj"] = command_duda_chuj
 
 root_commands["2137"] = command_2137
 root_commands["21:37"] = command_2137
