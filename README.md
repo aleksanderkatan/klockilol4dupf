@@ -1,10 +1,10 @@
-## klockilol4dupf
+## Maze of Tiles
 
 A puzzle game, where you have to walk over tiles the exact amount of times that is specified on them! How hard can it be?
 
 ## Engaging puzzles
 
-![ss](game/game_files/sprites/other/screenshot_2.gif "This can be solved in 12 different ways\nOne of them is <<<v<<^>><^><^^")
+![ss](game/game_files/sprites/other/screenshot_2.gif "This can be solved in 12 different ways. One of them is <<<v<<^>><^><^^")
 
 ## NP-Complete concept
 
@@ -20,9 +20,9 @@ A puzzle game, where you have to walk over tiles the exact amount of times that 
 
 ## Idea
 
-So this is a project I've picked up while I was at my year 2 in college.  
+So this is a project I've picked up while I was at my year 2 in college. Its original title was "klockilol4dupf", changed because it was hard to remember and pronounce.  
 The concept is based on a flash game I played when I was 10.  
-I only found it again recently, its [Platform Maze](https://www.newgrounds.com/portal/view/360130) by Bobberticus.  
+I only found it again recently, it's [Platform Maze](https://www.newgrounds.com/portal/view/360130) by Bobberticus.  
 Another flash game with similar idea is Birdy's Rainy Day Skipathon by Jess Hansen (can still be found on [Flash Point](https://bluemaxima.org/flashpoint/)).  
 I've integrated all mechanics and levels from both of those into my game as secondary zones.
 
@@ -38,7 +38,7 @@ For Ubuntu:
 just clone and run launcher.py
 
 ## Controlls
-W, A, S, D or arrow keys - movement  
+W, A, S, D or ARROW KEYS - movement  
 Q or SHIFT - undo move  
 R or / - reset current stage  
 1,...,9 - change view mode to single layer (useless in zones 1-3)  

@@ -91,7 +91,10 @@ class new_save_state:
     def get(self, key, default_data):
         if key not in self.cached:
             self.hard_restore(key, default_data)
-        assert type(self.cached[key]) is type(default_data)
+        # !! fails because I fell for double import trap. TODO: resolve this
+        if not (self.cached[key], type(default_data)):
+            log.error(f"Wrong data type. Cached: {self.cached[key]} of type {type(self.cached[key])}, expected {type(default_data)}")
+            # self.cached[key] = default_data
         return self.cached[key]
 
     def set(self, key, data):

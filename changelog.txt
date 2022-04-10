@@ -1,3 +1,6 @@
+0.93.3
+- found a bug, currently have no idea how to resolve it. Temporarily removed a type check.
+
 0.93.2
 - added proper README.md
 - bugfix for falling through ice block
