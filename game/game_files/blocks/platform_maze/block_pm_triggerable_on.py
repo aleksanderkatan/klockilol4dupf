@@ -1,5 +1,5 @@
-from game.game_files.blocks.block_perma import block_perma
-import game.game_files.imports.all_sprites as s
+from game_files.blocks.block_perma import block_perma
+import game_files.imports.all_sprites as s
 
 class block_pm_triggerable_on(block_perma):
     def __init__(self, screen, stage, state_index, pos):

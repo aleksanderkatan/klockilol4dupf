@@ -1,7 +1,7 @@
 import os
 import io
 import itertools
-from game.game_files.imports.log import log
+from game_files.imports.log import log
 from game_files.witch.witch_event import witch_event
 
 events_path = "game_files/witch/events"

@@ -1,5 +1,5 @@
-from game.game_files.blocks.block import block
-import game.game_files.imports.all_sprites as s
+from game_files.blocks.block import block
+import game_files.imports.all_sprites as s
 
 class block_pm_portal(block):
     def __init__(self, screen, stage, state_index, pos):

@@ -54,7 +54,7 @@ if __name__ == "__main__":
     def bt_reset_method():
         answer = tkm.askyesno(title='Confirmation', message='Are you sure that you want to reset save file?')
         if answer:
-            global_save_state.reset()
+            global_save_state.hard_erase_all()
         update_completion()
 
 

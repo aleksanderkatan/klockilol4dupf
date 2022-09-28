@@ -1,7 +1,7 @@
-from game.game_files.blocks.block import block
-from game.game_files.blocks.platform_maze.block_pm_triggerable_on import block_pm_triggerable_on
-from game.game_files.blocks.platform_maze.block_pm_triggerable_off import block_pm_triggerable_off
-import game.game_files.imports.all_sprites as s
+from game_files.blocks.block import block
+from game_files.blocks.platform_maze.block_pm_triggerable_on import block_pm_triggerable_on
+from game_files.blocks.platform_maze.block_pm_triggerable_off import block_pm_triggerable_off
+import game_files.imports.all_sprites as s
 
 class block_pm_triggerer(block):
     def __init__(self, screen, stage, state_index, pos):

@@ -1,7 +1,7 @@
-from game.game_files.speedruns.speedrun_pm import speedrun_pm
-from game.game_files.speedruns.speedrun_birdy import speedrun_birdy
-from game.game_files.speedruns.speedrun_shrek import speedrun_shrek
-from game.game_files.speedruns.speedrun_perfectionist import speedrun_perfectionist
+from game_files.speedruns.speedrun_pm import speedrun_pm
+from game_files.speedruns.speedrun_birdy import speedrun_birdy
+from game_files.speedruns.speedrun_shrek import speedrun_shrek
+from game_files.speedruns.speedrun_perfectionist import speedrun_perfectionist
 
 speedruns = {
     'platform_maze': speedrun_pm,

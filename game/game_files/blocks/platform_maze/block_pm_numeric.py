@@ -1,6 +1,6 @@
-from game.game_files.blocks.block import block
-from game.game_files.blocks.block_empty import block_empty
-import game.game_files.imports.all_sprites as s
+from game_files.blocks.block import block
+from game_files.blocks.block_empty import block_empty
+import game_files.imports.all_sprites as s
 
 class block_pm_numeric(block):
     def __init__(self, screen, stage, state_index, pos, number=-1):

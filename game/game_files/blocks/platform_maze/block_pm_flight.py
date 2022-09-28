@@ -1,6 +1,6 @@
-from game.game_files.blocks.block import block
-import game.game_files.imports.all_sprites as s
-from game.game_files.imports.log import log
+from game_files.blocks.block import block
+import game_files.imports.all_sprites as s
+from game_files.imports.log import log
 
 class block_pm_flight(block):
     def __init__(self, screen, stage, state_index, pos, length=5):

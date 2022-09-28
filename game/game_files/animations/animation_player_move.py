@@ -1,6 +1,6 @@
-from game.game_files.animations.animation import animation
-import game.game_files.imports.globals as g
-import game.game_files.imports.utils as u
+from game_files.animations.animation import animation
+import game_files.imports.globals as g
+import game_files.imports.utils as u
 
 
 class animation_player_move(animation):

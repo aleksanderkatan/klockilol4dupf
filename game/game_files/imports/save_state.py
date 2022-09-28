@@ -3,7 +3,7 @@ import pickle
 import game_files.imports.levels as l
 import game_files.imports.globals as g
 from game_files.imports.log import log
-import game.game_files.imports.utils as u
+import game_files.imports.utils as u
 
 SAVE_FILE_PATH = 'game_files/data/completed.txt'
 

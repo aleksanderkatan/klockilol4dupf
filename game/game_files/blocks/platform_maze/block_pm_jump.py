@@ -1,6 +1,6 @@
-from game.game_files.blocks.block import block
-import game.game_files.imports.all_sprites as s
-import game.game_files.imports.utils as u
+from game_files.blocks.block import block
+import game_files.imports.all_sprites as s
+import game_files.imports.utils as u
 
 
 class block_pm_jump(block):

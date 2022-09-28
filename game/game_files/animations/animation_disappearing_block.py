@@ -1,7 +1,7 @@
-from game.game_files.animations.animation import animation
-import game.game_files.imports.globals as g
-from game.game_files.imports.view_constants import global_view_constants as v
-import game.game_files.imports.utils as u
+from game_files.animations.animation import animation
+import game_files.imports.globals as g
+from game_files.imports.view_constants import global_view_constants as v
+import game_files.imports.utils as u
 import pygame
 
 class animation_disappearing_block(animation):

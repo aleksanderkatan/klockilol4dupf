@@ -1,6 +1,6 @@
 import random
-import game.game_files.imports.utils as u
-from game.game_files.imports.log import log
+import game_files.imports.utils as u
+from game_files.imports.log import log
 from game_files.level_generators.less_simple_level_generator import better_level_generator
 
 
