@@ -1,3 +1,6 @@
+0.95.1
+- add more levels for moving_arrow zone
+
 0.94.3
 - bugfixes for move direction (to be replaced with an enum in future, maybe)
 

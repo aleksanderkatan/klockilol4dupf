@@ -1,4 +1,5 @@
 import game_files.imports.all_sprites as s
+from game_files.imports.view_constants import global_view_constants as v
 import numpy as np
 import random
 
@@ -53,7 +54,7 @@ class particle_generator:
     def generate_bomb(self, pos, player_direction):
         par = particle(self.screen, pos)
         par.alpha_dec = 0
-        par.vel = 32
+        par.vel = 32 * v.X_SCALE
         par.acc = 1
         par.angle = random.uniform(0, np.pi/2) - np.pi/4 + np.pi/2 * player_direction
         par.sprite = s.sprites["bomb"][0]

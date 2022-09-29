@@ -2,7 +2,7 @@ import pygame
 import random
 import time
 pygame.init()
-tested_level = (1, 6)
+tested_level = (207, 5)
 max_moves = 34
 # YES, it has to show the screen. I wanted it to show the character moving rapidly but I failed.
 screen = pygame.display.set_mode((100, 100))
