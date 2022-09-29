@@ -75,10 +75,10 @@ class state:
         self.pushers = new_pushers
 
         if len(self.pushers) > 0 and not self.player.has_something_enqueued():
-            self.player.enqueue_move(5)
+            self.player.enqueue_move(6)
 
         step_out_block = self.get_block(self.player.pos)
-        if step_out_block is not None and direction != 5:
+        if step_out_block is not None and direction != 6:
             step_out_block.on_step_out()
 
         self.player.move()
@@ -100,7 +100,7 @@ class state:
         self.bombs = new_bombs
 
         step_in_block = self.get_block(self.player.pos)
-        if step_in_block is not None:
+        if step_in_block is not None and direction != 6:
             if type(step_in_block) in o.standables:
                 self.player.flight = -1
             step_in_block.on_step_in()

@@ -82,6 +82,16 @@ class player:
         move_length = self.next_move_length
         move_direction = self.this_move_direction
 
+        # direction:
+        # 0 - right
+        # 1 - up
+        # 2 - left
+        # 3 - down
+        # 4 - rise
+        # 5 - fall
+        # 6 - forced no move (eg. there is a piston pusher moving)
+        # None - player did not input anything
+
         # moves longer than 1 are considered jumps and therefore surpass barriers
         if move_length == 1:
             if state.has_barrier(self.pos, move_direction):
@@ -95,7 +105,7 @@ class player:
         if self.stage.level_index[0] == 209 and (move_length == 1 or move_direction in [4, 5]):     # animate only in PM zone... or not
             pass
             # move_animation = animation_player_move(self.screen, self.stage, self.state_index, translation)
-        elif move_length != 1 and move_direction not in [4, 5]:
+        elif move_length != 1 and move_direction in [0, 1, 2, 3]:
             move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation, (move_length-1)/2)
 
         if move_animation is not None:
@@ -105,7 +115,7 @@ class player:
             self.dead = True
 
         self.next_move_length = 1
-        self.last_move_direction = move_direction
+        self.last_move_direction = None if move_length > 1 else move_direction
         self.last_move_pos = self.pos
         self.this_move_direction = None
         self.pos = new_pos

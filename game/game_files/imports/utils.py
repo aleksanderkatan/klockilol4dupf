@@ -111,6 +111,8 @@ def move_pos(pos, direction, move_length=1):
             z += move_length
         elif direction == 5:    # below
             z -= move_length
+        elif direction == 6:    # forced skip
+            log.info("Forced move skip")
 
     return x, y, z
 

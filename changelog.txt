@@ -1,3 +1,6 @@
+0.94.3
+- bugfixes for move direction (to be replaced with an enum in future, maybe)
+
 0.94.2
 - add an executable!!
 

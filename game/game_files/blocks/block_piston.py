@@ -103,7 +103,7 @@ class block_piston(block):
         self.stage.states[self.state_index].pushers.append(my_pusher)
 
         player = self.stage.states[self.state_index].player
-        player.enqueue_move(5)
+        player.enqueue_move(6)
 
     def options(self, option):
         self.set_direction(u.char_to_direction(option[-1]))

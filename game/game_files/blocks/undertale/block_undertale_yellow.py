@@ -12,6 +12,6 @@ class block_undertale_yellow(block):
     def on_step_in(self):
         player = self.stage.states[self.state_index].player
         dir = player.last_move_direction
-        if dir is not None and dir != 4:
+        if dir in [0, 1, 2, 3]:
             new_dir = dir + 2 * (1 if dir < 2 else -1)
             player.enqueue_move(new_dir)

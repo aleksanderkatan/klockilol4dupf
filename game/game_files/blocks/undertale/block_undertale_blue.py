@@ -26,6 +26,6 @@ class block_undertale_blue(block):
         dir = player.last_move_direction
 
         if player.flavour == 1 or self.probe_for_yellow():
-            if dir is not None and dir != 4:
+            if dir in [0, 1, 2, 3]:
                 new_dir = dir + 2 * (1 if dir < 2 else -1)
                 player.enqueue_move(new_dir)

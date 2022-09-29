@@ -13,10 +13,10 @@ class block_bridge(block):
         return block_bridge(self.screen, self.stage, new_state_index, self.pos)
 
     def on_step_in(self):
-        self.direction = self.stage.states[self.state_index].player.last_move_direction
         dir = self.stage.states[self.state_index].player.last_move_direction
-        if dir is not None and dir != 4:
-            self.stage.states[self.state_index].player.enqueue_move(self.stage.states[self.state_index].player.last_move_direction)
+        self.direction = dir
+        if dir in [0, 1, 2, 3]:
+            self.stage.states[self.state_index].player.enqueue_move(dir)
 
     def on_step_out(self):
         sta = self.stage.states[self.state_index]

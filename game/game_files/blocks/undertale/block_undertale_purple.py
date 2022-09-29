@@ -12,6 +12,6 @@ class block_undertale_purple(block):
     def on_step_in(self):
         player = self.stage.states[self.state_index].player
         dir = player.last_move_direction
-        if dir is not None and dir != 4:
+        if dir in [0, 1, 2, 3]:
             player.enqueue_move(dir)
             player.flavour = -1
