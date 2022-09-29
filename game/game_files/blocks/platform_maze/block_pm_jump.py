@@ -21,6 +21,6 @@ class block_pm_jump(block):
         new_pos = u.move_pos(old_pos, dir, self.length)
         translation = u.get_translation(old_pos, new_pos)
 
-        if dir in [0, 1, 2, 3]:
+        if dir.is_cardinal():
             self.stage.states[self.state_index].player.enqueue_move(dir)
         # self.stage.animation_manager.register_animation(animation_player_jump(self.screen, self.stage, self.state_index, translation))

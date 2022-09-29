@@ -56,7 +56,7 @@ class particle_generator:
         par.alpha_dec = 0
         par.vel = 32 * v.X_SCALE
         par.acc = 1
-        par.angle = random.uniform(0, np.pi/2) - np.pi/4 + np.pi/2 * player_direction
+        par.angle = random.uniform(0, np.pi/2) - np.pi/4 + np.pi/2 * player_direction.value
         par.sprite = s.sprites["bomb"][0]
         self.particles.append(par)
 

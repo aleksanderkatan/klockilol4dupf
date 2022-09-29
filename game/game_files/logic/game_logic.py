@@ -12,6 +12,7 @@ from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.save_state import global_save_state
 from game_files.witch.witch import witch
 from game_files.imports.log import log
+from game_files.logic.direction import direction as d
 
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE//2
@@ -22,14 +23,14 @@ FONT_4 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf",
 
 def key_to_direction(key):
     if k.is_right(key):
-        return 0
+        return d.RIGHT
     if k.is_up(key):
-        return 1
+        return d.UP
     if k.is_left(key):
-        return 2
+        return d.LEFT
     if k.is_down(key):
-        return 3
-    return None
+        return d.DOWN
+    return d.NONE
 
 class game_logic:
     def __init__(self, screen):
@@ -99,6 +100,7 @@ class game_logic:
                 global_save_state.hard_save_all()
 
         # now this part is bullshit and I will rework it at some point
+        # bruh
         if self.stage.latest_state().completed and not self.stage.animation_manager.is_logic_prevented():
             if self.complete():
                 return
@@ -110,7 +112,7 @@ class game_logic:
         self.witch.check_for_events(self.level_index, self.stage)
 
         # has to iterate over every key, imagine pressing at once K, B and W, this should work
-        next_move_direction = None
+        next_move_direction = d.NONE
         for key, unicode in self.keys_registered:
             witch_was_active = self.witch.is_active()
             input_box_was_active = self.input_box.active
@@ -124,7 +126,7 @@ class game_logic:
                 continue
 
             direction = key_to_direction(key)
-            if next_move_direction is None and direction is not None:
+            if next_move_direction == d.NONE and direction != d.NONE:
                 next_move_direction = direction
                 continue
 
@@ -171,8 +173,8 @@ class game_logic:
 
         g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
         if not self.witch.is_active():
-            self.stage.move(next_move_direction)    # has to be called, None if no move pressed
-            if next_move_direction is not None:
+            self.stage.move(next_move_direction)    # has to be called, d.NONE if no move pressed
+            if next_move_direction != d.NONE:
                 global_save_state.log_move(next_move_direction)
 
         if self.stage.speedrun_check_needed:

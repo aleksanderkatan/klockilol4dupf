@@ -1,5 +1,6 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
+import game_files.imports.utils as u
 
 class block_undertale_yellow(block):
     def __init__(self, screen, stage, state_index, pos):
@@ -12,6 +13,6 @@ class block_undertale_yellow(block):
     def on_step_in(self):
         player = self.stage.states[self.state_index].player
         dir = player.last_move_direction
-        if dir in [0, 1, 2, 3]:
-            new_dir = dir + 2 * (1 if dir < 2 else -1)
+        if dir.is_cardinal():
+            new_dir = u.reverse_direction(dir)
             player.enqueue_move(new_dir)

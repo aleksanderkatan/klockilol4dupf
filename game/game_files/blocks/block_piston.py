@@ -5,7 +5,7 @@ import game_files.imports.utils as u
 import game_files.imports.all_sprites as s
 import game_files.imports.globals as g
 from game_files.imports.view_constants import global_view_constants as v
-
+from game_files.logic.direction import direction as d
 
 class pusher:  # !! while pushers exist, on_step_ins are not called
     def __init__(self, screen, stage, state_index, pos, direction):
@@ -16,7 +16,7 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
         self.direction = direction
         self.clinged = False
         self.finished = False
-        self.sprite = s.sprites["pusher_" + str(self.direction)]
+        self.sprite = s.sprites["pusher_" + str(self.direction.value)]
         self.first_move = True
 
     def move(self):
@@ -88,7 +88,7 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
 
 
 class block_piston(block):
-    def __init__(self, screen, stage, state_index, pos, direction=-1):
+    def __init__(self, screen, stage, state_index, pos, direction=d.NONE):
         super().__init__(screen, stage, state_index, pos)
         self.direction = -1
         self.set_direction(direction)
@@ -103,14 +103,14 @@ class block_piston(block):
         self.stage.states[self.state_index].pushers.append(my_pusher)
 
         player = self.stage.states[self.state_index].player
-        player.enqueue_move(6)
+        player.enqueue_move(d.FORCED_SKIP)
 
     def options(self, option):
         self.set_direction(u.char_to_direction(option[-1]))
 
     def set_direction(self, direction):
         self.direction = direction
-        if 0 <= direction <= 3:
-            self.sprite = s.sprites["block_piston_" + str(direction)]
+        if direction.is_cardinal():
+            self.sprite = s.sprites["block_piston_" + str(direction.value)]
         else:
             self.sprite = s.sprites["error"]

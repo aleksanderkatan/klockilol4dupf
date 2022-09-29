@@ -1,13 +1,11 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
-
+from game_files.logic.direction import direction as d
 
 class block_pm_arrow(block):
-    def __init__(self, screen, stage, state_index, pos, directions=None):
+    def __init__(self, screen, stage, state_index, pos, directions=[]):
         super().__init__(screen, stage, state_index, pos)
-        if directions is None:
-            directions = []
         self.directions = directions
         self.barriers = []
         self.set_directions(directions)
@@ -26,15 +24,15 @@ class block_pm_arrow(block):
         self.sprite = s.sprites["error"]
         self.directions = directions
         if len(directions) == 1:  # single arrow
-            if 0 <= directions[0] <= 3:
-                self.barriers = [i for i in range(4) if i != directions[0]]
-                self.sprite = s.sprites["block_pm_arrow_" + str(directions[0])]
+            if 0 <= directions[0].value <= 3:
+                self.barriers = [dir for dir in d.get_cardinal() if dir != directions[0]]
+                self.sprite = s.sprites["block_pm_arrow_" + str(directions[0].value)]
         if len(directions) == 2:    # double arrow
-            if all(item in [0, 2] for item in directions):
-                self.barriers = [1, 3]
+            if all(item in [d.RIGHT, d.LEFT] for item in directions):
+                self.barriers = [d.UP, d.DOWN]
                 self.sprite = s.sprites["block_pm_dual_arrow_0"]
-            elif all(item in [1, 3] for item in directions):
-                self.barriers = [0, 2]
+            elif all(item in [d.UP, d.DOWN] for item in directions):
+                self.barriers = [d.LEFT, d.RIGHT]
                 self.sprite = s.sprites["block_pm_dual_arrow_1"]
 
     def has_barrier(self, direction, into):

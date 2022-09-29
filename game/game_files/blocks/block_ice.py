@@ -11,5 +11,5 @@ class block_ice(block):
 
     def on_step_in(self):
         dir = self.stage.states[self.state_index].player.last_move_direction
-        if dir in [0, 1, 2, 3]:
+        if dir.is_cardinal():
             self.stage.states[self.state_index].player.enqueue_move(dir)

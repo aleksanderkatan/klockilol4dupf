@@ -5,6 +5,7 @@ import game_files.imports.globals as g
 from game_files.imports.view_constants import global_view_constants as v
 import game_files.imports.utils as u
 import pygame
+from game_files.logic.direction import direction as d
 
 FONT_SIZE_4 = v.LEVEL_FONT_SIZE//4
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
@@ -15,10 +16,10 @@ class player:
         self.screen = screen
         self.stage = stage
         self.state_index = state_index
-        self.last_move_direction = None
-        self.this_move_direction = None
+        self.last_move_direction = d.NONE
+        self.this_move_direction = d.NONE
         self.dead = False
-        self.enqueued_move = None
+        self.enqueued_move = d.NONE
         self.next_move_length = 1
         self.flavour = 0    # 1 - orange, -1 - lemon
         self.last_move_pos = None
@@ -67,13 +68,13 @@ class player:
         self.next_move_length = amount
 
     def set_next_move_direction(self, direction_suggestion):
-        if self.enqueued_move is not None:
+        if self.enqueued_move != d.NONE:
             direction = self.enqueued_move
             self.this_move_direction = direction
-            self.enqueued_move = None
+            self.enqueued_move = d.NONE
         else:
             if self.switched_controls:
-                if u.reverse_direction(direction_suggestion) is not None:
+                if u.reverse_direction(direction_suggestion) != d.NONE:
                     direction_suggestion = u.reverse_direction(direction_suggestion)
             self.this_move_direction = direction_suggestion
 
@@ -81,16 +82,6 @@ class player:
         state = self.stage.states[self.state_index]
         move_length = self.next_move_length
         move_direction = self.this_move_direction
-
-        # direction:
-        # 0 - right
-        # 1 - up
-        # 2 - left
-        # 3 - down
-        # 4 - rise
-        # 5 - fall
-        # 6 - forced no move (eg. there is a piston pusher moving)
-        # None - player did not input anything
 
         # moves longer than 1 are considered jumps and therefore surpass barriers
         if move_length == 1:
@@ -102,10 +93,7 @@ class player:
         translation = u.get_translation(self.pos, new_pos)
 
         move_animation = None
-        if self.stage.level_index[0] == 209 and (move_length == 1 or move_direction in [4, 5]):     # animate only in PM zone... or not
-            pass
-            # move_animation = animation_player_move(self.screen, self.stage, self.state_index, translation)
-        elif move_length != 1 and move_direction in [0, 1, 2, 3]:
+        if move_length != 1 and move_direction.is_cardinal():
             move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation, (move_length-1)/2)
 
         if move_animation is not None:
@@ -115,17 +103,17 @@ class player:
             self.dead = True
 
         self.next_move_length = 1
-        self.last_move_direction = None if move_length > 1 else move_direction
+        self.last_move_direction = d.NONE if move_length > 1 else move_direction
         self.last_move_pos = self.pos
-        self.this_move_direction = None
+        self.this_move_direction = d.NONE
         self.pos = new_pos
 
         if g.CHEATS and g.KBcheat:
             return
 
         if not self.stage.states[self.state_index].standable(self.pos) and self.flight <= 0:
-            self.enqueue_move(5)
+            self.enqueue_move(d.DESCEND)
         self.flight -= 1
 
     def has_something_enqueued(self):
-        return self.enqueued_move is not None
+        return self.enqueued_move != d.NONE

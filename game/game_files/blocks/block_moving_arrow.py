@@ -4,9 +4,10 @@ import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
 import game_files.imports.globals as g
 from game_files.imports.view_constants import global_view_constants as v
+from game_files.logic.direction import direction as d
 
 class block_moving_arrow(block):
-    def __init__(self, screen, stage, state_index, pos, direction=-1):
+    def __init__(self, screen, stage, state_index, pos, direction=d.NONE):
         super().__init__(screen, stage, state_index, pos)
         self.direction = -1
         self.sprite = s.sprites["error"]
@@ -35,7 +36,7 @@ class block_moving_arrow(block):
 
     def set_direction(self, direction):
         self.direction = direction
-        if 0 <= direction <= 3:
-            self.sprite = s.sprites["block_moving_arrow_" + str(direction)]
+        if direction.is_cardinal():
+            self.sprite = s.sprites["block_moving_arrow_" + str(direction.value)]
         else:
             self.sprite = s.sprites["error"]

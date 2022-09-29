@@ -1,3 +1,6 @@
+0.95.2
+- replace direction with an enum
+
 0.95.1
 - add more levels for moving_arrow zone
 

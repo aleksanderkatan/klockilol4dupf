@@ -14,6 +14,7 @@ import queue
 import game_files.imports.utils as u
 import game_files.imports.globals as g
 from game_files.imports.view_constants import global_view_constants as v
+from game_files.logic.direction import direction as d
 
 class block_thunder(block):
     def __init__(self, screen, stage, state_index, pos):
@@ -25,7 +26,7 @@ class block_thunder(block):
 
     def on_step_in(self):
         state = self.stage.states[self.state_index]
-        state.player.enqueue_move(6)     # !! just in case
+        state.player.enqueue_move(d.FORCED_SKIP)     # !! just in case
         array = [[0] * state.y for i in range(state.x)]
         Q = queue.Queue()
         px, py, pz = self.pos

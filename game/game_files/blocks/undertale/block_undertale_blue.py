@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 from game_files.blocks.undertale.block_undertale_yellow import block_undertale_yellow
 import game_files.imports.all_sprites as s
+import game_files.imports.utils as u
 
 class block_undertale_blue(block):
     def __init__(self, screen, stage, state_index, pos):
@@ -26,6 +27,6 @@ class block_undertale_blue(block):
         dir = player.last_move_direction
 
         if player.flavour == 1 or self.probe_for_yellow():
-            if dir in [0, 1, 2, 3]:
-                new_dir = dir + 2 * (1 if dir < 2 else -1)
+            if dir.is_cardinal():
+                new_dir = u.reverse_direction(dir)
                 player.enqueue_move(new_dir)

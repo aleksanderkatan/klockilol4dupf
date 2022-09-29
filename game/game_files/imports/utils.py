@@ -1,8 +1,10 @@
+from re import I
 import pygame
 import hashlib
 import game_files.imports.globals as g
 from game_files.imports.log import log
 from game_files.imports.view_constants import global_view_constants as v
+from game_files.logic.direction import direction as d
 
 
 # returns position on screen for certain index
@@ -45,31 +47,29 @@ def relative_to_player(layer_z, player_z):
     else:
         return 0
 
-    return None
-
 
 def char_to_direction(key):
     if key in ['>', ']']:
-        return 0
+        return d.RIGHT
     if key in ['^', '-']:
-        return 1
+        return d.UP
     if key in ['<', '[']:
-        return 2
+        return d.LEFT
     if key in ['v', '_']:
-        return 3
-    return None
+        return d.DOWN
+    return d.NONE
 
 
 def reverse_direction(direction):
-    if direction == 0:
-        return 2
-    if direction == 1:
-        return 3
-    if direction == 2:
-        return 0
-    if direction == 3:
-        return 1
-    return None  # direction may not be in [4]
+    if direction == d.LEFT:
+        return d.RIGHT
+    if direction == d.UP:
+        return d.DOWN
+    if direction == d.RIGHT:
+        return d.LEFT
+    if direction == d.DOWN:
+        return d.UP
+    return d.NONE # direction may not be in [4]
 
 
 def new_single_layer(current_single_layer, key, total_layers):
@@ -95,23 +95,22 @@ def hash_string(string):
 def move_pos(pos, direction, move_length=1):
     x, y, z = pos
 
-    if direction is None:
-        log.info("Moving in None direction (skipping move)")
+    if direction == d.NONE:
         return pos
     else:
-        if direction == 0:      # right
+        if direction == d.RIGHT:
             x += move_length
-        elif direction == 1:    # up
+        elif direction == d.UP:
             y -= move_length
-        elif direction == 2:    # left
+        elif direction == d.LEFT:
             x -= move_length
-        elif direction == 3:    # down
+        elif direction == d.DOWN:
             y += move_length
-        elif direction == 4:    # above
+        elif direction == d.ASCEND:
             z += move_length
-        elif direction == 5:    # below
+        elif direction == d.DESCEND:
             z -= move_length
-        elif direction == 6:    # forced skip
+        elif direction == d.FORCED_SKIP:
             log.info("Forced move skip")
 
     return x, y, z

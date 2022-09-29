@@ -20,7 +20,7 @@ class block_portal(block):
 
         state.teleport_player(destination.pos, activate_step_in=False)
         player = state.player
-        if player.last_move_direction in [0, 1, 2, 3]:
+        if player.last_move_direction.is_cardinal():
             player.enqueue_move(player.last_move_direction)
 
     def options(self, option):

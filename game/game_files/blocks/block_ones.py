@@ -10,9 +10,7 @@ class block_ones(block):
         if ones is None:
             self.ones = [True, True, True, True]
         else:
-            self.ones = []
-            for i in range(4):
-                self.ones.append(ones[i])
+            self.ones = ones[:]
         self.sprite = s.sprites["block_ones"]
 
     def copy(self, new_state_index):

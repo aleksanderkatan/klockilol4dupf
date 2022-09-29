@@ -8,6 +8,7 @@ from game_files.imports.log import log
 from game_files.logic.state_filler import fill
 from game_files.animations.animation_manager import animation_manager
 from game_files.imports.save_state import global_save_state
+from game_files.logic.direction import direction as d
 
 
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)
@@ -44,13 +45,13 @@ class stage:
     def latest_state(self):
         return self.states[-1]
 
-    def move(self, direction=None):
+    def move(self, direction=d.NONE):
         if len(self.states) > g.MOVE_LIMIT:
             log.warning('Move limit exceeded, resetting...')
             self.reset()
             return
 
-        if direction is None and not self.latest_state().player.has_something_enqueued():
+        if direction == d.NONE and not self.latest_state().player.has_something_enqueued():
             return
 
         if self.latest_state().player.dead:
@@ -71,7 +72,7 @@ class stage:
     def soft_reverse(self):
         if len(self.states) > 1:
             del self.states[-1]
-            self.latest_state().player.set_next_move_direction(None)
+            self.latest_state().player.set_next_move_direction(d.NONE)
 
     def reverse(self):
         if len(self.states) > 1:

@@ -2,7 +2,7 @@ import game_files.imports.utils as u
 import game_files.imports.all_blocks as o
 import game_files.imports.all_sprites as s
 import game_files.imports.globals as g
-
+from game_files.logic.direction import direction as d
 
 class state:
     def __init__(self, screen, stage, state_index):
@@ -75,10 +75,10 @@ class state:
         self.pushers = new_pushers
 
         if len(self.pushers) > 0 and not self.player.has_something_enqueued():
-            self.player.enqueue_move(6)
+            self.player.enqueue_move(d.FORCED_SKIP)
 
         step_out_block = self.get_block(self.player.pos)
-        if step_out_block is not None and direction != 6:
+        if step_out_block is not None and direction != d.FORCED_SKIP:
             step_out_block.on_step_out()
 
         self.player.move()
@@ -100,7 +100,7 @@ class state:
         self.bombs = new_bombs
 
         step_in_block = self.get_block(self.player.pos)
-        if step_in_block is not None and direction != 6:
+        if step_in_block is not None and direction != d.FORCED_SKIP:
             if type(step_in_block) in o.standables:
                 self.player.flight = -1
             step_in_block.on_step_in()
@@ -157,7 +157,7 @@ class state:
     def has_barrier(self, pos, direction):
         if g.CHEATS and g.KBcheat:
             return False
-        if direction not in [0, 1, 2, 3]:
+        if not direction.is_cardinal():
             return False
         pos2 = u.move_pos(pos, direction)
         blo1 = self.get_block(pos)
