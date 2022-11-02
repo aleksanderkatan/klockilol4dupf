@@ -36,7 +36,8 @@ class block_dual_arrow(block):
             self.sprite = s.sprites["error"]
             return
 
-        if not ((self.direction_1.value + 1 == self.direction_2.value) or (self.direction_1.value == 0 and self.direction_2.value == 3)):
+        if not ((self.direction_1.value + 1 == self.direction_2.value) or (
+                self.direction_1.value == 0 and self.direction_2.value == 3)):
             self.sprite = s.sprites["error"]
             return
 

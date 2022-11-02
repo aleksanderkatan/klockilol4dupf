@@ -2,6 +2,7 @@ from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 from game_files.imports.log import log
 
+
 class block_pm_control_switcher(block):
     def __init__(self, screen, stage, state_index, pos, reverses=True):
         super().__init__(screen, stage, state_index, pos)
@@ -23,4 +24,3 @@ class block_pm_control_switcher(block):
         player = self.stage.states[self.state_index].player
         log.info(f"Player controls are reversed: {self.reverses}")
         player.switched_controls = self.reverses
-

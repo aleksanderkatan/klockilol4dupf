@@ -7,8 +7,9 @@ import game_files.imports.utils as u
 import pygame
 from game_files.logic.direction import direction as d
 
-FONT_SIZE_4 = v.LEVEL_FONT_SIZE//4
+FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
+
 
 class player:
     def __init__(self, pos, screen, stage, state_index):
@@ -21,7 +22,7 @@ class player:
         self.dead = False
         self.enqueued_move = d.NONE
         self.next_move_length = 1
-        self.flavour = 0    # 1 - orange, -1 - lemon
+        self.flavour = 0  # 1 - orange, -1 - lemon
         self.last_move_pos = None
         self.ignore_draw = False
         self.flight = -1
@@ -45,7 +46,7 @@ class player:
             text = f"free moves: {self.flight}"
             txt_surface = FONT.render(text, True, pygame.Color('black'))
             x, y = screen_pos
-            self.screen.blit(txt_surface, (x-FONT.size(text)[0]/2+v.BLOCK_X_SIZE/2, y-FONT_SIZE_4*1.5))
+            self.screen.blit(txt_surface, (x - FONT.size(text)[0] / 2 + v.BLOCK_X_SIZE / 2, y - FONT_SIZE_4 * 1.5))
 
     def copy(self, new_state_index):
         pla = player(self.pos, self.screen, self.stage, new_state_index)
@@ -94,7 +95,8 @@ class player:
 
         move_animation = None
         if move_length != 1 and move_direction.is_cardinal():
-            move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation, (move_length-1)/2)
+            move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation,
+                                                   (move_length - 1) / 2)
 
         if move_animation is not None:
             self.stage.animation_manager.register_animation(move_animation)

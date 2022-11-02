@@ -3,6 +3,7 @@ import game_files.imports.utils as u
 import game_files.imports.all_sprites as s
 from game_files.logic.direction import direction as d
 
+
 class block_arrow(block):
     def __init__(self, screen, stage, state_index, pos, direction=d.NONE):
         super().__init__(screen, stage, state_index, pos)

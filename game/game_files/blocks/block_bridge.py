@@ -5,6 +5,7 @@ import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
 from game_files.logic.direction import direction as d
 
+
 class block_bridge(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)

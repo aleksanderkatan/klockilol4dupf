@@ -2,6 +2,7 @@ from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 from game_files.imports.log import log
 
+
 class block_pm_flight(block):
     def __init__(self, screen, stage, state_index, pos, length=5):
         super().__init__(screen, stage, state_index, pos)
@@ -15,4 +16,3 @@ class block_pm_flight(block):
         player = self.stage.states[self.state_index].player
         player.flight = self.length
         log.info("flight!")
-

@@ -4,6 +4,7 @@ import game_files.imports.all_sprites as s
 import game_files.imports.globals as g
 from game_files.logic.direction import direction as d
 
+
 class state:
     def __init__(self, screen, stage, state_index):
         self.layers = []

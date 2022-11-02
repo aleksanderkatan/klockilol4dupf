@@ -20,5 +20,3 @@ speedruns = {
     '100%': speedrun_perfectionist,
     'true ending': speedrun_perfectionist,
 }
-
-

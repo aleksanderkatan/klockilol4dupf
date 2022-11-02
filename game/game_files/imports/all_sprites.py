@@ -27,7 +27,8 @@ for name, sprite in block_sprites.items():
             sprite, (int(v.BLOCK_X_SIZE * v.LEVEL_COMPLETION_SCALE), int(v.BLOCK_Y_SIZE * v.LEVEL_COMPLETION_SCALE))
         )
     else:
-        new_sprite = pygame.transform.scale(sprite, (v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE + (0 if not g.THREED else v.BLOCK_3D_DIFFERENCE)))
+        new_sprite = pygame.transform.scale(sprite, (
+        v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE + (0 if not g.THREED else v.BLOCK_3D_DIFFERENCE)))
 
     sprites[name] = {}
 
@@ -35,7 +36,7 @@ for name, sprite in block_sprites.items():
         s = new_sprite.copy()
         alpha = s.get_alpha()
         alpha = 255 if alpha is None else alpha
-        alpha = int(alpha * value/255)
+        alpha = int(alpha * value / 255)
         s.set_alpha(alpha)
         sprites[name][key] = s
 
@@ -45,7 +46,6 @@ background_sprites = {}
 for path, _, files in os.walk(backgrounds_path):
     for name in files:
         background_sprites[name[:-4]] = pygame.image.load(os.path.join(path, name)).convert()
-
 
 background_sprites["background_grayness"] = background_sprites["background_black"].copy()
 background_sprites["background_grayness"].set_alpha(g.GRAYNESS * 256)
@@ -76,7 +76,7 @@ for name, sprite in decoration_sprites.items():
         s = new_sprite.copy()
         alpha = s.get_alpha()
         alpha = 255 if alpha is None else alpha
-        alpha = int(alpha * value/255)
+        alpha = int(alpha * value / 255)
         s.set_alpha(alpha)
         sprites[name][key] = s
 

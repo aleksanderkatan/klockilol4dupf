@@ -1,5 +1,6 @@
 import abc
 
+
 class animation(metaclass=abc.ABCMeta):
     def draw(self):
         pass
@@ -13,5 +14,5 @@ class animation(metaclass=abc.ABCMeta):
     def has_ended(self):
         pass
 
-    def is_persistent(self):    # should it be removed when reversing?
+    def is_persistent(self):  # should it be removed when reversing?
         pass

@@ -2,8 +2,9 @@ from game_files.blocks.block import block
 from game_files.blocks.block_empty import block_empty
 import game_files.imports.all_sprites as s
 
+
 class block_dummy(block):
-    def __init__(self, screen, stage, state_index, pos,):
+    def __init__(self, screen, stage, state_index, pos, ):
         super().__init__(screen, stage, state_index, pos)
         self.state_index = state_index
         self.sprite = s.sprites['block_dummy']
@@ -17,4 +18,3 @@ class block_dummy(block):
     def on_step_out(self):
         x, y, z = self.pos
         self.stage.states[self.state_index].layers[z].grid[x][y] = self.replaced_with()
-

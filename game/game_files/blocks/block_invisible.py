@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 
+
 class block_invisible(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
@@ -11,4 +12,4 @@ class block_invisible(block):
 
     def draw(self, pos, where_is_player):
         if where_is_player is not None:
-            self.screen.blit(self.sprite[0], pos)   # scaling visibility
+            self.screen.blit(self.sprite[0], pos)  # scaling visibility

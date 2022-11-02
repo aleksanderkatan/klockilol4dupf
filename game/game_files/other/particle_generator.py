@@ -3,30 +3,31 @@ from game_files.imports.view_constants import global_view_constants as v
 import numpy as np
 import random
 
+
 class particle:
     def __init__(self, screen, pos):
         self.screen = screen
         self.sprite = s.sprites["particle_" + str(random.randint(1, 3))].copy()
         self.pos = pos
         self.vel = random.randint(5, 25)
-        self.angle = random.uniform(0, np.pi*2)
+        self.angle = random.uniform(0, np.pi * 2)
         self.alpha = 255
         self.acc = 0.8
         self.alpha_dec = 8
         self.lifetime = 100
 
     def update_alpha(self):
-        self.alpha = max(self.alpha-self.alpha_dec, 0)
+        self.alpha = max(self.alpha - self.alpha_dec, 0)
         self.sprite.set_alpha(self.alpha)
 
     def update_vel(self):
-        self.vel = self.vel*self.acc
+        self.vel = self.vel * self.acc
 
     def update_pos(self):
         dy = self.vel * np.sin(self.angle)
         dx = self.vel * np.cos(self.angle)
         x, y = self.pos
-        self.pos = (x+dx, y-dy)
+        self.pos = (x + dx, y - dy)
 
     def step(self):
         self.update_vel()
@@ -56,7 +57,7 @@ class particle_generator:
         par.alpha_dec = 0
         par.vel = 32 * v.X_SCALE
         par.acc = 1
-        par.angle = random.uniform(0, np.pi/2) - np.pi/4 + np.pi/2 * player_direction.value
+        par.angle = random.uniform(0, np.pi / 2) - np.pi / 4 + np.pi / 2 * player_direction.value
         par.sprite = s.sprites["bomb"][0]
         self.particles.append(par)
 

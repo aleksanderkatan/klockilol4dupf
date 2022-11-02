@@ -6,8 +6,9 @@ from game_files.imports.log import log
 from game_files.imports.view_constants import global_view_constants as v
 import game_files.imports.globals as g
 
-font_scale = 1/4
-FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", int(v.BLOCK_X_SIZE*font_scale))
+font_scale = 1 / 4
+FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", int(v.BLOCK_X_SIZE * font_scale))
+
 
 class bomb:
     def __init__(self, screen, stage, state_index, pos, ticks):
@@ -49,7 +50,7 @@ class bomb:
             self.screen.blit(self.sprite[where_is_player], pos)
             txt_surface = FONT.render(str(self.ticks), True, pygame.Color('white'))
             x, y = pos
-            off = (1-font_scale)/2
+            off = (1 - font_scale) / 2
             if self.ticks < 10:
                 x = x + off * v.BLOCK_X_SIZE
             elif self.ticks < 100:
@@ -58,4 +59,3 @@ class bomb:
                 x = x + off * v.BLOCK_X_SIZE - font_scale * v.BLOCK_X_SIZE * 0.5
             y = y + off * v.BLOCK_Y_SIZE
             self.screen.blit(txt_surface, (x, y))
-

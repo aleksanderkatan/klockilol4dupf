@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 
+
 class block_jump(block):
     def __init__(self, screen, stage, state_index, pos, boost=-1):
         super().__init__(screen, stage, state_index, pos)

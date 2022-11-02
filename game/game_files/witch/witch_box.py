@@ -21,7 +21,8 @@ class witch_box:
         self.text = self.wrap(text)
 
         self.rect = pg.Rect(
-            0, v.WINDOW_Y-FONT_SIZE*len(self.text)-2*FONT_OFFSET, v.WINDOW_X, FONT_SIZE*len(self.text)+2*FONT_OFFSET
+            0, v.WINDOW_Y - FONT_SIZE * len(self.text) - 2 * FONT_OFFSET, v.WINDOW_X,
+               FONT_SIZE * len(self.text) + 2 * FONT_OFFSET
         )
         self.txt_surfaces = []
         for string in self.text:
@@ -32,14 +33,14 @@ class witch_box:
         pg.draw.rect(self.screen, COLOR, self.rect, 2)
         for i in range(len(self.txt_surfaces)):
             self.screen.blit(
-                self.txt_surfaces[i], (self.rect.x + FONT_OFFSET, self.rect.y + i*FONT_SIZE + 0.5*FONT_OFFSET)
-            )   # !!wtf this shouldn't work
+                self.txt_surfaces[i], (self.rect.x + FONT_OFFSET, self.rect.y + i * FONT_SIZE + 0.5 * FONT_OFFSET)
+            )  # !!wtf this shouldn't work
 
     def wrap(self, string):
         if string is None:
             return None
         result = []
-        limit = int((v.WINDOW_X-FONT_OFFSET*2)/(FONT_SIZE*g.FONT_RATIO))
+        limit = int((v.WINDOW_X - FONT_OFFSET * 2) / (FONT_SIZE * g.FONT_RATIO))
 
         for sub in string.split("\\n"):
             current = ''

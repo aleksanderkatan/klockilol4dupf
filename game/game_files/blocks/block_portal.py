@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 
+
 class block_portal(block):
     def __init__(self, screen, stage, state_index, pos, destination_index=None, my_index=None):
         super().__init__(screen, stage, state_index, pos)

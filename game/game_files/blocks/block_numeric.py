@@ -4,6 +4,7 @@ import game_files.imports.all_sprites as s
 from game_files.animations.animation_disappearing_block import animation_disappearing_block
 import random
 
+
 class block_numeric(block):
     def __init__(self, screen, stage, state_index, pos, number=-1):
         super().__init__(screen, stage, state_index, pos)
@@ -16,7 +17,7 @@ class block_numeric(block):
 
     def replaced_with(self):
         if self.number > 1:
-            return block_numeric(self.screen, self.stage, self.state_index, self.pos, self.number-1)
+            return block_numeric(self.screen, self.stage, self.state_index, self.pos, self.number - 1)
         else:
             return block_empty(self.screen, self.stage, self.state_index, self.pos)
 
@@ -27,9 +28,13 @@ class block_numeric(block):
         # easter egg
         if self.stage.level_index[0] == 209 and self.number == 1:
             if random.random() < 0.999:
-                self.stage.animation_manager.register_animation(animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0], pos=self.pos))
+                self.stage.animation_manager.register_animation(
+                    animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0],
+                                                 pos=self.pos))
             else:
-                self.stage.animation_manager.register_animation(animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0], screen_pos=(0, 0)))
+                self.stage.animation_manager.register_animation(
+                    animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0],
+                                                 screen_pos=(0, 0)))
 
     def options(self, option):
         self.number = int(option[-1]) - int('0')

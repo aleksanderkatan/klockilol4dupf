@@ -5,6 +5,7 @@ import game_files.imports.all_sprites as s
 d = {'X': 1, 'Y': 2, 'Z': 3}
 d1 = {1: 'X', 2: 'Y', 3: 'Z'}
 
+
 class block_numeric_dark(block):
     def __init__(self, screen, stage, state_index, pos, visible=True, number=-1):
         super().__init__(screen, stage, state_index, pos)
@@ -17,7 +18,8 @@ class block_numeric_dark(block):
 
     def replaced_with(self):
         if self.number > 1:
-            return block_numeric_dark(self.screen, self.stage, self.state_index, self.pos, self.visible, self.number-1)
+            return block_numeric_dark(self.screen, self.stage, self.state_index, self.pos, self.visible,
+                                      self.number - 1)
         else:
             return block_empty(self.screen, self.stage, self.state_index, self.pos)
 
@@ -29,7 +31,7 @@ class block_numeric_dark(block):
         player = state.player
         dist = 0
         for a, b in zip(player.pos, self.pos):
-            dist = max(dist, abs(a-b))
+            dist = max(dist, abs(a - b))
         self.visible = state.dark_visibility >= dist
         self.evaluate_sprite()
 

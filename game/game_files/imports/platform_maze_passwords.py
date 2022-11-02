@@ -1,4 +1,3 @@
-
 passwords = {
     'null': 1,
     'easyaspie': 2,

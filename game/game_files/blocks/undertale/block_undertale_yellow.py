@@ -2,6 +2,7 @@ from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
 
+
 class block_undertale_yellow(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)

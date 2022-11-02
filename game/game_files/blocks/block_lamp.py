@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 
+
 class block_lamp(block):
     def __init__(self, screen, stage, state_index, pos, on=False):
         super().__init__(screen, stage, state_index, pos)
@@ -27,4 +28,3 @@ class block_lamp(block):
             return s.sprites["block_yellow"]
         else:
             return s.sprites["block_orange"]
-

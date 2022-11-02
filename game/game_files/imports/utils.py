@@ -13,7 +13,7 @@ def index_to_position(x, y, z, size_x, size_y, size_z):
     mid_y = v.WINDOW_Y / 2
     high_left = (mid_x - size_x / 2 * v.BLOCK_X_SIZE, mid_y - size_y / 2 * v.BLOCK_Y_SIZE)
 
-    size_z = size_z-1
+    size_z = size_z - 1
     return high_left[0] + v.BLOCK_X_SIZE * x + (z - size_z / 2) * v.LAYER_X_OFFSET, \
            high_left[1] + v.BLOCK_Y_SIZE * y - (z - size_z / 2) * v.LAYER_Y_OFFSET
 
@@ -69,7 +69,7 @@ def reverse_direction(direction):
         return d.LEFT
     if direction == d.DOWN:
         return d.UP
-    return d.NONE # direction may not be in [4]
+    return d.NONE  # direction may not be in [4]
 
 
 def new_single_layer(current_single_layer, key, total_layers):

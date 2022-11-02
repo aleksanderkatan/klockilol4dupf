@@ -422,6 +422,7 @@ def extract_options(command):
             rest.append(word)
     return rest, options
 
+
 def exit_game():
     # called: quit command entered, window closed by x, process killed from manager (SIGKILL?)
     # not called: exception was raised (game works in one thread), stop button in pycharm (SIGTERM?), exited from launcher

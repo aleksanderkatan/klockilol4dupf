@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 
+
 class block_minus(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
@@ -11,4 +12,4 @@ class block_minus(block):
 
     def on_step_in(self):
         state = self.stage.states[self.state_index]
-        state.dark_visibility = max(state.dark_visibility-1, 0)
+        state.dark_visibility = max(state.dark_visibility - 1, 0)

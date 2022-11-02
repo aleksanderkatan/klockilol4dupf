@@ -3,6 +3,7 @@ from game_files.blocks.platform_maze.block_pm_triggerable_on import block_pm_tri
 from game_files.blocks.platform_maze.block_pm_triggerable_off import block_pm_triggerable_off
 import game_files.imports.all_sprites as s
 
+
 class block_pm_triggerer(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)

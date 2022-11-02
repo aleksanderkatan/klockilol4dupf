@@ -12,6 +12,7 @@ v_map = {
     "down": 2,
 }
 
+
 class decoration:
     def __init__(self, screen, stage, state_index, pos, sprite, h_align, v_align):
         self.screen = screen
@@ -19,8 +20,8 @@ class decoration:
         self.sprite = sprite
         self.state_index = state_index
         self.pos = pos
-        self.h_align = h_align      # left, mid, right
-        self.v_align = v_align      # up, mid, down
+        self.h_align = h_align  # left, mid, right
+        self.v_align = v_align  # up, mid, down
         self.draw_offsets = self.find_draw_offsets()
 
     def find_draw_offsets(self):
@@ -38,10 +39,10 @@ class decoration:
     def draw(self, pos, where_is_player):
         # pos - place to draw if right, up was chosen
         x, y = pos
-        x_offset, y_offset = self.draw_offsets          # !! change for find_draw_offsets if necessary
+        x_offset, y_offset = self.draw_offsets  # !! change for find_draw_offsets if necessary
 
         if where_is_player is not None:
-            self.screen.blit(self.sprite[where_is_player], (x+x_offset, y+y_offset))
+            self.screen.blit(self.sprite[where_is_player], (x + x_offset, y + y_offset))
 
-    def copy(self, new_state_index):    # !! copy is only for duplicating states
+    def copy(self, new_state_index):  # !! copy is only for duplicating states
         return decoration(self.screen, self.stage, new_state_index, self.pos, self.sprite, self.h_align, self.v_align)

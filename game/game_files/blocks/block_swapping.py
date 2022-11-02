@@ -1,6 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 
+
 def evaluate_sprite(on):
     if on:
         return s.sprites["block_map_bridge_on"]
@@ -38,5 +39,3 @@ class block_swapping(block):
             self.set_state(True)
         elif option == "q":
             self.set_state(False)
-
-

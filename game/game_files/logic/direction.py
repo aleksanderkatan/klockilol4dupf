@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class direction(Enum):
     NONE = -1
     RIGHT = 0
@@ -22,5 +23,3 @@ class direction(Enum):
 
     def __gt__(self, other):
         return self.value > other.value
-
-

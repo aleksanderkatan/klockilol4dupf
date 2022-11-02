@@ -60,6 +60,5 @@ for file_path in files(events_path):
             log.error("file:", file_path)
             raise RuntimeError("Error while loading witch events")
 
-
 # the mess
 # v^v>^^^^^<>vvvvvv^<<^>^>^<<>>>^<^>vv<<<><v>>^<v><vv>>>>v^>v<^>vvv<<>^^>><<vv<^>><<v<^^^<vv>>^^><<^>vv>^><<<v<<<<<>v<^>>>>>v>^v>>^^

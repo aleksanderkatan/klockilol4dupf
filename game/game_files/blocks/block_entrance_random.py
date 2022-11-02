@@ -44,7 +44,8 @@ class block_entrance_random(block):
             result = r.generate_LSLG(index=self.target_level, x=8, y=8, ice=0, jump2=10, jump3=0, arrow=0, length=50,
                                      redirect=3, max_num=3, min_total=None)
         elif self.configuration == 3:
-            result = r.generate_PLG(index=self.target_level, x=7, y=7, portals=4, min_portals=2, pair_portals=True, length=30, redirect=4)
+            result = r.generate_PLG(index=self.target_level, x=7, y=7, portals=4, min_portals=2, pair_portals=True,
+                                    length=30, redirect=4)
 
         if result is None or not result:
             return

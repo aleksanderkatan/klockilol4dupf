@@ -16,6 +16,7 @@ import game_files.imports.globals as g
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.logic.direction import direction as d
 
+
 class block_thunder(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
@@ -26,7 +27,7 @@ class block_thunder(block):
 
     def on_step_in(self):
         state = self.stage.states[self.state_index]
-        state.player.enqueue_move(d.FORCED_SKIP)     # !! just in case
+        state.player.enqueue_move(d.FORCED_SKIP)  # !! just in case
         array = [[0] * state.y for i in range(state.x)]
         Q = queue.Queue()
         px, py, pz = self.pos
@@ -52,7 +53,8 @@ class block_thunder(block):
             for j in range(state.y):
                 if array[i][j] == 1:
                     trigger = False
-                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric, block_moving_arrow]:
+                    if type(state.get_block((i, j, pz))) in [block_dummy, block_lamp, block_numeric,
+                                                             block_moving_arrow]:
                         state.get_block((i, j, pz)).on_step_out()
                         trigger = True
                     if type(state.get_block((i, j, pz))) in [block_piston, block_swapping_trigger]:
@@ -60,5 +62,5 @@ class block_thunder(block):
                         trigger = True
                     if trigger:
                         x, y = u.index_to_position(i, j, pz, state.x, state.y, len(state.layers))
-                        self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES, (x+v.BLOCK_X_SIZE//2, y+v.BLOCK_Y_SIZE//2))
-
+                        self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES,
+                                                                    (x + v.BLOCK_X_SIZE // 2, y + v.BLOCK_Y_SIZE // 2))

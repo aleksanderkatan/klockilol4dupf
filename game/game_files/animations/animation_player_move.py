@@ -11,13 +11,14 @@ class animation_player_move(animation):
         self.player = self.state.player
         self.positions = []
         sx, sy, sz = self.player.pos
-        ex, ey, ez = sx + translation[0], sy + translation[1], sz+translation[2]
+        ex, ey, ez = sx + translation[0], sy + translation[1], sz + translation[2]
         tx, ty, tz = self.state.x, self.state.y, self.state.z
         SX, SY = u.index_to_position(sx, sy, sz, tx, ty, tz)
         EX, EY = u.index_to_position(ex, ey, ez, tx, ty, tz)
 
         for i in range(g.MOVE_ANIMATION_LENGTH):
-            self.positions.append((SX + (EX-SX)/g.MOVE_ANIMATION_LENGTH * i, SY + (EY-SY)/g.MOVE_ANIMATION_LENGTH * i))
+            self.positions.append(
+                (SX + (EX - SX) / g.MOVE_ANIMATION_LENGTH * i, SY + (EY - SY) / g.MOVE_ANIMATION_LENGTH * i))
 
         self.frame = 0
         self.player.ignore_draw = True

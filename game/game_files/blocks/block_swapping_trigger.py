@@ -2,6 +2,7 @@ from game_files.blocks.block import block
 from game_files.blocks.block_swapping import block_swapping
 import game_files.imports.all_sprites as s
 
+
 class block_swapping_trigger(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)

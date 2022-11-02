@@ -1,16 +1,18 @@
 import math
 import random
 import os
+
+
 # !! this file is supposed to work independently
 # !! this is a simple 2d numeric and perma level generator
 class level_generator:
     @staticmethod
     def size_of_index(index):
-        return index//25 + 7
+        return index // 25 + 7
 
     @staticmethod
     def length_of_index(index):
-        return int(index*0.6) + 40
+        return int(index * 0.6) + 40
 
     @staticmethod
     def out_of_range(x, y, x_max, y_max):
@@ -30,14 +32,14 @@ class level_generator:
 
         grid = [[0 for i in range(size)] for j in range(size)]
         remaining_length = length
-        x = random.randint(0, size-1)
-        y = random.randint(0, size-1)
+        x = random.randint(0, size - 1)
+        y = random.randint(0, size - 1)
         grid[x][y] = 2137
         while remaining_length > 0:
             direc = random.randint(0, 4)
-            amo = random.randint(0, size-2)
+            amo = random.randint(0, size - 2)
             if random.randint(0, 3) != 0:
-                amo = int(amo/2)
+                amo = int(amo / 2)
 
             while amo > 0:
                 new_x = x
@@ -63,8 +65,8 @@ class level_generator:
         grid[x][y] = -2137
 
         f = open("../levels/101/" + str(index) + ".txt", 'w')
-        f.write(str(size)+"\n")
-        f.write(str(size)+"\n")
+        f.write(str(size) + "\n")
+        f.write(str(size) + "\n")
         f.write("1\n")
         for row in grid:
             s = ""
@@ -82,14 +84,14 @@ class level_generator:
             f.write(s + "\n")
 
     def mass_generate(self, amount):
-        for i in range(1, amount+1):
+        for i in range(1, amount + 1):
             self.generate(i)
 
     def clean(self, amount):
-        for i in range(1, amount+1):
+        for i in range(1, amount + 1):
             os.remove("../levels/101/" + str(i) + ".txt")
 
 
 generator = level_generator()
 generator.mass_generate(136)
-#generator.clean(10)
+# generator.clean(10)

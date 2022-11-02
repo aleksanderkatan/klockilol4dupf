@@ -2,6 +2,7 @@ import game_files.imports.all_blocks as o
 import game_files.imports.globals as g
 import game_files.imports.utils as u
 
+
 class layer:
     def __init__(self, size_x, size_y, screen, stage, state_index):
         self.size_x = size_x
@@ -20,7 +21,7 @@ class layer:
         for j in range(self.size_y):
             for i in range(self.size_x):
                 x, y = u.index_to_position(i, j, height, self.size_x, self.size_y, layers_amount)
-                self.grid[i][j].draw((x+x_offset, y+y_offset), where_is_player)
+                self.grid[i][j].draw((x + x_offset, y + y_offset), where_is_player)
 
     def draw(self, height, layers_amount, where_is_player):
         self.draw_once(height, layers_amount, where_is_player, 0, 0)

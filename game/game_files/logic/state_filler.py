@@ -11,6 +11,7 @@ import game_files.imports.levels as l
 import game_files.imports.all_sprites as sprites
 from game_files.other.decoration import decoration
 
+
 def _preprocess_level(level_index):
     path = l.level_path(level_index)
     if not os.path.exists(path):
@@ -162,7 +163,7 @@ def _fill(s, level, last_level_index):
         s.decorations = []
         if 'decorations' in options:
             for option in options['decorations']:
-                option = option.split('/')      # 0/3/3/decoration_1x2_tree/mid/low
+                option = option.split('/')  # 0/3/3/decoration_1x2_tree/mid/low
                 x = float(option[0])
                 y = float(option[1])
                 z = float(option[2])
@@ -194,4 +195,3 @@ def fill(s, level_index, last_level_index=None):
     if preprocessed_level is None:
         return False
     return _fill(s, preprocessed_level, last_level_index)
-

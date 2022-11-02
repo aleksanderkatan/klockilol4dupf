@@ -13,6 +13,7 @@ def prevents_win(block):
         return block.visible
     return False
 
+
 class block_end(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)

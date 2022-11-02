@@ -2,6 +2,7 @@ from game_files.blocks.block_start import block_start
 from game_files.blocks.block_empty import block_empty
 import game_files.imports.all_sprites as s
 
+
 class block_birdy_fragile_start(block_start):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)

@@ -3,6 +3,7 @@ from game_files.blocks.undertale.block_undertale_yellow import block_undertale_y
 import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
 
+
 class block_undertale_blue(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
@@ -15,8 +16,8 @@ class block_undertale_blue(block):
         x, y, z = self.pos
         offset = [(0, 1), (0, -1), (1, 0), (-1, 0)]
         for off in offset:
-            nx = x+off[0]
-            ny = y+off[1]
+            nx = x + off[0]
+            ny = y + off[1]
             blo = self.stage.latest_state().get_block((nx, ny, z))
             if type(blo) is block_undertale_yellow:
                 return True

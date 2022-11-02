@@ -7,6 +7,7 @@ COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
 FONT = pg.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.WITCH_FONT_SIZE)
 
+
 class input_box:
     def __init__(self, x, y, w, h, stage, text=''):
         self.rect = pg.Rect(x, y, w, h)
@@ -35,5 +36,6 @@ class input_box:
         self.txt_surface = FONT.render(self.text, True, self.color)
 
     def draw(self, screen):
-        screen.blit(self.txt_surface, (self.rect.x+v.WITCH_FONT_OFFSET, self.rect.y+v.WITCH_FONT_OFFSET*0.5))   # !! another constant
+        screen.blit(self.txt_surface,
+                    (self.rect.x + v.WITCH_FONT_OFFSET, self.rect.y + v.WITCH_FONT_OFFSET * 0.5))  # !! another constant
         pg.draw.rect(screen, self.color, self.rect, 2)

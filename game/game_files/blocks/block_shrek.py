@@ -3,6 +3,7 @@ import game_files.imports.all_sprites as s
 from game_files.imports.save_state import global_save_state
 from game_files.imports.log import log
 
+
 class block_shrek(block):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
@@ -21,6 +22,3 @@ class block_shrek(block):
         if where_is_player is not None:
             self.screen.blit(self.sprite[where_is_player], pos)
             self.screen.blit(self.player_sprite[global_save_state.get("shrek", False)], pos)
-
-
-

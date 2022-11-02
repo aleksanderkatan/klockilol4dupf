@@ -14,12 +14,12 @@ from game_files.witch.witch import witch
 from game_files.imports.log import log
 from game_files.logic.direction import direction as d
 
-
-FONT_SIZE_2 = v.LEVEL_FONT_SIZE//2
+FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
 
-FONT_SIZE_4 = v.LEVEL_FONT_SIZE//4
+FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4
 FONT_4 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
+
 
 def key_to_direction(key):
     if k.is_right(key):
@@ -32,6 +32,7 @@ def key_to_direction(key):
         return d.DOWN
     return d.NONE
 
+
 class game_logic:
     def __init__(self, screen):
         self.stage = None
@@ -39,8 +40,8 @@ class game_logic:
         self.keys_registered = []
         self.single_layer = None
         self.input_box = input_box(
-            0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2*v.WITCH_FONT_OFFSET),
-            v.WINDOW_X, v.WITCH_FONT_SIZE + 2*v.WITCH_FONT_OFFSET, self, "empty"
+            0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET),
+            v.WINDOW_X, v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET, self, "empty"
         )
         self.level_index = None
         self.witch = witch(screen)
@@ -169,11 +170,12 @@ class game_logic:
                 global_save_state.log_escape()
                 continue
 
-            self.single_layer = u.new_single_layer(self.single_layer, key, self.stage.latest_state().z)     # returns none or integer
+            self.single_layer = u.new_single_layer(self.single_layer, key,
+                                                   self.stage.latest_state().z)  # returns none or integer
 
         g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
         if not self.witch.is_active():
-            self.stage.move(next_move_direction)    # has to be called, d.NONE if no move pressed
+            self.stage.move(next_move_direction)  # has to be called, d.NONE if no move pressed
             if next_move_direction != d.NONE:
                 global_save_state.log_move(next_move_direction)
 
@@ -218,4 +220,3 @@ class game_logic:
 
     def execute_command(self, command):
         return c.execute_command(self, command)
-

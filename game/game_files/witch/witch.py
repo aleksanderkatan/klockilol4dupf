@@ -6,6 +6,7 @@ from game_files.witch.witch_box import witch_box
 from game_files.witch.events import events
 from game_files.imports.save_state import global_save_state
 
+
 class witch:
     def __init__(self, screen):
         self.events = events

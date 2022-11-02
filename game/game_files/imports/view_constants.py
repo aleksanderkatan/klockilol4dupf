@@ -1,5 +1,6 @@
 from game_files.imports.log import log
 
+
 class view_constants:
     def __init__(self, x_scale=1, y_scale=1):
         self.X_SCALE = x_scale
@@ -40,12 +41,12 @@ class view_constants:
     def change_resolution(self, resolution):
         x, y = resolution
         self.set_scales(1, 1)
-        x_scale = x/self.WINDOW_X
-        y_scale = y/self.WINDOW_Y
+        x_scale = x / self.WINDOW_X
+        y_scale = y / self.WINDOW_Y
         self.set_scales(x_scale, y_scale)
 
     def get_decoration_rescale(self):
-        return self.BLOCK_X_SIZE/self.DECORATION_BASE_SIZE, self.BLOCK_Y_SIZE/self.DECORATION_BASE_SIZE
+        return self.BLOCK_X_SIZE / self.DECORATION_BASE_SIZE, self.BLOCK_Y_SIZE / self.DECORATION_BASE_SIZE
 
 
 global_view_constants = view_constants()

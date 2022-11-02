@@ -3,6 +3,7 @@ from game_files.blocks.block_swapping import block_swapping
 import game_files.imports.all_sprites as s
 import random
 
+
 # maybe should be a variant of block_swapping_trigger?
 class block_swapping_trigger_random(block):
     def __init__(self, screen, stage, state_index, pos):

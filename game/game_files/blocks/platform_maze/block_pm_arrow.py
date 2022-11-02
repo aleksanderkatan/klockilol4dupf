@@ -3,6 +3,7 @@ import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
 from game_files.logic.direction import direction as d
 
+
 class block_pm_arrow(block):
     def __init__(self, screen, stage, state_index, pos, directions=[]):
         super().__init__(screen, stage, state_index, pos)
@@ -27,7 +28,7 @@ class block_pm_arrow(block):
             if 0 <= directions[0].value <= 3:
                 self.barriers = [dir for dir in d.get_cardinal() if dir != directions[0]]
                 self.sprite = s.sprites["block_pm_arrow_" + str(directions[0].value)]
-        if len(directions) == 2:    # double arrow
+        if len(directions) == 2:  # double arrow
             if all(item in [d.RIGHT, d.LEFT] for item in directions):
                 self.barriers = [d.UP, d.DOWN]
                 self.sprite = s.sprites["block_pm_dual_arrow_0"]

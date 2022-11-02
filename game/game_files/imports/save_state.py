@@ -9,10 +9,12 @@ SAVE_FILE_PATH = 'game_files/data/completed.txt'
 
 DATA_PATH = 'game_files/data/'
 
+
 def _save_pickle(key, data):
     file_path = DATA_PATH + key + ".pk"
     with open(file_path, 'wb') as f:
         pickle.dump(data, f)
+
 
 def _read_pickle(key, default_data):
     file_path = DATA_PATH + key + ".pk"
@@ -77,7 +79,7 @@ class new_save_state:
         self.hard_restore("completed", completed_levels())
         self.hard_restore("events", set())
         self.hard_restore("time", 0)
-        self.increase_value("time", 0, amount=g.FRAMERATE*g.AUTO_SAVE_INTERVAL, hard_save=True)     # prevent cheesing
+        self.increase_value("time", 0, amount=g.FRAMERATE * g.AUTO_SAVE_INTERVAL, hard_save=True)  # prevent cheesing
 
     def hard_save(self, key, data):
         self.cached[key] = data
@@ -93,7 +95,8 @@ class new_save_state:
             self.hard_restore(key, default_data)
         # !! fails because I fell for double import trap. TODO: resolve this
         if not (self.cached[key], type(default_data)):
-            log.error(f"Wrong data type. Cached: {self.cached[key]} of type {type(self.cached[key])}, expected {type(default_data)}")
+            log.error(
+                f"Wrong data type. Cached: {self.cached[key]} of type {type(self.cached[key])}, expected {type(default_data)}")
             # self.cached[key] = default_data
         return self.cached[key]
 
@@ -195,7 +198,7 @@ class new_save_state:
 
     def get_completion(self, true=False):
         if not true:
-            zones = range(1, 10+1)
+            zones = range(1, 10 + 1)
         else:
             zones = [i for i in l.levs.keys() if 0 < i < 400]
 
@@ -203,10 +206,10 @@ class new_save_state:
         total = 0
         for i in zones:
             total += l.levs[i]
-            for j in range(1, l.levs[i]+1):
+            for j in range(1, l.levs[i] + 1):
                 if self.is_level_completed((i, j)):
                     result += 1
-        return result/total
+        return result / total
 
     def get_logged_keys(self):
         message = "Remembered key presses:\n"

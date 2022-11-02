@@ -17,11 +17,11 @@ class chav:
         px, py, pz = player.pos
 
         if mz != pz:
-            mz += abs((pz-mz))/(pz-mz)
+            mz += abs((pz - mz)) / (pz - mz)
         elif my != py:
-            my += abs((py-my))/(py-my)
+            my += abs((py - my)) / (py - my)
         elif mx != px:
-            mx += abs((px-mx))/(px-mx)
+            mx += abs((px - mx)) / (px - mx)
         self.pos = (mx, my, mz)
         if self.pos == player.pos:
             player.dead = True
@@ -32,5 +32,3 @@ class chav:
     def draw(self, pos, where_is_player):
         if where_is_player is not None:
             self.screen.blit(self.sprite[where_is_player], pos)
-
-

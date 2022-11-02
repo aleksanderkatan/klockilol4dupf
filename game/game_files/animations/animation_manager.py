@@ -25,4 +25,3 @@ class animation_manager:
             if anim.is_persistent():
                 continued_anims.append(anim)
         self.anims = continued_anims
-

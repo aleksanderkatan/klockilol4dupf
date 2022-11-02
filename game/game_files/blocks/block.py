@@ -1,6 +1,7 @@
 import abc
 import game_files.imports.all_sprites as s
 
+
 class block(metaclass=abc.ABCMeta):
     def on_step_in(self):
         pass
@@ -26,5 +27,5 @@ class block(metaclass=abc.ABCMeta):
         return False
 
     @abc.abstractmethod
-    def copy(self, new_state_index):    # copy is used only for duplicating states
+    def copy(self, new_state_index):  # copy is used only for duplicating states
         pass

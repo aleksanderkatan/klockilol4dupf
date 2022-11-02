@@ -6,6 +6,7 @@ import game_files.imports.globals as g
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.logic.direction import direction as d
 
+
 class block_moving_arrow(block):
     def __init__(self, screen, stage, state_index, pos, direction=d.NONE):
         super().__init__(screen, stage, state_index, pos)

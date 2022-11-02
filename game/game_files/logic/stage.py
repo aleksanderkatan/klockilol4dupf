@@ -10,8 +10,8 @@ from game_files.animations.animation_manager import animation_manager
 from game_files.imports.save_state import global_save_state
 from game_files.logic.direction import direction as d
 
-
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)
+
 
 class stage:
     def __init__(self, screen, level_index, last_level_index):
@@ -34,7 +34,7 @@ class stage:
         if single_layer is None:
             self.latest_state().draw()
         else:
-            self.latest_state().draw_one_layer(len(self.latest_state().layers)-single_layer-1)
+            self.latest_state().draw_one_layer(len(self.latest_state().layers) - single_layer - 1)
         self.particle_generator.step()
         self.particle_generator.draw()
         self.animation_manager.draw_and_advance()

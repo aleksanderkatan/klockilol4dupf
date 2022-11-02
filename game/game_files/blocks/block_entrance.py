@@ -4,6 +4,7 @@ import game_files.imports.levels as l
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.save_state import global_save_state
 
+
 class block_entrance(block):
     def __init__(self, screen, stage, state_index, pos, target_level=(0, 0)):
         super().__init__(screen, stage, state_index, pos)
@@ -51,7 +52,7 @@ class block_entrance(block):
         if where_is_player is not None:
             super().draw(pos, where_is_player)
 
-            completion_pos = (pos[0]+v.LEVEL_COMPLETION_OFFSET, pos[1]+v.LEVEL_COMPLETION_OFFSET)
+            completion_pos = (pos[0] + v.LEVEL_COMPLETION_OFFSET, pos[1] + v.LEVEL_COMPLETION_OFFSET)
 
             if global_save_state.is_level_completed(self.target_level):
                 self.screen.blit(self.sprite_av[where_is_player], completion_pos)
@@ -59,4 +60,3 @@ class block_entrance(block):
                 pass
             else:
                 self.screen.blit(self.sprite_unav[where_is_player], completion_pos)
-

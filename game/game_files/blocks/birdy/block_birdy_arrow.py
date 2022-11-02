@@ -26,4 +26,3 @@ class block_birdy_arrow(block):
 
     def has_barrier(self, direction, into):
         return direction == self.direction and into is True
-

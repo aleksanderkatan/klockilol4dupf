@@ -72,10 +72,10 @@ levs[101] = 0
 levs[102] = 0
 levs[103] = 0
 
-levs[201] = 0   # hub 1 to the left
-levs[202] = 5   # 8/0 second gap
-levs[203] = 5   # hub 2 bottom of the random zone
-levs[204] = 5   # hub 3 right to the entrance
+levs[201] = 0  # hub 1 to the left
+levs[202] = 5  # 8/0 second gap
+levs[203] = 5  # hub 2 bottom of the random zone
+levs[204] = 5  # hub 3 right to the entrance
 levs[205] = 20  # no entrance yet
 levs[206] = 16  # no entrance, special case to be available
 levs[207] = 15  # no entrance yet
@@ -89,7 +89,7 @@ levs[303] = 5
 
 levs[400] = 5
 
-levs[500] = 2   # non hub, non lobby, non level stages
+levs[500] = 2  # non hub, non lobby, non level stages
 
 level_error_path = 'game_files/levels/0/0.lv'
 
@@ -103,6 +103,7 @@ back_in_hierarchy_levels = [
     (103, 0),
 ]
 
+
 def is_valid_stage(level_index):
     level_set, level = level_index
     if level_set not in levs:
@@ -112,6 +113,7 @@ def is_valid_stage(level_index):
     if level_index in [(400, 0)]:
         return False
     return True
+
 
 def level_path(level_index):
     if not is_valid_stage(level_index):
@@ -142,11 +144,13 @@ def previous_level(level_index):
         return level_set, levs[level_set]
     return level_set, level - 1
 
+
 def is_hub(level_index):
     level_set, level = level_index
     if level_set == 400:
         return True
     return False
+
 
 def is_zone(level_index):
     level_set, level = level_index
@@ -154,6 +158,7 @@ def is_zone(level_index):
         if level == 0 and not (100 < level_set < 200) and not level_set == 500:
             return True
     return False
+
 
 def is_level(level_index):
     if is_hub(level_index):
@@ -164,19 +169,21 @@ def is_level(level_index):
         return False
     return True
 
+
 def all_levels_iterator():
     for key, value in levs.items():
-        for i in range(value+1):
+        for i in range(value + 1):
             if i == 0 and key == 400:
                 continue
             yield key, i
+
 
 def levels_ls():
     ans = "Levels\n"
     for level_set, levels in levs.items():
         ans += str(level_set)
         ans += " : "
-        for i in range(0 if level_set != 400 else 1, levels+1):
+        for i in range(0 if level_set != 400 else 1, levels + 1):
             ans += str(i)
             ans += ", "
         ans = ans[:-2]
@@ -239,6 +246,7 @@ background_set = {
     204: "background_giszowiec_3",
 }
 
+
 def background_of_level(level_index):
     level_set, level = level_index
     if level_index in background_index:
@@ -250,4 +258,3 @@ def background_of_level(level_index):
     if g.PAPOR:
         return "background_2137"
     return "background_default"
-

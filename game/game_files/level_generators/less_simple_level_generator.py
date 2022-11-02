@@ -3,6 +3,7 @@ from game_files.imports.log import log
 
 levels_path = "game_files/levels/"
 
+
 # this is a simple 2d numeric, perma, ice, jump and arrow level generator
 class better_level_generator:
     def __init__(self, x, y, ice, jump2, jump3, arrow, length, redirect):
@@ -18,23 +19,23 @@ class better_level_generator:
             self.grid.append(arr)
 
         for i in range(ice):
-            x = random.randint(1, self.x-2)
-            y = random.randint(1, self.y-2)
+            x = random.randint(1, self.x - 2)
+            y = random.randint(1, self.y - 2)
             self.grid[x][y] = (0, "I")
 
         for i in range(jump2):
-            x = random.randint(2, self.x-3)
-            y = random.randint(2, self.y-3)
+            x = random.randint(2, self.x - 3)
+            y = random.randint(2, self.y - 3)
             self.grid[x][y] = (0, "J2")
 
         for i in range(jump3):
-            x = random.randint(3, self.x-4)
-            y = random.randint(3, self.y-4)
+            x = random.randint(3, self.x - 4)
+            y = random.randint(3, self.y - 4)
             self.grid[x][y] = (0, "J3")
 
         for i in range(arrow):
-            x = random.randint(1, self.x-2)
-            y = random.randint(1, self.y-2)
+            x = random.randint(1, self.x - 2)
+            y = random.randint(1, self.y - 2)
             direct = random.randint(0, 3)
             if direct == 0:
                 self.grid[x][y] = (0, ">")
@@ -85,8 +86,8 @@ class better_level_generator:
 
     def try_generate(self, file):
         direction = random.randint(0, 4)
-        x = random.randint(1, self.x-2)
-        y = random.randint(1, self.y-2)
+        x = random.randint(1, self.x - 2)
+        y = random.randint(1, self.y - 2)
 
         self.grid[x][y] = (0, 'S')
 
@@ -102,7 +103,7 @@ class better_level_generator:
                 direction = 2
             elif self.grid[x][y][1] == 'v':
                 direction = 3
-            elif random.randint(0, self.redirect) == 0 or (x == 0 or y == 0 or x == self.x-1 or y == self.y - 1):
+            elif random.randint(0, self.redirect) == 0 or (x == 0 or y == 0 or x == self.x - 1 or y == self.y - 1):
                 direction = random.randint(0, 3)
 
             new_direction = direction
@@ -120,12 +121,14 @@ class better_level_generator:
                     better_level_generator.next_pos(better_level_generator.next_pos((x, y), direction), direction)
             elif self.grid[x][y][1] == 'J3':
                 new_x, new_y = \
-                    better_level_generator.next_pos(better_level_generator.next_pos(better_level_generator.next_pos((x, y), direction), direction), direction)
+                    better_level_generator.next_pos(
+                        better_level_generator.next_pos(better_level_generator.next_pos((x, y), direction), direction),
+                        direction)
             else:
 
                 new_x, new_y = better_level_generator.next_pos((x, y), direction)
 
-            self.grid[x][y] = (self.grid[x][y][0]+1, self.grid[x][y][1])
+            self.grid[x][y] = (self.grid[x][y][0] + 1, self.grid[x][y][1])
             x = new_x
             y = new_y
 
@@ -141,8 +144,8 @@ class better_level_generator:
         jumps = []
 
         f = open(file, 'w')
-        f.write(str(self.x)+"\n")
-        f.write(str(self.y)+"\n")
+        f.write(str(self.x) + "\n")
+        f.write(str(self.y) + "\n")
         f.write("1\n")
         for row in self.grid:
             s = ""
@@ -175,6 +178,7 @@ class better_level_generator:
 
         return maks, total
 
+
 def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=None, min_total=None):
     for _ in range(100):
         generator = better_level_generator(x, y, ice, jump2, jump3, arrow, length, redirect)
@@ -192,5 +196,3 @@ def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=No
         log.info(index, "S/E fail")
     log.error("FAIL: too much failed generating tries")
     return False
-
-

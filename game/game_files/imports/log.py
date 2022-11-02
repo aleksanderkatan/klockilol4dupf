@@ -1,5 +1,6 @@
 import game_files.imports.globals as g
 
+
 class colors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'

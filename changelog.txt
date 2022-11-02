@@ -1,3 +1,6 @@
+0.95.3
+- reformat code
+
 0.95.2
 - replace direction with an enum
 

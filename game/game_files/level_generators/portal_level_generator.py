@@ -197,7 +197,7 @@ def try_generate(x, y, portals, min_portals, pair_portals, length, redirect):
 
     if actual_portals > 0:
         # encourage multi-stepped portals
-        avg_steps = portal_steps/actual_portals
+        avg_steps = portal_steps / actual_portals
         if random.random() + 1 < avg_steps:
             log.info("FAIL: not enough portal steps")
             return None
@@ -242,6 +242,5 @@ def generate(index, x, y, portals, min_portals, pair_portals, length, redirect):
             return True
     log.error("FAIL: level failed to generate")
     return False
-
 
 # generate(index=(103, 0), x=10, y=10, portals=4, length=30, redirect=4)
