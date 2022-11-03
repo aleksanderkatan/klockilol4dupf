@@ -82,7 +82,7 @@ if __name__ == "__main__":
             game.draw()
 
             pygame.display.update()
-            clock.tick(g.FRAMERATE)
+            clock.tick(g.FRAME_RATE)
 
 
     def bt_start_method():

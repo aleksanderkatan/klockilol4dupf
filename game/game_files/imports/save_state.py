@@ -79,7 +79,7 @@ class new_save_state:
         self.hard_restore("completed", completed_levels())
         self.hard_restore("events", set())
         self.hard_restore("time", 0)
-        self.increase_value("time", 0, amount=g.FRAMERATE * g.AUTO_SAVE_INTERVAL, hard_save=True)  # prevent cheesing
+        self.increase_value("time", 0, amount=g.FRAME_RATE * g.AUTO_SAVE_INTERVAL, hard_save=True)  # prevent cheesing
 
     def hard_save(self, key, data):
         self.cached[key] = data

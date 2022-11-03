@@ -97,7 +97,7 @@ class game_logic:
     def move(self):
         if not global_save_state.get("is_timer_stopped", False):
             global_save_state.increase_value("time", default_data=0)
-            if global_save_state.get("time", 0) % (g.FRAMERATE * g.AUTO_SAVE_INTERVAL) == 0:
+            if global_save_state.get("time", 0) % (g.FRAME_RATE * g.AUTO_SAVE_INTERVAL) == 0:
                 global_save_state.hard_save_all()
 
         # now this part is bullshit and I will rework it at some point

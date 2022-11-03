@@ -1,13 +1,9 @@
 import os
 
-root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\game_files"
-# root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf"
-# root = "D:\\Novvy_foldeer\\Studia\\sem22\\IO\\2\\project-team-8\\src\\main\\java"
-# root = "D:\\Novvy_foldeer\\Studia\\sem22\\Mobilne\\Projekt"
-# root = "D:\\Novvy_foldeer\\Gry\\moje\\unoduo\\dupsko\\klockilolunoduo 8"
+root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\game\\game_files"
 
 def get_extension(s):
-    return s[s.rfind('.')+1:]
+    return s[s.rfind('.') + 1:]
 
 
 d = {}
@@ -21,7 +17,6 @@ for path, subdirs, files in os.walk(root):
 for key, value in d.items():
     print(key, len(value))
 print()
-
 
 # for ext in ["java"]:
 for ext in ["py", "lv", "ev", "txt"]:
@@ -39,5 +34,3 @@ for ext in ["py", "lv", "ev", "txt"]:
             characters += len(s)
 
     print(f"ext: {ext}\nfiles: {files}\nlines: {lines}\ncharacters: {characters}\n")
-
-

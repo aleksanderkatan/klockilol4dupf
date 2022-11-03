@@ -1,3 +1,6 @@
+0.95.4
+- add a few more levels
+
 0.95.3
 - reformat code
 
@@ -11,7 +14,7 @@
 - bugfixes for move direction (to be replaced with an enum in future, maybe)
 
 0.94.2
-- add an executable!!
+- add an executable!
 
 0.94.1
 - fix "game." in imports

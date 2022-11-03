@@ -1,6 +1,6 @@
 the lot
 
-- way more levels!!
+- way more levels!
 - update sprites
 # - pack the game into container
 - add all the dialogue

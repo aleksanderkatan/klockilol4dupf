@@ -126,7 +126,7 @@ def extend(number, length):
 
 
 def ticks_to_time(ticks):
-    milliseconds = int(ticks * (1 / g.FRAMERATE) * 1000)
+    milliseconds = int(ticks * (1 / g.FRAME_RATE) * 1000)
     seconds = milliseconds // 1000
     milliseconds %= 1000
     minutes = seconds // 60
