@@ -32,6 +32,6 @@ class block_end(block):
 
     def on_step_in(self):
         completed = self.perform_check()
-        log.info("Level completed check: " + str(completed))
+        log.trace("Level completed check: " + str(completed))
         if completed:
             self.stage.states[self.state_index].completed = True

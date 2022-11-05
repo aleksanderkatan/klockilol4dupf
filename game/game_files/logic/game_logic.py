@@ -1,5 +1,4 @@
 import pygame
-import sys
 from game_files.logic.stage import stage
 from game_files.logic.input_box import input_box
 import game_files.imports.utils as u
@@ -185,6 +184,7 @@ class game_logic:
 
         if self.stage.latest_state().player.dead:
             if g.AUTO_REVERSE:
+                self.stage.animation_manager.register_message(self.screen, "You died, reversed lase move.", g.FRAME_RATE * 3)
                 global_save_state.log_auto_reverse()
                 self.stage.reverse()
             if self.speedrun is not None and self.speedrun.settings.does_death_reset:

@@ -1,3 +1,6 @@
+0.97
+- add text message functionality
+
 0.96.3
 - add "TRACE" log level
 - changes to logs
