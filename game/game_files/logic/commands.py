@@ -10,6 +10,7 @@ from game_files.imports.view_constants import global_view_constants as v
 from game_files.imports.platform_maze_passwords import passwords
 from game_files.imports.all_speedruns import speedruns
 from game_files.speedruns.settings import settings as speedrun_settings
+from game_files.logic.state_filler_uno_duo import fill
 
 public_commands = {}
 

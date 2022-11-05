@@ -5,9 +5,8 @@ import game_files.imports.levels as l
 from game_files.imports.view_constants import global_view_constants as v
 from game_files.other.particle_generator import particle_generator
 from game_files.imports.log import log
-from game_files.logic.state_filler import fill
+from game_files.logic.state_filler_uno_duo import fill
 from game_files.animations.animation_manager import animation_manager
-from game_files.imports.save_state import global_save_state
 from game_files.logic.direction import direction as d
 
 FONT = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)

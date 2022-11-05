@@ -88,6 +88,8 @@ if __name__ == "__main__":
     def bt_start_method():
         window.withdraw()
 
+        # run_game()
+
         thread = threading.Thread(target=run_game())
         thread.start()
 

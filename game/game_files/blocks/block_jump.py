@@ -3,7 +3,7 @@ import game_files.imports.all_sprites as s
 
 
 class block_jump(block):
-    def __init__(self, screen, stage, state_index, pos, boost=-1):
+    def __init__(self, screen, stage, state_index, pos, boost=2):
         super().__init__(screen, stage, state_index, pos)
         self.boost = 0
         self.options(str(boost))

@@ -1,3 +1,6 @@
+0.96.1
+- state_filler_uno_duo implemented, and by a better coder than the one who implemented state_filler
+
 0.95.4
 - add a few more levels
 
