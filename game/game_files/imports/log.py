@@ -18,7 +18,9 @@ def _write(log_type, args):
     for arg in args:
         message = message + str(arg) + " "
 
-    if log_type == "INFO":
+    if log_type == "TRACE":
+        message = colors.OKCYAN + "TRACE: " + message + colors.ENDC
+    elif log_type == "INFO":
         message = "INFO: " + message
     elif log_type == "WARNING":
         message = colors.WARNING + "WARNING: " + message + colors.ENDC
@@ -29,9 +31,14 @@ def _write(log_type, args):
 
 class log_class:
     def __init__(self):
+        self.t = g.LOG_TRACE
         self.i = g.LOG_INFO
         self.w = g.LOG_WARNINGS
         self.e = g.LOG_ERRORS
+
+    def trace(self, *args):
+        if self.t:
+            _write("TRACE", args)
 
     def info(self, *args):
         if self.i:

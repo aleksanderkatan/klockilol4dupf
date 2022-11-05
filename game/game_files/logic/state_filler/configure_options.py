@@ -9,7 +9,7 @@ from game_files.other.decoration import decoration
 def configure_options(s, options, blocks):
     for key, value in blocks.items():
         if key in option_map:
-            log.info("Configuring: " + option_map[key])
+            log.trace("Configuring: " + option_map[key])
 
             if option_map[key] not in options:
                 log.warning("No " + option_map[key] + " options")
@@ -17,8 +17,10 @@ def configure_options(s, options, blocks):
 
             current_options = options[option_map[key]]
 
-            if len(current_options) != len(value):
-                log.warning("Wrong length " + option_map[key] + " options")
+            if len(current_options) < len(value):
+                log.warning(f"Too few {option_map[key]} options, [{len(current_options)}] instead of [{len(value)}].")
+            if len(current_options) > len(value):
+                log.warning(f"Too many {option_map[key]} options, [{len(current_options)}] instead of [{len(value)}].")
 
             if option_map[key] == 'portals':
                 for z_ in range(len(value)):
