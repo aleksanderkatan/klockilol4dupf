@@ -1,3 +1,6 @@
+0.96.2
+- split state_filler_uno_duo into multiple smaller files
+
 0.96.1
 - state_filler_uno_duo implemented, and by a better coder than the one who implemented state_filler
 

@@ -26,7 +26,7 @@ if __name__ == "__main__":
                    (1280, 960, " (recommended)"), (900, 600, " (blurry)"), (640, 480, " (x1/2)"),
                    (320, 240, " (x1/4, for lectures)"), (21, 37, " [*]")]
     combo_res['values'] = [str(int(c[0])) + "x" + str(int(c[1])) + c[2] for c in resolutions]
-    combo_res.current(3)
+    combo_res.current(5)
     combo_res.grid(column=2, row=1)
 
     tk.Label(window, text="Language").grid(column=1, row=2)
