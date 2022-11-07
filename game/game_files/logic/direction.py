@@ -14,7 +14,7 @@ class direction(Enum):
     def is_cardinal(self):
         return self.value in [0, 1, 2, 3]
 
-    def get_cardinal():
+    def get_cardinal(self):
         return [direction.RIGHT, direction.UP, direction.LEFT, direction.DOWN]
 
     def __eq__(self, other):

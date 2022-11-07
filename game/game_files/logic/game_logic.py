@@ -12,6 +12,7 @@ from game_files.imports.save_state import global_save_state
 from game_files.witch.witch import witch
 from game_files.imports.log import log
 from game_files.logic.direction import direction as d
+from game_files.animations.animation_manager import animation_manager
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font("game_files/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
@@ -55,8 +56,11 @@ class game_logic:
 
         new_stage = stage(self.screen, level_index, self.level_index)
         if new_stage.successful is False:
+            log.error("Stage " + str(level_index) + " failed to load")
             self.stage.reverse()
             self.stage.change_to = None
+            self.stage.animation_manager.register_message(self.screen, g.LAST_ERROR, 10 * g.FRAME_RATE)
+            g.LAST_ERROR = None
             return False
         log.info("Setting stage to", new_stage.level_index)
         self.stage = new_stage
@@ -184,7 +188,7 @@ class game_logic:
 
         if self.stage.latest_state().player.dead:
             if g.AUTO_REVERSE:
-                self.stage.animation_manager.register_message(self.screen, "You died, reversed lase move.", g.FRAME_RATE * 3)
+                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.", g.FRAME_RATE * 3)
                 global_save_state.log_auto_reverse()
                 self.stage.reverse()
             if self.speedrun is not None and self.speedrun.settings.does_death_reset:

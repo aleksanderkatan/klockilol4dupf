@@ -20,9 +20,7 @@ class stage:
         self.level_index = level_index
         self.successful = fill(first_state, level_index, last_level_index)
         self.speedrun_check_needed = False
-        if self.successful is False:
-            log.error("Stage " + str(level_index) + " failed to load")
-        else:
+        if self.successful:
             self.states.append(first_state)
             first_state.update_dark_visibility()
         self.change_to = None

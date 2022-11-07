@@ -1,3 +1,9 @@
+0.98
+- make piston pusher go through useless block
+- show messages about state filler errors
+- add 5 levels
+- fix bug where keys were not logged
+
 0.97
 - add text message functionality
 

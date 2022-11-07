@@ -17,14 +17,14 @@ def preprocess_level(level_lines):
             line_index = 4 + z_ * (y + 1) + y_
             index, line = level_lines[line_index]
             if len(line) != x:
-                raise state_load_exception(f"Line index {index} [{line}] has incorrect size {len(line)} instead of {x}.")
+                raise state_load_exception(f"Line {index} [{line}] has incorrect size {len(line)} instead of {x}.")
 
             for x_ in range(x):
                 level.t[x_][y_][z_] = line[x_]
         line_index = 4 + z_ * (y + 1) + y
         index, line = level_lines[line_index]
         if len(line) != 0:
-            raise state_load_exception(f"Line index {index} [{line}] should be empty")
+            raise state_load_exception(f"Line {index} [{line}] should be empty.")
 
     options_lines = level_lines[4 + z * (y + 1):]
     options = {}
@@ -35,7 +35,7 @@ def preprocess_level(level_lines):
             continue
         opt = words[0]
         if opt not in valid_options:
-            raise state_load_exception(f"Line index {index} [{line}] has an invalid option {opt}. Check spelling.")
+            raise state_load_exception(f"Line {index} [{line}] has an invalid option {opt}. Check spelling.")
         if opt not in options:
             options[opt] = []
         options[opt].extend(words[1:])

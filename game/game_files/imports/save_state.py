@@ -163,7 +163,7 @@ class new_save_state:
     # (multiple key presses in a single frame and text inputting are omitted)
 
     def log_move(self, direction):
-        key = "moves_direction_" + str(direction)
+        key = "moves_direction_" + str(direction.value)
         self.increase_value(key, 0)
 
     def log_reverse(self):

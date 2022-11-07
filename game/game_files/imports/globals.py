@@ -1,4 +1,4 @@
-VERSION = "v0.97"
+VERSION = "v0.98"
 
 FRAME_RATE = 30
 MOVE_LIMIT = 2048
@@ -36,3 +36,4 @@ LOG_ERRORS = True
 # runtime variables with default setting, don't change
 KBcheat = False
 PAPOR = False
+LAST_ERROR = None

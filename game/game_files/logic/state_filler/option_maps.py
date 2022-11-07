@@ -26,4 +26,5 @@ char_optionable_blocks = {
     o.block_birdy_arrow,
     o.block_lamp,
     o.block_swapping,
+    o.block_numeric_dark,
 }

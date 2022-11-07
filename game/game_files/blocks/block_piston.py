@@ -24,7 +24,7 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
         if self.first_move:
             state = self.stage.states[self.state_index]
             blo = state.get_block(self.pos)
-            if type(blo) is not block_empty:
+            if type(blo) not in [block_empty, block_blocker]:
                 self.clinged = True
                 if state.player.pos == self.pos and self.clinged and self.first_move:
                     state.get_block(self.pos).on_step_in()

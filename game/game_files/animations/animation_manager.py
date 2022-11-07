@@ -1,5 +1,6 @@
 from game_files.animations.text_message import text_message
 
+
 class animation_manager:
     def __init__(self):
         self.anims = []

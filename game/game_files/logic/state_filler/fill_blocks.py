@@ -23,7 +23,7 @@ def fill_blocks(s, level):
                 try:
                     block_class = charmap[char]
                 except KeyError:
-                    raise state_load_exception(f"Unknown character [{char}] at position x={x}, y={y}, z={z}")
+                    raise state_load_exception(f"Unknown character [{char}] at position x={x}, y={y}, z={z}.")
 
                 blo = block_class(s.screen, s.stage, s.state_index, (x_, y_, z_))
 
