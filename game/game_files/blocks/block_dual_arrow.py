@@ -2,14 +2,15 @@ from game_files.blocks.block import block
 import game_files.imports.utils as u
 import game_files.imports.all_sprites as s
 from game_files.logic.direction import direction as d
+from game_files.logic.direction import get_cardinal
 
 
 class block_dual_arrow(block):
     def __init__(self, screen, stage, state_index, pos, direction_1=d.NONE, direction_2=d.NONE):
         super().__init__(screen, stage, state_index, pos)
         self.sprite = s.sprites["error"]
-        self.direction_1 = -1
-        self.direction_2 = -1
+        self.direction_1 = d.NONE
+        self.direction_2 = d.NONE
         self.set_directions(direction_1, direction_2)
         self.state_index = state_index
 
@@ -47,5 +48,5 @@ class block_dual_arrow(block):
             self.sprite = s.sprites["block_dual_arrow_" + str(self.direction_1.value)]
 
     def has_barrier(self, direction, into):
-        barrier_directions = [dir for dir in d.get_cardinal() if dir not in [self.direction_1, self.direction_2]]
+        barrier_directions = [dir for dir in get_cardinal() if dir not in [self.direction_1, self.direction_2]]
         return direction in barrier_directions

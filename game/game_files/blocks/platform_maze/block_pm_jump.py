@@ -15,12 +15,11 @@ class block_pm_jump(block):
     def on_step_in(self):
         player = self.stage.states[self.state_index].player
         player.boost_next_move(self.length)
-        dir = self.stage.states[self.state_index].player.last_move_direction
+        dir = player.last_move_direction
 
-        old_pos = player.pos
-        new_pos = u.move_pos(old_pos, dir, self.length)
-        translation = u.get_translation(old_pos, new_pos)
+        print(dir)
+        print(dir.is_cardinal())
 
         if dir.is_cardinal():
-            self.stage.states[self.state_index].player.enqueue_move(dir)
-        # self.stage.animation_manager.register_animation(animation_player_jump(self.screen, self.stage, self.state_index, translation))
+            player.enqueue_move(dir)
+            player.retain_direction_after_next_jump()

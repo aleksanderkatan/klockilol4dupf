@@ -2,6 +2,7 @@ from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 import game_files.imports.utils as u
 from game_files.logic.direction import direction as d
+from game_files.logic.direction import get_cardinal
 
 
 class block_pm_arrow(block):
@@ -26,7 +27,7 @@ class block_pm_arrow(block):
         self.directions = directions
         if len(directions) == 1:  # single arrow
             if 0 <= directions[0].value <= 3:
-                self.barriers = [dir for dir in d.get_cardinal() if dir != directions[0]]
+                self.barriers = [dir for dir in get_cardinal() if dir != directions[0]]
                 self.sprite = s.sprites["block_pm_arrow_" + str(directions[0].value)]
         if len(directions) == 2:  # double arrow
             if all(item in [d.RIGHT, d.LEFT] for item in directions):

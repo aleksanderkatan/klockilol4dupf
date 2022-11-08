@@ -1,3 +1,6 @@
+0.99.1
+- bugfix for direction (pm_jump did not chain)
+
 0.98
 - make piston pusher go through useless block
 - show messages about state filler errors

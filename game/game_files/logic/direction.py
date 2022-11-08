@@ -1,6 +1,10 @@
 from enum import Enum
 
 
+def get_cardinal():
+    return [direction.RIGHT, direction.UP, direction.LEFT, direction.DOWN]
+
+
 class direction(Enum):
     NONE = -1
     RIGHT = 0
@@ -13,9 +17,6 @@ class direction(Enum):
 
     def is_cardinal(self):
         return self.value in [0, 1, 2, 3]
-
-    def get_cardinal(self):
-        return [direction.RIGHT, direction.UP, direction.LEFT, direction.DOWN]
 
     def __eq__(self, other):
         if self.value == other.value:

@@ -27,6 +27,7 @@ class player:
         self.ignore_draw = False
         self.flight = -1
         self.switched_controls = False
+        self.retain_direction = False
 
     def get_current_sprite(self):
         if self.flavour in [-1, 1]:
@@ -60,7 +61,11 @@ class player:
         pla.ignore_draw = self.ignore_draw
         pla.flight = self.flight
         pla.switched_controls = self.switched_controls
+        pla.retain_direction = self.retain_direction
         return pla
+
+    def retain_direction_after_next_jump(self):
+        self.retain_direction = True
 
     def enqueue_move(self, direction):
         self.enqueued_move = direction
@@ -105,7 +110,17 @@ class player:
             self.dead = True
 
         self.next_move_length = 1
-        self.last_move_direction = d.NONE if move_length > 1 else move_direction
+        print("AAA", self.retain_direction, move_length)
+        if move_length > 1:  #
+            if self.retain_direction:
+                self.retain_direction = False
+                self.last_move_direction = move_direction
+            else:
+                self.last_move_direction = d.NONE
+        else:
+            self.last_move_direction = move_direction
+        print("AAA", self.last_move_direction)
+
         self.last_move_pos = self.pos
         self.this_move_direction = d.NONE
         self.pos = new_pos
