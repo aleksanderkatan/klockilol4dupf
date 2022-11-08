@@ -39,18 +39,18 @@ def command_switch_witch(game_logic, command):
 def command_help_public(game_logic, command):
     message = "Public commands:\n"
     message += list_of_commands(public_commands)
-    log.print(message)
+    log.write(message)
 
 
 def command_completion(game_logic, command):
     message = "Completion: "
     message += str(global_save_state.get_completion())
-    log.print(message)
+    log.write(message)
 
 
 def command_logged_keys(game_logic, command):
     message = global_save_state.get_logged_keys()
-    log.print(message)
+    log.write(message)
 
 
 def command_password(game_logic, command):
@@ -75,7 +75,7 @@ def command_speedrun(game_logic, command):
 
     settings = speedrun_settings(does_death_reset=("-d" not in options))
     speedrun = speedruns[name](settings)
-    log.print(f"Starting speedrun {speedrun.get_name()}")
+    log.write(f"Starting speedrun {speedrun.get_name()}")
     g.TIMER = True
     g.CHEATS = False
     global_save_state.hard_erase_all()
@@ -275,7 +275,7 @@ def command_load_all(game_logic, command):
 
 def command_ls(game_logic, command):
     message = l.levels_ls()
-    log.print(message)
+    log.write(message)
 
 
 def command_help_root(game_logic, command):
@@ -283,7 +283,7 @@ def command_help_root(game_logic, command):
     message += list_of_commands(public_commands)
     message += "\nRoot commands:\n"
     message += list_of_commands(root_commands)
-    log.print(message)
+    log.write(message)
 
 
 def command_disable_cheats(game_logic, command):
@@ -293,7 +293,7 @@ def command_disable_cheats(game_logic, command):
 
 def command_position(game_logic, command):
     pos = game_logic.stage.latest_state().player.pos
-    log.print("Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index))
+    log.write("Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index))
 
 
 def command_raise_exception(game_logic, command):
@@ -327,7 +327,7 @@ def command_teleport_up(game_logic, command):
 
 def command_all_stats(game_logic, command):
     message = global_save_state.get_all_stats()
-    log.print(message)
+    log.write(message)
 
 
 def command_resume_timer(game_logic, command):

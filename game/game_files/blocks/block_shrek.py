@@ -16,7 +16,7 @@ class block_shrek(block):
     def on_step_in(self):
         global_save_state.set("shrek", not global_save_state.get("shrek", False))
         self.stage.speedrun_check_needed = True
-        log.print(global_save_state.get_all_stats())
+        log.write(global_save_state.get_all_stats())
 
     def draw(self, pos, where_is_player):
         if where_is_player is not None:

@@ -33,7 +33,6 @@ class animation_player_jump(animation):
         self.player.ignore_draw = True
 
     def draw(self):
-        # log.print(f"animation {self.frame}")
         self.screen.blit(self.player.get_current_sprite()[0], self.positions[min(self.frame, len(self.positions))])
 
     def advance(self):

@@ -13,7 +13,7 @@ class colors:
     UNDERLINE = '\033[4m'
 
 
-def _write(log_type, args):
+def _write_colored(log_type, args):
     message = ""
     for arg in args:
         message = message + str(arg) + " "
@@ -38,22 +38,22 @@ class log_class:
 
     def trace(self, *args):
         if self.t:
-            _write("TRACE", args)
+            _write_colored("TRACE", args)
 
     def info(self, *args):
         if self.i:
-            _write("INFO", args)
+            _write_colored("INFO", args)
 
     def warning(self, *args):
         if self.w:
-            _write("WARNING", args)
+            _write_colored("WARNING", args)
 
     def error(self, *args):
         if self.e:
-            _write("ERROR", args)
+            _write_colored("ERROR", args)
 
-    def print(self, *args):
-        _write("PRINT", args)
+    def write(self, *args):
+        _write_colored("PRINT", args)
 
 
 log = log_class()

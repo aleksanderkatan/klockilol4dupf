@@ -79,8 +79,8 @@ class game_logic:
         if self.speedrun is not None and self.speedrun.is_condition_met():
             global_save_state.hard_save_all()
             name = self.speedrun.get_name()
-            log.print(f"Speedrun {name} completed! Deaths reset: {self.speedrun.does_death_reset()}")
-            log.print(global_save_state.get_all_stats())
+            log.write(f"Speedrun {name} completed! Deaths reset: {self.speedrun.does_death_reset()}")
+            log.write(global_save_state.get_all_stats())
             global_save_state.set("is_timer_stopped", True)
             global_save_state.hard_save_all()
 
@@ -93,7 +93,7 @@ class game_logic:
         self.set_stage(l.next_level(completed))
         if self.speedrun is not None:
             time = u.ticks_to_time(global_save_state.get("time", -1))
-            log.print(f"Level {completed} completed at {time}")
+            log.write(f"Level {completed} completed at {time}")
             self.perform_speedrun_check()
         return True
 
