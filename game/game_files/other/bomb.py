@@ -24,7 +24,7 @@ class bomb:
         state = self.stage.states[self.state_index]
         player = state.player
         if self.pos == player.pos:
-            log.info("Bomb kicked")
+            log.trace("Bomb kicked")
             particle_generator = self.stage.particle_generator
             x, y = u.index_to_position(self.pos[0], self.pos[1], self.pos[2], state.x, state.y, len(state.layers))
             particle_generator.generate_bomb((x, y), player.last_move_direction)
@@ -35,7 +35,7 @@ class bomb:
 
         self.ticks -= 1
         if self.ticks == 0:
-            log.info("Bomb exploded")
+            log.trace("Bomb exploded")
             state.set_block(self.pos, block_empty(self.screen, self.stage, self.state_index, self.pos))
             x, y = u.index_to_position(self.pos[0], self.pos[1], self.pos[2], state.x, state.y, len(state.layers))
             self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES * 2,

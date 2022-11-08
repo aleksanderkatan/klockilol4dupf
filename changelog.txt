@@ -1,3 +1,6 @@
+0.99.5
+- review and adjust all log modes used
+
 0.99.4
 - make options obligatory if optionable blocks are used
 - fix all warnings and errors in existing levels

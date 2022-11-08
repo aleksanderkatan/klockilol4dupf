@@ -26,6 +26,8 @@ def _write_colored(log_type, args):
         message = colors.WARNING + "WARNING: " + message + colors.ENDC
     elif log_type == "ERROR":
         message = colors.ERROR + "ERROR: " + message + colors.ENDC
+    elif log_type == "WRITE":
+        message = "WRITE: " + message
     print(message)
 
 
@@ -53,7 +55,7 @@ class log_class:
             _write_colored("ERROR", args)
 
     def write(self, *args):
-        _write_colored("PRINT", args)
+        _write_colored("WRITE", args)
 
 
 log = log_class()

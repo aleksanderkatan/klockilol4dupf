@@ -44,7 +44,7 @@ class stage:
 
     def move(self, direction=d.NONE):
         if len(self.states) > g.MOVE_LIMIT:
-            log.warning('Move limit exceeded, resetting...')
+            log.info('Move limit exceeded, resetting...')
             self.reset()
             return
 
@@ -62,7 +62,7 @@ class stage:
         self.states.append(new_state)
         new_state.move(direction)
         if new_state.invalid:
-            log.info("Invalid move performed")
+            log.trace("Invalid move performed")
             self.soft_reverse()
             return
 

@@ -8,7 +8,7 @@ def find_starting_point(s, last_level_index):
         s.teleport_player(starting_point, False)
 
     if type(s.get_block(s.player.pos)) not in o.standables:
-        log.warning("Player is not standing, finding a standable block...")
+        log.trace("Player is not standing, finding a standable block...")
         for blo in s.block_iterator():
             typ = type(blo)
             if typ in o.standables and typ != o.block_invisible:

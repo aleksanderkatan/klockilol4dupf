@@ -166,7 +166,7 @@ class game_logic:
 
             if k.is_back_in_hierarchy(key):
                 target = l.up_in_hierarchy(self.level_index)
-                log.info("Going back to", target)
+                log.trace("Going back to", target)
                 if target == self.level_index:
                     self.stage.reset()
                 else:

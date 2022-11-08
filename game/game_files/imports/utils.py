@@ -111,7 +111,7 @@ def move_pos(pos, direction, move_length=1):
         elif direction == d.DESCEND:
             z -= move_length
         elif direction == d.FORCED_SKIP:
-            log.info("Forced move skip")
+            log.trace("Forced move skip")
 
     return x, y, z
 

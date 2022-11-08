@@ -15,4 +15,4 @@ class block_pm_flight(block):
     def on_step_in(self):
         player = self.stage.states[self.state_index].player
         player.flight = self.length
-        log.info("flight!")
+        log.trace("flight!")

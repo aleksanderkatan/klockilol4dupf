@@ -22,5 +22,5 @@ class block_pm_control_switcher(block):
 
     def on_step_in(self):
         player = self.stage.states[self.state_index].player
-        log.info(f"Player controls are reversed: {self.reverses}")
+        log.trace(f"Player controls are reversed: {self.reverses}")
         player.switched_controls = self.reverses

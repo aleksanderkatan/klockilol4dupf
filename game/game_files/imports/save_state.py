@@ -139,7 +139,6 @@ class new_save_state:
             log.error("No such zone", zone_index)
             return
         if zone_index >= 400 or (100 < zone_index < 200):
-            log.warning("Not a completable zone:", zone_index)
             return
         for i in range(1, l.levs[zone_index] + 1):
             self.complete_level((zone_index, i), hard_save=False)

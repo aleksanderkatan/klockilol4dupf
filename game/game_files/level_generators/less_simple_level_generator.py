@@ -194,5 +194,5 @@ def generate(index, x, y, ice, jump2, jump3, arrow, length, redirect, max_num=No
             log.info(index, "success")
             return True
         log.info(index, "S/E fail")
-    log.error("FAIL: too much failed generating tries")
+    log.error("FAIL: Too much failed generating tries.")
     return False
