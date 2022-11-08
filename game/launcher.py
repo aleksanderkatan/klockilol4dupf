@@ -1,5 +1,4 @@
 import pygame
-pygame.init()
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox as tkm
@@ -7,10 +6,20 @@ from game_files.imports.save_state import global_save_state
 from game_files.imports.view_constants import global_view_constants as v
 import game_files.imports.globals as g
 import threading
+from game_files.logic.commands import exit_game
+import traceback
+from game_files.imports.log import log
+
+
+class exception_catching_tk(tk.Tk):
+    def report_callback_exception(self, *args):
+        err = traceback.format_exception(*args)
+        log.error(err)
+        exit_game()
 
 
 if __name__ == "__main__":
-    window = tk.Tk()
+    window = exception_catching_tk()
     window.title("klockilol4dupf launcher")
     window.minsize(width=300, height=200)
     window.iconbitmap("game_files/sprites/other/icon.ico")
@@ -59,6 +68,7 @@ if __name__ == "__main__":
 
 
     def run_game():
+        pygame.init()
         x, y, _ = resolutions[combo_res.current()]
         resolution = (x, y)
         v.change_resolution(resolution)

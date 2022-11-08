@@ -110,7 +110,6 @@ class player:
             self.dead = True
 
         self.next_move_length = 1
-        print("AAA", self.retain_direction, move_length)
         if move_length > 1:  #
             if self.retain_direction:
                 self.retain_direction = False
@@ -119,7 +118,6 @@ class player:
                 self.last_move_direction = d.NONE
         else:
             self.last_move_direction = move_direction
-        print("AAA", self.last_move_direction)
 
         self.last_move_pos = self.pos
         self.this_move_direction = d.NONE

@@ -17,9 +17,6 @@ class block_pm_jump(block):
         player.boost_next_move(self.length)
         dir = player.last_move_direction
 
-        print(dir)
-        print(dir.is_cardinal())
-
         if dir.is_cardinal():
             player.enqueue_move(dir)
             player.retain_direction_after_next_jump()

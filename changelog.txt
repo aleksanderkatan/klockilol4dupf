@@ -1,3 +1,6 @@
+0.99.2
+- make window close after runtime exception
+
 0.99.1
 - bugfix for direction (pm_jump did not chain)
 
