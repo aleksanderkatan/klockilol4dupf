@@ -1,3 +1,7 @@
+0.99.4
+- make options obligatory if optionable blocks are used
+- fix all warnings and errors in existing levels
+
 0.99.3
 - refactor log.print to log.write
 - remove prints from code

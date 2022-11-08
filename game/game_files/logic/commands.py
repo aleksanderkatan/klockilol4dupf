@@ -380,6 +380,7 @@ root_commands["refresh"] = command_refresh
 root_commands["reset"] = command_refresh
 
 root_commands["load_all"] = command_load_all
+root_commands["la"] = command_load_all
 
 root_commands["ls"] = command_ls
 root_commands["list"] = command_ls

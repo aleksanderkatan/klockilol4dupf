@@ -4,6 +4,7 @@ import game_files.imports.all_sprites as sprites
 from game_files.other.chav import chav
 from game_files.other.bomb import bomb
 from game_files.other.decoration import decoration
+from game_files.logic.state_filler.state_load_exception import state_load_exception
 
 
 def configure_options(s, options, blocks):
@@ -12,13 +13,12 @@ def configure_options(s, options, blocks):
             log.trace("Configuring: " + option_map[key])
 
             if option_map[key] not in options:
-                log.warning("No " + option_map[key] + " options")
-                continue
+                raise state_load_exception("No " + option_map[key] + " options")
 
             current_options = options[option_map[key]]
 
             if len(current_options) < len(value):
-                log.warning(f"Too few {option_map[key]} options, [{len(current_options)}] instead of [{len(value)}].")
+                raise state_load_exception(f"Too few {option_map[key]} options, [{len(current_options)}] instead of [{len(value)}].")
             if len(current_options) > len(value):
                 log.warning(f"Too many {option_map[key]} options, [{len(current_options)}] instead of [{len(value)}].")
 
