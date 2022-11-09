@@ -62,7 +62,7 @@ levs[4] = 17
 levs[5] = 19
 levs[6] = 19
 levs[7] = 23
-levs[8] = 20
+levs[8] = 30
 levs[9] = 20
 levs[10] = 24
 

@@ -1,3 +1,7 @@
+0.100.1
+- add 5 levels
+- move levels between zones
+
 0.99.5
 - review and adjust all log modes used
 
