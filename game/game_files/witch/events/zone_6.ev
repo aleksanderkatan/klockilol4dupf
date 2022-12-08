@@ -12,6 +12,15 @@ I tak sobie powtarzasz, zaczynając od byle czego, przybliżasz się do pierwias
 Twórcy Quake III Arena potrzebowali szybko liczyć 1/pierwiastek(a). Użyli podobnej metody, ale zoptymalizowali ją w opór. Teraz, jak wygooglujesz "quake what the fuck", dostaniesz w wynikach "fast inverse square root"! Wraz z tym paskudnym kawałkiem kodu.
 
 
+6 7
+None
+Ten "what the fuck algorithm" był możliwy dzięki temu, że C nie jest type safe.
+Znaczy może się okazać w runtimie że ktoś próbuje do siebie dodać zamiast liczb np. konia i wóz asenizacyjny.
+C jest tak bardzo nie type safe jak tylko się da. Każdy typ można zcastować na void*, a potem zreinterpretować jako coś innego.
+Można nawet w połowę struktury się wbić.
+Gorszy jest chyba tylko asembler, gdzie można wykonać skok instruction pointera do połowy instrukcji, a procesor to łyknie i będzie wykonywał jakieś mambo dżambo.
+
+
 6 9
 None
 Nice.

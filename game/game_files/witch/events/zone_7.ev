@@ -1,0 +1,93 @@
+7 0
+None
+Rachunek lambda!
+Chwila, czy ja w tym foncie mogę pisać lambdę?
+λ
+Zaajebiście. No to mam temat na jednego zołna.
+
+7 3
+None
+Jak nie masz teraz siły na uczenie się to przez cały zone lepiej mnie nie słuchaj.
+W rachunku lambda mamy termy i reguły przepisania.
+Przykładowe termy to:
++x
++xx
++(xy)(zt)
++λx.x
++(λx.x)(λx.x)
++W skrócie to λx.E oznacza funkcję, która przyjmuje x, a napisanie rzeczy obok siebie oznacza aplikację drugiej do pierwszej.
++(zawsze można, bo każda zmienna oznacza jakąś funkcję. Np. ustalamy sobie, że liczba 1 to funkcja jakaś i idziemy z tym)
++Przykłady ewaluacji (formalnie beta redukcje):
++(λx.xx)y = yy
++albo (λx.xx)(λx.x) = (λx.x)(λx.x) = (λx.x)
++albo (λx.xx)(λx.xx) = (λx.xx)(λx.xx)
++(Żeby zrozumieć co będę mówić dalej nie musisz zapamiętywać semantyki, sam pomysł wystarczy)
+
+7 5
+None
+No i po jaką cholerę to? A no jest całkiem użyteczne. Przydaje się w sprawdzaniu, czy dany program w jakimś języku da się poprawnie otypować.
+Poprawnie, czyli (jak to w przykładzie kiedyś wcześniej) nie okaże się że dodajemy konia do wozu asenizacyjnego.
+...i tu w sumie praktyczne zastosowania się kończą, ale można trochę pogadać o tych niepraktycznych!
+
+
+7 7
+None
+Ten poziom nie jest duży. I myślę, że mógłbyś zgaść, jak wygląda bez prób i błędów.
+
+
+7 10
+None
+Funkcje obliczalne to generalnie wszystkie funkcje z N^k w N, które możesz sobie wyobrazić.
+Dodawanie
++Dzielenie bez reszty
++N-ta liczba Fibonacciego
++Funkcja kwadratowa
+Wszystkie, do których istnieje algorytm obliczający je. Może się zwieszać, tzn może być tak, że np f(0) po prostu nie ma wartości.
+Za pomocą rachunku lambda da się przedstawić wszystkie takie funkcje.
+Pojebane, nie? Zwłaszcza, jak się weźmie pod uwagę że mamy tak naprawdę do dyspozycji tylko jednoargumentowe funkcje i aplikacje.
+(Przypominam, nie mamy liczb ani nic podobnego. Możemy sobie zdefiniować liczby jako jakieś funcje i tak się to robi.)
+
+
+7 15
+None
+Ale jak zrobić z wyrażeń lambda funkcję dwuargumentową? To proste. Załóżmy, że + oznacza dodawanie dwóch rzeczy.
+Wtedy λx.(λy.x+y) to tak jakby funkcja dwuargumentowa.
++Przyjmuje x, zwraca funkcję która przyjmuje y i zwraca x+y.
++((λx.(λy.x+y))3)4 = (λy.3+y)4 = 3+4
+Działa.
+
+
+7 16
+None
+Co, powtórka?
+Nie no dobrze już wiesz że nie xd
+
+
+7 18
+None
+Jak mogę robić lambdę to może mogę też...
+🤡 💩 😳 🥵 🥶 😱 😨 😰 😥 😓 🫣 🤗 🫡 🤔 🫢 🦾 🦵 🦿 🦶 👣 🧙 🧙‍♂️ 🪖 💄 💍
+Uff, i bardzo dobrze. Emoji to wymysł jakiegoś psychopaty.
+
+
+7 20
+None
+Za pomocą samych wyrażeń
++K = λx.(λy.x)
++S = λx.(λy.(λz.xz(yz)))
++Można zapisać dowolne inne wyrażenie.
+Innymi słowy, robiąc wyrazy tylko z S i K, da się napisać dowolną funkcję obliczalną.
+
+
+7 21
+None
+Istnieje inna funkja nazwana Iota. Za jej pomocą można napisać S i K, czyli tylko nią można zrobić dowolną funkcję obliczalną.
+Gdybym znalazła, to bym wkleiła teraz jak wygląda funkcja obliczająca n-ty wyraz ciągu Fibonacciego.
+Mam to na filmiku, https://www.youtube.com/watch?v=gnrSedVucXs, 29:22
+
+
+7 23
+None
+Nie istnieje algorytm, który dla danego wyrażenia lambda powie czy jak będziemy je ewaluować, to skończymy kiedyś (nie zapętlimy się).
+Podobnie, jak nie istnieje algorytm, który mówi, czy kod podany na wejściu się zapętli.
+I kiedy mówię że nie istnieje, mam na myśli że nie da sie czegoś takiego napisać, a nie tylko że jeszcze się nie udało.
