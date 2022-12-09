@@ -19,6 +19,7 @@ valid_options = {value for value in option_map.values()}
 valid_options.add("chavs")
 valid_options.add("bombs")
 valid_options.add("decorations")
+valid_options.add("forced_spawn")
 
 char_optionable_blocks = {
     o.block_numeric,

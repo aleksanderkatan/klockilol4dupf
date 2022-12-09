@@ -207,26 +207,30 @@ def up_in_hierarchy(level_index):
     return level_error
 
 
+# TODO: add a dict to optimize at least a part of this
 def level_name(level_index):
     level_set, level = level_index
 
     if level_set == 0:
         return "Debug " + str(level)
 
-    if level_index == (500, 0):
-        return "The Swamp"
-
-    if level_set == 204 or level_index == (500, 1):
-        return "Giszowiec"
-
-    if level_set == 206:
-        return "The Maze"
-
     if 0 < level_set < 100:
         return str(level_set) + ("" if level == 0 else "-" + str(level))
 
     if 100 < level_set < 200:
         return "Randomized level"
+
+    if level_set == 204 or level_index == (500, 1):
+        return "Giszowiec"
+
+    if level_set == 205:
+        return "Birdy's Rainy Day Skipathon"
+
+    if level_set == 206:
+        return "The Maze"
+
+    if level_set == 209:
+        return "platform maze"
 
     if 200 < level_set < 300:
         return "?" + ("" if level == 0 else "-" + str(level))
@@ -239,6 +243,9 @@ def level_name(level_index):
 
     if level_index in [(500, 2)]:
         return ""
+
+    if level_index == (500, 0):
+        return "The Swamp"
 
     return "How did you get here?"
 

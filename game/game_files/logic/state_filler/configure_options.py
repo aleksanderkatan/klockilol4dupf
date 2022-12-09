@@ -59,3 +59,4 @@ def configure_options(s, options, blocks):
             h_align = option[4]
             v_align = option[5]
             s.decorations.append(decoration(s.screen, s.stage, s.state_index, (x, y, z), sprite, h_align, v_align))
+

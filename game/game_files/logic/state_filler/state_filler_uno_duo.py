@@ -18,8 +18,9 @@ def fill(s, level_index, last_level_index=None):
         level_lines = linify_level_string(level_string)
         prepped_level = preprocess_level(level_lines)
         blocks = fill_blocks(s, prepped_level)
-        configure_options(s, prepped_level.options, blocks)
-        find_starting_point(s, last_level_index)
+        options = prepped_level.options
+        configure_options(s, options, blocks)
+        find_starting_point(s, last_level_index, options)
         return True
     except state_load_exception as error:
         log.error(f"An error occurred during filling level {level_index}")
