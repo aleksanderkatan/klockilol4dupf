@@ -9,6 +9,7 @@ import game_files.imports.globals as g
 # 400 - lobbies
 # 500 <= - extra
 
+# where to go after pressing escape? The default is 0 level of the same set
 hierarchy = {}
 hierarchy[(1, 0)] = (400, 1)
 hierarchy[(2, 0)] = (400, 2)
@@ -20,8 +21,10 @@ hierarchy[(7, 0)] = (400, 4)
 hierarchy[(8, 0)] = (400, 4)
 hierarchy[(9, 0)] = (400, 4)
 hierarchy[(10, 0)] = (400, 5)
-
 hierarchy[(11, 0)] = (400, 5)
+hierarchy[(205, 0)] = (400, 6)
+hierarchy[(209, 0)] = (400, 6)
+
 
 hierarchy[(101, 0)] = (400, 2)
 hierarchy[(102, 0)] = (400, 3)
@@ -37,14 +40,16 @@ hierarchy[(301, 0)] = (400, 2)
 hierarchy[(302, 0)] = (400, 3)
 hierarchy[(303, 0)] = (400, 4)
 
-hierarchy[(400, 1)] = (400, 1)
-hierarchy[(400, 2)] = (400, 2)
-hierarchy[(400, 3)] = (400, 3)
-hierarchy[(400, 4)] = (400, 4)
-hierarchy[(400, 5)] = (400, 5)
+# lobbies lead to themselves
+for i in range(1, 6+1):
+    hierarchy[(400, i)] = (400, i)
 
 hierarchy[(500, 0)] = (400, 5)
 hierarchy[(501, 0)] = (400, 4)
+
+# The Maze
+for i in range(1, 16+1):
+    hierarchy[(206, i)] = (500, 0)
 
 # hubs = {}
 # hubs[1] = [1, 201]
@@ -72,22 +77,22 @@ levs[101] = 0
 levs[102] = 0
 levs[103] = 0
 
-levs[201] = 0  # hub 1 to the left
-levs[202] = 5  # 8/0 second gap
-levs[203] = 5  # hub 2 bottom of the random zone
-levs[204] = 5  # hub 3 right to the entrance
-levs[205] = 20  # no entrance yet
-levs[206] = 16  # no entrance, special case to be available
-levs[207] = 15  # no entrance yet
-levs[208] = 20  # no entrance yet
-levs[209] = 20  # no entrance yet
+levs[201] = 0  # jojo reference
+levs[202] = 5  # undertale
+levs[203] = 5  # light
+levs[204] = 5  # giszowiec
+levs[205] = 20  # birdy
+levs[206] = 16  # maze
+levs[207] = 15  # moving arrow
+levs[208] = 20  # what even is this
+levs[209] = 20  # platform maze
 levs[277] = 20  # extra levels without zone assigned (yet)
 levs[278] = 20  # discarded levels
 levs[301] = 5
 levs[302] = 5
 levs[303] = 5
 
-levs[400] = 5
+levs[400] = 6
 
 levs[500] = 2  # non hub, non lobby, non level stages
 
@@ -96,12 +101,13 @@ level_error_path = 'game_files/levels/0/0.lv'
 level_error = (0, 0)
 
 # all last-of-a-zone levels are automatically also back-in-hierarchy levels
-back_in_hierarchy_levels = [
+back_in_hierarchy_levels = {
     (202, 4),
     (101, 0),
     (102, 0),
     (103, 0),
-]
+    (8, 20)
+}
 
 
 def is_valid_stage(level_index):
@@ -207,6 +213,15 @@ def level_name(level_index):
     if level_set == 0:
         return "Debug " + str(level)
 
+    if level_index == (500, 0):
+        return "The Swamp"
+
+    if level_set == 204 or level_index == (500, 1):
+        return "Giszowiec"
+
+    if level_set == 206:
+        return "The Maze"
+
     if 0 < level_set < 100:
         return str(level_set) + ("" if level == 0 else "-" + str(level))
 
@@ -221,12 +236,6 @@ def level_name(level_index):
 
     if level_set == 400:
         return "Lobby " + str(level)
-
-    if level_index == (500, 0):
-        return "The Swamp"
-
-    if level_set == 204 or level_index == (500, 1):
-        return "Giszowiec"
 
     if level_index in [(500, 2)]:
         return ""

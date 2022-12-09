@@ -1,3 +1,9 @@
+0.100.3
+- added WIP signs to extra zones
+- add more events
+- added The Maze and Lobby 6
+- minor changes to levels
+
 0.100.2
 - add more events for the witch
 

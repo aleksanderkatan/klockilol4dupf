@@ -1,13 +1,10 @@
-the lot
-
-- way more levels!
+- add missing levels and complete extra zones!
 - update sprites
-# - pack the game into container
 - add all the dialogue
-# - think of something to do with time travel, so the 4d really stands for something
-- rumianek zone (maybe stories in all of zones?)
+- rumianek zone
 - plp zone
+- blind zone
 - hanabi zone
 - english translation and implementation of languages
 - background for timer and zone name
-- replace move direction with an enum
+
