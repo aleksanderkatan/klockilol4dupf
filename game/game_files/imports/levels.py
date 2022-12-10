@@ -77,7 +77,7 @@ levs[101] = 0
 levs[102] = 0
 levs[103] = 0
 
-levs[201] = 0  # jojo reference
+levs[201] = 10  # end
 levs[202] = 5  # undertale
 levs[203] = 5  # light
 levs[204] = 5  # giszowiec
@@ -94,7 +94,7 @@ levs[303] = 5
 
 levs[400] = 6
 
-levs[500] = 2  # non hub, non lobby, non level stages
+levs[500] = 3  # non hub, non lobby, non level stages
 
 level_error_path = 'game_files/levels/0/0.lv'
 
@@ -246,6 +246,9 @@ def level_name(level_index):
 
     if level_index == (500, 0):
         return "The Swamp"
+
+    if level_index == (500, 3):
+        return "End"
 
     return "How did you get here?"
 

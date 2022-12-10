@@ -135,6 +135,13 @@ class state:
             return
 
         self.layers[layer_index].draw(layer_index, len(self.layers), 0)
+        for decoration in self.decorations:
+            x, y, z = decoration.pos
+            if z != layer_index:
+                continue
+            screen_pos = u.index_to_position(x, y, z, self.x, self.y, len(self.layers))
+            decoration.draw(screen_pos, 0)
+
         if self.player.pos[2] == layer_index:
             self.draw_player()
 

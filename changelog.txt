@@ -1,3 +1,7 @@
+0.100.5
+- add drawing decorations when in single layer mode
+- add end zone (8 levels so far) and end block
+
 0.100.4
 - add events for flash zones
 - implement forced_spawn

@@ -7,9 +7,11 @@ h_map = {
 }
 
 v_map = {
+    "top": 0,
     "up": 0,
     "mid": 1,
     "down": 2,
+    "bottom": 2,
 }
 
 
