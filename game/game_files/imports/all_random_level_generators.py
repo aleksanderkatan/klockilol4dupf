@@ -20,5 +20,5 @@ def generate_SISLG(index):
         f.write(level_string)
         f.close()
         log.info("SUCCESS: something ominous happened")
-    except:
-        log.error("FAIL: something ominous failed to happen")
+    except Exception as e:
+        log.error(f"FAIL: something ominous failed to happen: {e}")

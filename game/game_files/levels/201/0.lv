@@ -15,3 +15,4 @@
 entrances 201/1 201/2 201/3 201/4 201/5 201/6 201/7 201/8 201/9 201/10
 entrances 500/3
 silent_triggers 1
+forced_spawn 10/9/0     # !! remove this eventually

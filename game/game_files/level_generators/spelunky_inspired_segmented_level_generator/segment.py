@@ -89,7 +89,7 @@ class segment:
         )
 
     def get_rotated(self):
-        if len(self.lines) != len(self.lines[0]):
+        if len(self.lines) != len(self.lines[0][0]):
             raise RuntimeError("Rotation not supported for non square segments")
         for _, options in self.lines:
             if len(options) > 0:
@@ -101,7 +101,7 @@ class segment:
             for x in range(dim):
                 origin_x, origin_y = rotate_cw_pos(x, y, dim)
                 character = self.lines[origin_y][0][origin_x]
-                lines_without_options[y] = lines_without_options[y] + "a"
+                lines_without_options[y] = lines_without_options[y] + character
 
         return segment(
             None,
@@ -170,5 +170,5 @@ rotate_ccw_options = {
 
 
 def rotate_cw_pos(x, y, dim):
-    return y, dim-1-x
+    return dim-1-y, x
 

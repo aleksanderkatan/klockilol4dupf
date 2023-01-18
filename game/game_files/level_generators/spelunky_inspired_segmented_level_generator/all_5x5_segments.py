@@ -8,62 +8,49 @@ DOWN = direction.DOWN
 ALL = [RIGHT, UP, LEFT, DOWN]
 
 
-# remember that they are not rotatable, the code works for non-square segments!
 segments = [
+    # necessary start here
     segment([
         "..1..", {},
         "..1..", {},
         "..S..", {},
         ".....", {},
         ".....", {},
-    ], outs=[UP], start=True, flippable="v"),
-    segment([
-        ".....", {},
-        ".....", {},
-        "11S..", {},
-        ".....", {},
-        ".....", {},
-    ], outs=[LEFT], start=True, flippable="h"),
+    ], outs=[UP], start=True, flippable="vr"),
     segment([
         "..1..", {},
         "..1..", {},
         "..E..", {},
         ".....", {},
         ".....", {},
-    ], ins=[UP], end=True, flippable="v"),
-    segment([
-        ".....", {},
-        ".....", {},
-        "11E..", {},
-        ".....", {},
-        ".....", {},
-    ], ins=[LEFT], end=True, flippable="h"),
-    segment([
-        "111..", {},
-        "1.1..", {},
-        "1.1.1", {},
-        ".1211", {},
-        ".11..", {},
-    ], ins=[LEFT], outs=[RIGHT], flippable="hv"),
-    segment([
-        "..1..", {},
-        "..11.", {},
-        ".111.", {},
-        ".11..", {},
-        "..1..", {},
-    ], ins=[UP], outs=[DOWN], flippable="hv"),
+    ], ins=[UP], end=True, flippable="vr"),
     segment([
         ".....", {},
         ".....", {},
         "111..", {},
         "..1..", {},
         "..1..", {},
-    ], ins=[LEFT], outs=[DOWN], flippable="hv"),
+    ], ins=[LEFT], outs=[DOWN], flippable="hvr"),
     segment([
         ".....", {},
         ".....", {},
-        "111..", {},
-        "..1..", {},
-        "..1..", {},
-    ], ins=[DOWN], outs=[LEFT], flippable="hv"),
+        "11111", {},
+        ".....", {},
+        ".....", {},
+    ], ins=[LEFT], outs=[RIGHT], flippable="hvr"),
+    # necessary end here
+    # segment([
+    #     "111..", {},
+    #     "1.1..", {},
+    #     "1.1.1", {},
+    #     ".1211", {},
+    #     ".11..", {},
+    # ], ins=[LEFT], outs=[RIGHT], flippable="hv"),
+    # segment([
+    #     "..1..", {},
+    #     "..11.", {},
+    #     ".111.", {},
+    #     ".11..", {},
+    #     "..1..", {},
+    # ], ins=[UP], outs=[DOWN], flippable="hv"),
 ]

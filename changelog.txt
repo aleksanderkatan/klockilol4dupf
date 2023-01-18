@@ -1,3 +1,9 @@
+0.102.2
+-
+
+0.102.1
+- fix rotation
+
 0.101
 - buff invisible blocks (0-0.02 from 0.01-0.05)
 - add SISLG and block_silent_trigger
