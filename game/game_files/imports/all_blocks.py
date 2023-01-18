@@ -32,6 +32,7 @@ from game_files.blocks.block_swapping import block_swapping
 from game_files.blocks.block_swapping_trigger import block_swapping_trigger
 from game_files.blocks.block_swapping_trigger_random import block_swapping_trigger_random
 from game_files.blocks.block_game_exit import block_game_exit
+from game_files.blocks.block_silent_trigger import block_silent_trigger
 
 from game_files.blocks.block_shrek import block_shrek
 from game_files.blocks.undertale.block_undertale_purple import block_undertale_purple
@@ -87,6 +88,7 @@ standables.add(block_swapping)
 standables.add(block_swapping_trigger)
 standables.add(block_swapping_trigger_random)
 standables.add(block_game_exit)
+standables.add(block_silent_trigger)
 
 standables.add(block_shrek)
 standables.add(block_undertale_yellow)

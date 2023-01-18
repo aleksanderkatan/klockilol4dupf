@@ -13,6 +13,7 @@ option_map = {
     o.block_pm_arrow: 'pm_arrows',
     o.block_pm_numeric: 'pm_numeric',
     o.block_pm_control_switcher: 'pm_control_switchers',
+    o.block_silent_trigger: 'silent_triggers',
 }
 
 valid_options = {value for value in option_map.values()}

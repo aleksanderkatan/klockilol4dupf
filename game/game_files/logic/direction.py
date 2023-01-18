@@ -18,6 +18,9 @@ class direction(Enum):
     def is_cardinal(self):
         return self.value in [0, 1, 2, 3]
 
+    def __hash__(self):
+        return self.value
+
     def __eq__(self, other):
         if self.value == other.value:
             return True

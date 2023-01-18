@@ -138,7 +138,7 @@ class new_save_state:
         if zone_index not in l.levs:
             log.error("No such zone", zone_index)
             return
-        if zone_index >= 400 or (100 < zone_index < 200):
+        if zone_index >= 400 or (100 < zone_index < 200) or zone_index == 206:
             return
         for i in range(1, l.levs[zone_index] + 1):
             self.complete_level((zone_index, i), hard_save=False)
@@ -197,7 +197,7 @@ class new_save_state:
 
     def get_completion(self, true=False):
         if not true:
-            zones = range(1, 10 + 1)
+            zones = range(1, 11 + 1)
         else:
             zones = [i for i in l.levs.keys() if 0 < i < 400]
 

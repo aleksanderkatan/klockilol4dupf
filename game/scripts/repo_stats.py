@@ -1,6 +1,8 @@
 import os
 
 root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\game\\game_files"
+# root = "C:\\Users\\oloiw\\RiderProjects\\sernick"
+
 
 def get_extension(s):
     return s[s.rfind('.') + 1:]
@@ -19,7 +21,7 @@ for key, value in d.items():
 print()
 
 # for ext in ["java"]:
-for ext in ["py", "lv", "ev", "txt"]:
+for ext in ["py", "lv", "ev", "txt", "cs", "ser"]:
     files = 0
     lines = 0
     characters = 0
