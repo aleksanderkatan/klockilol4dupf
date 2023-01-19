@@ -26,7 +26,7 @@ class segment:
         self.start = start
         self.end = end
         occurrences = max(1, len(ins))*max(1, len(outs)) * (2 ** len(flippable))
-        self.weight = 1/occurrences if weight is None else weight
+        self.actual_weight = 1 / occurrences * (1 if weight is None else weight)
 
 
     def get_all_invertions(self):
@@ -66,7 +66,7 @@ class segment:
             self.flippable,
             self.start,
             self.end,
-            self.weight
+            self.actual_weight
         )
 
     def get_inverted_vertically(self):
@@ -85,7 +85,7 @@ class segment:
             self.flippable,
             self.start,
             self.end,
-            self.weight
+            self.actual_weight
         )
 
     def get_rotated(self):
@@ -111,7 +111,7 @@ class segment:
             self.flippable,
             self.start,
             self.end,
-            self.weight
+            self.actual_weight
         )
 
 

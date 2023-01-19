@@ -1,5 +1,9 @@
-0.102.2
+0.102.3
 -
+
+0.102.2
+- split segments into diffetent categories
+- improve hard_5x5_segments
 
 0.102.1
 - fix rotation

@@ -2,6 +2,7 @@ from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 from game_files.imports.log import log
 import game_files.imports.all_random_level_generators as r
+from game_files.level_generators.spelunky_inspired_segmented_level_generator.all_segments import hard_5x5_segments
 
 
 class block_silent_trigger(block):
@@ -20,7 +21,7 @@ class block_silent_trigger(block):
         match self.configuration:
             case 1:
                 # If it fails, it fails. It will log an error.
-                r.generate_SISLG((201, 8))
+                r.generate_SISLG((201, 8), hard_5x5_segments, 4, 3)
             case None:
                 log.warning("Ominous thing is None!")
             case _:

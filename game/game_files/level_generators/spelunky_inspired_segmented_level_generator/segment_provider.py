@@ -46,13 +46,13 @@ def _roll(segment_list: list[segment]):
         raise RuntimeError("No such segments!")
     total = 0
     for seg in segment_list:
-        total += seg.weight
+        total += seg.actual_weight
     roll = random.random()*total
     total = 0
     for seg in segment_list:
-        if total <= roll <= total + seg.weight:
+        if total <= roll <= total + seg.actual_weight:
             return seg
-        total += seg.weight
+        total += seg.actual_weight
     raise RuntimeError("This should be unreachable")
 
 

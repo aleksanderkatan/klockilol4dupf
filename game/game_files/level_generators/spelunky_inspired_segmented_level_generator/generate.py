@@ -1,6 +1,5 @@
 import random
 from game_files.level_generators.spelunky_inspired_segmented_level_generator.path_generator import generate_paths
-from game_files.level_generators.spelunky_inspired_segmented_level_generator.all_5x5_segments import segments
 from game_files.level_generators.spelunky_inspired_segmented_level_generator.segment_provider import segment_provider
 from game_files.logic.direction import direction
 
@@ -11,9 +10,7 @@ DOWN = direction.DOWN
 
 
 
-def generate_4x3_of_5x5():
-    x = 4
-    y = 3
+def generate(segments, x, y):
     path = random.choice([elem for elem in generate_paths(x, y)])
     provider = segment_provider(segments)
 
