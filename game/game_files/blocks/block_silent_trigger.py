@@ -2,7 +2,7 @@ from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
 from game_files.imports.log import log
 import game_files.imports.all_random_level_generators as r
-from game_files.level_generators.spelunky_inspired_segmented_level_generator.all_segments import hard_5x5_segments
+from game_files.level_generators.spelunky_inspired_segmented_level_generator.all_5x5_segments import *
 
 
 class block_silent_trigger(block):
@@ -18,14 +18,21 @@ class block_silent_trigger(block):
         self.configuration = int(option)
 
     def on_step_in(self):
+        success = False
         match self.configuration:
             case 1:
-                # If it fails, it fails. It will log an error.
-                r.generate_SISLG((201, 8), hard_5x5_segments, 4, 3)
+                success = r.generate_SISLG((201, 7), preset_hard_numeric, 4, 3)
+            case 2:
+                success = r.generate_SISLG((201, 8), preset_harder, 4, 3)
             case None:
                 log.warning("Ominous thing is None!")
             case _:
                 log.warning(f"Unknown ominous thing: {self.configuration}, {type(self.configuration)}")
+
+        if success:
+            log.info("SUCCESS: something ominous happened")
+        else:
+            log.error(f"FAIL: something ominous failed to happen.")
 
     def on_step_out(self):
         self.stage.change_to = None

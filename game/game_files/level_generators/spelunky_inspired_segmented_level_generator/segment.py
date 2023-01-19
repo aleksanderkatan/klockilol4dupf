@@ -7,6 +7,7 @@ DOWN = direction.DOWN
 
 
 # string_lines are like ["11O11", {"ones": "^<v>"}, "..S..", ...]
+# weight is how often you'd like to see the segment in a level
 class segment:
     def __init__(self, string_lines=None, lines=None, ins=None, outs=None, flippable="hv", start=False, end=False, weight=None):
         if outs is None:
@@ -47,6 +48,18 @@ class segment:
                 new_results.append(res.get_rotated())
             result = result + new_results
         return result
+
+    def get_with_modified_weight(self, modifier):
+        return segment(
+            None,
+            self.lines,
+            self.ins,
+            self.outs,
+            self.flippable,
+            self.start,
+            self.end,
+            self.actual_weight * modifier
+        )
 
     def get_inverted_horizontally(self):
         lines = []

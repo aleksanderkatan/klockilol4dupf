@@ -1,5 +1,6 @@
 0.102.3
--
+- add _hard_bridge_segments
+- finish zone 201
 
 0.102.2
 - split segments into diffetent categories
