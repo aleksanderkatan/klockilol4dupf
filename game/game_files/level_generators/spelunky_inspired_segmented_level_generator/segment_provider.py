@@ -26,15 +26,9 @@ class segment_provider:
                     for in_dir in seg.ins:
                         self.ends[in_dir].append(seg)
                 else:
-                    print(len(seg.ins), len(seg.outs))
                     for in_dir in seg.ins:
                         for out_dir in seg.outs:
                             self.normal[in_dir][out_dir].append(seg)
-
-        for first in get_cardinal():
-            for second in get_cardinal():
-                print(len(self.normal[first][second]))
-
 
 
     def get(self, in_dir, out_dir):
@@ -52,13 +46,11 @@ def _roll(segment_list: list[segment]):
         raise RuntimeError("No such segments!")
     total = 0
     for seg in segment_list:
-        print(seg.actual_weight)
         total += seg.actual_weight
     roll = random.random()*total
     current_sum = 0
-    for i, seg in enumerate(segment_list):
+    for seg in segment_list:
         if current_sum <= roll <= current_sum + seg.actual_weight:
-            print(f"choden {i} from {len(segment_list)}, roll {roll}, total {total}")
             return seg
         current_sum += seg.actual_weight
     raise RuntimeError("This should be unreachable")

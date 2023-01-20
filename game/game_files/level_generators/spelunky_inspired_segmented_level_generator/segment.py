@@ -73,8 +73,9 @@ class segment:
             new_options = {}
             for key, value in options.items():
                 split = value.split(" ")
-                new_value = " ".join([split[0]] + split[::-1][:-1])
-                new_options[key] = replace_all_string(new_value, horizontal_inv_options)
+                new_value = " ".join(split[::-1])
+                new_value = replace_all_string(new_value, horizontal_inv_options)
+                new_options[key] = new_value
             lines.append((new_line, new_options))
         return self._internal_constructor(
             lines,
@@ -137,9 +138,13 @@ class segment:
 
 # !! THIS DOES NOT WORK PROPERLY, FIX IT
 def replace_all_string(s, d):
-    for key, value in d.items():
-        s = s.replace(key, value)
-    return s
+    result_characters = []
+    for char in s:
+        if char in d:
+            result_characters.append(d[char])
+        else:
+            result_characters.append(char)
+    return "".join(result_characters)
 
 
 def swap_all_directions(directions, d):

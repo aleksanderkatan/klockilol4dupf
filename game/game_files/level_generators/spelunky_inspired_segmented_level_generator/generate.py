@@ -39,9 +39,10 @@ def generate(segments, x, y):
             lines.append(line)
 
     lines.append("")
-
     for key, value in options.items():
         lines.append(f"{key} {value}")
+
+    lines.append("")
     return lines
 
 

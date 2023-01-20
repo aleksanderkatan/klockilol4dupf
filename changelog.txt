@@ -1,6 +1,8 @@
+0.102.5
+- fix segment option horizontal flip
+
 0.102.4
 - fix segment probabilities
--
 
 0.102.3
 - add _hard_bridge_segments

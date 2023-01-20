@@ -278,19 +278,47 @@ _hard_bridge_segments = [
 
 _test_segments = [
     segment([
+        ">v0<^", {},
+        "^>0v<", {},
+        "00000", {},
         "..0>v", {},
-        "..0^<", {},
+        "..0^>", {},
+    ], ins=ALL, outs=ALL, flippable="hvr"),
+    segment([
+        "..01.", {},
+        "..0..", {},
         "00000", {},
         "..0..", {},
         "..0..", {},
-    ], ins=ALL, outs=ALL, flippable="hvr"),
-    # segment([
-    #     "..01.", {},
-    #     "..0..", {},
-    #     "00000", {},
-    #     "..0..", {},
-    #     "..0..", {},
-    # ], ins=ALL, outs=ALL, flippable="vrh"),
+    ], ins=ALL, outs=ALL, flippable="vrh"),
+    segment([
+        "..1..", {},
+        "..1..", {},
+        "..O..", {"ones": "v"},
+        "..O..", {"ones": "^"},
+        "..1..", {},
+    ], ins=[UP], outs=[DOWN], flippable="v"),
+    segment([
+        ".....", {},
+        ".....", {},
+        "1OO11", {"ones": "> <"},
+        ".....", {},
+        ".....", {},
+    ], ins=[LEFT], outs=[RIGHT], flippable="h"),
+    segment([
+        "..1..", {},
+        "..1..", {},
+        ".....", {},
+        "..O..", {"ones": "^"},
+        "..1..", {},
+    ], ins=[DOWN], outs=[UP], flippable="v"),
+    segment([
+        ".....", {},
+        ".....", {},
+        "O.111", {"ones": ">"},
+        ".....", {},
+        ".....", {},
+    ], ins=[LEFT], outs=[RIGHT], flippable="h"),
 ]
 
 
@@ -302,9 +330,8 @@ preset_hard_numeric = _get_weighted([
 
 preset_harder = _get_weighted([
     (_base_segments, 0.0001),
-    # (_hard_only_numeric_segments, 0.25),
-    # (_hard_bridge_segments, 1),
-    (_test_segments, 1),
+    (_hard_only_numeric_segments, 0.25),
+    (_hard_bridge_segments, 1),
 ])
 
 
