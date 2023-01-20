@@ -120,7 +120,7 @@ _hard_only_numeric_segments = [
         "11111", {},
         "111.1", {},
         "11111", {},
-    ], ins=[LEFT], outs=[DOWN, UP, RIGHT], flippable="hr", weight=0.2),
+    ], ins=[LEFT], outs=[DOWN, UP, RIGHT], flippable="hr", weight_base=0.2),
     segment([
         "..111", {},
         "..111", {},
@@ -134,7 +134,7 @@ _hard_only_numeric_segments = [
         "1...1", {},
         "1...1", {},
         "11111", {},
-    ], ins=[LEFT], outs=[UP], flippable="hvr", weight=0.2),
+    ], ins=[LEFT], outs=[UP], flippable="hvr", weight_base=0.2),
 ]
 
 _hard_bridge_segments = [
@@ -189,7 +189,7 @@ _hard_bridge_segments = [
         "12M1.", {},
         ".010.", {},
         ".....", {},
-    ], ins=[LEFT], outs=ALL, flippable="hr", weight=0.1),
+    ], ins=[LEFT], outs=ALL, flippable="hr", weight_base=0.1),
     segment([
         "2221.", {},
         "2..M.", {},
@@ -203,14 +203,14 @@ _hard_bridge_segments = [
         "11..1", {},
         "11..1", {},
         "1M.M1", {},
-    ], ins=[LEFT, UP], outs=[RIGHT], flippable="hvr", weight=0.5),
+    ], ins=[LEFT, UP], outs=[RIGHT], flippable="hvr", weight_base=0.5),
     segment([
         "111..", {},
         "111..", {},
         "11..1", {},
         "11..1", {},
         "1M.M1", {},
-    ], ins=[RIGHT], outs=[LEFT, UP], flippable="hvr", weight=0.5),
+    ], ins=[RIGHT], outs=[LEFT, UP], flippable="hvr", weight_base=0.5),
     segment([
         ".....", {},
         ".11..", {},
@@ -224,7 +224,7 @@ _hard_bridge_segments = [
         "12M21", {},
         ".010.", {},
         ".....", {},
-    ], ins=[LEFT], outs=[UP, DOWN, RIGHT], flippable="hr", weight=0.1),
+    ], ins=[LEFT], outs=[UP, DOWN, RIGHT], flippable="hr", weight_base=0.1),
     segment([
         "...1.", {},
         "...M.", {},
@@ -238,14 +238,14 @@ _hard_bridge_segments = [
         "1M11.", {},
         ".....", {},
         ".....", {},
-    ], ins=[LEFT], outs=[UP], flippable="hvr", weight=0.5),
+    ], ins=[LEFT], outs=[UP], flippable="hvr", weight_base=0.5),
     segment([
         "1111.", {},
         "1111.", {},
         "11M1.", {},
         ".....", {},
         ".....", {},
-    ], ins=[LEFT], outs=[DOWN], flippable="hvr", weight=0.5),
+    ], ins=[LEFT], outs=[DOWN], flippable="hvr", weight_base=0.5),
     segment([
         "M11..", {},
         "12111", {},
@@ -259,14 +259,14 @@ _hard_bridge_segments = [
         "010.1", {},
         ".....", {},
         ".....", {},
-    ], ins=[RIGHT], outs=[LEFT, UP], flippable="hvr", weight=0.05),
+    ], ins=[RIGHT], outs=[LEFT, UP], flippable="hvr", weight_base=0.05),
     segment([
         "010..", {},
         "2M211", {},
         "010.1", {},
         ".....", {},
         ".....", {},
-    ], ins=[LEFT, UP], outs=[RIGHT], flippable="hvr", weight=0.05),
+    ], ins=[LEFT, UP], outs=[RIGHT], flippable="hvr", weight_base=0.05),
     segment([
         ".11..", {},
         ".1M..", {},
@@ -274,6 +274,23 @@ _hard_bridge_segments = [
         "1M1..", {},
         "122..", {},
     ], ins=[DOWN], outs=[RIGHT], flippable="hvr"),
+]
+
+_test_segments = [
+    segment([
+        "..0>v", {},
+        "..0^<", {},
+        "00000", {},
+        "..0..", {},
+        "..0..", {},
+    ], ins=ALL, outs=ALL, flippable="hvr"),
+    # segment([
+    #     "..01.", {},
+    #     "..0..", {},
+    #     "00000", {},
+    #     "..0..", {},
+    #     "..0..", {},
+    # ], ins=ALL, outs=ALL, flippable="vrh"),
 ]
 
 
@@ -285,8 +302,9 @@ preset_hard_numeric = _get_weighted([
 
 preset_harder = _get_weighted([
     (_base_segments, 0.0001),
-    (_hard_only_numeric_segments, 0.25),
-    (_hard_bridge_segments, 1),
+    # (_hard_only_numeric_segments, 0.25),
+    # (_hard_bridge_segments, 1),
+    (_test_segments, 1),
 ])
 
 
