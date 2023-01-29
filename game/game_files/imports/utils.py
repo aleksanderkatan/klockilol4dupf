@@ -8,14 +8,18 @@ from game_files.logic.direction import direction as d
 
 
 # returns position on screen for certain index
-def index_to_position(x, y, z, size_x, size_y, size_z):
+def index_to_position(x, y, z, size_x, size_y, size_z, middle=False):
     mid_x = v.WINDOW_X / 2
     mid_y = v.WINDOW_Y / 2
     high_left = (mid_x - size_x / 2 * v.BLOCK_X_SIZE, mid_y - size_y / 2 * v.BLOCK_Y_SIZE)
 
     size_z = size_z - 1
-    return high_left[0] + v.BLOCK_X_SIZE * x + (z - size_z / 2) * v.LAYER_X_OFFSET, \
+    x, y = high_left[0] + v.BLOCK_X_SIZE * x + (z - size_z / 2) * v.LAYER_X_OFFSET, \
            high_left[1] + v.BLOCK_Y_SIZE * y - (z - size_z / 2) * v.LAYER_Y_OFFSET
+
+    if middle:
+        return x + v.BLOCK_X_SIZE//2, y + v.BLOCK_Y_SIZE//2
+    return x, y
 
 
 def out_of_range_3(pos, pos_max):

@@ -85,3 +85,7 @@ for name, sprite in decoration_sprites.items():
 sprites["particle_1"] = pygame.image.load(other_path + 'particle_1.gif').convert()
 sprites["particle_2"] = pygame.image.load(other_path + 'particle_2.gif').convert()
 sprites["particle_3"] = pygame.image.load(other_path + 'particle_3.gif').convert()
+
+sprites["particle_star_1"] = pygame.image.load(other_path + 'particle_star_1.gif').convert()
+sprites["particle_star_2"] = pygame.image.load(other_path + 'particle_star_2.gif').convert()
+sprites["particle_star_3"] = pygame.image.load(other_path + 'particle_star_3.gif').convert()

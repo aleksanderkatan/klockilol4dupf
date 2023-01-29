@@ -61,6 +61,5 @@ class block_thunder(block):
                         state.get_block((i, j, pz)).on_step_in()
                         trigger = True
                     if trigger:
-                        x, y = u.index_to_position(i, j, pz, state.x, state.y, len(state.layers))
-                        self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES,
-                                                                    (x + v.BLOCK_X_SIZE // 2, y + v.BLOCK_Y_SIZE // 2))
+                        x, y = u.index_to_position(i, j, pz, state.x, state.y, state.z, True)
+                        self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES, (x, y))

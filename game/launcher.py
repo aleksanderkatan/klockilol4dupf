@@ -13,7 +13,7 @@ from game_files.imports.log import log
 
 class exception_catching_tk(tk.Tk):
     def report_callback_exception(self, *args):
-        err = traceback.format_exception(*args)
+        err = "\n".join(traceback.format_exception(*args))
         log.error(err)
         exit_game()
 

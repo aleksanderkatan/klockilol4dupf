@@ -1,5 +1,7 @@
 from game_files.blocks.block import block
 import game_files.imports.all_sprites as s
+import game_files.imports.utils as u
+import game_files.imports.globals as g
 
 
 class block_portal(block):
@@ -23,6 +25,12 @@ class block_portal(block):
         player = state.player
         if player.last_move_direction.is_cardinal():
             player.enqueue_move(player.last_move_direction)
+        # particles
+        old_x, old_y = u.index_to_position(self.pos[0], self.pos[1], self.pos[2], state.x, state.y, state.z, True)
+        new_x, new_y = u.index_to_position(destination.pos[0], destination.pos[1], destination.pos[2],
+                                           state.x, state.y, state.z, True)
+        self.stage.particle_generator.generate_stars(g.PORTAL_PARTICLES, (old_x, old_y))
+        self.stage.particle_generator.generate_stars(g.PORTAL_PARTICLES, (new_x, new_y))
 
     def options(self, option):
         o = option.split()

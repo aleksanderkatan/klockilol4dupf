@@ -2,12 +2,12 @@ import game_files.imports.all_sprites as s
 from game_files.imports.view_constants import global_view_constants as v
 import numpy as np
 import random
-
+from game_files.imports.log import log
 
 class particle:
-    def __init__(self, screen, pos):
+    def __init__(self, screen, pos, sprite):
         self.screen = screen
-        self.sprite = s.sprites["particle_" + str(random.randint(1, 3))].copy()
+        self.sprite = sprite.copy()
         self.pos = pos
         self.vel = random.randint(5, 25)
         self.angle = random.uniform(0, np.pi * 2)
@@ -50,7 +50,11 @@ class particle_generator:
 
     def generate_dust(self, amount, pos):
         for i in range(amount):
-            self.particles.append(particle(self.screen, pos))
+            self.particles.append(particle(self.screen, pos, s.sprites["particle_" + str(random.randint(1, 3))]))
+
+    def generate_stars(self, amount, pos):
+        for _ in range(amount):
+            self.particles.append(particle(self.screen, pos, s.sprites["particle_star_" + str(random.randint(1, 3))]))
 
     def generate_bomb(self, pos, player_direction):
         par = particle(self.screen, pos)

@@ -1,3 +1,6 @@
+0.103.1
+- add particles to portals
+
 0.102.5
 - fix segment option horizontal flip
 
