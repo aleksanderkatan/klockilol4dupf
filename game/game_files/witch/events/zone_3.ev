@@ -75,7 +75,7 @@ None
 Odpadły jeszcze duże klocki. Jak nazwa wskazuje - po prostu zajmowały większe pole niż 1x1.
 Chodzenie w kółko po jedynce rozmiaru 2x2 nie sprawiało, że spadała.
 Poziom który masz przed sobą jest kozacki - losowo podmieniłam klocki na lód i okazało się, że da się go przejść i to bez backtrackingu*! Znów, myśl które ruchy są przegrywające.
-*backtrackingu z dużą głębokością.
++*z dużą głębokością.
 
 
 3 16

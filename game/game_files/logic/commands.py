@@ -34,18 +34,22 @@ def command_switch_timer(game_logic, command):
 def command_switch_witch(game_logic, command):
     log.write("Switching witch")
     g.WITCH = not g.WITCH
+    on_state = "on" if g.WITCH else "off"
+    register_message(game_logic, "Witch turned " + on_state + ".", 5)
 
 
 def command_help_public(game_logic, command):
     message = "Public commands:\n"
     message += list_of_commands(public_commands)
     log.write(message)
+    register_message(game_logic, "All available commands written to log.", 5)
 
 
 def command_completion(game_logic, command):
     message = "Completion: "
     message += str(global_save_state.get_completion())
     log.write(message)
+    register_message(game_logic, message, 3)
 
 
 def command_logged_keys(game_logic, command):
@@ -59,7 +63,7 @@ def command_password(game_logic, command):
         log.write(f"Changing level to: 209, {level}")
         game_logic.set_stage((209, level))
     else:
-        log.error("Incorrect password!")
+        register_message(game_logic, f"Incorrect \"platform maze\" password!", 3)
 
 
 def command_speedrun(game_logic, command):
@@ -75,7 +79,6 @@ def command_speedrun(game_logic, command):
 
     settings = speedrun_settings(does_death_reset=("-d" not in options))
     speedrun = speedruns[name](settings)
-    log.write(f"Starting speedrun {speedrun.get_name()}")
     g.TIMER = True
     g.CHEATS = False
     global_save_state.hard_erase_all()
@@ -84,6 +87,7 @@ def command_speedrun(game_logic, command):
     game_logic.set_stage(stage)
     game_logic.stage.latest_state().teleport_player(pos, activate_step_in=False)
     game_logic.speedrun = speedrun
+    register_message(game_logic, f"Starting speedrun {speedrun.get_name()}", 3)
 
 
 def command_shrek(game_logic, command):
@@ -100,11 +104,11 @@ def command_enable_cheats(game_logic, command):
         return
     pw_hash = u.hash_string(command[1].upper())
     if pw_hash != g.PASSWORD_HASH:
-        log.write("WRONG PASSWORD!")
+        register_message(game_logic, "WRONG PASSWORD!", 3)
     else:
         g.CHEATS = True
         game_logic.speedrun = None
-        log.write("Cheats enabled. If there was a speedrun running, it is now erased.")
+        register_message(game_logic, "Cheats enabled. If there was a speedrun running, it is now erased.", 7)
 
 
 public_commands["reset_all"] = command_reset_all
@@ -210,8 +214,8 @@ def command_swap(game_logic, command):  # !! I don't like this command, but it's
 
 
 def command_2137(game_logic, command):
-    log.write("Swapping background")
     g.PAPOR = not g.PAPOR
+    register_message(game_logic, "Background swapped.", 3)
 
 
 def command_y_offset(game_logic, command):
@@ -230,13 +234,13 @@ def command_reset_timer(game_logic, command):
 
 
 def command_reset_events(game_logic, command):
-    log.write("Resetting events")
     global_save_state.hard_save("events", set())
+    register_message(game_logic, "Encountered events reset.", 3)
 
 
 def command_reset_completed(game_logic, command):
-    log.write("Resetting completed levels")
     global_save_state.hard_save("completed", completed_levels())
+    register_message(game_logic, "Completed levels reset.", 3)
 
 
 def command_complete_zone(game_logic, command):
@@ -244,17 +248,19 @@ def command_complete_zone(game_logic, command):
         if not u.check_if_int(arg):
             log.error("Argument not integer")
             return
+        register_message(game_logic, f"Zone {int(arg)} marked as completed.", 3)
         log.write("Completing zone", arg)
         global_save_state.complete_zone(int(arg), True)
 
 
 def command_complete_all(game_logic, command):
     log.write("Completing all levels")
+    register_message(game_logic, "All levels marked as completed.", 3)
     global_save_state.complete_all()
 
 
 def command_refresh(game_logic, command):
-    log.write("Resetting and refreshing current level")
+    log.write("Resetting and refreshing current level.")
     game_logic.set_stage(game_logic.level_index)
 
 
@@ -268,14 +274,15 @@ def command_load_all(game_logic, command):
     game_logic.stage = old_stage
     game_logic.level_index = old_level_index
     if len(problems) > 0:
-        log.write("Errors in stages: " + str(problems))
+        register_message(game_logic, "Errors in stages: " + str(problems), 10)
     else:
-        log.write("No errors!")
+        register_message(game_logic, "No errors!", 3)
 
 
 def command_ls(game_logic, command):
     message = l.levels_ls()
     log.write(message)
+    register_message(game_logic, "All levels written to log.", 5)
 
 
 def command_help_root(game_logic, command):
@@ -284,16 +291,18 @@ def command_help_root(game_logic, command):
     message += "\nRoot commands:\n"
     message += list_of_commands(root_commands)
     log.write(message)
+    register_message(game_logic, "All available commands written to log.", 5)
 
 
 def command_disable_cheats(game_logic, command):
-    log.write("Disabling cheats")
+    register_message(game_logic, "Cheats disabled.", 3)
     g.CHEATS = False
 
 
 def command_position(game_logic, command):
     pos = game_logic.stage.latest_state().player.pos
-    log.write("Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index))
+    message = "Player position: " + str(pos) + ", level: " + str(game_logic.stage.level_index)
+    register_message(game_logic, message, 3)
 
 
 def command_raise_exception(game_logic, command):
@@ -327,6 +336,7 @@ def command_teleport_up(game_logic, command):
 
 def command_all_stats(game_logic, command):
     message = global_save_state.get_all_stats()
+    register_message(game_logic, "Game stats written to log.", 3)
     log.write(message)
 
 
@@ -481,11 +491,18 @@ def execute_command(game_logic, command):
             log.write("executing: " + command[0])
             public_commands[command[0]](game_logic, command)
         else:
-            log.write("No such command. For list of available commands type \"help\"")
+            register_message(game_logic, "No such command. For list of available commands type \"help\"", 5)
     else:
         if command[0] in root_commands:
             root_commands[command[0]](game_logic, command)
         elif command[0] in public_commands:
             public_commands[command[0]](game_logic, command)  # intentional, command overloading
         else:
-            log.write("No such command. For list of available commands type \"help\"")
+            register_message(game_logic, "No such command. For list of available commands type \"help\"", 5)
+
+
+# I miss extension methods
+def register_message(game_logic, message, seconds):
+    anim_manager, screen = game_logic.stage.animation_manager, game_logic.screen
+    anim_manager.register_message(screen, message, g.FRAME_RATE * seconds)
+    log.info(f"Displaying message: {message}")

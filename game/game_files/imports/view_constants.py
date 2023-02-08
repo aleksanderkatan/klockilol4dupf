@@ -26,7 +26,7 @@ class view_constants:
         self.LAYER_X_OFFSET = int(4 * self.X_SCALE)
         self.WITCH_FONT_SIZE = int(32 * self.Y_SCALE)
         self.WITCH_FONT_OFFSET = int(8 * self.Y_SCALE)
-        self.LEVEL_FONT_SIZE = int(64 * self.Y_SCALE)
+        self.LEVEL_FONT_SIZE = int(48 * self.Y_SCALE)
         self.LEVEL_FONT_OFFSET = int(16 * self.Y_SCALE)
         self.BLOCK_3D_DIFFERENCE = int(16 * self.Y_SCALE)
         self.MESSAGE_FONT_SIZE = int(15 * self.Y_SCALE)

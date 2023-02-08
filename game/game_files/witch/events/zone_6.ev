@@ -44,7 +44,8 @@ Zamiast
 +cin >> s;
 +piszesz
 +if(cin >> s) {}
-Ten jeden średnik jest potrzebny do deklarowania zmiennych. int a, b, c[1000000];
+Ten jeden średnik jest potrzebny do deklarowania zmiennych.
++int a, b, c[1000000];
 Jak chcesz inny typ danych, na przykład jednego stringa - nic trudnego!
 pair<int, string>a, b, c[1000000], s;
 +Po prostu ignoruj ten dodatkowy syf.
