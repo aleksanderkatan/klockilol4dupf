@@ -491,14 +491,14 @@ def execute_command(game_logic, command):
             log.write("executing: " + command[0])
             public_commands[command[0]](game_logic, command)
         else:
-            register_message(game_logic, "No such command. For list of available commands type \"help\"", 5)
+            register_message(game_logic, "No such command. For list of available commands type \"help\".", 5)
     else:
         if command[0] in root_commands:
             root_commands[command[0]](game_logic, command)
         elif command[0] in public_commands:
             public_commands[command[0]](game_logic, command)  # intentional, command overloading
         else:
-            register_message(game_logic, "No such command. For list of available commands type \"help\"", 5)
+            register_message(game_logic, "No such command. For list of available commands type \"help\".", 5)
 
 
 # I miss extension methods

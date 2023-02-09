@@ -1,3 +1,6 @@
+0.103.3
+- fix sprites to make them less crunchy
+
 0.103.2
 - add in-game messages for some commands
 - add more levels to fill in some placeholders
