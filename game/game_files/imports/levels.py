@@ -1,5 +1,5 @@
 from game_files.imports.log import log
-from game_files.imports.save_state import global_save_state
+import game_files.imports.globals as g
 
 level_error_path = 'game_files/levels/0/0.lv'
 
@@ -277,6 +277,6 @@ def background_of_level(level_index):
     if level_set in background_set:
         return background_set[level_set]
 
-    if global_save_state.get_preference("papor"):
+    if g.PAPOR:
         return "background_2137"
     return "background_default"

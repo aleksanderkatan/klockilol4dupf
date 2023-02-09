@@ -226,8 +226,7 @@ def command_swap(game_logic, command):  # !! I don't like this command, but it's
 
 
 def command_2137(game_logic, command):
-    state = global_save_state.get_preference("papor")
-    global_save_state.set_preference("papor", not state)
+    g.PAPOR = not g.PAPOR
     register_message(game_logic, "Background swapped.", 3)
 
 

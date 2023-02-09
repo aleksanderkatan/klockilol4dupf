@@ -14,7 +14,6 @@ PREFERENCE_DEFAULTS = {
     "timer": True,
     "witch": True,
     "cheats": True,        # !! AAA change this before release. Actually, should this be a preference?
-    "papor": False,
 }
 
 # how are preferences different from above?
