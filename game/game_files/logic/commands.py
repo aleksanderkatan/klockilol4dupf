@@ -15,26 +15,37 @@ public_commands = {}
 
 
 def command_reset_all(game_logic, command):
-    log.warning("Eradicating save file")
+    log.warning("Eradicating save file.")
     global_save_state.hard_erase_all()
     game_logic.level_index = None
     game_logic.set_stage((400, 1))
 
 
 def command_quit(game_logic, command):
-    log.write("Quitting")
+    log.write("Quitting.")
     exit_game()
 
 
+# all those honestly should just have a settings page in-game
+def command_switch_auto_reverse(game_logic, command):
+    state = global_save_state.get_preference("auto_reverse")
+    on_state = "off" if state else "on"
+    global_save_state.set_preference("auto_reverse", not state)
+    if game_logic.stage.latest_state().player.dead:
+        game_logic.stage.reverse()
+    register_message(game_logic, f"Auto reverse turned {on_state}.", 5)
+
+
 def command_switch_timer(game_logic, command):
-    log.write("Switching timer")
-    g.TIMER = not g.TIMER
+    log.write("Switching timer.")
+    state = global_save_state.get_preference("timer")
+    global_save_state.set_preference("timer", not state)
 
 
 def command_switch_witch(game_logic, command):
-    log.write("Switching witch")
-    g.WITCH = not g.WITCH
-    on_state = "on" if g.WITCH else "off"
+    state = global_save_state.get_preference("witch")
+    on_state = "off" if state else "on"
+    global_save_state.set_preference("witch", not state)
     register_message(game_logic, "Witch turned " + on_state + ".", 5)
 
 
@@ -60,7 +71,7 @@ def command_logged_keys(game_logic, command):
 def command_password(game_logic, command):
     if command[1] in passwords:
         level = passwords[command[1]]
-        log.write(f"Changing level to: 209, {level}")
+        log.write(f"Changing level to: 209, {level}.")
         game_logic.set_stage((209, level))
     else:
         register_message(game_logic, f"Incorrect \"platform maze\" password!", 3)
@@ -68,20 +79,19 @@ def command_password(game_logic, command):
 
 def command_speedrun(game_logic, command):
     if len(command) < 2:
-        log.error("Enter name of a speedrun")
+        log.error("Enter name of a speedrun.")
         return
 
     command, options = extract_options(command)
     name = (' '.join(command[1:])).lower()
     if name not in speedruns:
-        log.error("No such speedrun")
+        register_message(game_logic, f"No such speedrun!", 3)
         return
 
     settings = speedrun_settings(does_death_reset=("-d" not in options))
     speedrun = speedruns[name](settings)
-    g.TIMER = True
-    g.CHEATS = False
     global_save_state.hard_erase_all()
+    global_save_state.load_speedrun_preferences()
     stage, pos = speedrun.get_starting_stage_and_pos()
     game_logic.set_stage((1, 1))
     game_logic.set_stage(stage)
@@ -95,18 +105,18 @@ def command_shrek(game_logic, command):
 
 
 def command_enable_cheats(game_logic, command):
-    if g.CHEATS:
-        log.write("Cheats already enabled\nIf you want to disable them, use another command")
+    if global_save_state.get_preference("cheats"):
+        log.write("Cheats already enabled\nIf you want to disable them, use another command.")
         return
-    log.write("Attempting to enable cheats")
+    log.write("Attempting to enable cheats.")
     if len(command) != 2:
-        log.write("No password given")
+        log.write("No password given.")
         return
     pw_hash = u.hash_string(command[1].upper())
     if pw_hash != g.PASSWORD_HASH:
         register_message(game_logic, "WRONG PASSWORD!", 3)
     else:
-        g.CHEATS = True
+        global_save_state.set_preference("cheats", True)
         game_logic.speedrun = None
         register_message(game_logic, "Cheats enabled. If there was a speedrun running, it is now erased.", 7)
 
@@ -120,6 +130,8 @@ public_commands["poweroff"] = command_quit
 public_commands["power-off"] = command_quit
 public_commands["shutdown"] = command_quit
 public_commands["halt"] = command_quit
+
+public_commands["auto_reverse"] = command_switch_auto_reverse
 
 public_commands["timer"] = command_switch_timer
 
@@ -152,7 +164,7 @@ root_commands = {}
 def command_lv(game_logic, command):
     for arg in command[1:]:
         if not u.check_if_int(arg):
-            log.error("Arguments not integer")
+            log.error("Arguments not integer.")
             return
     if len(command) == 2:
         log.write("Changing level to: 0 " + command[1])
@@ -163,18 +175,18 @@ def command_lv(game_logic, command):
 
 
 def command_previous(game_logic, command):
-    log.write("Previous level")
+    log.write("Previous level.")
     level_index = game_logic.stage.level_index
     prev_index = l.previous_level(level_index)
     game_logic.set_stage(prev_index)
 
 
 def command_next(game_logic, command):
-    log.write("Next level")
+    log.write("Next level.")
     level_index = game_logic.stage.level_index
     next_index = l.next_level(level_index)
     if level_index[1] != 0:
-        log.write("Completing current level")
+        log.write("Completing current level.")
         game_logic.complete()
     else:
         log.write("Jumping to", next_index)
@@ -182,9 +194,9 @@ def command_next(game_logic, command):
 
 
 def command_swap(game_logic, command):  # !! I don't like this command, but it's useful
-    log.write("Swapping current level")
+    log.write("Swapping current level.")
     if len(command) < 2 or command[1] not in ["next", "prev"]:
-        log.error("Usage: \"swap next\" or \"swap prev\"")
+        log.error("Usage: \"swap next\" or \"swap prev\".")
         return
 
     mode = 1 if command[1] == "prev" else 0
@@ -214,22 +226,23 @@ def command_swap(game_logic, command):  # !! I don't like this command, but it's
 
 
 def command_2137(game_logic, command):
-    g.PAPOR = not g.PAPOR
+    state = global_save_state.get_preference("papor")
+    global_save_state.set_preference("papor", not state)
     register_message(game_logic, "Background swapped.", 3)
 
 
 def command_y_offset(game_logic, command):
-    log.write("Changing y offset")
+    log.write("Changing y offset.")
     v.LAYER_Y_OFFSET = int(command[1])
 
 
 def command_x_offset(game_logic, command):
-    log.write("Changing x offset")
+    log.write("Changing x offset.")
     v.LAYER_X_OFFSET = int(command[1])
 
 
 def command_reset_timer(game_logic, command):
-    log.write("Resetting timer")
+    log.write("Resetting timer.")
     global_save_state.hard_save("time", 0)
 
 
@@ -246,7 +259,7 @@ def command_reset_completed(game_logic, command):
 def command_complete_zone(game_logic, command):
     for arg in command[1:]:
         if not u.check_if_int(arg):
-            log.error("Argument not integer")
+            log.error("Argument not integer.")
             return
         register_message(game_logic, f"Zone {int(arg)} marked as completed.", 3)
         log.write("Completing zone", arg)
@@ -254,7 +267,7 @@ def command_complete_zone(game_logic, command):
 
 
 def command_complete_all(game_logic, command):
-    log.write("Completing all levels")
+    log.write("Completing all levels.")
     register_message(game_logic, "All levels marked as completed.", 3)
     global_save_state.complete_all()
 
@@ -296,7 +309,7 @@ def command_help_root(game_logic, command):
 
 def command_disable_cheats(game_logic, command):
     register_message(game_logic, "Cheats disabled.", 3)
-    g.CHEATS = False
+    global_save_state.set_preference("cheats", False)
 
 
 def command_position(game_logic, command):
@@ -306,7 +319,7 @@ def command_position(game_logic, command):
 
 
 def command_raise_exception(game_logic, command):
-    log.write("Raising runtime exception")
+    log.write("Raising runtime exception.")
     raise RuntimeError
 
 
@@ -314,11 +327,11 @@ def command_teleport(game_logic, command):
     if command[1] == "up":
         return command_teleport_up(game_logic, ["up"])
     if len(command) != 4:
-        log.error("Wrong command length")
+        log.error("Wrong command length.")
         return
     for arg in command[1:]:
         if not u.check_if_int(arg):
-            log.error("Arguments not integer")
+            log.error("Arguments not integer.")
             return
     state = game_logic.stage.latest_state()
     state.teleport_player((int(command[1]), int(command[2]), int(command[3])), False)
@@ -341,12 +354,12 @@ def command_all_stats(game_logic, command):
 
 
 def command_resume_timer(game_logic, command):
-    log.write("Resuming timer")
+    log.write("Resuming timer.")
     global_save_state.hard_save("is_timer_stopped", False)
 
 
 def command_stop_timer(game_logic, command):
-    log.write("Stopping timer")
+    log.write("Stopping timer.")
     global_save_state.hard_save("is_timer_stopped", True)
 
 
@@ -441,9 +454,9 @@ def exit_game():
     # does my game even work on Linux?
     # who are we? where are we going
 
-    log.write("Saving before exiting")
+    log.write("Saving before exiting.")
     global_save_state.hard_save_all()
-    log.write("Exiting gracefully")
+    log.write("Exiting gracefully.")
     pygame.quit()
     sys.exit(0)
 
@@ -486,7 +499,7 @@ def execute_command(game_logic, command):
 
     command = [word.lower() for word in command.strip().split(' ')]
 
-    if not g.CHEATS:
+    if not global_save_state.get_preference("cheats"):
         if command[0] in public_commands:
             log.write("executing: " + command[0])
             public_commands[command[0]](game_logic, command)

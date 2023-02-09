@@ -1,3 +1,7 @@
+0.103.4
+- implement preferences (auto_reverse, timer, witch, cheats, papor) that persist between launches
+- implement auto setting best preferences for speedruns
+
 0.103.3
 - fix sprites to make them less crunchy
 

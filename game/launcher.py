@@ -73,7 +73,7 @@ if __name__ == "__main__":
         resolution = (x, y)
         v.change_resolution(resolution)
         if combo_lan.current() == 1:
-            g.WITCH = False
+            global_save_state.get_preference("witch", False)
 
         screen = pygame.display.set_mode((v.WINDOW_X, v.WINDOW_Y))
         import game_files.imports.all_sprites as s

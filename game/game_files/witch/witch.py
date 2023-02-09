@@ -16,7 +16,7 @@ class witch:
         self.last_checked = (None, None)
 
     def check_for_events(self, level_index, stage):
-        if g.WITCH is False:
+        if not global_save_state.get_preference("witch"):
             return
 
         if self.active_event is not None:

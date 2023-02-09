@@ -135,21 +135,19 @@ class game_logic:
                 next_move_direction = direction
                 continue
 
-            if g.CHEATS:
-                if g.FAST_LEVEL_SKIP:
-                    if k.is_next_cheat(key):
-                        c.execute_command(self, "c")
-                        continue
-                    if k.is_prev_cheat(key):
-                        c.execute_command(self, "p")
-                        continue
-                if g.FAST_LEVEL_SWAP:
-                    if k.is_next_swap(key):
-                        c.execute_command(self, "swap next")
-                        continue
-                    if k.is_prev_swap(key):
-                        c.execute_command(self, "swap prev")
-                        continue
+            if global_save_state.get_preference("cheats"):
+                if k.is_next_cheat(key):
+                    c.execute_command(self, "c")
+                    continue
+                if k.is_prev_cheat(key):
+                    c.execute_command(self, "p")
+                    continue
+                if k.is_next_swap(key):
+                    c.execute_command(self, "swap next")
+                    continue
+                if k.is_prev_swap(key):
+                    c.execute_command(self, "swap prev")
+                    continue
 
             if k.is_reverse(key):
                 self.stage.reverse()
@@ -188,7 +186,7 @@ class game_logic:
             self.perform_speedrun_check()
 
         if self.stage.latest_state().player.dead:
-            if g.AUTO_REVERSE:
+            if global_save_state.get_preference("auto_reverse"):
                 self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.", g.FRAME_RATE * 3)
                 global_save_state.log_auto_reverse()
                 self.stage.reverse()
@@ -207,7 +205,7 @@ class game_logic:
             self.screen.blit(s.sprites['background_black'], (0, 0))
             self.input_box.draw(self.screen)
 
-        if g.TIMER:
+        if global_save_state.get_preference("timer"):
             ticks = global_save_state.get("time", 0)
             time = u.ticks_to_time(ticks)
             txt_surface = FONT_2.render(time, True, pygame.Color('black'))

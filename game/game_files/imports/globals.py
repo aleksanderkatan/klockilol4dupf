@@ -1,4 +1,4 @@
-VERSION = "v0.103.3"
+VERSION = "v0.103.4"
 
 FRAME_RATE = 30
 MOVE_LIMIT = 2048
@@ -20,14 +20,7 @@ FONT_RATIO = 0.59  # width to height for mono, sadly isn't 0.5
 MAX_COMMAND_LENGTH = 32
 PASSWORD_HASH = b'\xd1\xa0\xd9\x07v\xc0\xd4\x1f\x8f@\xb4\t{\x10\xdf[\xf8;\r\n\x7fx=jO\x01\x97T3_\xefK'
 
-WITCH = True
-AUTO_REVERSE = True
-TIMER = True
 THREED = False  # !! does not quite work
-
-CHEATS = True
-FAST_LEVEL_SKIP = True
-FAST_LEVEL_SWAP = True
 
 LOG_TRACE = False
 LOG_INFO = True

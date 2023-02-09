@@ -123,7 +123,7 @@ class player:
         self.this_move_direction = d.NONE
         self.pos = new_pos
 
-        if g.CHEATS and g.KBcheat:
+        if g.KBcheat and global_save_state.get_preference("cheats"):
             return
 
         if not self.stage.states[self.state_index].standable(self.pos) and self.flight <= 0:

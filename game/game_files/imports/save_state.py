@@ -9,6 +9,20 @@ SAVE_FILE_PATH = 'game_files/data/completed.txt'
 
 DATA_PATH = 'game_files/data/'
 
+PREFERENCE_DEFAULTS = {
+    "auto_reverse": False,
+    "timer": True,
+    "witch": True,
+    "cheats": True,        # !! AAA change this before release. Actually, should this be a preference?
+    "papor": False,
+}
+
+# how are preferences different from above?
+PREFERENCE_SPEEDRUN_CHANGES = {
+    "auto_reverse": True,
+    "witch": False,
+}
+
 
 def _save_pickle(key, data):
     file_path = DATA_PATH + key + ".pk"
@@ -94,6 +108,7 @@ class new_save_state:
         if key not in self.cached:
             self.hard_restore(key, default_data)
         # !! fails because I fell for double import trap. TODO: resolve this
+        # ??
         if not (self.cached[key], type(default_data)):
             log.error(
                 f"Wrong data type. Cached: {self.cached[key]} of type {type(self.cached[key])}, expected {type(default_data)}")
@@ -178,6 +193,23 @@ class new_save_state:
         self.increase_value("escapes", 0)
 
     # queries
+
+    def get_preference(self, preference):
+        if preference not in PREFERENCE_DEFAULTS:
+            raise RuntimeError(f"Unknown preference {preference}")
+        return self.get(preference, PREFERENCE_DEFAULTS[preference])
+
+    def set_preference(self, preference, value):
+        if preference not in PREFERENCE_DEFAULTS:
+            raise RuntimeError(f"Unknown preference {preference}")
+        self.hard_save(preference, value)
+
+    def load_speedrun_preferences(self):
+        for preference, value in PREFERENCE_DEFAULTS.items():
+            if preference in PREFERENCE_SPEEDRUN_CHANGES:
+                self.set_preference(preference, PREFERENCE_SPEEDRUN_CHANGES[preference])
+            else:
+                self.set_preference(preference, value)
 
     def is_set_completed(self, level_set):
         completed = self.get("completed", completed_levels())
