@@ -1,6 +1,6 @@
 import os
 
-root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\game\\game_files\\level_generators\\spelunky_inspired_segmented_level_generator"
+root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\src\\game_files\\level_generators\\spelunky_inspired_segmented_level_generator"
 # root = "C:\\Users\\oloiw\\RiderProjects\\sernick"
 
 

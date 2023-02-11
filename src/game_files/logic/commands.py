@@ -26,7 +26,7 @@ def command_quit(game_logic, command):
     exit_game()
 
 
-# all those honestly should just have a settings page in-game
+# all those honestly should just have a settings page in-src
 def command_switch_auto_reverse(game_logic, command):
     state = global_save_state.get_preference("auto_reverse")
     on_state = "off" if state else "on"
@@ -448,9 +448,9 @@ def extract_options(command):
 
 def exit_game():
     # called: quit command entered, window closed by x, process killed from manager (SIGKILL?)
-    # not called: exception was raised (game works in one thread), stop button in pycharm (SIGTERM?), exited from launcher
+    # not called: exception was raised (src works in one thread), stop button in pycharm (SIGTERM?), exited from launcher
     # do those signals even exist on Windows?
-    # does my game even work on Linux?
+    # does my src even work on Linux?
     # who are we? where are we going
 
     log.write("Saving before exiting.")

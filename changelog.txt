@@ -1,3 +1,6 @@
+0.104.2
+- rename "game" folder to "src"
+
 0.104.1
 - finish levels for zones 4, 5, 6
 

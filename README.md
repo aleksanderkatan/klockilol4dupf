@@ -4,19 +4,19 @@ A puzzle game, where you have to walk over tiles the exact amount of times that 
 
 ## Engaging puzzles
 
-![ss](game/game_files/sprites/other/screenshot_2.gif "This can be solved in 12 different ways. One of them is <<<v<<^>><^><^^")
+![ss](src/game_files/sprites/other/screenshot_2.gif "This can be solved in 12 different ways. One of them is <<<v<<^>><^><^^")
 
 ## NP-Complete concept
 
-![ss](game/game_files/sprites/other/screenshot_3.gif "Hamiltonian Cycle reduces to this and yes, this reduction is in the right direction")
+![ss](src/game_files/sprites/other/screenshot_3.gif "Hamiltonian Cycle reduces to this and yes, this reduction is in the right direction")
 
 ## Overly complicated levels
 
-![ss](game/game_files/sprites/other/screenshot_4.gif "Not even all of the blocks that are implemented")
+![ss](src/game_files/sprites/other/screenshot_4.gif "Not even all of the blocks that are implemented")
 
 ## Questionable design choices
 
-![ss](game/game_files/sprites/other/screenshot_1.gif "including a narrator who currently speaks only Polish")
+![ss](src/game_files/sprites/other/screenshot_1.gif "including a narrator who currently speaks only Polish")
 
 ## Idea
 

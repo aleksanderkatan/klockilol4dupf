@@ -2,7 +2,7 @@ from PIL import Image
 from PIL import ImageEnhance
 import os
 
-root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\game\\game_files\\sprites\\"
+root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\src\\game_files\\sprites\\"
 old_path = root + "blocks_bases\\"
 new_path = root + "blocks\\"
 

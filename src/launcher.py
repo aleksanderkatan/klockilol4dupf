@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
         clock = pygame.time.Clock()
         game = game_logic(screen)
-        # game.set_stage((400, 1))
+        # src.set_stage((400, 1))
         game.set_stage((201, 0))
         while True:
             for event in pygame.event.get():
