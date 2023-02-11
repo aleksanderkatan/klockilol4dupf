@@ -1,14 +1,18 @@
+import os
+os.chdir('../')
+
 import pygame
 import random
 import time
 pygame.init()
-tested_level = (207, 5)
+tested_level = (205, 12)
 max_moves = 34
-# YES, it has to show the screen. I wanted it to show the character moving rapidly but I failed.
+# YES, it has to show the screen. I wanted it to show the character moving rapidly, but I failed.
 screen = pygame.display.set_mode((100, 100))
 pygame.display.set_caption('level_tester')
 import game_files.imports.globals as g
 g.LOG_INFO = False
+import game_files.logic.direction as direction
 from game_files.logic.stage import stage
 s = stage(screen, tested_level, (0, 0))
 moves = []
@@ -17,7 +21,7 @@ def test():
     if len(moves) > max_moves:
         return False
 
-    this_move = [0, 1, 2, 3]
+    this_move = [d for d in direction.get_cardinal()]
     random.shuffle(this_move)
     for mov in this_move:
         moves.append(mov)
@@ -41,7 +45,7 @@ def test():
 
 def count():
     total = 0
-    this_move = [0, 1, 2, 3]
+    this_move = [d for d in direction.get_cardinal()]
     random.shuffle(this_move)
     for mov in this_move:
         moves.append(mov)
@@ -59,15 +63,7 @@ def count():
     return total
 
 
-# test()
-# ans = str(moves)
-# ans = ans.replace(", ", "")
-# ans = ans.replace("[", "")
-# ans = ans.replace("]", "")
-# ans = ans.replace("0", ">")
-# ans = ans.replace("1", "^")
-# ans = ans.replace("2", "<")
-# ans = ans.replace("3", "v")
-# print(ans)
-print(count())
+test()
+print(*[move.name for move in moves])
+# print(count())
 
