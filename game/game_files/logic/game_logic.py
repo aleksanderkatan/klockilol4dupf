@@ -54,7 +54,7 @@ class game_logic:
                           * global_save_state.get_completion() + g.INVISIBLE_BLOCK_0_VISIBILITY) * 255
         s.sprites["block_invisible"][0].set_alpha(new_visibility)
 
-        log.info("Filling stage ", level_index)
+        log.info("Filling stage", level_index)
         new_stage = stage(self.screen, level_index, self.level_index)
         if new_stage.successful is False:
             log.error("Stage " + str(level_index) + " failed to load")

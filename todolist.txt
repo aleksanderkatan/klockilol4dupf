@@ -7,4 +7,5 @@
 - hanabi zone
 - english translation and implementation of languages
 - background for timer and zone name
+- move stuff from globals to view constants
 

@@ -228,9 +228,9 @@ class new_save_state:
 
     def get_completion(self, true=False):
         if not true:
-            zones = range(1, 11 + 1)
+            zones = l.base_zones
         else:
-            zones = [i for i in l.levs.keys() if 0 < i < 400]
+            zones = l.base_zones + l.extra_zones
 
         result = 0
         total = 0

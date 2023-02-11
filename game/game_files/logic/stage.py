@@ -26,6 +26,8 @@ class stage:
         self.change_to = None
         self.particle_generator = particle_generator(self.screen)
         self.animation_manager = animation_manager()
+        self.name_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
+
 
     def draw(self, single_layer=None):
         if single_layer is None:
@@ -35,9 +37,8 @@ class stage:
         self.particle_generator.step()
         self.particle_generator.draw()
         self.animation_manager.draw_and_advance()
-        txt_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
         if not self.latest_state().player.dead:
-            self.screen.blit(txt_surface, (v.LEVEL_FONT_OFFSET, v.LEVEL_FONT_OFFSET))
+            self.screen.blit(self.name_surface, (v.LEVEL_FONT_OFFSET, v.LEVEL_FONT_OFFSET))
 
     def latest_state(self):
         return self.states[-1]

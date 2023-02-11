@@ -1,5 +1,6 @@
 from game_files.imports.log import log
 import game_files.imports.globals as g
+import random
 
 level_error_path = 'game_files/levels/0/0.lv'
 
@@ -57,6 +58,10 @@ levs[303] = 5
 levs[400] = 6
 
 levs[500] = 3  # non hub, non lobby, non level stages
+
+# for completion's sake
+base_zones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+extra_zones = [201, 205, 209]
 
 # all last-of-a-zone levels are automatically also back-in-hierarchy levels
 back_in_hierarchy_levels = {
@@ -251,7 +256,7 @@ def level_name(level_index):
         return "The Swamp"
 
     if level_index == (500, 3):
-        return "End"
+        return "1.00e1.000e15" if random.randint(0, 99) == 0 else "End"
 
     return "How did you get here?"
 
