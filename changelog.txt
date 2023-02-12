@@ -1,3 +1,6 @@
+0.104.4
+- move view constants away from globals.py
+
 0.104.3
 - fix level_tester.py, move it to scripts
 

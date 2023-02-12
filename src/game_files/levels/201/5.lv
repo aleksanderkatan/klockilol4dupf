@@ -2,7 +2,7 @@
 13
 1
 .1111111..1111111E
-.1.11..1..111111..
+.1.11..1..111111.1
 .1.11..1.111...11.
 .1.11..1.1.1.11.1.
 .1.11..111.111111.
@@ -16,7 +16,7 @@
 S1111.............
 
 decorations 0/0/0/decoration_1x1_1/mid/mid 8/0/0/decoration_1x1_1/mid/mid 9/0/0/decoration_1x1_1/mid/mid
-decorations 0/1/0/decoration_1x1_1/mid/mid 2/1/0/decoration_1x1_1/mid/mid 5/1/0/decoration_1x1_1/mid/mid 6/1/0/decoration_1x1_1/mid/mid 8/1/0/decoration_1x1_1/mid/mid 9/1/0/decoration_1x1_1/mid/mid 16/1/0/decoration_1x1_1/mid/mid 17/1/0/decoration_1x1_1/mid/mid
+decorations 0/1/0/decoration_1x1_1/mid/mid 2/1/0/decoration_1x1_1/mid/mid 5/1/0/decoration_1x1_1/mid/mid 6/1/0/decoration_1x1_1/mid/mid 8/1/0/decoration_1x1_1/mid/mid 9/1/0/decoration_1x1_1/mid/mid 16/1/0/decoration_1x1_1/mid/mid
 decorations 0/2/0/decoration_1x1_1/mid/mid 2/2/0/decoration_1x1_1/mid/mid 5/2/0/decoration_1x1_1/mid/mid 6/2/0/decoration_1x1_1/mid/mid 8/2/0/decoration_1x1_1/mid/mid 12/2/0/decoration_1x1_1/mid/mid 13/2/0/decoration_1x1_1/mid/mid 14/2/0/decoration_1x1_1/mid/mid 17/2/0/decoration_1x1_1/mid/mid
 decorations 0/3/0/decoration_1x1_1/mid/mid 2/3/0/decoration_1x1_1/mid/mid 5/3/0/decoration_1x1_1/mid/mid 6/3/0/decoration_1x1_1/mid/mid 8/3/0/decoration_1x1_1/mid/mid 10/3/0/decoration_1x1_1/mid/mid 12/3/0/decoration_1x1_1/mid/mid 15/3/0/decoration_1x1_1/mid/mid 17/3/0/decoration_1x1_1/mid/mid
 decorations 0/4/0/decoration_1x1_1/mid/mid 2/4/0/decoration_1x1_1/mid/mid 5/4/0/decoration_1x1_1/mid/mid 6/4/0/decoration_1x1_1/mid/mid 10/4/0/decoration_1x1_1/mid/mid 17/4/0/decoration_1x1_1/mid/mid

@@ -53,7 +53,7 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
             if u.out_of_range(new_pos[0], new_pos[1], state.x, state.y):
                 state.set_block(old_pos, block_empty(self.screen, self.stage, self.state_index, new_pos))
                 x, y = u.index_to_position(old_pos[0], old_pos[1], old_pos[2], state.x, state.y, state.z, True)
-                self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES, (x, y))
+                self.stage.particle_generator.generate_dust(v.THUNDER_PARTICLES, (x, y))
                 self.finished = True
             else:
                 temp = state.get_block(new_pos)

@@ -43,10 +43,10 @@ def out_of_range(x, y, x_max, y_max):
 
 def relative_to_player(layer_z, player_z):
     if layer_z < player_z:
-        if player_z - g.VISIBLE_LAYERS_DOWN <= layer_z <= player_z:
+        if player_z - v.VISIBLE_LAYERS_DOWN <= layer_z <= player_z:
             return layer_z - player_z
     elif layer_z > player_z:
-        if player_z <= layer_z <= player_z + g.VISIBLE_LAYERS_UP:
+        if player_z <= layer_z <= player_z + v.VISIBLE_LAYERS_UP:
             return layer_z - player_z
     else:
         return 0
@@ -130,7 +130,7 @@ def extend(number, length):
 
 
 def ticks_to_time(ticks):
-    milliseconds = int(ticks * (1 / g.FRAME_RATE) * 1000)
+    milliseconds = int(ticks * (1 / v.FRAME_RATE) * 1000)
     seconds = milliseconds // 1000
     milliseconds %= 1000
     minutes = seconds // 60

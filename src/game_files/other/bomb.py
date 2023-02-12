@@ -37,9 +37,8 @@ class bomb:
         if self.ticks == 0:
             log.trace("Bomb exploded")
             state.set_block(self.pos, block_empty(self.screen, self.stage, self.state_index, self.pos))
-            x, y = u.index_to_position(self.pos[0], self.pos[1], self.pos[2], state.x, state.y, len(state.layers))
-            self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES * 2,
-                                                        (x + v.BLOCK_X_SIZE // 2, y + v.BLOCK_Y_SIZE // 2))
+            x, y = u.index_to_position(self.pos[0], self.pos[1], self.pos[2], state.x, state.y, len(state.layers), True)
+            self.stage.particle_generator.generate_dust(v.THUNDER_PARTICLES * 2, (x, y))
             self.finished = True
 
     def copy(self, new_state_index):

@@ -18,14 +18,14 @@ class animation_player_jump(animation):
         EX, EY = u.index_to_position(ex, ey, ez, tx, ty, tz)
 
         # firstly make both go linearly
-        for i in range(g.JUMP_ANIMATION_LENGTH):
+        for i in range(v.JUMP_ANIMATION_LENGTH):
             self.positions.append(
-                (SX + (EX - SX) / g.JUMP_ANIMATION_LENGTH * i, SY + (EY - SY) / g.JUMP_ANIMATION_LENGTH * i))
+                (SX + (EX - SX) / v.JUMP_ANIMATION_LENGTH * i, SY + (EY - SY) / v.JUMP_ANIMATION_LENGTH * i))
 
         # then, add a quadratic function to ys
-        F = g.JUMP_ANIMATION_LENGTH
+        F = v.JUMP_ANIMATION_LENGTH
         B = v.BLOCK_Y_SIZE
-        for i in range(g.JUMP_ANIMATION_LENGTH):
+        for i in range(v.JUMP_ANIMATION_LENGTH):
             x, y = self.positions[i]
             self.positions[i] = x, y - (-4 * height * B / F / F * (i ** 2) + 4 * height * B / F * i + 0)
 

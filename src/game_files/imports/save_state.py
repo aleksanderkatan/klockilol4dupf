@@ -4,6 +4,7 @@ import game_files.imports.levels as l
 import game_files.imports.globals as g
 from game_files.imports.log import log
 import game_files.imports.utils as u
+from game_files.imports.view_constants import global_view_constants as v
 
 SAVE_FILE_PATH = 'game_files/data/completed.txt'
 
@@ -92,7 +93,7 @@ class new_save_state:
         self.hard_restore("completed", completed_levels())
         self.hard_restore("events", set())
         self.hard_restore("time", 0)
-        self.increase_value("time", 0, amount=g.FRAME_RATE * g.AUTO_SAVE_INTERVAL, hard_save=True)  # prevent cheesing
+        self.increase_value("time", 0, amount=v.FRAME_RATE * g.AUTO_SAVE_INTERVAL, hard_save=True)  # prevent cheesing
 
     def hard_save(self, key, data):
         self.cached[key] = data

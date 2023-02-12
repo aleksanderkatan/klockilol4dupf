@@ -19,7 +19,7 @@ class animation_disappearing_block(animation):
         else:
             x, y = u.index_to_position(pos[0], pos[1], pos[2], state.x, state.y, state.z)
 
-        L = g.DISAPPEAR_ANIMATION_LENGTH
+        L = v.DISAPPEAR_ANIMATION_LENGTH
         unit_x = v.BLOCK_X_SIZE / (2 * L)
         unit_y = v.BLOCK_Y_SIZE / (2 * L)
         for i in range(L):

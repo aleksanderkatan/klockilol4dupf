@@ -1,6 +1,7 @@
 from game_files.animations.animation import animation
 import game_files.imports.globals as g
 import game_files.imports.utils as u
+from game_files.imports.view_constants import global_view_constants as v
 
 
 class animation_player_move(animation):
@@ -16,9 +17,9 @@ class animation_player_move(animation):
         SX, SY = u.index_to_position(sx, sy, sz, tx, ty, tz)
         EX, EY = u.index_to_position(ex, ey, ez, tx, ty, tz)
 
-        for i in range(g.MOVE_ANIMATION_LENGTH):
+        for i in range(v.MOVE_ANIMATION_LENGTH):
             self.positions.append(
-                (SX + (EX - SX) / g.MOVE_ANIMATION_LENGTH * i, SY + (EY - SY) / g.MOVE_ANIMATION_LENGTH * i))
+                (SX + (EX - SX) / v.MOVE_ANIMATION_LENGTH * i, SY + (EY - SY) / v.MOVE_ANIMATION_LENGTH * i))
 
         self.frame = 0
         self.player.ignore_draw = True

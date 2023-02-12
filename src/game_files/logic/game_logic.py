@@ -50,8 +50,8 @@ class game_logic:
 
     def set_stage(self, level_index):
         # update invisible visibility
-        new_visibility = ((g.INVISIBLE_BLOCK_1_VISIBILITY - g.INVISIBLE_BLOCK_0_VISIBILITY)
-                          * global_save_state.get_completion() + g.INVISIBLE_BLOCK_0_VISIBILITY) * 255
+        new_visibility = ((v.INVISIBLE_BLOCK_1_VISIBILITY - v.INVISIBLE_BLOCK_0_VISIBILITY)
+                          * global_save_state.get_completion() + v.INVISIBLE_BLOCK_0_VISIBILITY) * 255
         s.sprites["block_invisible"][0].set_alpha(new_visibility)
 
         log.info("Filling stage", level_index)
@@ -60,7 +60,7 @@ class game_logic:
             log.error("Stage " + str(level_index) + " failed to load")
             self.stage.reverse()
             self.stage.change_to = None
-            self.stage.animation_manager.register_message(self.screen, g.LAST_ERROR, 10 * g.FRAME_RATE)
+            self.stage.animation_manager.register_message(self.screen, g.LAST_ERROR, 10 * v.FRAME_RATE)
             g.LAST_ERROR = None
             return False
         log.trace("Setting stage to", new_stage.level_index)
@@ -101,7 +101,7 @@ class game_logic:
     def move(self):
         if not global_save_state.get("is_timer_stopped", False):
             global_save_state.increase_value("time", default_data=0)
-            if global_save_state.get("time", 0) % (g.FRAME_RATE * g.AUTO_SAVE_INTERVAL) == 0:
+            if global_save_state.get("time", 0) % (v.FRAME_RATE * g.AUTO_SAVE_INTERVAL) == 0:
                 global_save_state.hard_save_all()
 
         # now this part is bullshit and I will rework it at some point
@@ -187,7 +187,7 @@ class game_logic:
 
         if self.stage.latest_state().player.dead:
             if global_save_state.get_preference("auto_reverse"):
-                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.", g.FRAME_RATE * 3)
+                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.", v.FRAME_RATE * 3)
                 global_save_state.log_auto_reverse()
                 self.stage.reverse()
             if self.speedrun is not None and self.speedrun.settings.does_death_reset:

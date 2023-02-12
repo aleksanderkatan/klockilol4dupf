@@ -15,6 +15,24 @@ class view_constants:
 
         self.DECORATION_BASE_SIZE = 32
 
+        self.FRAME_RATE = 30
+
+        self.JUMP_ANIMATION_LENGTH = self.FRAME_RATE // 2
+        self.MOVE_ANIMATION_LENGTH = self.FRAME_RATE // 15
+        self.DISAPPEAR_ANIMATION_LENGTH = self.FRAME_RATE // 8
+
+        self.VISIBLE_LAYERS_DOWN = 3
+        self.VISIBLE_LAYERS_UP = 2
+        self.INVISIBLE_BLOCK_0_VISIBILITY = 0.00
+        self.INVISIBLE_BLOCK_1_VISIBILITY = 0.02
+
+        self.GRAYNESS = 0.2
+
+        self.THUNDER_PARTICLES = 16
+        self.PORTAL_PARTICLES = 4
+
+        self.FONT_RATIO = 0.59  # width to height for mono, sadly isn't 0.5
+
         self.update()
 
     def update(self):

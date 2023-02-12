@@ -1,9 +1,6 @@
 import pygame
 pygame.init()
-from game_files.imports.save_state import global_save_state
 from game_files.imports.view_constants import global_view_constants as v
-import game_files.imports.globals as g
-import threading
 
 if __name__ == "__main__":
     x, y, _ = 1280//4, 960//4, 0
@@ -29,5 +26,5 @@ if __name__ == "__main__":
         game.draw()
 
         pygame.display.update()
-        clock.tick(g.FRAME_RATE)
+        clock.tick(v.FRAME_RATE)
 

@@ -29,7 +29,7 @@ class block_moving_arrow(block):
         if swap_block is None:
             state.set_block(old_pos, block_empty(self.screen, self.stage, self.state_index, self.pos))
             x, y = u.index_to_position(old_pos[0], old_pos[1], old_pos[2], state.x, state.y, state.z, True)
-            self.stage.particle_generator.generate_dust(g.THUNDER_PARTICLES, (x, y))
+            self.stage.particle_generator.generate_dust(v.THUNDER_PARTICLES, (x, y))
 
     def options(self, option):
         self.set_direction(u.char_to_direction(option[-1]))

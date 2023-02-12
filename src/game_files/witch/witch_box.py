@@ -40,7 +40,7 @@ class witch_box:
         if string is None:
             return None
         result = []
-        limit = int((v.WINDOW_X - FONT_OFFSET * 2) / (FONT_SIZE * g.FONT_RATIO))
+        limit = int((v.WINDOW_X - FONT_OFFSET * 2) / (FONT_SIZE * v.FONT_RATIO))
 
         for sub in string.split("\\n"):
             current = ''

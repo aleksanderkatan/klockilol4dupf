@@ -516,5 +516,5 @@ def execute_command(game_logic, command):
 # I miss extension methods
 def register_message(game_logic, message, seconds):
     anim_manager, screen = game_logic.stage.animation_manager, game_logic.screen
-    anim_manager.register_message(screen, message, g.FRAME_RATE * seconds)
+    anim_manager.register_message(screen, message, v.FRAME_RATE * seconds)
     log.info(f"Displaying message: {message}")
