@@ -139,6 +139,11 @@ def level_path(level_index):
 
 def next_level(level_index):
     level_set, level = level_index
+
+    if level_set == 400:
+        if level == levs[level_set]:
+            return level_set, 1
+        return level_set, level + 1
     if level_set not in levs:
         return level_error
     if level_set >= 300:
@@ -152,6 +157,12 @@ def next_level(level_index):
 
 def previous_level(level_index):
     level_set, level = level_index
+
+    if level_set == 400:
+        if level == 1:
+            return level_set, levs[level_set]
+        return level_set, level - 1
+
     if level_set not in levs:
         return level_error
     if level == 0:

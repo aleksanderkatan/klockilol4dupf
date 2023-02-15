@@ -1,3 +1,9 @@
+0.105
+- add all levels missing for v1.0
+- make "shrek" a preference
+- change lift and portal sprites
+- remove language setting from launcher (feature won't be in v1.0)
+
 0.104.4
 - move view constants away from globals.py
 

@@ -90,7 +90,7 @@ class pusher:  # !! while pushers exist, on_step_ins are not called
 class block_piston(block):
     def __init__(self, screen, stage, state_index, pos, direction=d.NONE):
         super().__init__(screen, stage, state_index, pos)
-        self.direction = -1
+        self.direction = direction
         self.set_direction(direction)
         self.state_index = state_index
 

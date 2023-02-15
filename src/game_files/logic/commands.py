@@ -101,7 +101,12 @@ def command_speedrun(game_logic, command):
 
 
 def command_shrek(game_logic, command):
-    global_save_state.hard_save("shrek", True)
+    global_save_state.set_preference("shrek", True)
+
+
+def command_speedrun_preferences(game_logic, command):
+    global_save_state.load_speedrun_preferences()
+    register_message(game_logic, f"Set speedrun preferences.", 3)
 
 
 def command_enable_cheats(game_logic, command):
@@ -122,6 +127,7 @@ def command_enable_cheats(game_logic, command):
 
 
 public_commands["reset_all"] = command_reset_all
+public_commands["ra"] = command_reset_all
 
 public_commands["q"] = command_quit
 public_commands["exit"] = command_quit
@@ -152,6 +158,10 @@ public_commands["sr"] = command_speedrun
 public_commands["s"] = command_speedrun
 
 public_commands["shrek"] = command_shrek
+
+public_commands["speed_run_preferences"] = command_speedrun_preferences
+public_commands["speedrun_preferences"] = command_speedrun_preferences
+public_commands["sp"] = command_speedrun_preferences
 
 public_commands["enable_cheats"] = command_enable_cheats
 public_commands["ec"] = command_enable_cheats
@@ -185,7 +195,7 @@ def command_next(game_logic, command):
     log.write("Next level.")
     level_index = game_logic.stage.level_index
     next_index = l.next_level(level_index)
-    if level_index[1] != 0:
+    if level_index[1] != 0 and level_index[0] != 400:
         log.write("Completing current level.")
         game_logic.complete()
     else:

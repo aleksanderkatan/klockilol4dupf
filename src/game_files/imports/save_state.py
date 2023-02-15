@@ -12,14 +12,16 @@ DATA_PATH = 'game_files/data/'
 
 PREFERENCE_DEFAULTS = {
     "auto_reverse": False,
-    "timer": True,
+    "timer": False,
     "witch": True,
-    "cheats": True,        # !! AAA change this before release. Actually, should this be a preference?
+    "shrek": False,
+    "cheats": False,
 }
 
 # how are preferences different from above?
 PREFERENCE_SPEEDRUN_CHANGES = {
     "auto_reverse": True,
+    "timer": True,
     "witch": False,
 }
 

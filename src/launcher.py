@@ -38,16 +38,17 @@ if __name__ == "__main__":
     combo_res.current(3)
     combo_res.grid(column=2, row=1)
 
-    tk.Label(window, text="Language").grid(column=1, row=2)
-    combo_lan = ttk.Combobox(window, state="readonly", width=25)
-    languages = ["Polish", "None"]
-    combo_lan['values'] = languages
-    combo_lan.current(0)
-    combo_lan.grid(column=2, row=2)
+    # tk.Label(window, text="Language").grid(column=1, row=2)
+    # combo_lan = ttk.Combobox(window, state="readonly", width=25)
+    # languages = ["Polish", "None"]
+    # combo_lan['values'] = languages
+    # combo_lan.current(0)
+    # combo_lan.grid(column=2, row=2)
 
     text = tk.StringVar()
     completion_label = tk.Label(window, textvariable=text)
-    completion_label.grid(column=2, row=3)
+    # completion_label.grid(column=2, row=3)
+    completion_label.grid(column=2, row=2)
 
     def update_completion():
         s = ""
@@ -72,8 +73,8 @@ if __name__ == "__main__":
         x, y, _ = resolutions[combo_res.current()]
         resolution = (x, y)
         v.change_resolution(resolution)
-        if combo_lan.current() == 1:
-            global_save_state.get_preference("witch", False)
+        # if combo_lan.current() == 1:
+        #     global_save_state.get_preference("witch", False)
 
         screen = pygame.display.set_mode((v.WINDOW_X, v.WINDOW_Y))
         import game_files.imports.all_sprites as s
@@ -83,8 +84,7 @@ if __name__ == "__main__":
 
         clock = pygame.time.Clock()
         game = game_logic(screen)
-        # src.set_stage((400, 1))
-        game.set_stage((201, 0))
+        game.set_stage((400, 1))
         while True:
             for event in pygame.event.get():
                 game.event_handler(event)
@@ -105,8 +105,10 @@ if __name__ == "__main__":
         thread.start()
 
 
-    tk.Button(window, text="Reset save", command=bt_reset_method, width=10).grid(column=1, row=3)
-    tk.Button(window, text="Play", command=bt_start_method, width=20, height=2).grid(columnspan=3, row=4)
+    tk.Button(window, text="Reset save", command=bt_reset_method, width=10).grid(column=1, row=2)
+    # tk.Button(window, text="Reset save", command=bt_reset_method, width=10).grid(column=1, row=3)
+    tk.Button(window, text="Play", command=bt_start_method, width=20, height=2).grid(columnspan=3, row=3)
+    # tk.Button(window, text="Play", command=bt_start_method, width=20, height=2).grid(columnspan=3, row=4)
 
     update_completion()
     window.mainloop()

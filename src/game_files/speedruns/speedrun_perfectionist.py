@@ -10,4 +10,4 @@ class speedrun_perfectionist(speedrun):
         return global_save_state.get_completion(True) == 1
 
     def get_name(self):
-        return "Shrek%"
+        return "100%"

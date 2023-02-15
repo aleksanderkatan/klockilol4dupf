@@ -142,6 +142,24 @@ class state:
                 continue
             screen_pos = u.index_to_position(x, y, z, self.x, self.y, len(self.layers))
             decoration.draw(screen_pos, 0)
+        for pusher in self.pushers:
+            x, y, z = pusher.pos
+            if z != layer_index:
+                continue
+            screen_pos = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y, len(self.layers))
+            pusher.draw(screen_pos)
+        for chav in self.chavs:
+            x, y, z = chav.pos
+            if z != layer_index:
+                continue
+            screen_pos = u.index_to_position(chav.pos[0], chav.pos[1], chav.pos[2], self.x, self.y, len(self.layers))
+            chav.draw(screen_pos, u.relative_to_player(chav.pos[2], self.player.pos[2]))
+        for bomb in self.bombs:
+            x, y, z = bomb.pos
+            if z != layer_index:
+                continue
+            screen_pos = u.index_to_position(bomb.pos[0], bomb.pos[1], bomb.pos[2], self.x, self.y, len(self.layers))
+            bomb.draw(screen_pos, u.relative_to_player(bomb.pos[2], self.player.pos[2]))
 
         if self.player.pos[2] == layer_index:
             self.draw_player()

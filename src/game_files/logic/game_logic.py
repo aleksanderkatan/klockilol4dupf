@@ -186,12 +186,13 @@ class game_logic:
             self.perform_speedrun_check()
 
         if self.stage.latest_state().player.dead:
-            if global_save_state.get_preference("auto_reverse"):
+            if self.speedrun is not None and self.speedrun.settings.does_death_reset:
+                self.stage.reset()
+                self.stage.animation_manager.register_message(self.screen, "You died, stage reset.", v.FRAME_RATE * 3)
+            elif global_save_state.get_preference("auto_reverse"):
                 self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.", v.FRAME_RATE * 3)
                 global_save_state.log_auto_reverse()
                 self.stage.reverse()
-            if self.speedrun is not None and self.speedrun.settings.does_death_reset:
-                self.stage.reset()
         self.keys_registered = []
 
     def draw(self):

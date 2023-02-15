@@ -1,12 +1,20 @@
-5
-7
+6
+9
 1
-3331S
-3PII1
-1III1
-2III2
-1III1
-1IIP2
-E2211
+......
+.SOOO.
+.OOOO.
+.OOOO.
+.OOOO.
+.OOOO.
+.OOOO.
+.OOOE.
+......
 
-portals 1 0
+ones   ^ ^ ^
+ones v < < >
+ones > v <^ <
+ones < <^>v <^>v v
+ones < > > v
+ones < ^ < <
+ones v v v

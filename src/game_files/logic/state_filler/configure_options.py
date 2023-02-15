@@ -18,9 +18,9 @@ def configure_options(s, options, blocks):
             current_options = options[option_map[key]]
 
             if len(current_options) < len(value):
-                raise state_load_exception(f"Too few {option_map[key]} options, [{len(current_options)}] instead of [{len(value)}].")
+                raise state_load_exception(f"Too few {option_map[key]} options, {len(current_options)} instead of {len(value)}.")
             if len(current_options) > len(value):
-                log.warning(f"Too many {option_map[key]} options, [{len(current_options)}] instead of [{len(value)}].")
+                log.warning(f"Too many {option_map[key]} options, {len(current_options)} instead of {len(value)}.")
 
             if option_map[key] == 'portals':
                 for z_ in range(len(value)):

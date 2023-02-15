@@ -8,7 +8,7 @@ class block_portal(block):
     def __init__(self, screen, stage, state_index, pos, destination_index=None, my_index=None):
         super().__init__(screen, stage, state_index, pos)
         self.state_index = state_index
-        self.sprite = s.sprites["block_portal"]
+        self.sprite = s.sprites["block_lift"]
         self.destination_index = destination_index
         self.my_index = my_index
 

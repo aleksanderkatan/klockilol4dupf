@@ -35,7 +35,7 @@ class player:
                 return s.sprites["flavour_orange"]
             else:
                 return s.sprites["flavour_lemon"]
-        if global_save_state.get("shrek", False):
+        if global_save_state.get_preference("shrek"):
             return s.sprites["player_shrek"]
         return s.sprites["player"]
 
@@ -98,12 +98,9 @@ class player:
         new_pos = u.move_pos(self.pos, move_direction, move_length)
         translation = u.get_translation(self.pos, new_pos)
 
-        move_animation = None
         if move_length != 1 and move_direction.is_cardinal():
             move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation,
                                                    (move_length - 1) / 2)
-
-        if move_animation is not None:
             self.stage.animation_manager.register_animation(move_animation)
 
         if new_pos[2] < 0:
