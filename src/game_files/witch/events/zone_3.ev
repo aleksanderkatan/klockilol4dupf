@@ -2,19 +2,19 @@
 None
 Ciekawe co ten klocek może robić?
 ...
-Kogo ja oszukuję, na pewno wszedłeś już na niego w hubie.
+Kogo ja oszukuję, na pewno wszedłeś już na niego przy wyborze poziomów.
 
 
 3 5
 None
-O, kolejny oryginalny poziom.
+O, kolejny oryginalny poziom nieinspirowany żadną grą.
 
 
 3 7
 None
 No popatrz, taki prosty koncept klocka, wręcz narzuca się żeby go zaimplementować.
 A mimo to w pierwszych dwóch wersjach tej gry go nie było.
-Właśnie, może powiem o nich coś więcej?
+Powiem o nich coś więcej za chwilę. Do końca zone'a będę mówić tylko o tym, więc możesz mnie po porstu nie słuchać.
 
 
 3 8
@@ -22,35 +22,35 @@ None
 Pierwszą wersję ciężko w ogóle nazywać wersją.
 Napisana w C++, działała w konsoli i nie miała niczego poza klockami z cyferkami, startem i końcem.
 Była bardziej utrwaleniem konceptu niż grą - dane mi się było spotkać z flashówką opartą na tymże pomyśle jakieś 10 lat temu.
-Pomimo długich godzin poszukiwać przez webarchive i flash pointa nie udało mi się jej znaleźć, ale za to przynajmniej została w jakiś sposób uwieczniona.
+Pomimo długich godzin poszukiwań na stronach z grami, a później też przez webarchive i flash pointa, nie udało mi się jej znaleźć, ale za to przynajmniej została w jakiś sposób uwieczniona.
 
 
 3 9
 None
 Druga jest w pełni legitną grą. "Klocki lol", 28 poziomów, kilka rodzajów klocków i wygląda o niebo lepiej od tej.
 Napisana w Game Makerze 2 (z płatną licencją!), była paskudnym spaghetti.
-Po kliknięciu bardzo szybko lewo, prawo działy się cuda niewidy! Raz zadziała poprawnie, raz klocek na który się wejdzie straci 1 na wartości, raz oba stracą
-No ale wyglądało ślicznie
+Po kliknięciu bardzo szybko lewo, prawo działy się cuda niewidy! Raz zadziała poprawnie, raz klocek na który się wejdzie straci 1 na wartości, raz oba stracą.
+No ale wyglądało ślicznie.
 
 
 3 10
 None
-Z pewnych powodów znana jest też pod nazwą "Gra ze Szrekiem"
+Z pewnych powodów znana jest też pod nazwą "Gra ze Szrekiem".
 Miała generator losowych poziomów!
+Można powiedzieć, że twoim celem w tej grze jest zrozumienie, dlaczego ona też może być nazywana "Grą ze Szrekiem".
 
 
 3 11
 None
-Kilka mechanik nie zostało przeniesionych na tę.
+Kilka mechanik z wielu powodów nie zostało przeniesionych na tę.
 Przede wszystkim - wielu bohaterów. Sterowało się wszystkimi naraz. Czasami niektórzy mieli odwrócone sterowanie. Horyzontalnie, wertykalnie lub tak i tak. Zbyt frustrujące to było do rozwiązywania.
 Aby zaliczyć poziom, jeden z nich musiał stanąć na końcowym klocku, a reszta musiała nadal żyć. Grawitacja była w dół ekranu, jak postać spadła poza okno, przegrywało się.
-Innymi słowy - czasami ten sam poziom był nie do przejścia jeżeli tylko znajdował się niżej na ekranie - jednen z dodatkowych chłopków wypadał za ekran szybciej, niż poziom uznawał się za zaliczony, hehehe
+Innymi słowy - czasami ten sam poziom był nie do przejścia jeżeli tylko znajdował się niżej na ekranie - jednen z dodatkowych chłopków wypadał za ekran szybciej, niż poziom uznawał się za zaliczony, hehehe.
 
 
 3 12
 None
-Swoją drogą jakbyś się jeszcze nie skapł to mówię głównie pierdoły i nie musisz tego czytać.
-Drugą z funckjonalności która w tej grze się nie pojawia to takie śmieszne odwrócone "Y", zajebane z The Witness.
+Druga z funckjonalności która w tej grze się nie pojawia to takie śmieszne odwrócone "Y", ukradnięte z The Witness.
 Klocek z "Y" pozwalał i jednocześnie zmuszał gracza do zostawienia jednego klocka z cyfrą obok niego.
 Frustrująca i trudna mechanika zarówno w odniesieniu do tworzenia jak i przechodzenia poziomów.
 A no i spaghetti code pozwalał na maks 1 taki klocek na mapę.

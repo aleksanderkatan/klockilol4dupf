@@ -42,7 +42,7 @@ def is_input_box_delete(key):
 
 
 def is_witch_continue(key):
-    return key in [pygame.K_SPACE]
+    return key in [pygame.K_SPACE, pygame.K_RETURN]
 
 
 def is_KB_cheat(keys):  # keys is an bit mask

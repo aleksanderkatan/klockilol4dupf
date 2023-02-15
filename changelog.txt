@@ -1,3 +1,6 @@
+0.106.2
+- add and polish witch events
+
 0.106.1
 - swap zones 7, 8, 9
 
