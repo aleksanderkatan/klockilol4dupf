@@ -432,6 +432,7 @@ root_commands["re"] = command_raise_exception
 root_commands["teleport"] = command_teleport
 root_commands["tp"] = command_teleport
 
+root_commands["u"] = command_teleport_up
 root_commands["up"] = command_teleport_up
 
 root_commands["all_stats"] = command_all_stats

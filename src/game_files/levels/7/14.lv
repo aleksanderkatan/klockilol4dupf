@@ -1,11 +1,16 @@
-9
-6
+7
+7
 1
-S1111....
-.1P.1P1..
-.1111121E
-.....11..
-.111111..
-.1P..P1..
+.O.O...
+OI.IIIE
+.IIIII.
+OIIIIIS
+.IIIII.
+.IIIIIO
+.O.OOO.
 
-portals 1 0 3 2
+ones v v
+ones >
+ones >
+ones <
+ones ^  ^ ^ ^

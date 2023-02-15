@@ -29,9 +29,9 @@ levs[3] = 17
 levs[4] = 17
 levs[5] = 19
 levs[6] = 19
-levs[7] = 23
-levs[8] = 30
-levs[9] = 20
+levs[7] = 20
+levs[8] = 23
+levs[9] = 30
 levs[10] = 24
 
 levs[11] = 10
@@ -69,7 +69,7 @@ back_in_hierarchy_levels = {
     (101, 0),
     (102, 0),
     (103, 0),
-    (8, 20)
+    (9, 20)
 }
 
 # where to go after pressing escape? The default is 0 level of the same set

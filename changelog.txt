@@ -1,3 +1,6 @@
+0.106.1
+- swap zones 7, 8, 9
+
 0.105
 - add all levels missing for v1.0
 - make "shrek" a preference
