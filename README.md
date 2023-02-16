@@ -49,6 +49,9 @@ For Windows 10:
 2) Create a new folder and unzip there.
 3) Run klockilol4dupf.exe (a file in "game" folder).
 
+Windows Defender will likely stop the game from running. Press more info -> run anyway, if you trust me enough.
+<br/><br/>
+
 For Linux:
 
 just clone and run launcher.py, hopefully works
