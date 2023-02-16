@@ -88,7 +88,7 @@ def command_speedrun(game_logic, command):
         register_message(game_logic, f"No such speedrun!", 3)
         return
 
-    settings = speedrun_settings(does_death_reset=("-d" not in options))
+    settings = speedrun_settings(does_death_reset=("-d" in options))
     speedrun = speedruns[name](settings)
     global_save_state.hard_erase_all()
     global_save_state.load_speedrun_preferences()

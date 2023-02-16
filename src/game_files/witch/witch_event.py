@@ -26,5 +26,9 @@ class witch_event:
             return None
         return self
 
+    def reverse(self):
+        self.current_message_index = max(0, self.current_message_index-1)
+        return self
+
     def is_active(self):
         return self.current_message_index is not None

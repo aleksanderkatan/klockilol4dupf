@@ -1,3 +1,8 @@
+0.106.3
+- polish
+- add option to reverse witch dialogue
+- negate "-d" option in speedrun
+
 0.106.2
 - add and polish witch events
 

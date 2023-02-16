@@ -49,6 +49,9 @@ class witch:
         if k.is_witch_continue(key):
             if self.active_event is not None:
                 self.active_event = self.active_event.advance()
+        if k.is_reverse(key):
+            if self.active_event is not None:
+                self.active_event = self.active_event.reverse()
         self.update_text_box()
 
     def current_message(self):
