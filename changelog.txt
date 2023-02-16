@@ -1,3 +1,9 @@
+0.106.4
+- add version to launcher name
+- remove some resolutions
+- add executable
+- update readme
+
 0.106.3
 - polish
 - add option to reverse witch dialogue
