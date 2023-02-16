@@ -1,0 +1,85 @@
+3 1
+None
+Ciekawe co ten klocek może robić?
+...
+Kogo ja oszukuję, na pewno wszedłeś już na niego przy wyborze poziomów.
+
+
+3 5
+None
+O, kolejny oryginalny poziom nieinspirowany żadną grą.
+
+
+3 7
+None
+No popatrz, taki prosty koncept klocka, wręcz narzuca się żeby go zaimplementować.
+A mimo to w pierwszych dwóch wersjach tej gry go nie było.
+Powiem o nich coś więcej za chwilę. Do końca zone'a będę mówić tylko o tym, więc możesz mnie po prostu nie słuchać.
+
+
+3 8
+None
+Pierwszą wersję ciężko w ogóle nazywać wersją.
+Napisana w C++, działała w konsoli i nie miała niczego poza klockami z cyferkami, startem i końcem.
+Była bardziej utrwaleniem konceptu niż grą - dane mi się było spotkać z flashówką opartą na tymże pomyśle jakieś 10 lat temu.
+Pomimo długich godzin poszukiwań na stronach z grami, a później też przez webarchive i flash pointa, nie udało mi się jej znaleźć, ale za to przynajmniej została w jakiś sposób uwieczniona.
+
+
+3 9
+None
+Druga jest w pełni legitną grą. "Klocki lol", 28 poziomów, kilka rodzajów klocków i wygląda o niebo lepiej od tej, w którą grasz teraz.
+Napisana w Game Makerze 2 (z płatną licencją!), była paskudnym spaghetti.
+Po kliknięciu bardzo szybko lewo, prawo działy się cuda niewidy! Raz zadziała poprawnie, raz klocek na który się wejdzie straci 1 na wartości, raz oba stracą.
+No ale wyglądało ślicznie.
+
+
+3 10
+None
+Z pewnych powodów znana jest też pod nazwą "Gra ze Szrekiem".
+Miała generator losowych poziomów!
+Można powiedzieć, że twoim celem w tej grze jest zrozumienie, dlaczego ona też może być nazywana "Grą ze Szrekiem".
+
+
+3 11
+None
+Kilka mechanik z wielu powodów nie zostało przeniesionych na tę.
+Przede wszystkim - wielu bohaterów. Sterowało się wszystkimi naraz. Czasami niektórzy mieli odwrócone sterowanie. Horyzontalnie, wertykalnie lub tak i tak. Zbyt frustrujące to było do rozwiązywania.
+Aby zaliczyć poziom, jeden z nich musiał stanąć na końcowym klocku, a reszta musiała nadal żyć. Grawitacja była w dół ekranu, jak postać spadła poza okno, przegrywało się.
+Innymi słowy - czasami ten sam poziom był nie do przejścia jeżeli tylko znajdował się niżej na ekranie - jednen z dodatkowych chłopków wypadał za ekran szybciej, niż poziom uznawał się za zaliczony, hehehe.
+
+
+3 12
+None
+Druga z funckjonalności która w tej grze się nie pojawia to takie śmieszne odwrócone "Y", ukradnięte z The Witness.
+Klocek z "Y" pozwalał i jednocześnie zmuszał gracza do zostawienia jednego klocka z cyfrą obok niego.
+Frustrująca i trudna mechanika zarówno w odniesieniu do tworzenia jak i przechodzenia poziomów.
+A no i spaghetti code pozwalał na maks 1 taki klocek na mapę.
+
+
+3 13
+None
+W trzeciej grze, znanej jako "klockilolunoduo", uwięziłam nieszczęśnika Stefana. Na dodatek rozkradłam mu kończyny.
+Gra nie była liniowa, a za przechodzenie stref miał odzyskiwać części ciała i swagowego ubioru.
+Niestety, licencja na Game Makera mi wygasła i nie byłam w stanie gry dokończyć.
+
+
+3 14
+None
+Z mechanik próby czasu nie przeszły łączone klocki.
+Na praktycznie każdy obiekt można było nałożyć lód aby zrobić go śliskim. Powstały może ze 3 dobre poziomy wykorzystujące to.
+Nałożenie cyfry na coś sprawiało że znikało po odpowiedniej liczbie kroków.
+
+
+3 15
+None
+Odpadły jeszcze duże klocki. Jak nazwa wskazuje - po prostu zajmowały większe pole niż 1x1.
+Chodzenie w kółko po jedynce rozmiaru 2x2 nie sprawiało, że spadała.
+Poziom który masz przed sobą jest kozacki - losowo podmieniłam klocki na lód i okazało się, że da się go przejść i to bez backtrackingu*! Znów, myśl które ruchy są przegrywające.
++*z dużą głębokością.
+
+
+3 16
+None
+Poza wymienionymi wcześniej, wszystkie mechaniki w mniejszym lub większym stopniu pojawiają się gdzieś tu. Niekoniecznie bezpośrednio w poziomach, może są gdzies ukryte?
+No i tak dochodzimy do klockówlol4dupf. Klockilol - oczywiste skąd. 4 - bo czwarta iteracja. A interpretację dupf wymyśl sobie sam.
+I właśnie, najważniejsze! W poprzednich wersjach nie było możliwości cofania ruchów. Zły ruch - restart. Ależ to było frustrujące! Dobrze, że wreszcie znalazłam na to rozwiązanie.

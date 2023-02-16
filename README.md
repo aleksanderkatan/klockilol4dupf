@@ -6,19 +6,19 @@ A puzzle game, where you have to walk over tiles the exact amount of times that 
 
 ## Engaging puzzles
 
-![ss](src/game_files/sprites/other/screenshot_2.gif "This can be solved in 12 different ways. One of them is <<<v<<^>><^><^^")
+![ss](game/src/sprites/other/screenshot_2.gif "This can be solved in 12 different ways. One of them is <<<v<<^>><^><^^")
 
 ## NP-Complete concept
 
-![ss](src/game_files/sprites/other/screenshot_3.gif "Hamiltonian Cycle reduces to this and yes, this reduction is in the right direction")
+![ss](game/src/sprites/other/screenshot_3.gif "Hamiltonian Cycle reduces to this and yes, this reduction is in the right direction")
 
 ## Overly complicated levels
 
-![ss](src/game_files/sprites/other/screenshot_4.gif "Not even all of the blocks that are implemented")
+![ss](game/src/sprites/other/screenshot_4.gif "Not even all of the blocks that are implemented")
 
 ## Questionable design choices
 
-![ss](src/game_files/sprites/other/screenshot_1.gif "this zone is currently in development, and therefore yet unavailable")
+![ss](game/src/sprites/other/screenshot_1.gif "this zone is currently in development, and therefore yet unavailable")
 
 ## The Idea
 
@@ -47,7 +47,7 @@ All mechanics and levels from both of those have been integrated into klockilol4
 For Windows 10:
 1) Download this repo (code -> download as .zip).
 2) Create a new folder and unzip there.
-3) Run klockilol4dupf.exe (a file in "src" folder).
+3) Run klockilol4dupf.exe (a file in "game" folder).
 
 For Linux:
 
@@ -66,13 +66,13 @@ just clone and run launcher.py, hopefully works
 Commands are available after pressing Enter while in game.
 
 - help - list all available commands in the log.
-- exit - exit.
+- exit - exit. It is safe to simply press the "x" though.
 - auto_reverse - switch auto reverse after death.
 - timer - switch speedrun timer.
 - witch - switch witch comments.
 - reset_all - reset your save.
 - speedrun - start a speedrun given in the argument.   
-    WARNING: this command wipes your save! You can back it up by copying files from `src/game_files/data`  
+    WARNING: this command wipes your save! You can back it up by copying files from `game/src/data`  
     Available speedruns:
   - platform maze (pm)
   - birdy's rainy day skipathon (birdy)
