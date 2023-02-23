@@ -1,9 +1,10 @@
 import os
 import pickle
-import src.imports.levels as l
+
 import src.imports.globals as g
-from src.imports.log import log
+import src.imports.levels as l
 import src.imports.utils as u
+from src.imports.log import log
 from src.imports.view_constants import global_view_constants as v
 
 DATA_PATH = 'src/data'
@@ -22,7 +23,6 @@ PREFERENCE_SPEEDRUN_CHANGES = {
     "timer": True,
     "witch": False,
 }
-
 
 
 class completed_levels:
@@ -123,7 +123,7 @@ class save_state:
         # if not (self.cached[key], type(default_data)):
         #     log.error(
         #         f"Wrong data type. Cached: {self.cached[key]} of type {type(self.cached[key])}, expected {type(default_data)}")
-            # self.cached[key] = default_data
+        # self.cached[key] = default_data
         return self.cached[key]
 
     def set(self, key, data):
@@ -283,4 +283,3 @@ class save_state:
         message += f"In-game time: " + u.ticks_to_time(self.get("time", 0)) + "\n"
         message += self.get_logged_keys()
         return message
-

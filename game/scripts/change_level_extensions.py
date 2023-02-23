@@ -6,6 +6,7 @@ root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\src\\levels\\"
 def remove_extension(s):
     return s[:s.rfind('.')]
 
+
 def path_iter():
     for path, subdirs, files in os.walk(root):
         for name in files:
@@ -14,5 +15,3 @@ def path_iter():
 
 for p in path_iter():
     os.rename(p, remove_extension(p) + ".lv")
-
-

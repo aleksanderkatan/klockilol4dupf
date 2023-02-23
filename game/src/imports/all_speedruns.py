@@ -1,7 +1,7 @@
-from src.speedruns.speedrun_pm import speedrun_pm
 from src.speedruns.speedrun_birdy import speedrun_birdy
-from src.speedruns.speedrun_shrek import speedrun_shrek
 from src.speedruns.speedrun_perfectionist import speedrun_perfectionist
+from src.speedruns.speedrun_pm import speedrun_pm
+from src.speedruns.speedrun_shrek import speedrun_shrek
 
 speedruns = {
     'platform_maze': speedrun_pm,

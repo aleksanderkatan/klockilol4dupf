@@ -1,6 +1,6 @@
+import src.imports.all_sprites as s
 from src.blocks.block import block
 from src.blocks.block_swapping import block_swapping
-import src.imports.all_sprites as s
 
 
 class block_swapping_trigger(block):

@@ -1,4 +1,5 @@
 import random
+
 from src.imports.log import log
 
 levels_path = "src/levels/"

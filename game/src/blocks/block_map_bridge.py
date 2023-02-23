@@ -1,7 +1,6 @@
-from src.blocks.block import block
 import src.imports.all_sprites as s
 import src.imports.globals as g
-
+from src.blocks.block import block
 
 
 class block_map_bridge(block):

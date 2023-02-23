@@ -1,5 +1,5 @@
-from src.speedruns.speedrun import speedrun
 import src.imports.globals as g
+from src.speedruns.speedrun import speedrun
 
 
 class speedrun_perfectionist(speedrun):

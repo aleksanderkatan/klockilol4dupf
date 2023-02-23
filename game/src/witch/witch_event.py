@@ -1,7 +1,6 @@
 import src.imports.globals as g
 
 
-
 # where - ((level_set, level), (x, y, z))
 
 class witch_event:
@@ -28,7 +27,7 @@ class witch_event:
         return self
 
     def reverse(self):
-        self.current_message_index = max(0, self.current_message_index-1)
+        self.current_message_index = max(0, self.current_message_index - 1)
         return self
 
     def is_active(self):

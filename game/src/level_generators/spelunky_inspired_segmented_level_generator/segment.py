@@ -23,7 +23,7 @@ class segment:
         self.flippable = flippable
         self.start = start
         self.end = end
-        occurrences = max(1, len(ins))*max(1, len(outs)) * (2 ** len(flippable))
+        occurrences = max(1, len(ins)) * max(1, len(outs)) * (2 ** len(flippable))
         self.actual_weight = 1 / occurrences * weight_base
 
     @classmethod
@@ -37,7 +37,6 @@ class segment:
         obj.end = end
         obj.actual_weight = actual_weight
         return obj
-
 
     def get_all_invertions(self):
         results = [self]
@@ -195,5 +194,4 @@ rotate_ccw_options = {
 
 
 def rotate_cw_pos(x, y, dim):
-    return dim-1-y, x
-
+    return dim - 1 - y, x

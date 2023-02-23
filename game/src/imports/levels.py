@@ -1,6 +1,7 @@
-from src.imports.log import log
-import src.imports.globals as g
 import random
+
+import src.imports.globals as g
+from src.imports.log import log
 
 level_error_path = 'src/levels/0/0.lv'
 
@@ -104,7 +105,7 @@ hierarchy[(302, 0)] = (400, 3)
 hierarchy[(303, 0)] = (400, 4)
 
 # lobbies lead to themselves
-for i in range(1, 6+1):
+for i in range(1, 6 + 1):
     hierarchy[(400, i)] = (400, i)
 
 hierarchy[(500, 0)] = (400, 5)
@@ -113,9 +114,8 @@ hierarchy[(500, 2)] = (400, 1)
 hierarchy[(500, 3)] = (400, 1)
 
 # The Maze
-for i in range(1, 16+1):
+for i in range(1, 16 + 1):
     hierarchy[(206, i)] = (500, 0)
-
 
 
 def is_valid_stage(level_index):

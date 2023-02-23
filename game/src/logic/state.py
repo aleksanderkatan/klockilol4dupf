@@ -1,9 +1,8 @@
-import src.imports.utils as u
 import src.imports.all_blocks as o
 import src.imports.all_sprites as s
 import src.imports.globals as g
+import src.imports.utils as u
 from src.logic.direction import direction as d
-
 
 
 class state:
@@ -146,7 +145,8 @@ class state:
             x, y, z = pusher.pos
             if z != layer_index:
                 continue
-            screen_pos = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y, len(self.layers))
+            screen_pos = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y,
+                                             len(self.layers))
             pusher.draw(screen_pos)
         for chav in self.chavs:
             x, y, z = chav.pos

@@ -1,4 +1,5 @@
 import random
+
 from src.level_generators.spelunky_inspired_segmented_level_generator.path_generator import generate_paths
 from src.level_generators.spelunky_inspired_segmented_level_generator.segment_provider import segment_provider
 from src.logic.direction import direction
@@ -7,7 +8,6 @@ RIGHT = direction.RIGHT
 UP = direction.UP
 LEFT = direction.LEFT
 DOWN = direction.DOWN
-
 
 
 def generate(segments, x, y):
@@ -49,10 +49,10 @@ def generate(segments, x, y):
 def _get_direction(pos1, pos2):
     x, y = pos1
     d = {
-        (x+1, y): RIGHT,
-        (x, y-1): UP,
-        (x-1, y): LEFT,
-        (x, y+1): DOWN,
+        (x + 1, y): RIGHT,
+        (x, y - 1): UP,
+        (x - 1, y): LEFT,
+        (x, y + 1): DOWN,
     }
     if pos2 not in d:
         raise RuntimeError("Not a consecutive set of positions")
@@ -64,4 +64,3 @@ def _add_options(opt1, opt2):
         if key not in opt1:
             opt1[key] = ""
         opt1[key] = opt1[key] + " " + opt2[key]
-

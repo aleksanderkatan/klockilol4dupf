@@ -1,10 +1,10 @@
-import src.imports.all_sprites as s
 import pygame
-from src.blocks.block_empty import block_empty
+
+import src.imports.all_sprites as s
 import src.imports.utils as u
+from src.blocks.block_empty import block_empty
 from src.imports.log import log
 from src.imports.view_constants import global_view_constants as v
-import src.imports.globals as g
 
 font_scale = 1 / 4
 FONT = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", int(v.BLOCK_X_SIZE * font_scale))

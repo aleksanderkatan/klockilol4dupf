@@ -1,16 +1,17 @@
 import os
-from src.imports.save_state import save_state
+
 from src.imports.log import log
+from src.imports.save_state import save_state
 
 
 def get_completion(save):
     s = ""
     completion = save.get_completion()
-    s += str(int(completion*100)) + "% completion"
+    s += str(int(completion * 100)) + "% completion"
     if completion == 1:
         true_completion = save.get_completion(True)
         s += "\n"
-        s += str(int(true_completion*100)) + "% true completion"
+        s += str(int(true_completion * 100)) + "% true completion"
     return s
 
 

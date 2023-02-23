@@ -30,7 +30,7 @@ def is_back_in_hierarchy(key):
 
 
 def is_input_box_enable(key):
-    return key in [pygame.K_RETURN]
+    return key in [ord("`"), pygame.K_RETURN]
 
 
 def is_input_box_disable(key):

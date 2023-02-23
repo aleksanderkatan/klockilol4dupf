@@ -1,6 +1,5 @@
-from src.animations.animation import animation
-import src.imports.globals as g
 import src.imports.utils as u
+from src.animations.animation import animation
 from src.imports.view_constants import global_view_constants as v
 
 

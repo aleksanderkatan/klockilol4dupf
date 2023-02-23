@@ -1,9 +1,8 @@
-from src.blocks.block import block
 import src.imports.all_sprites as s
-import src.imports.levels as l
-from src.imports.view_constants import global_view_constants as v
 import src.imports.globals as g
-
+import src.imports.levels as l
+from src.blocks.block import block
+from src.imports.view_constants import global_view_constants as v
 
 
 class block_entrance(block):

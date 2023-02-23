@@ -1,6 +1,6 @@
-from src.blocks.block import block
-import src.imports.all_sprites as s
 import src.imports.all_blocks as o
+import src.imports.all_sprites as s
+from src.blocks.block import block
 from src.imports.log import log
 
 

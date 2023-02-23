@@ -1,15 +1,14 @@
 import traceback
-from src.imports.log import log
-from src.logic.state_filler.state_load_exception import state_load_exception
-
-from src.logic.state_filler.read_level_string import read_level_string
-from src.logic.state_filler.linify_level_string import linify_level_string
-from src.logic.state_filler.preprocess_level import preprocess_level
-from src.logic.state_filler.fill_blocks import fill_blocks
-from src.logic.state_filler.configure_options import configure_options
-from src.logic.state_filler.find_starting_point import find_starting_point
 
 import src.imports.globals as g
+from src.imports.log import log
+from src.logic.state_filler.configure_options import configure_options
+from src.logic.state_filler.fill_blocks import fill_blocks
+from src.logic.state_filler.find_starting_point import find_starting_point
+from src.logic.state_filler.linify_level_string import linify_level_string
+from src.logic.state_filler.preprocess_level import preprocess_level
+from src.logic.state_filler.read_level_string import read_level_string
+from src.logic.state_filler.state_load_exception import state_load_exception
 
 
 def fill(s, level_index, last_level_index=None):

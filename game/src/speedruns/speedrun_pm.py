@@ -1,7 +1,6 @@
 from src.speedruns.speedrun import speedrun
 
 
-
 class speedrun_pm(speedrun):
     def get_starting_stage_and_pos(self):
         return (209, 1), (8, 2, 0)

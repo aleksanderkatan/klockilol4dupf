@@ -1,6 +1,6 @@
+import src.imports.all_sprites as s
 from src.blocks.block import block
 from src.blocks.block_empty import block_empty
-import src.imports.all_sprites as s
 
 
 class block_pm_numeric(block):

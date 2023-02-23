@@ -1,7 +1,9 @@
+import random
+
+import numpy as np
+
 import src.imports.all_sprites as s
 from src.imports.view_constants import global_view_constants as v
-import numpy as np
-import random
 
 
 class particle:

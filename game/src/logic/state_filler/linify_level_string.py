@@ -6,5 +6,5 @@ def linify_level_string(level_string):
         if pos != -1:
             line = line[:pos]
         if pos != 0:
-            commentless_lines.append((index+1, line.strip()))
+            commentless_lines.append((index + 1, line.strip()))
     return commentless_lines

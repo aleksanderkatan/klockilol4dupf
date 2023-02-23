@@ -1,7 +1,7 @@
-from src.blocks.block import block
-from src.blocks.platform_maze.block_pm_triggerable_on import block_pm_triggerable_on
-from src.blocks.platform_maze.block_pm_triggerable_off import block_pm_triggerable_off
 import src.imports.all_sprites as s
+from src.blocks.block import block
+from src.blocks.platform_maze.block_pm_triggerable_off import block_pm_triggerable_off
+from src.blocks.platform_maze.block_pm_triggerable_on import block_pm_triggerable_on
 
 
 class block_pm_triggerer(block):

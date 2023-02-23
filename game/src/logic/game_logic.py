@@ -1,17 +1,18 @@
 import pygame
-from src.logic.stage import stage
-from src.logic.input_box import input_box
-import src.imports.utils as u
+
 import src.imports.all_sprites as s
 import src.imports.globals as g
-import src.imports.levels as l
-import src.logic.commands as c
 import src.imports.keybindings as k
-from src.imports.view_constants import global_view_constants as v
-
-from src.witch.witch import witch
+import src.imports.levels as l
+import src.imports.utils as u
+import src.logic.commands as c
 from src.imports.log import log
+from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
+from src.logic.input_box import input_box
+from src.logic.stage import stage
+from src.witch.events import load_events
+from src.witch.witch import witch
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
@@ -44,7 +45,7 @@ class game_logic:
             v.WINDOW_X, v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET, self, "empty"
         )
         self.level_index = None
-        self.witch = witch(screen)
+        self.witch = witch(screen, load_events(g.global_save_state.get_language()))
         self.grayness = s.sprites["background_grayness"]
         self.speedrun = None
 
@@ -67,6 +68,7 @@ class game_logic:
         self.stage = new_stage
         self.single_layer = None
         self.level_index = self.stage.level_index
+        self.escape_counter = 0
         return True
 
     def event_handler(self, event):
@@ -130,13 +132,13 @@ class game_logic:
             if witch_was_active or input_box_was_active:
                 continue
 
+            if not k.is_back_in_hierarchy(key):
+                self.escape_counter = 0
+
             direction = key_to_direction(key)
             if next_move_direction == d.NONE and direction != d.NONE:
                 next_move_direction = direction
                 continue
-
-            if not k.is_back_in_hierarchy(key):
-                self.escape_counter = 0
 
             if g.global_save_state.get_preference("cheats"):
                 if k.is_next_cheat(key):
@@ -199,7 +201,8 @@ class game_logic:
                 self.stage.reset()
                 self.stage.animation_manager.register_message(self.screen, "You died, stage reset.", v.FRAME_RATE * 3)
             elif g.global_save_state.get_preference("auto_reverse"):
-                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.", v.FRAME_RATE * 3)
+                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.",
+                                                              v.FRAME_RATE * 3)
                 g.global_save_state.log_auto_reverse()
                 self.stage.reverse()
         self.keys_registered = []

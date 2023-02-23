@@ -1,7 +1,8 @@
+import random
+
+import src.imports.all_sprites as s
 from src.blocks.block import block
 from src.blocks.block_swapping import block_swapping
-import src.imports.all_sprites as s
-import random
 
 
 # maybe should be a variant of block_swapping_trigger?

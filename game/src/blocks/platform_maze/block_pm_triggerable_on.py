@@ -1,5 +1,5 @@
-from src.blocks.block_perma import block_perma
 import src.imports.all_sprites as s
+from src.blocks.block_perma import block_perma
 
 
 class block_pm_triggerable_on(block_perma):

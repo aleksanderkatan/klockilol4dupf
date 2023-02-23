@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-from src.launcher.new_save_data import new_save_data
 
+from src.launcher.new_save_data import new_save_data
 
 
 def create_new_save_window(action_to_perform_with_data):
@@ -59,7 +59,3 @@ def create_new_save_window(action_to_perform_with_data):
     create_button.configure(command=play_action)
 
     return window
-
-
-
-

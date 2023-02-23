@@ -1,6 +1,6 @@
-from src.blocks.block import block
 import src.imports.all_sprites as s
 import src.imports.utils as u
+from src.blocks.block import block
 from src.logic.direction import direction as d
 from src.logic.direction import get_cardinal
 

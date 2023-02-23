@@ -1,5 +1,5 @@
-from src.blocks.block import block
 import src.imports.all_sprites as s
+from src.blocks.block import block
 
 
 class block_pm_portal(block):

@@ -1,9 +1,10 @@
 import os
+
 os.chdir('../')
 
 import pygame
 import random
-import time
+
 pygame.init()
 tested_level = (303, 5)
 max_moves = 34
@@ -11,11 +12,14 @@ max_moves = 34
 screen = pygame.display.set_mode((100, 100))
 pygame.display.set_caption('level_tester')
 import src.imports.globals as g
+
 g.LOG_INFO = False
 import src.logic.direction as direction
 from src.logic.stage import stage
+
 s = stage(screen, tested_level, (0, 0))
 moves = []
+
 
 def test():
     if len(moves) > max_moves:
@@ -66,4 +70,3 @@ def count():
 test()
 print(*[move.name for move in moves])
 # print(count())
-

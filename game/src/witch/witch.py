@@ -1,14 +1,11 @@
-import pygame as pg
 import src.imports.all_sprites as s
 import src.imports.globals as g
 import src.imports.keybindings as k
 from src.witch.witch_box import witch_box
-from src.witch.events import events
-
 
 
 class witch:
-    def __init__(self, screen):
+    def __init__(self, screen, events):
         self.events = events
         self.screen = screen
         self.active_event = None

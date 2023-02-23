@@ -1,8 +1,7 @@
-from src.blocks.block import block
-from src.logic.commands import exit_game
 import src.imports.all_sprites as s
+from src.blocks.block import block
 from src.imports.log import log
-
+from src.logic.commands import exit_game
 
 
 class block_game_exit(block):

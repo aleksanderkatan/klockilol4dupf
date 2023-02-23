@@ -1,6 +1,6 @@
-from src.blocks.block_start import block_start
-from src.blocks.block_empty import block_empty
 import src.imports.all_sprites as s
+from src.blocks.block_empty import block_empty
+from src.blocks.block_start import block_start
 
 
 class block_birdy_fragile_start(block_start):

@@ -1,15 +1,16 @@
-import pygame
-import sys
 import os
-from src.imports.log import log
-import src.imports.levels as l
-import src.imports.globals as g
-import src.imports.utils as u
+import sys
 
+import pygame
+
+import src.imports.globals as g
+import src.imports.levels as l
+import src.imports.utils as u
+from src.imports.all_speedruns import speedruns
+from src.imports.log import log
+from src.imports.platform_maze_passwords import passwords
 from src.imports.save_state import completed_levels
 from src.imports.view_constants import global_view_constants as v
-from src.imports.platform_maze_passwords import passwords
-from src.imports.all_speedruns import speedruns
 from src.speedruns.settings import settings as speedrun_settings
 
 public_commands = {}

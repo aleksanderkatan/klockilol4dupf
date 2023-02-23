@@ -1,6 +1,6 @@
-from PIL import Image
 import os
 
+from PIL import Image
 
 old_size = (32, 32)
 new_size = (32, 40)
@@ -14,8 +14,10 @@ empty = Image.open(old_path + "empty.gif")
 empty = empty.resize(new_size)
 empty = empty.convert("RGBA")
 
+
 def remove_extension(s):
     return s[:s.rfind('.')]
+
 
 def image_iter():
     for path, subdirs, files in os.walk(old_path):
@@ -30,7 +32,7 @@ def generate_new_image(image: Image, name):
     image = image.convert("RGBA")
     ans = empty.copy()
     # ans = Image.alpha_composite(empty.copy(), image)
-    for i in reversed(range(0, 8+1)):
+    for i in reversed(range(0, 8 + 1)):
         ans.paste(image, (0, i), mask=image)
     return ans
 
@@ -39,6 +41,3 @@ for path, name in image_iter():
     im = Image.open(path)
     im = generate_new_image(im, name)
     im.save(new_path + name + ".gif")
-
-
-

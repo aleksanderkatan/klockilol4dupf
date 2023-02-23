@@ -1,10 +1,10 @@
-import src.imports.all_sprites as s
-
-from src.animations.animation_player_jump import animation_player_jump
-import src.imports.globals as g
-from src.imports.view_constants import global_view_constants as v
-import src.imports.utils as u
 import pygame
+
+import src.imports.all_sprites as s
+import src.imports.globals as g
+import src.imports.utils as u
+from src.animations.animation_player_jump import animation_player_jump
+from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
 
 FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4

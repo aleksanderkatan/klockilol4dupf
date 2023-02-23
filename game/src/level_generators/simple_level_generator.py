@@ -1,6 +1,5 @@
-import math
-import random
 import os
+import random
 
 
 # !! this file is supposed to work independently

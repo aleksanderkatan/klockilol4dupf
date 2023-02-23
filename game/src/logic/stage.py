@@ -1,13 +1,14 @@
 import pygame
-from src.logic.state import state
+
 import src.imports.globals as g
 import src.imports.levels as l
-from src.imports.view_constants import global_view_constants as v
-from src.other.particle_generator import particle_generator
-from src.imports.log import log
-from src.logic.state_filler.state_filler_uno_duo import fill
 from src.animations.animation_manager import animation_manager
+from src.imports.log import log
+from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
+from src.logic.state import state
+from src.logic.state_filler.state_filler_uno_duo import fill
+from src.other.particle_generator import particle_generator
 
 FONT = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)
 
@@ -27,7 +28,6 @@ class stage:
         self.particle_generator = particle_generator(self.screen)
         self.animation_manager = animation_manager()
         self.name_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
-
 
     def draw(self, single_layer=None):
         if single_layer is None:
