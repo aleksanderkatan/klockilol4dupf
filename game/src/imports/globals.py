@@ -1,4 +1,4 @@
-VERSION = "v1.0"
+VERSION = "v1.1 DEV"
 
 MOVE_LIMIT = 2048
 
@@ -14,6 +14,7 @@ LOG_WARNINGS = True
 LOG_ERRORS = True
 
 # runtime variables, don't change
+global_save_state = None
 KBcheat = False
 PAPOR = False
 LAST_ERROR = None

@@ -1,4 +1,5 @@
-from src.imports.save_state import global_save_state
+import src.imports.globals as g
+
 
 
 # where - ((level_set, level), (x, y, z))
@@ -22,7 +23,7 @@ class witch_event:
         self.current_message_index += 1
         if len(self.messages) <= self.current_message_index:
             self.current_message_index = None
-            global_save_state.complete_event(self.index)
+            g.global_save_state.complete_event(self.index)
             return None
         return self
 

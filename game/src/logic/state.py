@@ -3,7 +3,7 @@ import src.imports.all_blocks as o
 import src.imports.all_sprites as s
 import src.imports.globals as g
 from src.logic.direction import direction as d
-from src.imports.save_state import global_save_state
+
 
 
 class state:
@@ -87,7 +87,7 @@ class state:
 
         self.update_dark_visibility()
 
-        if g.KBcheat and global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.global_save_state.get_preference("cheats"):
             return
 
         # if not self.player.has_something_enqueued():
@@ -182,7 +182,7 @@ class state:
         return False
 
     def has_barrier(self, pos, direction):
-        if g.KBcheat and global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.global_save_state.get_preference("cheats"):
             return False
         if not direction.is_cardinal():
             return False

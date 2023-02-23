@@ -5,7 +5,8 @@ from src.imports.log import log
 import src.imports.levels as l
 import src.imports.globals as g
 import src.imports.utils as u
-from src.imports.save_state import global_save_state, completed_levels
+
+from src.imports.save_state import completed_levels
 from src.imports.view_constants import global_view_constants as v
 from src.imports.platform_maze_passwords import passwords
 from src.imports.all_speedruns import speedruns
@@ -16,7 +17,7 @@ public_commands = {}
 
 def command_reset_all(game_logic, command):
     log.warning("Eradicating save file.")
-    global_save_state.hard_erase_all()
+    g.global_save_state.hard_erase_all()
     game_logic.level_index = None
     game_logic.set_stage((400, 1))
 
@@ -28,9 +29,9 @@ def command_quit(game_logic, command):
 
 # all those honestly should just have a settings page in-game
 def command_switch_auto_reverse(game_logic, command):
-    state = global_save_state.get_preference("auto_reverse")
+    state = g.global_save_state.get_preference("auto_reverse")
     on_state = "off" if state else "on"
-    global_save_state.set_preference("auto_reverse", not state)
+    g.global_save_state.set_preference("auto_reverse", not state)
     if game_logic.stage.latest_state().player.dead:
         game_logic.stage.reverse()
     register_message(game_logic, f"Auto reverse turned {on_state}.", 5)
@@ -38,14 +39,14 @@ def command_switch_auto_reverse(game_logic, command):
 
 def command_switch_timer(game_logic, command):
     log.write("Switching timer.")
-    state = global_save_state.get_preference("timer")
-    global_save_state.set_preference("timer", not state)
+    state = g.global_save_state.get_preference("timer")
+    g.global_save_state.set_preference("timer", not state)
 
 
 def command_switch_witch(game_logic, command):
-    state = global_save_state.get_preference("witch")
+    state = g.global_save_state.get_preference("witch")
     on_state = "off" if state else "on"
-    global_save_state.set_preference("witch", not state)
+    g.global_save_state.set_preference("witch", not state)
     register_message(game_logic, "Witch turned " + on_state + ".", 5)
 
 
@@ -58,13 +59,13 @@ def command_help_public(game_logic, command):
 
 def command_completion(game_logic, command):
     message = "Completion: "
-    message += str(global_save_state.get_completion())
+    message += str(g.global_save_state.get_completion())
     log.write(message)
     register_message(game_logic, message, 3)
 
 
 def command_logged_keys(game_logic, command):
-    message = global_save_state.get_logged_keys()
+    message = g.global_save_state.get_logged_keys()
     log.write(message)
 
 
@@ -90,8 +91,8 @@ def command_speedrun(game_logic, command):
 
     settings = speedrun_settings(does_death_reset=("-d" in options))
     speedrun = speedruns[name](settings)
-    global_save_state.hard_erase_all()
-    global_save_state.load_speedrun_preferences()
+    g.global_save_state.hard_erase_all()
+    g.global_save_state.load_speedrun_preferences()
     stage, pos = speedrun.get_starting_stage_and_pos()
     game_logic.set_stage((1, 1))
     game_logic.set_stage(stage)
@@ -101,16 +102,16 @@ def command_speedrun(game_logic, command):
 
 
 def command_shrek(game_logic, command):
-    global_save_state.set_preference("shrek", True)
+    g.global_save_state.set_preference("shrek", True)
 
 
 def command_speedrun_preferences(game_logic, command):
-    global_save_state.load_speedrun_preferences()
+    g.global_save_state.load_speedrun_preferences()
     register_message(game_logic, f"Set speedrun preferences.", 3)
 
 
 def command_enable_cheats(game_logic, command):
-    if global_save_state.get_preference("cheats"):
+    if g.global_save_state.get_preference("cheats"):
         log.write("Cheats already enabled\nIf you want to disable them, use another command.")
         return
     log.write("Attempting to enable cheats.")
@@ -121,7 +122,7 @@ def command_enable_cheats(game_logic, command):
     if pw_hash != g.PASSWORD_HASH:
         register_message(game_logic, "WRONG PASSWORD!", 3)
     else:
-        global_save_state.set_preference("cheats", True)
+        g.global_save_state.set_preference("cheats", True)
         game_logic.speedrun = None
         register_message(game_logic, "Cheats enabled. If there was a speedrun running, it is now erased.", 7)
 
@@ -138,6 +139,7 @@ public_commands["shutdown"] = command_quit
 public_commands["halt"] = command_quit
 
 public_commands["auto_reverse"] = command_switch_auto_reverse
+public_commands["ar"] = command_switch_auto_reverse
 
 public_commands["timer"] = command_switch_timer
 
@@ -252,16 +254,16 @@ def command_x_offset(game_logic, command):
 
 def command_reset_timer(game_logic, command):
     log.write("Resetting timer.")
-    global_save_state.hard_save("time", 0)
+    g.global_save_state.hard_save("time", 0)
 
 
 def command_reset_events(game_logic, command):
-    global_save_state.hard_save("events", set())
+    g.global_save_state.hard_save("events", set())
     register_message(game_logic, "Encountered events reset.", 3)
 
 
 def command_reset_completed(game_logic, command):
-    global_save_state.hard_save("completed", completed_levels())
+    g.global_save_state.hard_save("completed", completed_levels())
     register_message(game_logic, "Completed levels reset.", 3)
 
 
@@ -272,13 +274,13 @@ def command_complete_zone(game_logic, command):
             return
         register_message(game_logic, f"Zone {int(arg)} marked as completed.", 3)
         log.write("Completing zone", arg)
-        global_save_state.complete_zone(int(arg), True)
+        g.global_save_state.complete_zone(int(arg), True)
 
 
 def command_complete_all(game_logic, command):
     log.write("Completing all levels.")
     register_message(game_logic, "All levels marked as completed.", 3)
-    global_save_state.complete_all()
+    g.global_save_state.complete_all()
 
 
 def command_refresh(game_logic, command):
@@ -318,7 +320,7 @@ def command_help_root(game_logic, command):
 
 def command_disable_cheats(game_logic, command):
     register_message(game_logic, "Cheats disabled.", 3)
-    global_save_state.set_preference("cheats", False)
+    g.global_save_state.set_preference("cheats", False)
 
 
 def command_position(game_logic, command):
@@ -357,19 +359,19 @@ def command_teleport_up(game_logic, command):
 
 
 def command_all_stats(game_logic, command):
-    message = global_save_state.get_all_stats()
+    message = g.global_save_state.get_all_stats()
     register_message(game_logic, "Game stats written to log.", 3)
     log.write(message)
 
 
 def command_resume_timer(game_logic, command):
     log.write("Resuming timer.")
-    global_save_state.hard_save("is_timer_stopped", False)
+    g.global_save_state.hard_save("is_timer_stopped", False)
 
 
 def command_stop_timer(game_logic, command):
     log.write("Stopping timer.")
-    global_save_state.hard_save("is_timer_stopped", True)
+    g.global_save_state.hard_save("is_timer_stopped", True)
 
 
 root_commands["lv"] = command_lv
@@ -465,7 +467,7 @@ def exit_game():
     # who are we? where are we going
 
     log.write("Saving before exiting.")
-    global_save_state.hard_save_all()
+    g.global_save_state.hard_save_all()
     log.write("Exiting gracefully.")
     pygame.quit()
     sys.exit(0)
@@ -509,7 +511,7 @@ def execute_command(game_logic, command):
 
     command = [word.lower() for word in command.strip().split(' ')]
 
-    if not global_save_state.get_preference("cheats"):
+    if not g.global_save_state.get_preference("cheats"):
         if command[0] in public_commands:
             log.write("executing: " + command[0])
             public_commands[command[0]](game_logic, command)

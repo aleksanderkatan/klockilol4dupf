@@ -1,5 +1,5 @@
 from src.speedruns.speedrun import speedrun
-from src.imports.save_state import global_save_state
+
 
 
 class speedrun_pm(speedrun):
@@ -7,8 +7,8 @@ class speedrun_pm(speedrun):
         return (209, 1), (8, 2, 0)
 
     def is_condition_met(self):
-        # return global_save_state.is_level_completed((209, 1))
-        return global_save_state.is_set_completed(209)
+        # return g.global_save_state.is_level_completed((209, 1))
+        return g.global_save_state.is_set_completed(209)
 
     def get_name(self):
         return "Platform Maze"

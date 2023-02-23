@@ -1,5 +1,6 @@
 from src.speedruns.speedrun import speedrun
-from src.imports.save_state import global_save_state
+import src.imports.globals as g
+
 
 
 class speedrun_birdy(speedrun):
@@ -7,7 +8,7 @@ class speedrun_birdy(speedrun):
         return (205, 1), (6, 0, 0)
 
     def is_condition_met(self):
-        return global_save_state.is_set_completed(205)
+        return g.global_save_state.is_set_completed(205)
 
     def get_name(self):
         return "Birdy's Rainy Day Skipathon"
