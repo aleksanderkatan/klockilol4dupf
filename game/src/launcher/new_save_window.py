@@ -7,7 +7,7 @@ from src.launcher.new_save_data import new_save_data
 def create_new_save_window(action_to_perform_with_data):
     window = tk.Tk()
     window.title(f"New save")
-    window.minsize(width=250, height=250)
+    window.minsize(width=250, height=200)
     window.iconbitmap("src/sprites/other/icon.ico")
 
     for i in range(0, 2):
@@ -29,6 +29,7 @@ def create_new_save_window(action_to_perform_with_data):
     combo_languages.grid(column=1, row=1, sticky=tk.W)
 
     auto_reverse_var = tk.BooleanVar()
+    auto_reverse_var.set(True)
     check_auto_reverse = tk.Checkbutton(window, text="Auto reverse mistakes", variable=auto_reverse_var)
     check_auto_reverse.grid(column=0, row=2, columnspan=2, padx=25, sticky=tk.W)
 
@@ -45,8 +46,6 @@ def create_new_save_window(action_to_perform_with_data):
 
     def play_action():
         name = name_textbox.get("1.0", "end-1c")
-        if name == "":
-            name = "Szczepan"
         language = languages[combo_languages.current()]
         auto_reverse = auto_reverse_var.get()
         timer = enable_timer_var.get()

@@ -41,6 +41,9 @@ def create_play_action(launcher_window, resolution_combobox, save_index):
 
 def create_delete_action(launcher_window, play_button, delete_button, resolution_combobox, save_index):
     def button_action():
+        answer = tkm.askyesno(title='Confirmation', message=f'Are you sure that you want to delete save file {save_index}?')
+        if not answer:
+            return
         delete_save(save_index)
         delete_button.configure(state=tk.DISABLED)
         play_button.configure(command=create_new_save_action(launcher_window, resolution_combobox, save_index))
@@ -65,7 +68,7 @@ if __name__ == "__main__":
             delete.configure(state=tk.DISABLED)
         else:
             name, completion = status
-            play.configure(text=f"{name} {completion}")
+            play.configure(text=f"{name}\n\n{completion}")
             play.configure(command=create_play_action(window, resolution_combo, index))
 
 

@@ -1,7 +1,12 @@
+import random
 
 
 class new_save_data:
     def __init__(self, name, language, auto_reverse, timer, skip_witch):
+        if name == "" or name is None:
+            name = random.choice(["Szczepan", "Błażej", "Pankracy", "Bożydar", "Guliver", "Albina", "Ksawery",
+                                  "Alojzy", "Bronisław", "Telimena", "Mirosław", "Zbigniew", "Władysław",
+                                  "Małgorzata", "Papilot", "Franciszek", "Kazimierz", "Mieczysław", "Zygmunt"])
         self.name = name
         self.language = language
         self.auto_reverse = auto_reverse
