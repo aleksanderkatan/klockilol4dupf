@@ -1,0 +1,86 @@
+3 1
+None
+Interesting, what could this tile do?
+...
+Who am I kidding? You probably have stepped onto it in the level selection.
+
+
+3 5
+None
+O, another totally original stage uninspired by another game.
+
+
+3 7
+None
+This idea for a tile is so simple and elegant, it almost forces itself to be implemented.
+And despite of this, in the first two versions of this game it was absent.
+I'll tell you more about those in a second. I'll be rambling about them until the end of this zone, so feel free to shut your ears and not listen to me.
+
+
+3 8
+None
+The first version could hardly be called a game.
+Written in C++, it had no interface and therefore played entirely within the console. It had no mechanics apart from the digit tiles.
+It was more of a preservation of a concept - I happened to come across a Flash game with the same premise around 2010.
+Despite having spent long hours attempting to find the original on popular game websites, and later on webarchive and Flash Point, I didn't find it. At least, it was made eternal in some way.
+
+
+3 9
+None
+The second one was legit. "Klocki lol", 28 stages, more block variety, and it looked way better than the one you're playing right now.
+It was made in Game Maker 2 (with paid license!), it was a nasty spaghetti.
+After pressing left and right in quick succession, anything could happen! One time it will work correctly, other time only the stepped in tile will lose value, another time both tiles will lose value.
+But it looked pretty.
+
+
+3 10
+None
+Due to reasons it was called "The game with Shrek".
+It had a random level generator!
+One could say, your goal in this game is to understand, why it could also be called a game with Shrek.
+
+
+3 11
+None
+Some of the mechanics didn't make it to this game.
+First of all - multiple characters. You moved all of them at once. Sometimes they had reversed movement. Horizontally, vertically or both. It was too frustrating to solve.
+To finish a stage, one of them had to stand on a finish tile, and the others should be alive. They fell towards the bottom of the screen, and once outside the stage would reset.
+In another words, the same stage could be unbeatable if located slightly lower on the screen, because the finish tile took some time to mark the stage as won, hehehe.
+
+
+3 12
+None
+Another functionality that failed the test of time was the upside down "Y" tile, stolen from The Witness.
+It forced you to leave a singular numeric tile next to it.
+Frustrating and hard mechanic, both in regard to solving and creating stages.
+The spaghetti code also allowed only one such tile per map.
+
+
+3 13
+None
+In the third game (known as "klockilolunoduo"), I trapped a poor soul named Stefan. In addition, I stole all of his limbs.
+The game was not linear, after completing a zone he would receive back parts of his body and his swag outfit.
+Sadly, my Game Maker licence expired and I was unable to finish it.
+
+
+3 14
+None
+This time, the combo blocks didn't stand the test of time.
+Almost every tile could be combined with ice to make it slippery. There were maybe 3 levels that were worth it.
+Combining with numeric tiles made the block disappear after appropriate amount of steps.
+
+
+3 15
+None
+The big blocks also failed to make an appearance. As the name suggests, they took more space.
+Walking around on a 2x2 one didn't make it disappear.
+The stage you're on right now is pretty cool. I randomly replaced some tiles with ice and it turned out to be challenging, but not requiring backtracking* to beat!
++*with nontrivial depth.
+
+
+3 16
+None
+Apart from the mentioned before, all mechanics appear in this game, to lesser or bigger extent. They are not necessarily located on the main path, maybe they are hidden somewhere?
+And here we are, playing klockilol4dupf. Klockilol - obvious where this comes from. 4 - because it's the fourth iteration. And the interpretation of dupf is up to you.
+Ah, and the most important part! In the previous games there was no possibility of reversing moves. Wrong move = reset. That was so frustrating, oh my! I'm glad I finally found a solution to that.
+
