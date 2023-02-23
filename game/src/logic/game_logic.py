@@ -37,6 +37,7 @@ class game_logic:
         self.stage = None
         self.screen = screen
         self.keys_registered = []
+        self.escape_counter = 0
         self.single_layer = None
         self.input_box = input_box(
             0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET),
@@ -134,6 +135,9 @@ class game_logic:
                 next_move_direction = direction
                 continue
 
+            if not k.is_back_in_hierarchy(key):
+                self.escape_counter = 0
+
             if g.global_save_state.get_preference("cheats"):
                 if k.is_next_cheat(key):
                     c.execute_command(self, "c")
@@ -165,7 +169,13 @@ class game_logic:
                 target = l.up_in_hierarchy(self.level_index)
                 log.trace("Going back to", target)
                 if target == self.level_index:
-                    self.stage.reset()
+                    self.escape_counter += 1
+                    if self.escape_counter == 1:
+                        self.register_message("Press escape two more times to exit.", 5)
+                    if self.escape_counter == 2:
+                        self.register_message("Press escape once more to exit.", 5)
+                    if self.escape_counter == 3:
+                        c.exit_game()
                 else:
                     self.set_stage(l.up_in_hierarchy(self.level_index))
                 g.global_save_state.log_escape()
@@ -223,3 +233,8 @@ class game_logic:
 
     def execute_command(self, command):
         return c.execute_command(self, command)
+
+    def register_message(self, message, seconds):
+        anim_manager, screen = self.stage.animation_manager, self.screen
+        anim_manager.register_message(screen, message, v.FRAME_RATE * seconds)
+        log.info(f"Displaying message: {message}")

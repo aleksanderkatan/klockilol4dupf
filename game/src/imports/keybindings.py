@@ -18,7 +18,7 @@ def is_down(key):
 
 
 def is_reverse(key):
-    return key in [pygame.K_q, pygame.K_RSHIFT, pygame.K_BACKSPACE]
+    return key in [pygame.K_q, pygame.K_RSHIFT, pygame.K_LSHIFT, pygame.K_BACKSPACE]
 
 
 def is_reset(key):
