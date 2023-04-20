@@ -36,6 +36,7 @@ def find_differences(events1, events2):
     return only_in_first, only_in_second
 
 
+
 if __name__ == "__main__":
     lan1 = "polish"
     lan2 = "english"

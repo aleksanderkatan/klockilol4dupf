@@ -1,0 +1,76 @@
+4 1
+None
+Okay, so stories it is...
+Don't expect anything ambitious.
+
+
+4 2
+None
+Back in junior high school a friend of mine sneaked into biology classroom.
+His intention wasn't to steal the mark book, rather he wanted to steal a pig's kidney that the teacher brought to show.
+He was throwing it across the main hall until it accidentally fell through the window and landed on a rock.
+That's it on the picture in the background.
+
+
+4 3
+None
+Oh no, I'm out of anecdotes!
+I'll think of something else.
+
+
+4 4
+None
+Ah, about what is actually happening here.
+3D levels. They usually are unreadable as hell, and that's why I scrapped a lot of them.
+Anyway, you'll have to endure through some of them. In future they will become rare.
+IMPORTANT: you can use number keys to show only one layer at a time.
+
+
+4 7
+None
+IT trivia, that's it! It just so happens I know quite a few of them.
+Did you know you can approximate mile to kilometer conversion with Fibonacci sequence?
+3mi is more or less 5km, exactly 4.83km
++5mi is more or less 8km, exactly 8.04km
++8mi is more or less 13km, exactly 12.87km
++13mi is more or less 21km, exactly 20.92km
+This is because notice, that if we take the generating function of the Fibonacci sequence $$F(z) = \sum_{i=0}^{\infty} F_i z^i$$ and notice that $$F(z)-F(z)z-F(z)^2 = $$ something, definitely a polynomial of degree 2 or less, and then we find the coherent formula for $F(z)$ and split it into simple fractions, I mean those like $G(x) = \frac{1}{1-x}$, we'll get the formula for n'th Fibonacci number, and we'll be able to calculate the asymptotic quotient of two consecutive Fibonacci numebers, equal to the golden ratio, so circa 1.618, which happens to be surprisingly close to the real conversion factor, 1.609. And that's where this asymptotic approximation comes from.
+
+
+4 9
+None
+Yeah, maybe that explanation was a bit excessive.
+There was a hungarian mathematician named Paul Erdős. What's interesting about him is he usually did math while high af.
+One of his friends once bet 500$ that Erdős would go cold turkey for a month.
+Erdős won, although he was not fond of it. After receiving his reward, this was his statement.
++"You've showed me I'm not an addict. But I didn't get any work done. I'd get up in the morning and stare at a blank piece of paper. I'd have no ideas, just like an ordinary person. You've set mathematics back a month."
+And the 500$ he won, he likely spent on drugs.
+
+
+4 10
+None
+Blue tiles retain your movement direction. But if your last move wasn't in a cardinal direction...
+
+
+4 12
+None
+Speaking about Erdős, have you heard about Erdős Number? During his life, he's published papers with so many people, some of them started to boast they were one of them.
+Erdős Number is a property of people. Erdős has a number of 0, mathematicians who have published with him have a number of 1, those who have published with them have a number of two and so on.
+1 person has had 0, 509 had 1, around 12.600 had 2, but this isn't that monotonic.
+Only around 200.000 people have a number that isn't infinity, and around 90% of them have 8 or less.
+
+
+4 14
+None
+Despite being a junkie and sleeping only 5 hours a day, Erdős died at the age of 83. Gallois, on the other hand, who also is a famous mathematician died at 21 in a duel regarding a girl he liked.
+Many mathematicians died in a funny way.
+Turing doused an apple with cyanide and ate it, because he watched too much Snow White.
+Gödel starved to death.
++He was convinced, that everyone except his wife wanted to poison him, so he only ate food prepared by the wife. He couldn't cook on his own, so once his wife had an accident and went into a hospital, he simply had nothing to eat. Sure, it's definitely better to starve than to risk eating a poison. Logic definitely wasn't his strong suit.
+
+
+4 15
+None
+Reminder, that you can use digits to take a better look at single layers.
+
+

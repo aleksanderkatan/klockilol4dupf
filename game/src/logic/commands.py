@@ -92,7 +92,7 @@ def command_speedrun(game_logic, command):
 
     settings = speedrun_settings(does_death_reset=("-d" in options))
     speedrun = speedruns[name](settings)
-    g.global_save_state.hard_erase_all()
+    g.global_save_state.hard_erase_all(exceptions=["name"])
     g.global_save_state.load_speedrun_preferences()
     stage, pos = speedrun.get_starting_stage_and_pos()
     game_logic.set_stage((1, 1))

@@ -133,9 +133,12 @@ class save_state:
         for key, value in self.cached.items():
             self.hard_save(key, value)
 
-    def hard_erase_all(self):
+    def hard_erase_all(self, exceptions=None):
+        if exceptions is None:
+            exceptions = []
+
         files = os.listdir(self.path)
-        files = [file for file in files if file.endswith(".pk")]
+        files = [file for file in files if file.endswith(".pk") and file[:-3] not in exceptions]
         for file in files:
             path = os.path.join(self.path, file)
             os.remove(path)

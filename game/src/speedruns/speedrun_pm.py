@@ -1,3 +1,4 @@
+import src.imports.globals as g
 from src.speedruns.speedrun import speedrun
 
 
