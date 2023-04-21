@@ -18,7 +18,7 @@ public_commands = {}
 
 def command_reset_all(game_logic, command):
     log.warning("Eradicating save file.")
-    g.global_save_state.hard_erase_all()
+    g.global_save_state.hard_erase_all(exceptions=["name"])
     game_logic.level_index = None
     game_logic.set_stage((400, 1))
 
