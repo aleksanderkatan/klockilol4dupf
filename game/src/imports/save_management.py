@@ -23,7 +23,6 @@ def create_new_save(index, new_save_data):
     os.mkdir(f"src/data/save_slot_{index}")
     log.info(f"Creating save {index} with data {str(new_save_data)}")
     save = save_state(index)
-    print(new_save_data.name)
     save.set_name(new_save_data.name)
     save.set_language(new_save_data.language)
     save.set_preference("auto_reverse", new_save_data.auto_reverse)
@@ -49,7 +48,6 @@ def get_saves_status():
         if _does_save_exist(i):
             temp_save_state = save_state(i, read_only=True)
             name, completion = temp_save_state.get_name(), get_completion(temp_save_state)
-            print(name, completion)
             result.append((name, completion))
         else:
             result.append(None)

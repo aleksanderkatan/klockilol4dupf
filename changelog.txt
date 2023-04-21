@@ -1,5 +1,8 @@
 v1.1
--
+- add language support and English translation
+- replace global save file with 3 save slots
+- revamp the launcher
+- add a way to exit the game by mashing escape
 
 v1.0 is finally here!
 
