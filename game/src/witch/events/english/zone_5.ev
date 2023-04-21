@@ -30,6 +30,29 @@ But real numbers {e, pi, root_of_2, ...} vastly outnumber the aforementioned, an
 ...but I won't do it now, we don't have 3 lectures to spare.
 
 
+5 12
+None
+Speaking about infinities...
+I have happened to come across a statement, that a chimp left with a typing machine for long enough will eventually produce one of Shakeaspeare's "masterpieces".
+That's partially true and untrue. There is no constant number of coin tosses that guarantees a tails, but the possibility of an endless stream of heads is equal to 0.
+Analogously, there is no amount of time which guarantees that the chimp will produce this trash, but the probability of it never happening is 0. It will happen eventually.
 
 
+5 15
+None
+Few things grind my gears more than this statement: "If there exist an infinite number of parallel universes, everything has happened in some of them".
+In the set {1, 3, 5, 7, 9, ...} there are infinitely many different numbers, but there is no 2. Having only this one assumption, those universes might differ only by how hard have I farted, with no butterfly effect taking action.
+Thus, Jessica, you might be bad at maths in every alternate universe.
 
+
+5 16
+None
+Sorry for that extra one at the start of previous stage, I couldn't refrain from it.
+
+
+5 17
+None
+This is the last one about infinities. Imagine you go to a casino and there is a following game there: 1$ entry, and with equal probability you win either 2$ or nothing.
+In other words, with each game there is a 50% chance of you getting +1$ balance, or -1$ balance.
+It doesn't matter with how much money you enter the casino with, you will eventually lose everything. Even a 100$ won't help you. It doesn't matter that "on average" you still have the same amount of money. There is no infinite circling around that number or anything else similar.
+Formally, this is called a Markov Chain. If you assume you can go below 0$, all states are recursive, which means that you will reach every state eventually. Thus, you will also eventually reach 0$.

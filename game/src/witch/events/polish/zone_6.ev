@@ -8,7 +8,7 @@ None
 No dobra, to teraz trochę grubsze ciekawostki.
 Być może nauczyciel fizyki uczył cię kiedyś liczyć pierwiastek z liczby przy użyciu prostego kalkulatora.
 nowy_wynik = 1/2 * (stary_wynik + liczba_którą_pierwiastkujesz/stary_wynik)
-I tak sobie powtarzasz, zaczynając od byle czego, przybliżasz się do pierwiastka liczby. To się nazywa metodą Newtona i można nią liczyć wiele różnych funkcji.
++I tak sobie powtarzasz, zaczynając od byle czego, przybliżasz się do pierwiastka liczby. To się nazywa metodą Newtona i można nią liczyć wiele różnych funkcji.
 Twórcy Quake III Arena potrzebowali szybko liczyć 1/pierwiastek(a). Użyli podobnej metody, ale zoptymalizowali ją w opór. Teraz, jak wygooglujesz "what the fuck algorithm", dostaniesz w wynikach "fast inverse square root"! Wraz z tym paskudnym kawałkiem kodu.
 
 
@@ -51,10 +51,10 @@ pair<int, string>a, b, c[1000000], s;
 
 6 14
 None
-A jak już jesteśmy przy średnikach, w c# jest LINQ, czyli system zapytań zintegrowanych z językiem. Jest to taki śmieszny miks c# z SQLem i można w nim robić selecty itp.
+A jak już jesteśmy przy średnikach, w C# jest LINQ, czyli system zapytań zintegrowanych z językiem. Jest to taki śmieszny miks C# z SQLem i można w nim robić selecty itp.
 Da się napisać zapytanie, które wczytuje graf z stdina i wypisuje na stdout liczbę spójnych składowych i ich rozmiary.
 Kod bez forów, whilów czy rekurencji, nawet modyfikowania zmiennych. Mamy tylko deklarowanie zmiennych i Aggregate. Chcesz wczytać 10 liczb i wypisać ich sumę?
-let input = (from i in Enumerable.Range(0, 10) select Console.ReadLine().ToString()).ToList()
++let input = (from i in Enumerable.Range(0, 10) select Console.ReadLine().ToString()).ToList()
 +let wynik = input.Aggregate((x, y) => x+y)
 +select Console.WriteLine(wynik)
 No i to nam pozwala pisać kod w cpp-like języku z 1 średnikiem. Deklaracja go pochłania, potem invoke na tym można wywołać w ifie.
