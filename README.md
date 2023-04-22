@@ -29,22 +29,20 @@ All mechanics and levels from both of those have been integrated into klockilol4
 
 ## Features
 
-- 10 base zones, each with a different gimmick, containing over 200 puzzles in total!
+- 10 main zones, each with a different gimmick, containing over 200 puzzles in total!
 - An ability to reverse any mistakes you make!
-- A witch, that acts as a narrator! (currently only speaks Polish)
+- A witch, that acts as a narrator!
 - Speedrun helpers, such as timer and commands setting up certain runs!
 - Several extra zones for players hungry for more!
 - An easy to learn level creation process based on txt files!
 
 ## Upcoming features
 
-- Save slots!
-- English support for the witch!
 - More extra zones!
 
 ## Installation
 
-For Windows 10:
+For Windows 10/11:
 1) Download this repo (code -> download as .zip).
 2) Create a new folder and unzip there.
 3) Run klockilol4dupf.exe (a file in "game" folder).
@@ -55,6 +53,9 @@ Windows Defender will likely stop the game from running. Press more info -> run 
 For Linux:
 
 just clone and run launcher.py, hopefully works
+<br/><br/>
+
+If you want to create an .exe yourself, use `pyinstaller --onefile .\klockilol4dupf.py`. The resulting file will be in a `dist` directory, and will need to be moved to the `game` directory to work.
 
 ## Controls
 - W, A, S, D or ARROW KEYS - movement  
