@@ -7,7 +7,7 @@ class speedrun_shrek(speedrun):
         return (400, 1), (5, 4, 0)
 
     def is_condition_met(self):
-        return g.global_save_state.get("shrek", False)
+        return g.save_state.get("shrek", False)
 
     def get_name(self):
         return "Shrek%"

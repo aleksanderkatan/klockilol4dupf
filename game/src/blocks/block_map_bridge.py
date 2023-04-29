@@ -14,11 +14,11 @@ class block_map_bridge(block):
         return block_map_bridge(self.screen, self.stage, new_state_index, self.pos, self.level_set)
 
     def on_step_in(self):
-        if not g.global_save_state.is_set_completed(self.level_set):
+        if not g.save_state.is_set_completed(self.level_set):
             self.stage.states[self.state_index].player.dead = True
 
     # def has_barrier(self, direction, into):
-    #     return not g.global_save_state.is_set_completed(self.level_set)
+    #     return not g.save_state.is_set_completed(self.level_set)
 
     def options(self, option):
         self.set_level_set(int(option))
@@ -29,7 +29,7 @@ class block_map_bridge(block):
             self.sprite = s.sprites["error"]
             return
 
-        if g.global_save_state.is_set_completed(level_set):
+        if g.save_state.is_set_completed(level_set):
             self.sprite = s.sprites["block_map_bridge_on"]
         else:
             self.sprite = s.sprites["block_map_bridge_off"]

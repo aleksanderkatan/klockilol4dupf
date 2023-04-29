@@ -5,7 +5,7 @@ from src.imports.view_constants import global_view_constants as v
 
 
 def run_game(resolution, save):
-    g.global_save_state = save
+    g.save_state = save
     pygame.init()
     x, y = resolution
     resolution = (x, y)

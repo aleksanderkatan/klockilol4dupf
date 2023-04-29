@@ -13,7 +13,7 @@ class witch:
         self.last_checked = (None, None)
 
     def check_for_events(self, level_index, stage):
-        if not g.global_save_state.get_preference("witch"):
+        if not g.save_state.get_preference("witch"):
             return
 
         if self.active_event is not None:
@@ -25,7 +25,7 @@ class witch:
         self.last_checked = (level_index, stage.get_player_index())
 
         for event in self.events:
-            if g.global_save_state.is_event_completed(event.index):
+            if g.save_state.is_event_completed(event.index):
                 continue
             if event.where[0] == level_index and (event.where[1] is None or event.where[1] == stage.get_player_index()):
                 self.active_event = event

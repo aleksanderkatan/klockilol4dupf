@@ -14,7 +14,7 @@ LOG_WARNINGS = True
 LOG_ERRORS = True
 
 # runtime variables, don't change
-global_save_state = None
+save_state = None
 KBcheat = False
 PAPOR = False
 LAST_ERROR = None

@@ -31,7 +31,7 @@ All mechanics and levels from both of those have been integrated into klockilol4
 
 - 10 main zones, each with a different gimmick, containing over 200 puzzles in total!
 - An ability to reverse any mistakes you make!
-- A witch, that acts as a narrator!
+- A witch, that acts as a narrator! She speaks either Polish or English.
 - Speedrun helpers, such as timer and commands setting up certain runs!
 - Several extra zones for players hungry for more!
 - An easy to learn level creation process based on txt files!
@@ -39,10 +39,11 @@ All mechanics and levels from both of those have been integrated into klockilol4
 ## Upcoming features
 
 - More extra zones!
+- Whatever you suggest that I find cool
 
 ## Installation
 
-For Windows 10/11:
+For <b>Windows 10/11</b>:
 1) Download this repo (code -> download as .zip).
 2) Create a new folder and unzip there.
 3) Run klockilol4dupf.exe (a file in "game" folder).
@@ -50,12 +51,13 @@ For Windows 10/11:
 Windows Defender will likely stop the game from running. Press more info -> run anyway, if you trust me enough.
 <br/><br/>
 
-For Linux:
-
-just clone and run launcher.py, hopefully works
+For <b>Linux</b> - just clone and run launcher.py, hopefully works
 <br/><br/>
 
-If you want to create an .exe yourself, use `pyinstaller --onefile .\klockilol4dupf.py`. The resulting file will be in a `dist` directory, and will need to be moved to the `game` directory to work.
+If you want to create an .exe yourself, use `pyinstaller --onefile .\klockilol4dupf.py`. 
+The result will generate in the `dist` directory, and will need to be moved to the `game` directory to function properly.
+
+When moving between devices, a save can be transferred by simply copying the save folder, and pasting it on the new device.
 
 ## Controls
 - W, A, S, D or ARROW KEYS - movement  
@@ -74,7 +76,6 @@ Commands are available after pressing Enter while in game.
 - auto_reverse - switch auto reverse after death.
 - timer - switch speedrun timer.
 - witch - switch witch comments.
-- reset_all - reset your save.
 - speedrun - start a speedrun given in the argument.   
     WARNING: this command wipes your save! You can back it up by copying files from `game/src/data`  
     Available speedruns:

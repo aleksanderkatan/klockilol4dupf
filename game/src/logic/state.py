@@ -86,7 +86,7 @@ class state:
 
         self.update_dark_visibility()
 
-        if g.KBcheat and g.global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.save_state.get_preference("cheats"):
             return
 
         # if not self.player.has_something_enqueued():
@@ -182,7 +182,7 @@ class state:
         return False
 
     def has_barrier(self, pos, direction):
-        if g.KBcheat and g.global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.save_state.get_preference("cheats"):
             return False
         if not direction.is_cardinal():
             return False

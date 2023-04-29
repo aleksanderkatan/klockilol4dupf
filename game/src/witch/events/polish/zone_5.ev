@@ -56,3 +56,4 @@ Ostatnie o nieskończoności. Wyobraź sobie, że idziesz do kasyna i proponują
 Innymi słowy masz 50% na +1zł do balansu, 50% na -1zł do balansu.
 Nieważne, z jaką ilością pieniędzy tam przyjdziesz, jak będziesz grał do oporu to w końcu przegrasz. Nawet sto złoty cię nie uratuje. Pomimo faktu, że cały czas masz "średnio" (w oczekiwaniu) tyle samo pieniędzy, co na starcie. Nie ma nieskończonego krążenia wokół kwoty startowej ani niczego podobnego.
 To się formalnie nazywa łańcuchem Markowa, wszystkie stany są rekurencyjne jak zignorujemy kończenie przy uzyskaniu 0, więc z prawdopodobieństwem 1 trafisz kiedyś na 0.
+

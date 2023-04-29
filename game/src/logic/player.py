@@ -35,7 +35,7 @@ class player:
                 return s.sprites["flavour_orange"]
             else:
                 return s.sprites["flavour_lemon"]
-        if g.global_save_state.get_preference("shrek"):
+        if g.save_state.get_preference("shrek"):
             return s.sprites["player_shrek"]
         return s.sprites["player"]
 
@@ -120,7 +120,7 @@ class player:
         self.this_move_direction = d.NONE
         self.pos = new_pos
 
-        if g.KBcheat and g.global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.save_state.get_preference("cheats"):
             return
 
         if not self.stage.states[self.state_index].standable(self.pos) and self.flight <= 0:
