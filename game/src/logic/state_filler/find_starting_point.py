@@ -1,5 +1,5 @@
-from src.imports.log import log
 import src.imports.all_blocks as o
+from src.imports.log import log
 
 
 def _extract_forced_spawn(options):

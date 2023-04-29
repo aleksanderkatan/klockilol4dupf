@@ -1,14 +1,13 @@
 import os
 import pickle
-import src.imports.levels as l
+
 import src.imports.globals as g
-from src.imports.log import log
+import src.imports.levels as l
 import src.imports.utils as u
+from src.imports.log import log
 from src.imports.view_constants import global_view_constants as v
 
-SAVE_FILE_PATH = 'src/data/completed.txt'
-
-DATA_PATH = 'src/data/'
+DATA_PATH = 'src/data'
 
 PREFERENCE_DEFAULTS = {
     "auto_reverse": False,
@@ -24,20 +23,6 @@ PREFERENCE_SPEEDRUN_CHANGES = {
     "timer": True,
     "witch": False,
 }
-
-
-def _save_pickle(key, data):
-    file_path = DATA_PATH + key + ".pk"
-    with open(file_path, 'wb') as f:
-        pickle.dump(data, f)
-
-
-def _read_pickle(key, default_data):
-    file_path = DATA_PATH + key + ".pk"
-    if not os.path.isfile(file_path):
-        return default_data
-    with open(file_path, 'rb') as f:
-        return pickle.load(f)
 
 
 class completed_levels:
@@ -89,20 +74,44 @@ class completed_levels:
         return level - 1 in self.completed[level_set]
 
 
-class new_save_state:
-    def __init__(self):
+class save_state:
+    def __init__(self, index, read_only=False):
+        log.info(f"Save instance created, index: {index}, readonly: {read_only}.")
+        self.path = f"{DATA_PATH}/save_slot_{index}/"
         self.cached = {}
+        self.read_only = read_only
+
+        if self.read_only:
+            return
+
         self.hard_restore("completed", completed_levels())
         self.hard_restore("events", set())
         self.hard_restore("time", 0)
-        self.increase_value("time", 0, amount=v.FRAME_RATE * g.AUTO_SAVE_INTERVAL, hard_save=True)  # prevent cheesing
+        if self.get("time", 0) > 0:
+            self.increase_value("time", 0, amount=v.FRAME_RATE * g.AUTO_SAVE_INTERVAL)  # prevent cheesing
+
+    def _save_pickle(self, key, data):
+        if self.read_only:
+            log.warning(f"Trying to save in a readonly save instance! key: {key}, data: {data}")
+            return
+
+        file_path = self.path + key + ".pk"
+        with open(file_path, 'wb') as f:
+            pickle.dump(data, f)
+
+    def _read_pickle(self, key, default_data):
+        file_path = self.path + key + ".pk"
+        if not os.path.isfile(file_path):
+            return default_data
+        with open(file_path, 'rb') as f:
+            return pickle.load(f)
 
     def hard_save(self, key, data):
         self.cached[key] = data
-        _save_pickle(key, data)
+        self._save_pickle(key, data)
 
     def hard_restore(self, key, default_data):
-        result = _read_pickle(key, default_data)
+        result = self._read_pickle(key, default_data)
         self.cached[key] = result
         return result
 
@@ -111,10 +120,10 @@ class new_save_state:
             self.hard_restore(key, default_data)
         # !! fails because I fell for double import trap. TODO: resolve this
         # ??
-        if not (self.cached[key], type(default_data)):
-            log.error(
-                f"Wrong data type. Cached: {self.cached[key]} of type {type(self.cached[key])}, expected {type(default_data)}")
-            # self.cached[key] = default_data
+        # if not (self.cached[key], type(default_data)):
+        #     log.error(
+        #         f"Wrong data type. Cached: {self.cached[key]} of type {type(self.cached[key])}, expected {type(default_data)}")
+        # self.cached[key] = default_data
         return self.cached[key]
 
     def set(self, key, data):
@@ -124,11 +133,14 @@ class new_save_state:
         for key, value in self.cached.items():
             self.hard_save(key, value)
 
-    def hard_erase_all(self):
-        files = os.listdir(DATA_PATH)
-        files = [file for file in files if file.endswith(".pk")]
+    def hard_erase_all(self, exceptions=None):
+        if exceptions is None:
+            exceptions = []
+
+        files = os.listdir(self.path)
+        files = [file for file in files if file.endswith(".pk") and file[:-3] not in exceptions]
         for file in files:
-            path = os.path.join(DATA_PATH, file)
+            path = os.path.join(self.path, file)
             os.remove(path)
         self.cached = {}
 
@@ -140,6 +152,19 @@ class new_save_state:
         self.set(key, new_value)
         if hard_save:
             self.hard_save(key, new_value)
+
+    # new save
+    def set_name(self, name):
+        self.hard_save("name", name)
+
+    def get_name(self):
+        return self.get("name", None)
+
+    def set_language(self, language):
+        self.hard_save("language", language)
+
+    def get_language(self):
+        return self.get("language", "English")
 
     # levels
 
@@ -261,6 +286,3 @@ class new_save_state:
         message += f"In-game time: " + u.ticks_to_time(self.get("time", 0)) + "\n"
         message += self.get_logged_keys()
         return message
-
-
-global_save_state = new_save_state()

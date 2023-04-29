@@ -1,7 +1,7 @@
-from src.blocks.block import block
-import src.imports.all_sprites as s
-from src.imports.log import log
 import src.imports.all_random_level_generators as r
+import src.imports.all_sprites as s
+from src.blocks.block import block
+from src.imports.log import log
 
 
 class block_entrance_random(block):

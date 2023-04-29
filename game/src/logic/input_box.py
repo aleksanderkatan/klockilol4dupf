@@ -1,4 +1,5 @@
 import pygame as pg
+
 import src.imports.globals as g
 import src.imports.keybindings as k
 from src.imports.view_constants import global_view_constants as v

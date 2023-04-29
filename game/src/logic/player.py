@@ -1,10 +1,10 @@
-import src.imports.all_sprites as s
-from src.imports.save_state import global_save_state
-from src.animations.animation_player_jump import animation_player_jump
-import src.imports.globals as g
-from src.imports.view_constants import global_view_constants as v
-import src.imports.utils as u
 import pygame
+
+import src.imports.all_sprites as s
+import src.imports.globals as g
+import src.imports.utils as u
+from src.animations.animation_player_jump import animation_player_jump
+from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
 
 FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4
@@ -35,7 +35,7 @@ class player:
                 return s.sprites["flavour_orange"]
             else:
                 return s.sprites["flavour_lemon"]
-        if global_save_state.get_preference("shrek"):
+        if g.save_state.get_preference("shrek"):
             return s.sprites["player_shrek"]
         return s.sprites["player"]
 
@@ -120,7 +120,7 @@ class player:
         self.this_move_direction = d.NONE
         self.pos = new_pos
 
-        if g.KBcheat and global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.save_state.get_preference("cheats"):
             return
 
         if not self.stage.states[self.state_index].standable(self.pos) and self.flight <= 0:

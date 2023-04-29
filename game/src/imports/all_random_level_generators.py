@@ -1,7 +1,7 @@
 import src.level_generators.less_simple_level_generator as LSLG
 import src.level_generators.portal_level_generator as PLG
-from src.level_generators.spelunky_inspired_segmented_level_generator.generate import generate as SISLG
 from src.imports.log import log
+from src.level_generators.spelunky_inspired_segmented_level_generator.generate import generate as SISLG
 
 
 # noinspection PyPep8Naming

@@ -1,6 +1,7 @@
+import os
+
 from PIL import Image
 from PIL import ImageEnhance
-import os
 
 root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\game\\src\\sprites\\"
 old_path = root + "blocks_bases\\"

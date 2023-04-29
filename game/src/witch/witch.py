@@ -1,14 +1,11 @@
-import pygame as pg
 import src.imports.all_sprites as s
 import src.imports.globals as g
 import src.imports.keybindings as k
 from src.witch.witch_box import witch_box
-from src.witch.events import events
-from src.imports.save_state import global_save_state
 
 
 class witch:
-    def __init__(self, screen):
+    def __init__(self, screen, events):
         self.events = events
         self.screen = screen
         self.active_event = None
@@ -16,7 +13,7 @@ class witch:
         self.last_checked = (None, None)
 
     def check_for_events(self, level_index, stage):
-        if not global_save_state.get_preference("witch"):
+        if not g.save_state.get_preference("witch"):
             return
 
         if self.active_event is not None:
@@ -28,7 +25,7 @@ class witch:
         self.last_checked = (level_index, stage.get_player_index())
 
         for event in self.events:
-            if global_save_state.is_event_completed(event.index):
+            if g.save_state.is_event_completed(event.index):
                 continue
             if event.where[0] == level_index and (event.where[1] is None or event.where[1] == stage.get_player_index()):
                 self.active_event = event

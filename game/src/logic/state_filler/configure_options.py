@@ -1,10 +1,10 @@
+import src.imports.all_sprites as sprites
 from src.imports.log import log
 from src.logic.state_filler.option_maps import option_map
-import src.imports.all_sprites as sprites
-from src.other.chav import chav
-from src.other.bomb import bomb
-from src.other.decoration import decoration
 from src.logic.state_filler.state_load_exception import state_load_exception
+from src.other.bomb import bomb
+from src.other.chav import chav
+from src.other.decoration import decoration
 
 
 def configure_options(s, options, blocks):
@@ -18,7 +18,8 @@ def configure_options(s, options, blocks):
             current_options = options[option_map[key]]
 
             if len(current_options) < len(value):
-                raise state_load_exception(f"Too few {option_map[key]} options, {len(current_options)} instead of {len(value)}.")
+                raise state_load_exception(
+                    f"Too few {option_map[key]} options, {len(current_options)} instead of {len(value)}.")
             if len(current_options) > len(value):
                 log.warning(f"Too many {option_map[key]} options, {len(current_options)} instead of {len(value)}.")
 
@@ -59,4 +60,3 @@ def configure_options(s, options, blocks):
             h_align = option[4]
             v_align = option[5]
             s.decorations.append(decoration(s.screen, s.stage, s.state_index, (x, y, z), sprite, h_align, v_align))
-

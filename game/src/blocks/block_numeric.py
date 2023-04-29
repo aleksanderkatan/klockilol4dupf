@@ -1,8 +1,9 @@
-from src.blocks.block import block
-from src.blocks.block_empty import block_empty
+import random
+
 import src.imports.all_sprites as s
 from src.animations.animation_disappearing_block import animation_disappearing_block
-import random
+from src.blocks.block import block
+from src.blocks.block_empty import block_empty
 
 
 class block_numeric(block):

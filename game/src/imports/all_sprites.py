@@ -1,7 +1,9 @@
+import os
+
 import pygame
+
 import src.imports.globals as g
 from src.imports.view_constants import global_view_constants as v
-import os
 
 path = "src/sprites/"
 blocks_path = path + ("blocks/" if not g.THREED else "blocks_3d/")
@@ -28,7 +30,7 @@ for name, sprite in block_sprites.items():
         )
     else:
         new_sprite = pygame.transform.scale(sprite, (
-        v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE + (0 if not g.THREED else v.BLOCK_3D_DIFFERENCE)))
+            v.BLOCK_X_SIZE, v.BLOCK_Y_SIZE + (0 if not g.THREED else v.BLOCK_3D_DIFFERENCE)))
 
     sprites[name] = {}
 

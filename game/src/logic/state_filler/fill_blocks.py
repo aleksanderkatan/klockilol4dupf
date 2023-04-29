@@ -1,9 +1,9 @@
+import src.imports.all_blocks as o
+from src.imports.charmap import charmap
 from src.logic.layer import layer
 from src.logic.player import player
-from src.imports.charmap import charmap
-from src.logic.state_filler.state_load_exception import state_load_exception
 from src.logic.state_filler.option_maps import char_optionable_blocks
-import src.imports.all_blocks as o
+from src.logic.state_filler.state_load_exception import state_load_exception
 
 
 def fill_blocks(s, level):
@@ -21,7 +21,7 @@ def fill_blocks(s, level):
             for x_ in range(x):
                 char = level.t[x_][y_][z_]
                 try:
-                    block_class = charmap[char]     # get the constructor
+                    block_class = charmap[char]  # get the constructor
                 except KeyError:
                     raise state_load_exception(f"Unknown character [{char}] at position x={x_}, y={y_}, z={z_}.")
 

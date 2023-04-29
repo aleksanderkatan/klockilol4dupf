@@ -1,8 +1,8 @@
-from src.blocks.block import block
-from src.logic.commands import exit_game
 import src.imports.all_sprites as s
+import src.imports.globals as g
+from src.blocks.block import block
 from src.imports.log import log
-from src.imports.save_state import global_save_state
+from src.logic.commands import exit_game
 
 
 class block_game_exit(block):
@@ -14,5 +14,5 @@ class block_game_exit(block):
         return block_game_exit(self.screen, self.stage, new_state_index, self.pos)
 
     def on_step_in(self):
-        log.write(global_save_state.get_all_stats())
+        log.write(g.save_state.get_all_stats())
         exit_game()

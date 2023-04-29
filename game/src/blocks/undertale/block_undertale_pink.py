@@ -1,5 +1,5 @@
-from src.blocks.block_perma import block_perma
 import src.imports.all_sprites as s
+from src.blocks.block_perma import block_perma
 
 
 class block_undertale_pink(block_perma):

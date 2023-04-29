@@ -1,4 +1,3 @@
-
 s = """
 .0000000..0000000E
 .0.00..0..000000..
@@ -25,6 +24,3 @@ for y, line in enumerate(level):
         # else:
         #     print(f"                                   ", end="")
     print()
-
-
-

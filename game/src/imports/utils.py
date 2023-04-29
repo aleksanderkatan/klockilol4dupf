@@ -1,7 +1,7 @@
-from re import I
-import pygame
 import hashlib
-import src.imports.globals as g
+
+import pygame
+
 from src.imports.log import log
 from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
@@ -18,7 +18,7 @@ def index_to_position(x, y, z, size_x, size_y, size_z, middle=False):
            high_left[1] + v.BLOCK_Y_SIZE * y - (z - size_z / 2) * v.LAYER_Y_OFFSET
 
     if middle:
-        return x + v.BLOCK_X_SIZE//2, y + v.BLOCK_Y_SIZE//2
+        return x + v.BLOCK_X_SIZE // 2, y + v.BLOCK_Y_SIZE // 2
     return x, y
 
 

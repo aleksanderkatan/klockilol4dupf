@@ -1,18 +1,18 @@
 import pygame
-from src.logic.stage import stage
-from src.logic.input_box import input_box
-import src.imports.utils as u
+
 import src.imports.all_sprites as s
 import src.imports.globals as g
-import src.imports.levels as l
-import src.logic.commands as c
 import src.imports.keybindings as k
-from src.imports.view_constants import global_view_constants as v
-from src.imports.save_state import global_save_state
-from src.witch.witch import witch
+import src.imports.levels as l
+import src.imports.utils as u
+import src.logic.commands as c
 from src.imports.log import log
+from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
-from src.animations.animation_manager import animation_manager
+from src.logic.input_box import input_box
+from src.logic.stage import stage
+from src.witch.events import load_events
+from src.witch.witch import witch
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
@@ -38,20 +38,21 @@ class game_logic:
         self.stage = None
         self.screen = screen
         self.keys_registered = []
+        self.escape_counter = 0
         self.single_layer = None
         self.input_box = input_box(
             0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET),
             v.WINDOW_X, v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET, self, "empty"
         )
         self.level_index = None
-        self.witch = witch(screen)
+        self.witch = witch(screen, load_events(g.save_state.get_language()))
         self.grayness = s.sprites["background_grayness"]
         self.speedrun = None
 
     def set_stage(self, level_index):
         # update invisible visibility
         new_visibility = ((v.INVISIBLE_BLOCK_1_VISIBILITY - v.INVISIBLE_BLOCK_0_VISIBILITY)
-                          * global_save_state.get_completion() + v.INVISIBLE_BLOCK_0_VISIBILITY) * 255
+                          * g.save_state.get_completion() + v.INVISIBLE_BLOCK_0_VISIBILITY) * 255
         s.sprites["block_invisible"][0].set_alpha(new_visibility)
 
         log.info("Filling stage", level_index)
@@ -67,6 +68,7 @@ class game_logic:
         self.stage = new_stage
         self.single_layer = None
         self.level_index = self.stage.level_index
+        self.escape_counter = 0
         return True
 
     def event_handler(self, event):
@@ -78,31 +80,31 @@ class game_logic:
 
     def perform_speedrun_check(self):
         if self.speedrun is not None and self.speedrun.is_condition_met():
-            global_save_state.hard_save_all()
+            g.save_state.hard_save_all()
             name = self.speedrun.get_name()
             log.write(f"Speedrun {name} completed! Deaths reset: {self.speedrun.does_death_reset()}")
-            log.write(global_save_state.get_all_stats())
-            global_save_state.set("is_timer_stopped", True)
-            global_save_state.hard_save_all()
+            log.write(g.save_state.get_all_stats())
+            g.save_state.set("is_timer_stopped", True)
+            g.save_state.hard_save_all()
 
     def complete(self):
         if not l.is_level(self.level_index):
             return False
 
         completed = self.level_index
-        global_save_state.complete_level(completed, hard_save=True)
+        g.save_state.complete_level(completed, hard_save=True)
         self.set_stage(l.next_level(completed))
         if self.speedrun is not None:
-            time = u.ticks_to_time(global_save_state.get("time", -1))
+            time = u.ticks_to_time(g.save_state.get("time", -1))
             log.write(f"Level {completed} completed at {time}")
             self.perform_speedrun_check()
         return True
 
     def move(self):
-        if not global_save_state.get("is_timer_stopped", False):
-            global_save_state.increase_value("time", default_data=0)
-            if global_save_state.get("time", 0) % (v.FRAME_RATE * g.AUTO_SAVE_INTERVAL) == 0:
-                global_save_state.hard_save_all()
+        if not g.save_state.get("is_timer_stopped", False):
+            g.save_state.increase_value("time", default_data=0)
+            if g.save_state.get("time", 0) % (v.FRAME_RATE * g.AUTO_SAVE_INTERVAL) == 0:
+                g.save_state.hard_save_all()
 
         # now this part is bullshit and I will rework it at some point
         # bruh
@@ -130,12 +132,15 @@ class game_logic:
             if witch_was_active or input_box_was_active:
                 continue
 
+            if not k.is_back_in_hierarchy(key):
+                self.escape_counter = 0
+
             direction = key_to_direction(key)
             if next_move_direction == d.NONE and direction != d.NONE:
                 next_move_direction = direction
                 continue
 
-            if global_save_state.get_preference("cheats"):
+            if g.save_state.get_preference("cheats"):
                 if k.is_next_cheat(key):
                     c.execute_command(self, "c")
                     continue
@@ -151,7 +156,7 @@ class game_logic:
 
             if k.is_reverse(key):
                 self.stage.reverse()
-                global_save_state.log_reverse()
+                g.save_state.log_reverse()
                 if self.speedrun is not None and self.speedrun.settings.does_death_reset:
                     self.stage.reset()
                 continue
@@ -159,17 +164,23 @@ class game_logic:
             if k.is_reset(key):
                 log.info("Resetting")
                 self.stage.reset()
-                global_save_state.log_reset()
+                g.save_state.log_reset()
                 continue
 
             if k.is_back_in_hierarchy(key):
                 target = l.up_in_hierarchy(self.level_index)
                 log.trace("Going back to", target)
                 if target == self.level_index:
-                    self.stage.reset()
+                    self.escape_counter += 1
+                    if self.escape_counter == 1:
+                        self.register_message("Press escape two more times to exit.", 5)
+                    if self.escape_counter == 2:
+                        self.register_message("Press escape once more to exit.", 5)
+                    if self.escape_counter == 3:
+                        c.exit_game()
                 else:
                     self.set_stage(l.up_in_hierarchy(self.level_index))
-                global_save_state.log_escape()
+                g.save_state.log_escape()
                 continue
 
             self.single_layer = u.new_single_layer(self.single_layer, key,
@@ -179,7 +190,7 @@ class game_logic:
         if not self.witch.is_active():
             self.stage.move(next_move_direction)  # has to be called, d.NONE if no move pressed
             if next_move_direction != d.NONE:
-                global_save_state.log_move(next_move_direction)
+                g.save_state.log_move(next_move_direction)
 
         if self.stage.speedrun_check_needed:
             self.stage.speedrun_check_needed = False
@@ -189,9 +200,10 @@ class game_logic:
             if self.speedrun is not None and self.speedrun.settings.does_death_reset:
                 self.stage.reset()
                 self.stage.animation_manager.register_message(self.screen, "You died, stage reset.", v.FRAME_RATE * 3)
-            elif global_save_state.get_preference("auto_reverse"):
-                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.", v.FRAME_RATE * 3)
-                global_save_state.log_auto_reverse()
+            elif g.save_state.get_preference("auto_reverse"):
+                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.",
+                                                              v.FRAME_RATE * 3)
+                g.save_state.log_auto_reverse()
                 self.stage.reverse()
         self.keys_registered = []
 
@@ -206,8 +218,8 @@ class game_logic:
             self.screen.blit(s.sprites['background_black'], (0, 0))
             self.input_box.draw(self.screen)
 
-        if global_save_state.get_preference("timer"):
-            ticks = global_save_state.get("time", 0)
+        if g.save_state.get_preference("timer"):
+            ticks = g.save_state.get("time", 0)
             time = u.ticks_to_time(ticks)
             txt_surface = FONT_2.render(time, True, pygame.Color('black'))
             self.screen.blit(txt_surface,
@@ -224,3 +236,8 @@ class game_logic:
 
     def execute_command(self, command):
         return c.execute_command(self, command)
+
+    def register_message(self, message, seconds):
+        anim_manager, screen = self.stage.animation_manager, self.screen
+        anim_manager.register_message(screen, message, v.FRAME_RATE * seconds)
+        log.info(f"Displaying message: {message}")

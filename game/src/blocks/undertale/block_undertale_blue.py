@@ -1,7 +1,7 @@
-from src.blocks.block import block
-from src.blocks.undertale.block_undertale_yellow import block_undertale_yellow
 import src.imports.all_sprites as s
 import src.imports.utils as u
+from src.blocks.block import block
+from src.blocks.undertale.block_undertale_yellow import block_undertale_yellow
 
 
 class block_undertale_blue(block):

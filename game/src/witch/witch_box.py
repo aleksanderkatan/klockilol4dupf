@@ -1,5 +1,5 @@
 import pygame as pg
-import src.imports.globals as g
+
 from src.imports.view_constants import global_view_constants as v
 
 COLOR = pg.Color('lightskyblue3')

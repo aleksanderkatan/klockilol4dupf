@@ -1,0 +1,77 @@
+6 2
+None
+Wait, what? Two almost identical stages again? Impossible.
+
+
+6 5
+None
+Now, this is the time for some of the heavier of my trivia.
+Has your physics teacher ever taught you how to calculate a square root of a number using only a simple calculator?
+new_result = 1/2 * (old_result + the_number_you_want_to_square_root/old_result)
++And you repeat it, starting from more or less anything, and you approach the root of the number. This is called Newton's Method, and is useful for calculating numerous functions.
+The creators of Quake III Arena needed to quickly calculate 1/root(a). They used this method, and optimized the heck out of it. Now, when you google "what the fuck algorithm", the first result will be "fast inverse square root"! With this abysmal piece of code included.
+
+
+6 7
+None
+This "what the fuck algorithm" is possible because the C programming language is not type safe.
+This means is is possible, that in runtime it occurs that somebody wanted to add a together eg. a horse and a septic tank truck instead of two numbers.
+C is as not type safe as possible. Every variable can be casted to (void*) and then back to anything else.
+You could even start interpreting a structure from the middle of its representation in memory.
+The only worse one is Assembly, in which you can perform a jump into a halfway point of an instruction representation, and the processor will eat this right up and start executing some mumbo jumbo.
+
+
+6 9
+None
+Nice.
+Do you like crossword puzzles?
+There is a subgenre of those, where the questions are located outside of the grid, and a part of the puzzle is figuring out where the answers should go.
+If you could effectively solve those, even given the answers to those questions, the IT world would collapse.
+A vast part of programmers would lose their job, and many algorithms would become immensely quicker.
+And the online security measures would fail. Everyone could read your e-mails, and possibly even break into your bank account.
+
+
+6 13
+None
+Majority of pure c++ programs can be rewritten to have only 1 semicolon. The main trick is to put every assignment into an if.
+Instead of
++a = 3;
++you write
++if(a=3) {}
+Instead of
++cin >> s;
++You write
++if(cin >> s) {}
+That one semicolon is required for variable declaration.
++int a, b, c[1000000];
+If you need another data type, here you go!
+pair<int, string>a, b, c[1000000], s;
++Just ignore that extra junk.
+
+
+6 14
+None
+Speaking about semicolons, C# has an integrated query language, also called LINQ. Its a funky mix of C# with SQL, you can do selects etc.
+It is possible to create a query, that reads a graph from stdin, and outputs the number of connected components and their sizes. Entirely inside of a single query.
+Code without any fors, whiles or recurrence, even without variable modification. You can only create new variables and use Aggregate. Input 10 integers and output their sum?
++let input = (from i in Enumerable.Range(0, 10) select Console.ReadLine().ToString()).ToList()
++let result = input.Aggregate((x, y) => x+y)
++select Console.WriteLine(result)
+And this allows us writing code in cpp-like language, while using only one semicolon. The query declaration eats it up, and later you invoke the query in an if.
+
+
+6 15
+None
+This mechanic will be important at some point. That's why I made a reminder. But it won't be in this zone.
+
+
+6 16
+None
+What is this? A level without an exit? How is this possible...
+
+
+6 19
+None
+Blue tiles here have a purpose.
+
+

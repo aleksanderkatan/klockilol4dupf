@@ -1,6 +1,6 @@
+import src.imports.all_sprites as s
 from src.blocks.block import block
 from src.blocks.block_empty import block_empty
-import src.imports.all_sprites as s
 
 d = {'X': 1, 'Y': 2, 'Z': 3}
 d1 = {1: 'X', 2: 'Y', 3: 'Z'}

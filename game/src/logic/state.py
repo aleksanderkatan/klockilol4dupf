@@ -1,9 +1,8 @@
-import src.imports.utils as u
 import src.imports.all_blocks as o
 import src.imports.all_sprites as s
 import src.imports.globals as g
+import src.imports.utils as u
 from src.logic.direction import direction as d
-from src.imports.save_state import global_save_state
 
 
 class state:
@@ -87,7 +86,7 @@ class state:
 
         self.update_dark_visibility()
 
-        if g.KBcheat and global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.save_state.get_preference("cheats"):
             return
 
         # if not self.player.has_something_enqueued():
@@ -146,7 +145,8 @@ class state:
             x, y, z = pusher.pos
             if z != layer_index:
                 continue
-            screen_pos = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y, len(self.layers))
+            screen_pos = u.index_to_position(pusher.pos[0], pusher.pos[1], pusher.pos[2], self.x, self.y,
+                                             len(self.layers))
             pusher.draw(screen_pos)
         for chav in self.chavs:
             x, y, z = chav.pos
@@ -182,7 +182,7 @@ class state:
         return False
 
     def has_barrier(self, pos, direction):
-        if g.KBcheat and global_save_state.get_preference("cheats"):
+        if g.KBcheat and g.save_state.get_preference("cheats"):
             return False
         if not direction.is_cardinal():
             return False

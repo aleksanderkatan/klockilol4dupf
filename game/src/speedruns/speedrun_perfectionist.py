@@ -1,5 +1,5 @@
+import src.imports.globals as g
 from src.speedruns.speedrun import speedrun
-from src.imports.save_state import global_save_state
 
 
 class speedrun_perfectionist(speedrun):
@@ -7,7 +7,7 @@ class speedrun_perfectionist(speedrun):
         return (400, 1), (5, 4, 0)
 
     def is_condition_met(self):
-        return global_save_state.get_completion(True) == 1
+        return g.save_state.get_completion(True) == 1
 
     def get_name(self):
         return "100%"

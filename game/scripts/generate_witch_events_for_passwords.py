@@ -6,6 +6,3 @@ if __name__ == "__main__":
         print(f"None")
         print(f"Hasło to: {key}")
         print()
-
-
-

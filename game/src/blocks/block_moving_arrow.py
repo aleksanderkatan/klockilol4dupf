@@ -1,8 +1,7 @@
-from src.blocks.block import block
-from src.blocks.block_empty import block_empty
 import src.imports.all_sprites as s
 import src.imports.utils as u
-import src.imports.globals as g
+from src.blocks.block import block
+from src.blocks.block_empty import block_empty
 from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
 

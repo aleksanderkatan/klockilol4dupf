@@ -1,4 +1,5 @@
 import random
+
 import src.imports.utils as u
 from src.imports.log import log
 from src.level_generators.less_simple_level_generator import better_level_generator

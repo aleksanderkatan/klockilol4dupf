@@ -1,5 +1,4 @@
 from src.blocks.block_perma import block_perma
-import src.imports.all_sprites as s
 
 
 class block_perma_unsteppable(block_perma):

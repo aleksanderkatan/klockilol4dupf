@@ -1,6 +1,7 @@
 import random
-from src.logic.direction import get_cardinal
+
 from src.level_generators.spelunky_inspired_segmented_level_generator.segment import segment
+from src.logic.direction import get_cardinal
 
 
 class segment_provider:
@@ -30,7 +31,6 @@ class segment_provider:
                         for out_dir in seg.outs:
                             self.normal[in_dir][out_dir].append(seg)
 
-
     def get(self, in_dir, out_dir):
         return _roll(self.normal[in_dir][out_dir])
 
@@ -47,15 +47,10 @@ def _roll(segment_list: list[segment]):
     total = 0
     for seg in segment_list:
         total += seg.actual_weight
-    roll = random.random()*total
+    roll = random.random() * total
     current_sum = 0
     for seg in segment_list:
         if current_sum <= roll <= current_sum + seg.actual_weight:
             return seg
         current_sum += seg.actual_weight
     raise RuntimeError("This should be unreachable")
-
-
-
-
-

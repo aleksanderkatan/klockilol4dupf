@@ -53,7 +53,6 @@ _base_segments = [
     ], ins=[LEFT], outs=[RIGHT], flippable="hvr"),
 ]
 
-
 _hard_only_numeric_segments = [
     # starts
     segment([
@@ -321,8 +320,6 @@ _test_segments = [
     ], ins=[LEFT], outs=[RIGHT], flippable="h"),
 ]
 
-
-
 preset_hard_numeric = _get_weighted([
     (_base_segments, 0.0001),
     (_hard_only_numeric_segments, 1),
@@ -333,5 +330,3 @@ preset_harder = _get_weighted([
     (_hard_only_numeric_segments, 0.25),
     (_hard_bridge_segments, 1),
 ])
-
-
