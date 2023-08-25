@@ -1,6 +1,10 @@
 import pygame
 
 
+def is_display_controls(key):
+    return key in [pygame.K_TAB]
+
+
 def is_left(key):
     return key in [pygame.K_a, pygame.K_LEFT]
 

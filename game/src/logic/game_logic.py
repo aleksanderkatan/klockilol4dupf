@@ -10,7 +10,7 @@ from src.imports.logic_mode import mode
 from src.imports.log import log
 from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
-from src.logic.input_box import input_box
+from src.logic.modes.input.input_box import input_box
 from src.logic.stage import stage
 from src.witch.events import load_events
 from src.witch.witch import witch
