@@ -42,6 +42,7 @@ class game_logic:
         self.mode = mode.GAME
         self.keys_registered = []
         self.escape_counter = 0
+        self.escape_timeout = 0
         self.single_layer = None
         self.input_box = input_box(
             0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET),
@@ -62,6 +63,11 @@ class game_logic:
         # now this part is bullshit and I will rework it at some point
         # bruh
         # it is not necessarily good now, but I can say it has been wor... no I can't even say that
+
+        self.escape_timeout -= 1
+        if self.escape_timeout <= 0:
+            self.escape_counter = 0
+
         if self.stage.latest_state().completed and not self.stage.animation_manager.is_logic_prevented():
             if self.complete():
                 return
@@ -160,13 +166,7 @@ class game_logic:
                     target = l.up_in_hierarchy(self.level_index)
                     log.trace("Going back to", target)
                     if target == self.level_index:
-                        self.escape_counter += 1
-                        if self.escape_counter == 1:
-                            self.register_message("Press escape twice to exit.", 5)
-                        if self.escape_counter == 2:
-                            self.register_message("Press escape once more to exit.", 5)
-                        if self.escape_counter == 3:
-                            c.exit_game()
+                        self._trigger_escape_counter()
                     else:
                         self.set_stage(l.up_in_hierarchy(self.level_index))
                     g.save_state.log_escape()
@@ -190,11 +190,17 @@ class game_logic:
                 self.input_box.clear()
                 return
         for key, unicode in self.keys_registered:
+            if k.is_back_in_hierarchy(key):
+                self._trigger_escape_counter()
+        for key, unicode in self.keys_registered:
             self.input_box.handle_key_pressed(key, unicode)
 
     def _mode_witch_move(self):
         for key, unicode in self.keys_registered:
             self.witch.handle_key_pressed(key)
+        for key, unicode in self.keys_registered:
+            if k.is_back_in_hierarchy(key):
+                self._trigger_escape_counter()
         if not self.witch.is_active():
             self.mode = mode.GAME
 
@@ -203,6 +209,19 @@ class game_logic:
             if k.is_display_controls(key):
                 self.mode = mode.GAME
                 return
+        for key, unicode in self.keys_registered:
+            if k.is_back_in_hierarchy(key):
+                self._trigger_escape_counter()
+
+    def _trigger_escape_counter(self):
+        self.escape_counter += 1
+        self.escape_timeout = v.FRAME_RATE * 5
+        if self.escape_counter == 1:
+            self.register_message("Press escape twice to exit.", 5)
+        if self.escape_counter == 2:
+            self.register_message("Press escape once more to exit.", 5)
+        if self.escape_counter == 3:
+            c.exit_game()
 
 
     def draw(self):
