@@ -39,6 +39,9 @@ All mechanics and levels from both of those have been integrated into klockilol4
 ## Upcoming features
 
 - More extra zones!
+- A way to skip levels.
+- An in-game display of the control scheme.
+- Hold a direction to keep moving that way.
 - Whatever you suggest that I find cool
 
 ## Installation

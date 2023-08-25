@@ -1,7 +1,7 @@
 import src.imports.all_sprites as s
 import src.imports.globals as g
 import src.imports.keybindings as k
-from src.witch.witch_box import witch_box
+from src.logic.modes.witch.witch_box import witch_box
 
 
 class witch:

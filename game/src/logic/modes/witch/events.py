@@ -3,9 +3,9 @@ import itertools
 import os
 
 from src.imports.log import log
-from src.witch.witch_event import witch_event
+from src.logic.modes.witch.witch_event import witch_event
 
-events_path = "src/witch/events/"
+events_path = "src/logic/modes/witch/events/"
 
 
 def files(root):

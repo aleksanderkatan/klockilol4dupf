@@ -12,8 +12,8 @@ from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
 from src.logic.modes.input.input_box import input_box
 from src.logic.stage import stage
-from src.witch.events import load_events
-from src.witch.witch import witch
+from src.logic.modes.witch.events import load_events
+from src.logic.modes.witch.witch import witch
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
