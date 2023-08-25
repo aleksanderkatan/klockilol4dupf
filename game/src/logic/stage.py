@@ -87,5 +87,5 @@ class stage:
     def needs_input(self):
         return not self.latest_state().is_next_move_forced()
 
-    def get_player_index(self):
+    def get_player_pos(self):
         return self.latest_state().player.pos

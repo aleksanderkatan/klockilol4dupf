@@ -12,26 +12,23 @@ class witch:
         self.text_box = witch_box(self.screen)
         self.last_checked = (None, None)
 
-    def check_for_events(self, level_index, stage):
+    def check_for_events(self, level_index, player_pos):
         if not g.save_state.get_preference("witch"):
-            return
+            return False
 
-        if self.active_event is not None:
-            return
-
-        if self.last_checked == (level_index, stage.get_player_index()):
-            return
+        if self.last_checked == (level_index, player_pos):
             # no need to search through this once again
-        self.last_checked = (level_index, stage.get_player_index())
+            return False
+        self.last_checked = (level_index, player_pos)
 
         for event in self.events:
             if g.save_state.is_event_completed(event.index):
                 continue
-            if event.where[0] == level_index and (event.where[1] is None or event.where[1] == stage.get_player_index()):
+            if event.where[0] == level_index and (event.where[1] is None or event.where[1] == player_pos):
                 self.active_event = event
                 event.activate()
                 self.update_text_box()
-                return
+                return True
 
     def draw(self):
         self.screen.blit(s.sprites["background_black"], (0, 0))

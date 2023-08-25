@@ -33,6 +33,10 @@ def is_input_box_enable(key):
     return key in [ord("`"), pygame.K_RETURN]
 
 
+def is_input_box_confirm(key):
+    return key in [pygame.K_RETURN]
+
+
 def is_input_box_disable(key):
     return key in [pygame.K_ESCAPE]
 
