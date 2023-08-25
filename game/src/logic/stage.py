@@ -10,7 +10,7 @@ from src.logic.state import state
 from src.logic.state_filler.state_filler_uno_duo import fill
 from src.other.particle_generator import particle_generator
 
-FONT = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.LEVEL_FONT_SIZE)
+FONT = pygame.font.Font(v.FONT_PATH, v.LEVEL_FONT_SIZE)
 
 
 class stage:

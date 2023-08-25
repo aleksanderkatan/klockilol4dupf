@@ -17,10 +17,10 @@ from src.logic.modes.witch.witch import witch
 from src.logic.modes.controls_display.control_display import control_display
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
-FONT_2 = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
+FONT_2 = pygame.font.Font(v.FONT_PATH, FONT_SIZE_2)
 
 FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4
-FONT_4 = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
+FONT_4 = pygame.font.Font(v.FONT_PATH, FONT_SIZE_4)
 
 
 def key_to_direction(key):

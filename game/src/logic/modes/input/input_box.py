@@ -8,7 +8,7 @@ import src.imports.all_sprites as s
 
 COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
-FONT = pg.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.WITCH_FONT_SIZE)
+FONT = pg.font.Font(v.FONT_PATH, v.WITCH_FONT_SIZE)
 
 
 class input_box:

@@ -2,7 +2,7 @@ import pygame
 
 from src.imports.view_constants import global_view_constants as v
 
-FONT = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.MESSAGE_FONT_SIZE)
+FONT = pygame.font.Font(v.FONT_PATH, v.MESSAGE_FONT_SIZE)
 
 
 class text_message:

@@ -8,7 +8,7 @@ from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
 
 FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4
-FONT = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
+FONT = pygame.font.Font(v.FONT_PATH, FONT_SIZE_4)
 
 
 class player:

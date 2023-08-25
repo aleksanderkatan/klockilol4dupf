@@ -6,7 +6,7 @@ COLOR = pg.Color('lightskyblue3')
 COLOR_BACK = pg.Color('black')
 FONT_SIZE = v.WITCH_FONT_SIZE
 FONT_OFFSET = v.WITCH_FONT_OFFSET
-FONT = pg.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE)
+FONT = pg.font.Font(v.FONT_PATH, FONT_SIZE)
 
 
 class witch_box:

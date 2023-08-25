@@ -31,6 +31,7 @@ class view_constants:
         self.THUNDER_PARTICLES = 16
         self.PORTAL_PARTICLES = 4
 
+        self.FONT_PATH = "src/fonts/mono/ttf/JetBrainsMono-Regular.ttf"
         self.FONT_RATIO = 0.59  # width to height for mono, sadly isn't 0.5
 
         self.update()
