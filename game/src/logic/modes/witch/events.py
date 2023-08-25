@@ -5,8 +5,6 @@ import os
 from src.imports.log import log
 from src.logic.modes.witch.witch_event import witch_event
 
-events_path = "src/logic/modes/witch/events/"
-
 
 def files(root):
     for path, _, fs in os.walk(root):
@@ -14,10 +12,10 @@ def files(root):
             yield os.path.join(path, name)
 
 
-def load_events(language):
+def load_events(events_path):
     events = []
 
-    for file_path in files(events_path + language):
+    for file_path in files(events_path):
         with io.open(file_path, mode="r", encoding="UTF-8") as f:
             level = None
             pos = None

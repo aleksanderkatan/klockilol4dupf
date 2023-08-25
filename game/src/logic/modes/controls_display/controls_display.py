@@ -14,7 +14,7 @@ def _draw_surfaces(screen, surfaces):
         screen.blit(surface, pos)
 
 
-class control_display:
+class controls_display:
     def __init__(self, language):
         self.title_surfaces = create_text_surfaces(
             "kontrolki",

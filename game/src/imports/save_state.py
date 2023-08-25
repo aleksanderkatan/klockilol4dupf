@@ -166,6 +166,9 @@ class save_state:
     def get_language(self):
         return self.get("language", "English")
 
+    def get_strings_path(self):
+        return "src/strings/" + self.get("language", "English").lower() + "/"
+    
     # levels
 
     def complete_level(self, level_index, hard_save):

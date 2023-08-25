@@ -42,8 +42,8 @@ if __name__ == "__main__":
 
     lan1 = "polish"
     lan2 = "english"
-    events1 = load_events(lan1)
-    events2 = load_events(lan2)
+    events1 = load_events(f"src/strings/{lan1}/events/")
+    events2 = load_events(f"src/strings/{lan2}/events/")
     print(f"{len(events1)} events in {lan1}, {len(events2)} events in {lan2}.\n")
     only_in_first, only_in_second = find_differences(events1, events2)
 

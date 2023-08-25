@@ -14,7 +14,7 @@ from src.logic.modes.input.input_box import input_box
 from src.logic.stage import stage
 from src.logic.modes.witch.events import load_events
 from src.logic.modes.witch.witch import witch
-from src.logic.modes.controls_display.control_display import control_display
+from src.logic.modes.controls_display.controls_display import controls_display
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font(v.FONT_PATH, FONT_SIZE_2)
@@ -48,8 +48,8 @@ class game_logic:
             0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET),
             v.WINDOW_X, v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET, ""
         )
-        self.witch = witch(screen, load_events(g.save_state.get_language()))
-        self.controls_display = control_display("AAAAAAAAAAAAAAA")
+        self.witch = witch(screen, load_events(g.save_state.get_strings_path() + "events/"))
+        self.controls_display = controls_display(g.save_state.get_language())
         self.level_index = None
         self.grayness = s.sprites["background_grayness"]
         self.speedrun = None
