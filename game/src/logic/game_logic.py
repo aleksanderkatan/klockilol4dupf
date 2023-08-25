@@ -6,7 +6,7 @@ import src.imports.keybindings as k
 import src.imports.levels as l
 import src.imports.utils as u
 import src.logic.commands as c
-from src.imports.logic_mode import mode
+from src.logic.modes.logic_mode import mode
 from src.imports.log import log
 from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
@@ -14,6 +14,7 @@ from src.logic.modes.input.input_box import input_box
 from src.logic.stage import stage
 from src.logic.modes.witch.events import load_events
 from src.logic.modes.witch.witch import witch
+from src.logic.modes.controls_display.control_display import control_display
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_2)
@@ -46,8 +47,9 @@ class game_logic:
             0, v.WINDOW_Y - (v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET),
             v.WINDOW_X, v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET, ""
         )
-        self.level_index = None
         self.witch = witch(screen, load_events(g.save_state.get_language()))
+        self.controls_display = control_display("AAAAAAAAAAAAAAA")
+        self.level_index = None
         self.grayness = s.sprites["background_grayness"]
         self.speedrun = None
 
@@ -74,12 +76,14 @@ class game_logic:
         # imagine pressing K, B and W at once, this should work
         # those methods do that, and also they do stuff like updating the mode to a new one
         match self.mode:
+            case mode.GAME:
+                next_move_direction = self._mode_game_move()
             case mode.INPUT:
                 self._mode_input_move()
             case mode.WITCH:
                 self._mode_witch_move()
-            case mode.GAME:
-                next_move_direction = self._mode_game_move()
+            case mode.CONTROLS_DISPLAY:
+                self._mode_controls_display_move()
 
         g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
         if self.mode == mode.GAME:
@@ -102,36 +106,19 @@ class game_logic:
                 self.stage.reverse()
         self.keys_registered = []
 
-    def _mode_input_move(self):
-        for key, unicode in self.keys_registered:
-            if k.is_input_box_disable(key):
-                self.mode = mode.GAME
-                self.input_box.clear()
-                return
-        for key, unicode in self.keys_registered:
-            if k.is_input_box_confirm(key):
-                command = self.input_box.text
-                self.execute_command(command)
-                self.mode = mode.GAME
-                self.input_box.clear()
-                return
-        for key, unicode in self.keys_registered:
-            self.input_box.handle_key_pressed(key, unicode)
-
-    def _mode_witch_move(self):
-        for key, unicode in self.keys_registered:
-            self.witch.handle_key_pressed(key)
-        if not self.witch.is_active():
-            self.mode = mode.GAME
-
     def _mode_game_move(self):
         next_move_direction = d.NONE
         for key, unicode in self.keys_registered:
             if k.is_input_box_enable(key):
                 self.mode = mode.INPUT
-                break
+                return
         if self.witch.check_for_events(self.level_index, self.stage.get_player_pos()):
             self.mode = mode.WITCH
+            return
+        for key, unicode in self.keys_registered:
+            if k.is_display_controls(key):
+                self.mode = mode.CONTROLS_DISPLAY
+                return
         else:
             for key, unicode in self.keys_registered:
                 if not k.is_back_in_hierarchy(key):
@@ -189,6 +176,34 @@ class game_logic:
                                                        self.stage.latest_state().z)  # returns none or integer
         return next_move_direction
 
+    def _mode_input_move(self):
+        for key, unicode in self.keys_registered:
+            if k.is_input_box_disable(key):
+                self.mode = mode.GAME
+                self.input_box.clear()
+                return
+        for key, unicode in self.keys_registered:
+            if k.is_input_box_confirm(key):
+                command = self.input_box.text
+                self.execute_command(command)
+                self.mode = mode.GAME
+                self.input_box.clear()
+                return
+        for key, unicode in self.keys_registered:
+            self.input_box.handle_key_pressed(key, unicode)
+
+    def _mode_witch_move(self):
+        for key, unicode in self.keys_registered:
+            self.witch.handle_key_pressed(key)
+        if not self.witch.is_active():
+            self.mode = mode.GAME
+
+    def _mode_controls_display_move(self):
+        for key, unicode in self.keys_registered:
+            if k.is_display_controls(key):
+                self.mode = mode.GAME
+                return
+
 
     def draw(self):
         self.screen.blit(s.sprites[l.background_of_level(self.level_index)], (0, 0))
@@ -198,8 +213,9 @@ class game_logic:
             case mode.WITCH:
                 self.witch.draw()
             case mode.INPUT:
-                self.screen.blit(s.sprites['background_black'], (0, 0))
                 self.input_box.draw(self.screen)
+            case mode.CONTROLS_DISPLAY:
+                self.controls_display.draw(self.screen)
 
         if g.save_state.get_preference("timer"):
             ticks = g.save_state.get("time", 0)

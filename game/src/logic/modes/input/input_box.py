@@ -3,7 +3,8 @@ import pygame as pg
 import src.imports.globals as g
 import src.imports.keybindings as k
 from src.imports.view_constants import global_view_constants as v
-from src.imports.logic_mode import mode
+import src.imports.all_sprites as s
+
 
 COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
@@ -30,6 +31,7 @@ class input_box:
 
 
     def draw(self, screen):
+        screen.blit(s.sprites['background_black'], (0, 0))
         screen.blit(self.txt_surface,
                     (self.rect.x + v.WITCH_FONT_OFFSET, self.rect.y + v.WITCH_FONT_OFFSET * 0.5))  # !! another constant
         pg.draw.rect(screen, self.color, self.rect, 2)
