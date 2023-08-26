@@ -198,9 +198,6 @@ class game_logic:
     def _mode_witch_move(self):
         for key, unicode in self.keys_registered:
             self.witch.handle_key_pressed(key)
-        for key, unicode in self.keys_registered:
-            if k.is_back_in_hierarchy(key):
-                self._trigger_escape_counter()
         if not self.witch.is_active():
             self.mode = mode.GAME
 

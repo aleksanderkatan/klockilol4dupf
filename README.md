@@ -45,6 +45,7 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - Newlines support in messages.
 - Return to the game in the stage you exited.
 - A way to type in commands while in controls_display mode (mixed state?)
+- Revamp birdy and pm lobbies.
 - More extra zones!
 - Any other suggestions that I find cool.
 

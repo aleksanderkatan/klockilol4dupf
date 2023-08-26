@@ -48,7 +48,7 @@ class controls_display:
             st.bottom,
             1,
             COLOR,
-            (0.5, 0.8),
+            (0.5, 0.82),
             (horizontal.MID, vertical.TOP)
         )
 

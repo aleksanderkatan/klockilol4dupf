@@ -1,10 +1,19 @@
-v1.1
-- add language support and English translation
-- replace global save file with 3 save slots
-- revamp the launcher
-- add a way to exit the game by mashing escape
+Version 1.2 - The Accessibility Update
+- Added an in-game display of controls under the TAB key.
+-
 
-v1.0 is finally here!
+Version 1.1 - The Language Update
+- Added English translation and support for adding other translations.
+- Replaced global save file with 3 save slots.
+- Revamped the launcher.
+- Added a way to exit the game by mashing escape.
+
+Version 1.0 is finally here! The base game and all its core functions are ready to play!
+
+
+---------------------------------------------------------------------------------------
+
+Pre-1.0 changelogs:
 
 0.106.5
 - rename "src" to "game"
@@ -28,7 +37,7 @@ v1.0 is finally here!
 - swap zones 7, 8, 9
 
 0.105
-- add all levels missing for v1.0
+- add all remaining levels required for v1.0
 - make "shrek" a preference
 - change lift and portal sprites
 - remove language setting from launcher (feature won't be in v1.0)
