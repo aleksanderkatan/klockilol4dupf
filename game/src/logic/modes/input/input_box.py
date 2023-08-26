@@ -11,6 +11,13 @@ COLOR_ACTIVE = pg.Color('dodgerblue2')
 FONT = pg.font.Font(v.FONT_PATH, v.WITCH_FONT_SIZE)
 
 
+def censor_text(text):
+    for command_name in g.ENABLE_CHEATS_COMMANDS:
+        if text[:len(command_name)] == command_name:
+            return command_name + " " + "*" * (len(text) - len(command_name) - 1)
+    return text
+
+
 class input_box:
     def __init__(self, x, y, w, h, text=''):
         self.rect = pg.Rect(x, y, w, h)
@@ -23,7 +30,7 @@ class input_box:
             self.text = self.text[:-1]
         elif len(self.text) < g.MAX_COMMAND_LENGTH:
             self.text += unicode
-        self.txt_surface = FONT.render(self.text, True, self.color)
+        self.txt_surface = FONT.render(censor_text(self.text), True, self.color)
 
     def clear(self):
         self.text = ""

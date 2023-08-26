@@ -170,8 +170,8 @@ public_commands["speed_run_preferences"] = command_speedrun_preferences
 public_commands["speedrun_preferences"] = command_speedrun_preferences
 public_commands["sp"] = command_speedrun_preferences
 
-public_commands["enable_cheats"] = command_enable_cheats
-public_commands["ec"] = command_enable_cheats
+for command_name in g.ENABLE_CHEATS_COMMANDS:
+    public_commands[command_name] = command_enable_cheats
 
 # second section (root needed)
 

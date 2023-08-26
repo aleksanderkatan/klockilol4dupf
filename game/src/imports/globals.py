@@ -13,6 +13,9 @@ LOG_INFO = True
 LOG_WARNINGS = True
 LOG_ERRORS = True
 
+# this is here because it is also used to make passwords go ****
+ENABLE_CHEATS_COMMANDS = ["enable_cheats", "ec"]
+
 # runtime variables, don't change
 save_state = None
 KBcheat = False
