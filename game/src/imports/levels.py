@@ -108,7 +108,7 @@ hierarchy[(303, 0)] = (400, 4)
 for i in range(1, 6 + 1):
     hierarchy[(400, i)] = (400, i)
 
-hierarchy[(500, 0)] = (400, 5)
+hierarchy[(500, 0)] = (500, 0)
 hierarchy[(500, 1)] = (400, 4)
 hierarchy[(500, 2)] = (400, 1)
 hierarchy[(500, 3)] = (400, 1)

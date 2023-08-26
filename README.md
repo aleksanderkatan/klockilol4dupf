@@ -67,24 +67,12 @@ The result will generate in the `dist` directory, and needs to be moved to the `
 
 When transitioning between devices, you can transfer your progress by copying the save folder and pasting it onto the new device.
 
-## Controls:
+## Speedrun command AAAAA
 
-- W, A, S, D or ARROW KEYS - move the character.
-- Q or SHIFT - undo a move.
-- R or / - reset current stage.
-- 1,...,9 - change the view mode to single layer (useful from zone 4 onward).
-- ESCAPE - navitage back in level hierarchy (lobbies contain zones, zones contain levels).
-- ENTER - open the command line, a list of available commands is under "help" command.
+Commands are available after pressing Enter while in game. 
+The speedrun command automatically sets up speedruns for you.
+**IT ERASES THE CURRENT SAVE FILE!!!**
 
-## Commands
-
-Commands are available after pressing Enter while in game.
-
-- help - list all available commands in the log.
-- exit - exit. It is safe to simply press the "x" though.
-- auto_reverse - switch auto reverse after death.
-- timer - switch speedrun timer.
-- witch - switch witch comments.
 - speedrun - initiate a speedrun based on the provided arguments.   
     WARNING: this command wipes your save! You can back it up by copying files from `game/src/data`  
     Available speedruns:

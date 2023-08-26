@@ -49,9 +49,11 @@ for path, _, files in os.walk(backgrounds_path):
     for name in files:
         background_sprites[name[:-4]] = pygame.image.load(os.path.join(path, name)).convert()
 
+background_sprites["background_blacker"] = background_sprites["background_black"].copy()
+background_sprites["background_blacker"].set_alpha(224)
+background_sprites["background_black"].set_alpha(192)
 background_sprites["background_grayness"] = background_sprites["background_black"].copy()
 background_sprites["background_grayness"].set_alpha(v.GRAYNESS * 256)
-background_sprites["background_black"].set_alpha(192)
 
 for name, sprite in background_sprites.items():
     sprites[name] = pygame.transform.scale(sprite, (v.WINDOW_X, v.WINDOW_Y))

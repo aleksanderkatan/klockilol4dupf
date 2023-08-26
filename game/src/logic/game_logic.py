@@ -49,7 +49,7 @@ class game_logic:
             v.WINDOW_X, v.WITCH_FONT_SIZE + 2 * v.WITCH_FONT_OFFSET, ""
         )
         self.witch = witch(screen, load_events(g.save_state.get_strings_path() + "events/"))
-        self.controls_display = controls_display(g.save_state.get_language())
+        self.controls_display = controls_display(g.save_state.get_language().lower())
         self.level_index = None
         self.grayness = s.sprites["background_grayness"]
         self.speedrun = None
@@ -206,21 +206,20 @@ class game_logic:
 
     def _mode_controls_display_move(self):
         for key, unicode in self.keys_registered:
-            if k.is_display_controls(key):
+            if k.is_display_controls(key) or k.is_back_in_hierarchy(key):
                 self.mode = mode.GAME
                 return
-        for key, unicode in self.keys_registered:
-            if k.is_back_in_hierarchy(key):
-                self._trigger_escape_counter()
 
     def _trigger_escape_counter(self):
         self.escape_counter += 1
         self.escape_timeout = v.FRAME_RATE * 5
         if self.escape_counter == 1:
-            self.register_message("Press escape twice to exit.", 5)
+            self.register_message("Press escape three more times to exit.\nPress TAB for help.", 5)
         if self.escape_counter == 2:
-            self.register_message("Press escape once more to exit.", 5)
+            self.register_message("Press escape twice to exit.\nPress TAB for help.", 5)
         if self.escape_counter == 3:
+            self.register_message("Press escape once more to exit.\nPress TAB for help.", 5)
+        if self.escape_counter == 4:
             c.exit_game()
 
 

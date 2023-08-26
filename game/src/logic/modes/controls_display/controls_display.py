@@ -1,10 +1,8 @@
 import pygame as pg
 
-import src.imports.globals as g
-import src.imports.keybindings as k
-from src.imports.view_constants import global_view_constants as v
 import src.imports.all_sprites as s
 from src.logic.modes.controls_display.text_display_utils import create_text_surfaces, horizontal, vertical
+from src.strings.controls_display_strings import get
 
 COLOR = pg.Color('lightskyblue3')
 
@@ -16,37 +14,44 @@ def _draw_surfaces(screen, surfaces):
 
 class controls_display:
     def __init__(self, language):
-        self.title_surfaces = create_text_surfaces(
-            "kontrolki",
+        st = get(language)
+        self.surfaces = []
+        self.surfaces += create_text_surfaces(
+            st.title_left,
             2,
             COLOR,
-            (0.5, 0.1),
+            (0.25, 0.1),
             (horizontal.MID, vertical.MID)
         )
-        self.left_surfaces = create_text_surfaces(
-            "WSAD - chodzenie\n" +
-            "Q - undo\n" +
-            "R - reset\n" +
-            "bbbbb",
+        self.surfaces += create_text_surfaces(
+            st.title_right,
+            2,
+            COLOR,
+            (0.75, 0.1),
+            (horizontal.MID, vertical.MID)
+        )
+        self.surfaces += create_text_surfaces(
+            st.left,
             1,
             COLOR,
             (0.25, 0.2),
             (horizontal.MID, vertical.TOP)
         )
-        self.right_surfaces = create_text_surfaces(
-            "Enter - konsola\n" +
-            "W konsoli możesz wpisywać\nróżne komendy.\n" +
-            "R - reset\n" +
-            "AAAAAAAAAAAAAAA\n" +
-            "bbbbb",
+        self.surfaces += create_text_surfaces(
+            st.right,
+            0.75,
+            COLOR,
+            (0.73, 0.2),
+            (horizontal.MID, vertical.TOP)
+        )
+        self.surfaces += create_text_surfaces(
+            st.bottom,
             1,
             COLOR,
-            (0.75, 0.2),
+            (0.5, 0.8),
             (horizontal.MID, vertical.TOP)
         )
 
     def draw(self, screen):
-        screen.blit(s.sprites['background_black'], (0, 0))
-        _draw_surfaces(screen, self.title_surfaces)
-        _draw_surfaces(screen, self.left_surfaces)
-        _draw_surfaces(screen, self.right_surfaces)
+        screen.blit(s.sprites['background_blacker'], (0, 0))
+        _draw_surfaces(screen, self.surfaces)
