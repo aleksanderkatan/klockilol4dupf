@@ -46,6 +46,7 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - Return to the game in the stage you exited.
 - A way to type in commands while in controls_display mode (mixed state?)
 - Revamp birdy and pm lobbies.
+- Make Madeline dash away with a secret trigger when getting close to her.
 - More extra zones!
 - Any other suggestions that I find cool.
 
