@@ -42,6 +42,8 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - The addition of a way to skip levels.
 - An in-game display of the control scheme.
 - Hold a direction to continue moving that way.
+- Newlines support in messages.
+- Return to the game in the stage you exited.
 - More extra zones!
 - Any other suggestions that I find cool.
 

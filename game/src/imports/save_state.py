@@ -166,6 +166,12 @@ class save_state:
     def get_language(self):
         return self.get("language", "English")
 
+    def set_preset_spawn(self, spawn):
+        self.hard_save("preset_spawn", spawn)
+
+    def get_preset_spawn(self):
+        return self.get("preset_spawn", None)
+
     def get_strings_path(self):
         return "src/strings/" + self.get("language", "English").lower() + "/"
     

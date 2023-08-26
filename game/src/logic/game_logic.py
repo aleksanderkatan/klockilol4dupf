@@ -251,14 +251,22 @@ class game_logic:
 
         self.screen.blit(self.grayness, (0, 0))
 
-    def set_stage(self, level_index):
+    def initialize_first_stage(self):
+        level, pos = (400, 1), None
+        preset_spawn = g.save_state.get_preset_spawn()
+        if preset_spawn is not None:
+            level, pos = preset_spawn
+        log.info(f"Found preset spawn from previous game: ({level}), ({pos})")
+        self.set_stage(level, pos)
+
+    def set_stage(self, level_index, preset_spawn=None):
         # update invisible visibility
         new_visibility = ((v.INVISIBLE_BLOCK_1_VISIBILITY - v.INVISIBLE_BLOCK_0_VISIBILITY)
                           * g.save_state.get_completion() + v.INVISIBLE_BLOCK_0_VISIBILITY) * 255
         s.sprites["block_invisible"][0].set_alpha(new_visibility)
 
         log.info("Filling stage", level_index)
-        new_stage = stage(self.screen, level_index, self.level_index)
+        new_stage = stage(self.screen, level_index, self.level_index, preset_spawn)
         if new_stage.successful is False:
             log.error("Stage " + str(level_index) + " failed to load")
             self.stage.reverse()

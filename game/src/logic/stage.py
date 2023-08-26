@@ -14,16 +14,17 @@ FONT = pygame.font.Font(v.FONT_PATH, v.LEVEL_FONT_SIZE)
 
 
 class stage:
-    def __init__(self, screen, level_index, last_level_index):
+    def __init__(self, screen, level_index, last_level_index, preset_spawn=None):
         self.screen = screen
         self.states = []
         first_state = state(screen, self, 0)
         self.level_index = level_index
-        self.successful = fill(first_state, level_index, last_level_index)
+        self.successful = fill(first_state, level_index, last_level_index, preset_spawn)
         self.speedrun_check_needed = False
         if self.successful:
             self.states.append(first_state)
             first_state.update_dark_visibility()
+            g.save_state.set_preset_spawn((level_index, first_state.player.pos))
         self.change_to = None
         self.particle_generator = particle_generator(self.screen)
         self.animation_manager = animation_manager()

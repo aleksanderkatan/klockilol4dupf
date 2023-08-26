@@ -11,7 +11,7 @@ from src.logic.state_filler.read_level_string import read_level_string
 from src.logic.state_filler.state_load_exception import state_load_exception
 
 
-def fill(s, level_index, last_level_index=None):
+def fill(s, level_index, last_level_index=None, preset_spawn=None):
     try:
         level_string = read_level_string(level_index)
         level_lines = linify_level_string(level_string)
@@ -19,7 +19,7 @@ def fill(s, level_index, last_level_index=None):
         blocks = fill_blocks(s, prepped_level)
         options = prepped_level.options
         configure_options(s, options, blocks)
-        find_starting_point(s, last_level_index, options)
+        find_starting_point(s, last_level_index, options, preset_spawn)
         return True
     except state_load_exception as error:
         log.error(f"An error occurred during filling level {level_index}")
