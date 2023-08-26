@@ -20,11 +20,11 @@ class controls_display_strings_pl(controls_display_strings):
         "TAB      - pomoc\n" +\
         "ENTER    - włącz konsolę"
     right = \
-        "\'help\'\n" +\
-        "    - listuje dostępne komendy w konsoli.\n" +\
-        "\n" +\
         "\'exit\'\n" +\
-        "    - forsuje zamknięcie gdy.\n" +\
+        "    - forsuje zamknięcie gry.\n" +\
+        "\n" +\
+        "\'disappearing_blocks\'\n" +\
+        "    - włącza/wyłącza animacje bloków.\n" +\
         "\n" +\
         "\'auto_reverse\'\n" +\
         "    - włącza/wyłącza auto-cofanie ruchów.\n" +\

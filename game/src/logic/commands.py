@@ -24,17 +24,28 @@ def command_quit(game_logic, command):
 # all those honestly should just have a settings page in-game
 def command_switch_auto_reverse(game_logic, command):
     state = g.save_state.get_preference("auto_reverse")
-    on_state = "off" if state else "on"
     g.save_state.set_preference("auto_reverse", not state)
     if game_logic.stage.latest_state().player.dead:
         game_logic.stage.reverse()
-    register_message(game_logic, f"Auto reverse turned {on_state}.", 5)
+    on_state = "off" if state else "on"
+    register_message(game_logic, f"Auto-reverse turned {on_state}.", 5)
+
+
+def command_switch_disappearing_blocks(game_logic, command):
+    log.write("Switching disappearing blocks.")
+    state = g.save_state.get_preference("disappearing_blocks")
+    g.save_state.set_preference("disappearing_blocks", not state)
+    on_state = "off" if state else "on"
+    register_message(game_logic, f"Disappearing blocks turned {on_state}.", 5)
+
 
 
 def command_switch_timer(game_logic, command):
     log.write("Switching timer.")
     state = g.save_state.get_preference("timer")
     g.save_state.set_preference("timer", not state)
+    on_state = "off" if state else "on"
+    register_message(game_logic, f"Timer turned {on_state}.", 5)
 
 
 def command_switch_witch(game_logic, command):
@@ -92,7 +103,7 @@ def command_speedrun(game_logic, command):
     game_logic.set_stage(stage)
     game_logic.stage.latest_state().teleport_player(pos, activate_step_in=False)
     game_logic.speedrun = speedrun
-    register_message(game_logic, f"Starting speedrun {speedrun.get_name()}", 3)
+    register_message(game_logic, f"Starting speedrun {speedrun.get_name()}.", 10)
 
 
 def command_shrek(game_logic, command):
@@ -131,6 +142,9 @@ public_commands["halt"] = command_quit
 
 public_commands["auto_reverse"] = command_switch_auto_reverse
 public_commands["ar"] = command_switch_auto_reverse
+
+public_commands["disappearing_blocks"] = command_switch_disappearing_blocks
+public_commands["db"] = command_switch_disappearing_blocks
 
 public_commands["timer"] = command_switch_timer
 
@@ -462,8 +476,8 @@ def extract_options(command):
 
 
 def exit_game():
-    # called: quit command entered, window closed by x, process killed from manager (SIGKILL?)
-    # not called: exception was raised (game works in one thread), stop button in pycharm (SIGTERM?), exited from launcher
+    # called: quit command entered, window closed by x, exception was caught, process killed from manager (SIGKILL?)
+    # not called: exited from launcher
     # do those signals even exist on Windows?
     # does my game even work on Linux?
     # who are we? where are we going
@@ -484,6 +498,8 @@ def list_of_commands(commands):
         d[function].append(command)
     ans = ""
     for function, commands in d.items():
+        if function == command_shrek:
+            continue
         for command in commands:
             ans += command
             ans += ", "

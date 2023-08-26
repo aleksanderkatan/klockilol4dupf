@@ -1,6 +1,7 @@
 import random
 
 import src.imports.all_sprites as s
+import src.imports.globals as g
 from src.animations.animation_disappearing_block import animation_disappearing_block
 from src.blocks.block import block
 from src.blocks.block_empty import block_empty
@@ -26,16 +27,19 @@ class block_numeric(block):
         state = self.stage.states[self.state_index]
         state.set_block(self.pos, self.replaced_with())
 
-        # easter egg
-        if self.stage.level_index[0] == 209 and self.number == 1:
-            if random.random() < 0.999:
-                self.stage.animation_manager.register_animation(
-                    animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0],
-                                                 pos=self.pos))
-            else:
-                self.stage.animation_manager.register_animation(
-                    animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0],
-                                                 screen_pos=(0, 0)))
+        if self.number == 1:
+            if self.stage.level_index[0] == 209 or g.save_state.get_preference("disappearing_blocks"):
+                if random.random() < 0.9999:
+                    self.stage.animation_manager.register_animation(
+                        animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0],
+                                                     pos=self.pos)
+                    )
+                else:
+                    # easter egg, sometimes blocks' animation in "platform maze" appeared in the screen corner
+                    self.stage.animation_manager.register_animation(
+                        animation_disappearing_block(self.screen, self.stage, self.state_index, self.sprite[0],
+                                                     screen_pos=(0, 0))
+                    )
 
     def options(self, option):
         self.number = int(option[-1]) - int('0')

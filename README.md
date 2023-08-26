@@ -44,6 +44,7 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - Hold a direction to continue moving that way.
 - Newlines support in messages.
 - Return to the game in the stage you exited.
+- A way to type in commands while in controls_display mode (mixed state?)
 - More extra zones!
 - Any other suggestions that I find cool.
 

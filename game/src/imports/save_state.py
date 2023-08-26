@@ -11,6 +11,7 @@ DATA_PATH = 'src/data'
 
 PREFERENCE_DEFAULTS = {
     "auto_reverse": False,
+    "disappearing_blocks": True,
     "timer": False,
     "witch": True,
     "shrek": False,
