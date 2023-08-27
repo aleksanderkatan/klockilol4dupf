@@ -1,6 +1,6 @@
 import src.imports.all_sprites as s
 from src.blocks.block_empty import block_empty
-from src.blocks.block_end import block_end
+from src.blocks.pure.block_end import block_end
 
 
 class block_birdy_fragile_end(block_end):

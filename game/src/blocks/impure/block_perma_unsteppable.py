@@ -1,4 +1,4 @@
-from src.blocks.block_perma import block_perma
+from src.blocks.pure.block_perma import block_perma
 
 
 class block_perma_unsteppable(block_perma):

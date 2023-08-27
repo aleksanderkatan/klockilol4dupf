@@ -3,15 +3,15 @@ import queue
 import src.imports.all_sprites as s
 import src.imports.utils as u
 from src.blocks.block import block
-from src.blocks.block_blocker import block_blocker
-from src.blocks.block_dummy import block_dummy
+from src.blocks.pure.block_blocker import block_blocker
+from src.blocks.semi_pure.block_dummy import block_dummy
 from src.blocks.block_empty import block_empty
-from src.blocks.block_invisible import block_invisible
-from src.blocks.block_lamp import block_lamp
-from src.blocks.block_moving_arrow import block_moving_arrow
-from src.blocks.block_numeric import block_numeric
-from src.blocks.block_piston import block_piston
-from src.blocks.block_swapping_trigger import block_swapping_trigger
+from src.blocks.impure.block_invisible import block_invisible
+from src.blocks.semi_pure.block_lamp import block_lamp
+from src.blocks.semi_pure.block_moving_arrow import block_moving_arrow
+from src.blocks.pure.block_numeric import block_numeric
+from src.blocks.pure.block_piston import block_piston
+from src.blocks.semi_pure.block_swapping_trigger import block_swapping_trigger
 from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
 
