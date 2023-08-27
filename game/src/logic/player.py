@@ -100,7 +100,7 @@ class player:
 
         if move_length != 1 and move_direction.is_cardinal():
             move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation,
-                                                   (move_length - 1) / 2)
+                                                   (move_length - 1) / 2, move_length / 4)
             self.stage.animation_manager.register_animation(move_animation)
 
         if new_pos[2] < 0:
