@@ -102,6 +102,14 @@ class player:
             move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation,
                                                    (move_length - 1) / 2, move_length / 4)
             self.stage.animation_manager.register_animation(move_animation)
+        if move_direction == d.DESCEND:
+            move_animation = animation_player_jump(self.screen, self.stage, self.state_index, (0, 0, -move_length),
+                                                   0, 0.15 * move_length)
+            self.stage.animation_manager.register_animation(move_animation)
+        # if move_direction == d.ASCEND:
+        #     move_animation = animation_player_jump(self.screen, self.stage, self.state_index, (0, 0, move_length),
+        #                                            0, 0.15 * move_length)
+        #     self.stage.animation_manager.register_animation(move_animation)
 
         if new_pos[2] < 0:
             self.dead = True
