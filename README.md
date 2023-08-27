@@ -47,6 +47,7 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - A way to type in commands while in controls_display mode (mixed state?)
 - Revamp birdy and pm lobbies.
 - Make Madeline dash away with a secret trigger when getting close to her.
+- Add small animation for falling. (and adapt player animations to the new back)
 - More extra zones!
 - Any other suggestions that I find cool.
 

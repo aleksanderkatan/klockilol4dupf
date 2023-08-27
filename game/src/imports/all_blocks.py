@@ -33,8 +33,10 @@ from src.blocks.semi_pure.block_swapping_trigger import block_swapping_trigger
 from src.blocks.semi_pure.block_swapping_trigger_random import block_swapping_trigger_random
 from src.blocks.impure.block_game_exit import block_game_exit
 from src.blocks.impure.block_silent_trigger import block_silent_trigger
+from src.blocks.impure.block_madeline import block_madeline
 
 from src.blocks.impure.block_shrek import block_shrek
+
 from src.blocks.semi_pure.undertale.block_undertale_purple import block_undertale_purple
 from src.blocks.semi_pure.undertale.block_undertale_yellow import block_undertale_yellow
 from src.blocks.semi_pure.undertale.block_undertale_green import block_undertale_green
@@ -90,6 +92,7 @@ standables.add(block_swapping_trigger)
 standables.add(block_swapping_trigger_random)
 standables.add(block_game_exit)
 standables.add(block_silent_trigger)
+standables.add(block_madeline)
 
 standables.add(block_shrek)
 standables.add(block_undertale_yellow)

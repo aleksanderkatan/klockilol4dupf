@@ -89,7 +89,7 @@ class player:
         move_length = self.next_move_length
         move_direction = self.this_move_direction
 
-        # moves longer than 1 are considered jumps and therefore surpass barriers
+        # moves longer than 1 are considered to be jumps and therefore surpass barriers
         if move_length == 1:
             if state.has_barrier(self.pos, move_direction):
                 state.invalid = True
