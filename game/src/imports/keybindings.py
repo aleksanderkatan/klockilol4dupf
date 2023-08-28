@@ -71,3 +71,8 @@ def is_next_swap(key):
 
 def is_prev_swap(key):
     return key in [pygame.K_l]
+
+
+def is_held_relevant(key):
+    return is_right(key) or is_left(key) or is_up(key) or is_down(key) or is_reverse(key)
+

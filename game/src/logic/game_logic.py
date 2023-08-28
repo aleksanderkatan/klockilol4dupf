@@ -15,6 +15,7 @@ from src.logic.stage import stage
 from src.logic.modes.witch.events import load_events
 from src.logic.modes.witch.witch import witch
 from src.logic.modes.controls_display.controls_display import controls_display
+from src.logic.key_repeater import key_repeater
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font(v.FONT_PATH, FONT_SIZE_2)
@@ -53,6 +54,7 @@ class game_logic:
         self.level_index = None
         self.grayness = s.sprites["background_grayness"]
         self.speedrun = None
+        self.key_repeater = key_repeater()
 
     def move(self):
         if not g.save_state.get("is_timer_stopped", False):
@@ -126,7 +128,15 @@ class game_logic:
                 self.mode = mode.CONTROLS_DISPLAY
                 return
         else:
+            # take into account held keys
+            possible_repeat_key = self.key_repeater.get_repeated_key(pygame.key.get_pressed())
+            if possible_repeat_key is not None:
+                self.keys_registered.append(possible_repeat_key)
+
             for key, unicode in self.keys_registered:
+                if possible_repeat_key is None or (possible_repeat_key is not None and possible_repeat_key[0] != key):
+                    self.key_repeater.register_key_pressed(key, unicode)
+
                 if not k.is_back_in_hierarchy(key):
                     self.escape_counter = 0
 
