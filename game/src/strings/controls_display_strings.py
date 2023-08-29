@@ -3,6 +3,7 @@ class controls_display_strings:
     title_right = ""
     left = ""
     right = ""
+    skip_message = ""
     bottom = ""
 
 
@@ -41,8 +42,9 @@ class controls_display_strings_pl(controls_display_strings):
         "    Po więcej informacji zajrzyj do README.\n" +\
         "\n" +\
         "\n"
+    skip_message = "Naprawdę nie jestem w stanie przejść tego poziomu."
     bottom = \
-        "\'Naprawdę nie jestem w stanie przejść tego poziomu.\'\n" +\
+        f"\'{skip_message}\'\n" +\
         "    - pomija aktualny poziom."
 
 
@@ -82,8 +84,9 @@ class controls_display_strings_en(controls_display_strings):
         "    For more info read the README.\n" +\
         "\n" +\
         "\n"
+    skip_message = "I really can't beat this level, please help me."
     bottom = \
-        "\'I really can't beat this level, please help me.\'\n" +\
+        f"\'{skip_message}\'\n" +\
         "    - skips the current stage."
 
 

@@ -317,6 +317,20 @@ class game_logic:
             self.perform_speedrun_check()
         return True
 
+    def skip(self):
+        if not l.is_level(self.level_index):
+            raise RuntimeError("You can't skip this stage!")
+
+        skipped = self.level_index
+        g.save_state.skip_level(skipped, hard_save=True)
+        self.set_stage(l.next_level(skipped))
+        self.register_message("Last stage was skipped.\nYou can proceed without coming back to it.", 5)
+        if self.speedrun is not None:
+            self.speedrun = None
+            self.register_message("Level skipped, speedrun disabled.", 5)
+        return True
+
+
     def execute_command(self, command):
         return c.execute_command(self, command)
 

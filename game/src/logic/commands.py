@@ -9,9 +9,10 @@ import src.imports.utils as u
 from src.imports.all_speedruns import speedruns
 from src.imports.log import log
 from src.imports.platform_maze_passwords import passwords
-from src.imports.save_state import completed_levels
+from src.imports.save_state import level_statuses
 from src.imports.view_constants import global_view_constants as v
 from src.speedruns.settings import settings as speedrun_settings
+from src.strings.controls_display_strings import get
 
 public_commands = {}
 
@@ -53,6 +54,15 @@ def command_switch_witch(game_logic, command):
     on_state = "off" if state else "on"
     g.save_state.set_preference("witch", not state)
     register_message(game_logic, "Witch turned " + on_state + ".", 5)
+
+
+def command_skip(game_logic, command):
+    level_index = game_logic.stage.level_index
+    if l.is_level(level_index):
+        log.write(f"Skipping level {level_index}.")
+        game_logic.skip()
+    else:
+        game_logic.register_message("This is not a skippable stage.", 5)
 
 
 def command_help_public(game_logic, command):
@@ -149,6 +159,10 @@ public_commands["db"] = command_switch_disappearing_blocks
 public_commands["timer"] = command_switch_timer
 
 public_commands["witch"] = command_switch_witch
+
+# public_commands["skip"] = command_skip
+# skip is considered manually, its strings have spaces
+# this is still available in cheat mode
 
 public_commands["help"] = command_help_public
 
@@ -275,7 +289,7 @@ def command_reset_events(game_logic, command):
 
 
 def command_reset_completed(game_logic, command):
-    g.save_state.hard_save("completed", completed_levels())
+    g.save_state.hard_save("level_statuses", level_statuses())
     register_message(game_logic, "Completed levels reset.", 3)
 
 
@@ -389,6 +403,9 @@ def command_stop_timer(game_logic, command):
 # deprecated
 root_commands["reset_all"] = command_reset_all
 root_commands["ra"] = command_reset_all
+# -----
+
+root_commands["skip"] = command_skip
 
 root_commands["lv"] = command_lv
 root_commands["cd"] = command_lv
@@ -525,6 +542,10 @@ def swap_levels(level_1, level_2):  # !! performs no checks
 
 def execute_command(game_logic, command):
     if command == '':
+        return
+
+    if command == get(g.save_state.get_language()).skip_message:
+        command_skip(game_logic, command)
         return
 
     command = [word.lower() for word in command.strip().split(' ')]

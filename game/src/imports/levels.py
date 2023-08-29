@@ -1,7 +1,37 @@
+from enum import Enum
 import random
 
 import src.imports.globals as g
 from src.imports.log import log
+
+
+class level_status(Enum):
+    # those represent the texture shown in the corner of a stage
+    # when instead of a level an entire zone is in consideration, then this enum signifies the state of its map bridge
+    # only 0 means a stage that cannot be entered
+    UNAVAILABLE = 0
+    AVAILABLE = 1
+    SKIPPED = 2
+    COMPLETED = 3
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __lt__(self, other):
+        return self.value < other.value
+
+    def __le__(self, other):
+        return self.value <= other.value
+
+    def __gt__(self, other):
+        return self.value > other.value
+
+    def __ge__(self, other):
+        return self.value >= other.value
+
+    def __hash__(self):
+        return self.value
+
 
 level_error_path = 'src/levels/0/0.lv'
 
@@ -190,7 +220,7 @@ def is_level(level_index):
         return False
     if is_zone(level_index):
         return False
-    if level_index[0] == 500:
+    if level_index[0] in [500, 206]:
         return False
     return True
 
@@ -258,7 +288,11 @@ def level_name(level_index):
         return "extra " + str(level_set - 300) + ("" if level == 0 else "-" + str(level))
 
     if level_set == 400:
-        return "Lobby " + str(level)
+        if level == 1:
+            return "Overworld"
+        if level == 3 and random.randint(0, 99) == 0:
+            return "Overworld 2 2"
+        return "Overworld " + ("" if level == 1 else str(level))
 
     if level_index in [(500, 2)]:
         return ""

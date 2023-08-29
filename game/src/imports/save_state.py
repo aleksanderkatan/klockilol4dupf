@@ -26,53 +26,59 @@ PREFERENCE_SPEEDRUN_CHANGES = {
 }
 
 
-class completed_levels:
+class level_statuses:
     def __init__(self):
-        self.completed = {}
+        self.statuses = {}
+
+    def _set_level_status(self, level_index, status):
+        if level_index not in self.statuses:
+            self.statuses[level_index] = l.level_status.UNAVAILABLE
+        self.statuses[level_index] = max(status, self.statuses[level_index])
+
+    def _unlock_next(self, level_index):
+        level_set, level = l.next_level(level_index)
+        # if the next level is really a level and not just a stage
+        if level != 0:
+            self._set_level_status((level_set, level), l.level_status.AVAILABLE)
 
     def complete_level(self, level_index):
-        level_set, level = level_index
-        if level_set not in self.completed:
-            self.completed[level_set] = set()
-        self.completed[level_set].add(level)
+        self._set_level_status(level_index, l.level_status.COMPLETED)
+        self._unlock_next(level_index)
 
-    def is_set_completed(self, level_set):
-        if level_set >= 400:
-            return False
+    def skip_level(self, level_index):
+        self._set_level_status(level_index, l.level_status.SKIPPED)
+        self._unlock_next(level_index)
 
-        if level_set not in l.levs:
-            return False
+    def get_level_status(self, level_index):
+        if not l.is_level(level_index):
+            # raise RuntimeError(f"Attempted to check level status of non-level stage {level_index}")
+            return l.level_status.AVAILABLE
+            # !! what is this
+        if level_index in self.statuses:
+            return self.statuses[level_index]
+        if level_index[1] == 1:
+            return l.level_status.AVAILABLE
+        return l.level_status.UNAVAILABLE
 
-        if l.levs[level_set] == 0:
-            return True
+    def get_set_status(self, set_index):
+        if set_index >= 400:
+            return l.level_status.UNAVAILABLE
 
-        if level_set not in self.completed:
-            return False
+        if set_index not in l.levs:
+            return l.level_status.UNAVAILABLE
+            # !! runtime here?
 
-        for i in range(1, l.levs[level_set] + 1):
-            if i not in self.completed[level_set]:
-                return False
-        return True
+        if l.levs[set_index] == 0:
+            return l.level_status.COMPLETED
 
-    def is_level_completed(self, level_index):
-        level_set, level = level_index
-        if level == 0:
-            return self.is_set_completed(level_set)
-        if level_set not in self.completed:
-            return False
-
-        return level in self.completed[level_set]
-
-    def is_available(self, level_index):
-        level_set, level = level_index
-        if level_set >= 300 or level_set == 206:
-            return True
-
-        if level == 1 or level == 0:
-            return True
-        if level_set not in self.completed:
-            return False
-        return level - 1 in self.completed[level_set]
+        status = l.level_status.COMPLETED
+        for i in range(1, l.levs[set_index] + 1):
+            if (set_index, i) not in self.statuses:
+                return l.level_status.UNAVAILABLE
+            status = min(status, self.statuses[(set_index, i)])
+        if status == l.level_status.AVAILABLE:
+            status = l.level_status.UNAVAILABLE
+        return status
 
 
 class save_state:
@@ -85,7 +91,7 @@ class save_state:
         if self.read_only:
             return
 
-        self.hard_restore("completed", completed_levels())
+        self.hard_restore("level_statuses", level_statuses())
         self.hard_restore("events", set())
         self.hard_restore("time", 0)
         if self.get("time", 0) > 0:
@@ -179,12 +185,25 @@ class save_state:
     # levels
 
     def complete_level(self, level_index, hard_save):
-        completed = self.get("completed", completed_levels())
-        completed.complete_level(level_index)
+        statuses = self.get("level_statuses", level_statuses())
+        statuses.complete_level(level_index)
 
         if hard_save:
-            self.hard_save("completed", completed)
+            self.hard_save("level_statuses", statuses)
             self.hard_save("time", self.get("time", 0))
+
+
+    def skip_level(self, level_index, hard_save):
+        statuses = self.get("level_statuses", level_statuses())
+        statuses.skip_level(level_index)
+
+        if hard_save:
+            self.hard_save("level_statuses", statuses)
+            self.hard_save("time", self.get("time", 0))
+
+    def get_set_status(self, set_index):
+        return self.get("level_statuses", level_statuses()).get_set_status(set_index)
+
 
     def complete_zone(self, zone_index, hard_save):
         if zone_index not in l.levs:
@@ -195,12 +214,12 @@ class save_state:
         for i in range(1, l.levs[zone_index] + 1):
             self.complete_level((zone_index, i), hard_save=False)
         if hard_save:
-            self.hard_save("completed", self.get("completed", completed_levels()))
+            self.hard_save("level_statuses", self.get("level_statuses", level_statuses()))
 
     def complete_all(self):
         for key in l.levs.keys():
             self.complete_zone(key, False)
-        self.hard_save("completed", self.get("completed", completed_levels()))
+        self.hard_save("level_statuses", self.get("level_statuses", level_statuses()))
 
     # events
 
@@ -248,17 +267,8 @@ class save_state:
             else:
                 self.set_preference(preference, value)
 
-    def is_set_completed(self, level_set):
-        completed = self.get("completed", completed_levels())
-        return completed.is_set_completed(level_set)
-
-    def is_level_completed(self, level_index):
-        completed = self.get("completed", completed_levels())
-        return completed.is_level_completed(level_index)
-
-    def is_level_available(self, level_index):
-        completed = self.get("completed", completed_levels())
-        return completed.is_available(level_index)
+    def get_level_status(self, level_index):
+        return self.get("level_statuses", level_statuses()).get_level_status(level_index)
 
     def is_event_completed(self, index):
         events = self.get("events", set())
@@ -275,7 +285,7 @@ class save_state:
         for i in zones:
             total += l.levs[i]
             for j in range(1, l.levs[i] + 1):
-                if self.is_level_completed((i, j)):
+                if self.get_level_status((i, j)) in [l.level_status.COMPLETED]:
                     result += 1
         return result / total
 

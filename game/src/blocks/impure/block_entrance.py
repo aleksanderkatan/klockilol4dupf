@@ -5,12 +5,18 @@ from src.blocks.block import block
 from src.imports.view_constants import global_view_constants as v
 
 
+status_sprites = {
+    l.level_status.UNAVAILABLE: s.sprites["level_unavailable"],
+    l.level_status.AVAILABLE: None,
+    l.level_status.SKIPPED: s.sprites["level_skipped"],
+    l.level_status.COMPLETED: s.sprites["level_completed"],
+}
+
+
 class block_entrance(block):
     def __init__(self, screen, stage, state_index, pos, target_level=(0, 0)):
         super().__init__(screen, stage, state_index, pos)
         self.sprite = s.sprites["error"]
-        self.sprite_av = s.sprites["level_available"]
-        self.sprite_unav = s.sprites["level_unavailable"]
         self.target_level = None
         self.set_target_level(target_level)
 
@@ -28,6 +34,9 @@ class block_entrance(block):
         if None in [target_level, my_level]:
             return
 
+        if my_level[0] == 206 or target_level[0] == 206:
+            self.sprite = s.sprites["block_entrance_hub"]
+            return
         if l.is_level(target_level) or l.is_level(my_level):
             self.sprite = s.sprites["block_entrance_level"]
             return
@@ -42,21 +51,19 @@ class block_entrance(block):
         return self.target_level
 
     def on_step_in(self):
-        if g.save_state.is_level_available(self.target_level):
+        status = g.save_state.get_level_status(level_index=self.target_level)
+        if status != l.level_status.UNAVAILABLE:
             self.stage.change_to = self.target_level
 
     def on_step_out(self):
         self.stage.change_to = None
 
     def draw(self, pos, where_is_player):
+        super().draw(pos, where_is_player)
         if where_is_player is not None:
-            super().draw(pos, where_is_player)
-
             completion_pos = (pos[0] + v.LEVEL_COMPLETION_OFFSET, pos[1] + v.LEVEL_COMPLETION_OFFSET)
 
-            if g.save_state.is_level_completed(self.target_level):
-                self.screen.blit(self.sprite_av[where_is_player], completion_pos)
-            elif g.save_state.is_level_available(self.target_level):
-                pass
-            else:
-                self.screen.blit(self.sprite_unav[where_is_player], completion_pos)
+            status = g.save_state.get_level_status(level_index=self.target_level)
+            sprite = status_sprites[status]
+            if sprite is not None:
+                self.screen.blit(sprite[where_is_player], completion_pos)

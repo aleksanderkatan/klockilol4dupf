@@ -24,7 +24,7 @@ for path, _, files in os.walk(blocks_path):
 block_sprites["block_invisible"] = block_sprites["block"].copy()
 
 for name, sprite in block_sprites.items():
-    if name in ["level_available", "level_unavailable"]:  # has to have alphas
+    if name in ["level_completed", "level_skipped", "level_unavailable"]:  # has to have alphas
         new_sprite = pygame.transform.smoothscale(
             sprite, (int(v.BLOCK_X_SIZE * v.LEVEL_COMPLETION_SCALE), int(v.BLOCK_Y_SIZE * v.LEVEL_COMPLETION_SCALE))
         )

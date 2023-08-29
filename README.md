@@ -42,12 +42,14 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - More extra zones!
 - Any other suggestions that I find cool.
 
-- The addition of a way to skip levels.
 - A way to type in commands while in controls_display mode (mixed state?)
 - Revamp birdy and pm lobbies.
 - Utilize text_utils in all text display.
 - Translate all messages.
+- Add a new death screen.
+- Add a variant of map bridge that requires levels to be beaten.
 
+- The addition of a way to skip levels.
 - Hold a direction to continue moving that way.
 - Make Madeline dash away with a secret trigger when getting close to her.
 - Newlines support in messages.

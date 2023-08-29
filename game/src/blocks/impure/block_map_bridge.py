@@ -1,6 +1,14 @@
 import src.imports.all_sprites as s
 import src.imports.globals as g
 from src.blocks.block import block
+import src.imports.levels as l
+
+
+status_sprites = {
+    l.level_status.UNAVAILABLE: s.sprites["block_map_bridge_off"],
+    l.level_status.SKIPPED: s.sprites["block_map_bridge_skip"],
+    l.level_status.COMPLETED: s.sprites["block_map_bridge_on"],
+}
 
 
 class block_map_bridge(block):
@@ -14,7 +22,8 @@ class block_map_bridge(block):
         return block_map_bridge(self.screen, self.stage, new_state_index, self.pos, self.level_set)
 
     def on_step_in(self):
-        if not g.save_state.is_set_completed(self.level_set):
+        status = g.save_state.get_set_status(self.level_set)
+        if status == l.level_status.UNAVAILABLE:
             self.stage.states[self.state_index].player.dead = True
 
     # def has_barrier(self, direction, into):
@@ -29,7 +38,4 @@ class block_map_bridge(block):
             self.sprite = s.sprites["error"]
             return
 
-        if g.save_state.is_set_completed(level_set):
-            self.sprite = s.sprites["block_map_bridge_on"]
-        else:
-            self.sprite = s.sprites["block_map_bridge_off"]
+        self.sprite = status_sprites[g.save_state.get_set_status(level_set)]
