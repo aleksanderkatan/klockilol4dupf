@@ -2,7 +2,7 @@ import pygame as pg
 
 import src.imports.all_sprites as s
 from src.logic.modes.text_display_utils import create_text_surfaces, horizontal, vertical
-from src.strings.controls_display_strings import get
+from src.strings.translation_getters import get_control_display_strings
 
 COLOR = pg.Color('lightskyblue3')
 
@@ -14,7 +14,7 @@ def _draw_surfaces(screen, surfaces):
 
 class controls_display:
     def __init__(self, language):
-        st = get(language)
+        st = get_control_display_strings(language)
         self.surfaces = []
         self.surfaces += create_text_surfaces(
             st.title_left,

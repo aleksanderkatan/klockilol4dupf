@@ -1,6 +1,4 @@
-# Version 1.0 is finally here, go play it!
-
-## Maze of Tiles
+# Maze of tiles
 
 Maze of Tiles, also known as klockilol4dupf, is puzzle game, where you must step on tiles the exact number of times that is specified on them! How challenging can it be?
 

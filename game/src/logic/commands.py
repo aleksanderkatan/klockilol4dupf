@@ -12,7 +12,7 @@ from src.imports.platform_maze_passwords import passwords
 from src.imports.save_state import level_statuses
 from src.imports.view_constants import global_view_constants as v
 from src.speedruns.settings import settings as speedrun_settings
-from src.strings.controls_display_strings import get
+from src.strings.translation_getters import get_control_display_strings
 
 public_commands = {}
 
@@ -544,7 +544,7 @@ def execute_command(game_logic, command):
     if command == '':
         return
 
-    if command == get(g.save_state.get_language()).skip_message:
+    if command == get_control_display_strings(g.save_state.get_language()).skip_message:
         command_skip(game_logic, command)
         return
 
