@@ -40,12 +40,12 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - More extra zones!
 - Any other suggestions that I find cool.
 
-- A way to type in commands while in controls_display mode (mixed state?)
 - Revamp birdy and pm lobbies.
 - Utilize text_utils in all text display.
 - Add a new death screen.
 - Add a variant of map bridge that requires levels to be beaten.
 
+- A way to type in commands while in controls_display mode (mixed state?)
 - Translate all messages.
 - The addition of a way to skip levels.
 - Hold a direction to continue moving that way.

@@ -96,6 +96,9 @@ class game_logic:
                 self._mode_witch_move()
             case mode.CONTROLS_DISPLAY:
                 self._mode_controls_display_move()
+            case mode.CONTROLS_DISPLAY_AND_INPUT:
+                self._mode_controls_display_and_input_move()
+
 
         g.KBcheat = k.is_KB_cheat(pygame.key.get_pressed())
         if self.mode == mode.GAME:
@@ -204,9 +207,6 @@ class game_logic:
                 self.input_box.clear()
                 return
         for key, unicode in self.keys_registered:
-            if k.is_back_in_hierarchy(key):
-                self._trigger_escape_counter()
-        for key, unicode in self.keys_registered:
             self.input_box.handle_key_pressed(key, unicode)
 
     def _mode_witch_move(self):
@@ -220,6 +220,19 @@ class game_logic:
             if k.is_display_controls(key) or k.is_back_in_hierarchy(key):
                 self.mode = mode.GAME
                 return
+        for key, unicode in self.keys_registered:
+            if k.is_input_box_enable(key):
+                self.mode = mode.CONTROLS_DISPLAY_AND_INPUT
+                return
+
+    def _mode_controls_display_and_input_move(self):
+        for key, unicode in self.keys_registered:
+            if k.is_input_box_disable(key):
+                self.mode = mode.CONTROLS_DISPLAY
+                self.input_box.clear()
+                return
+        self._mode_input_move()
+
 
     def _trigger_escape_counter(self):
         self.escape_counter += 1
@@ -245,6 +258,9 @@ class game_logic:
                 self.input_box.draw(self.screen)
             case mode.CONTROLS_DISPLAY:
                 self.controls_display.draw(self.screen)
+            case mode.CONTROLS_DISPLAY_AND_INPUT:
+                self.controls_display.draw(self.screen)
+                self.input_box.draw(self.screen, False)
 
         if g.save_state.get_preference("timer"):
             ticks = g.save_state.get("time", 0)
