@@ -7,7 +7,7 @@ import src.imports.utils as u
 from src.imports.log import log
 from src.imports.view_constants import global_view_constants as v
 
-DATA_PATH = 'src/data'
+DATA_PATH = 'data'
 
 PREFERENCE_DEFAULTS = {
     "auto_reverse": False,

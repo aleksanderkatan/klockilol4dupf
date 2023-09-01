@@ -16,11 +16,11 @@ def get_completion(save):
 
 
 def _does_save_exist(index):
-    return os.path.exists(f"src/data/save_slot_{index}")
+    return os.path.exists(f"data/save_slot_{index}")
 
 
 def create_new_save(index, new_save_data):
-    os.mkdir(f"src/data/save_slot_{index}")
+    os.mkdir(f"data/save_slot_{index}")
     log.info(f"Creating save {index} with data {str(new_save_data)}")
     save = save_state(index)
     save.set_name(new_save_data.name)
@@ -38,7 +38,7 @@ def get_save(index):
 def delete_save(index):
     temp_save_state = save_state(index)
     temp_save_state.hard_erase_all()
-    os.rmdir(f"src/data/save_slot_{index}")
+    os.rmdir(f"data/save_slot_{index}")
     log.info(f"Deleting save {index}.")
 
 

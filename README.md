@@ -43,10 +43,10 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 - A way to type in commands while in controls_display mode (mixed state?)
 - Revamp birdy and pm lobbies.
 - Utilize text_utils in all text display.
-- Translate all messages.
 - Add a new death screen.
 - Add a variant of map bridge that requires levels to be beaten.
 
+- Translate all messages.
 - The addition of a way to skip levels.
 - Hold a direction to continue moving that way.
 - Make Madeline dash away with a secret trigger when getting close to her.
@@ -84,7 +84,7 @@ The speedrun command automatically sets up speedruns for you.
 **IT ERASES THE CURRENT SAVE FILE!!!**
 
 - speedrun - initiate a speedrun based on the provided arguments.   
-    WARNING: this command wipes your save! You can back it up by copying files from `game/src/data`  
+    WARNING: this command wipes your save! You can back it up by copying files from `game/data`  
     Available speedruns:
   - platform maze (pm)
   - birdy's rainy day skipathon (birdy)
