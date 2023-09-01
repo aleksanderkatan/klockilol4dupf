@@ -4,6 +4,10 @@ from src.imports.view_constants import global_view_constants as v
 from src.blocks.block import block
 from src.animations.animation_jump import animation_jump
 from src.animations.chained_animation import chained_animation
+from src.strings.translation_getters import get_message_strings
+
+
+MS = get_message_strings(g.save_state.get_language())
 
 
 class block_madeline(block):
@@ -33,7 +37,7 @@ class block_madeline(block):
 
             g.save_state.hard_save("madeline_present", False)
 
-            self.stage.animation_manager.register_message(self.screen, "Madeline wavedashes away.", 5 * v.FRAME_RATE)
+            self.stage.animation_manager.register_message(self.screen, MS.madeline_dashes_away, 5 * v.FRAME_RATE)
 
     def draw(self, pos, where_is_player):
         if where_is_player is not None:

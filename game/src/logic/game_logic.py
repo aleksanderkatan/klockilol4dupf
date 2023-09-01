@@ -16,6 +16,7 @@ from src.logic.modes.witch.events import load_events
 from src.logic.modes.witch.witch import witch
 from src.logic.modes.controls_display.controls_display import controls_display
 from src.logic.key_repeater import key_repeater
+from src.strings.translation_getters import get_message_strings
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font(v.FONT_PATH, FONT_SIZE_2)
@@ -34,6 +35,9 @@ def key_to_direction(key):
     if k.is_down(key):
         return d.DOWN
     return d.NONE
+
+
+MS = get_message_strings(g.save_state.get_language())
 
 
 class game_logic:
@@ -106,9 +110,9 @@ class game_logic:
         if self.stage.latest_state().player.dead:
             if self.speedrun is not None and self.speedrun.settings.does_death_reset:
                 self.stage.reset()
-                self.stage.animation_manager.register_message(self.screen, "You died, stage reset.", v.FRAME_RATE * 3)
+                self.stage.animation_manager.register_message(self.screen, MS.death_with_reset, v.FRAME_RATE * 3)
             elif g.save_state.get_preference("auto_reverse"):
-                self.stage.animation_manager.register_message(self.screen, "You died, reversed last move.",
+                self.stage.animation_manager.register_message(self.screen, MS.death,
                                                               v.FRAME_RATE * 3)
                 g.save_state.log_auto_reverse()
                 self.stage.reverse()
@@ -221,11 +225,11 @@ class game_logic:
         self.escape_counter += 1
         self.escape_timeout = v.FRAME_RATE * 5
         if self.escape_counter == 1:
-            self.register_message("Press escape three more times to exit.\nPress TAB for help.", 5)
+            self.register_message(MS.escapes_3_left, 5)
         if self.escape_counter == 2:
-            self.register_message("Press escape twice to exit.\nPress TAB for help.", 5)
+            self.register_message(MS.escapes_2_left, 5)
         if self.escape_counter == 3:
-            self.register_message("Press escape once more to exit.\nPress TAB for help.", 5)
+            self.register_message(MS.escapes_1_left, 5)
         if self.escape_counter == 4:
             c.exit_game()
 
@@ -324,10 +328,10 @@ class game_logic:
         skipped = self.level_index
         g.save_state.skip_level(skipped, hard_save=True)
         self.set_stage(l.next_level(skipped))
-        self.register_message("Last stage was skipped.\nYou can proceed without coming back to it.", 5)
+        self.register_message(MS.level_skipped, 5)
         if self.speedrun is not None:
             self.speedrun = None
-            self.register_message("Level skipped, speedrun disabled.", 5)
+            self.register_message(MS.level_skipped_speedrun, 5)
         return True
 
 

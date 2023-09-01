@@ -3,6 +3,7 @@ import random
 
 import src.imports.globals as g
 from src.imports.log import log
+from src.strings.translation_getters import get_level_names_strings
 
 
 class level_status(Enum):
@@ -259,51 +260,52 @@ def up_in_hierarchy(level_index):
 # TODO: add a dict to optimize at least a part of this
 def level_name(level_index):
     level_set, level = level_index
+    LS = get_level_names_strings(g.save_state.get_language())
 
     if level_set == 0:
-        return "Debug " + str(level)
+        return f"{LS.debug} {str(level)}"
 
     if 0 < level_set < 100:
         return str(level_set) + ("" if level == 0 else "-" + str(level))
 
     if 100 < level_set < 200:
-        return "Randomized level"
+        return LS.randomized
 
     if level_set == 204 or level_index == (500, 1):
-        return "Giszowiec"
+        return LS.zone_204
 
     if level_set == 205:
-        return "Birdy's Rainy Day Skipathon"
+        return LS.zone_205
 
     if level_set == 206:
-        return "The Maze"
+        return LS.zone_206
 
     if level_set == 209:
-        return "platform maze"
+        return LS.zone_209
 
     if 200 < level_set < 300:
-        return "?" + ("" if level == 0 else "-" + str(level))
+        return "???" + ("" if level == 0 else "-" + str(level))
 
     if 300 < level_set < 400:
-        return "extra " + str(level_set - 300) + ("" if level == 0 else "-" + str(level))
+        return LS.extra + " " + str(level_set - 300) + ("" if level == 0 else "-" + str(level))
 
     if level_set == 400:
         if level == 1:
-            return "Overworld"
+            return LS.overworld
         if level == 3 and random.randint(0, 99) == 0:
-            return "Overworld 2 2"
-        return "Overworld " + ("" if level == 1 else str(level))
+            return f"{LS.overworld} 2 2"
+        return LS.overworld + " " + ("" if level == 1 else str(level))
 
     if level_index in [(500, 2)]:
         return ""
 
     if level_index == (500, 0):
-        return "The Swamp"
+        return LS.swamp
 
     if level_index == (500, 3):
-        return "1.00e1.000e15" if random.randint(0, 99) == 0 else "End"
+        return "1.00e1.000e15" if random.randint(0, 99) == 0 else LS.end
 
-    return "How did you get here?"
+    return LS.how_did_you_get_here
 
 
 background_index = {
