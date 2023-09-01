@@ -1,9 +1,9 @@
 from src.strings.english.controls_display import controls_display_en
-from src.strings.english.level_names import level_names_pl
+from src.strings.english.level_names import level_names_en
 from src.strings.english.messages import messages_en
 from src.strings.english.other import other_en
 from src.strings.polish.controls_display import controls_display_pl
-from src.strings.polish.level_names import level_names_en
+from src.strings.polish.level_names import level_names_pl
 from src.strings.polish.messages import messages_pl
 from src.strings.polish.other import other_pl
 

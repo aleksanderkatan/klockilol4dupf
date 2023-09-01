@@ -171,6 +171,8 @@ def command_enable_cheats(game_logic, command):
         g.save_state.set_preference("cheats", True)
         game_logic.speedrun = None
         register_message(game_logic, MS.correct_ec_password, 7)
+
+
 public_commands["q"] = command_quit
 public_commands["exit"] = command_quit
 public_commands["quit"] = command_quit

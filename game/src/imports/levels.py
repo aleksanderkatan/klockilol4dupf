@@ -290,11 +290,12 @@ def level_name(level_index):
         return LS.extra + " " + str(level_set - 300) + ("" if level == 0 else "-" + str(level))
 
     if level_set == 400:
-        if level == 1:
-            return LS.overworld
-        if level == 3 and random.randint(0, 99) == 0:
-            return f"{LS.overworld} 2 2"
-        return LS.overworld + " " + ("" if level == 1 else str(level))
+        # if level == 1:
+        #     return LS.overworld
+        # if level == 3 and random.randint(0, 99) == 0:
+        #     return f"{LS.overworld} 2 2"
+        # return LS.overworld + " " + ("" if level == 1 else str(level))
+        return LS.overworld
 
     if level_index in [(500, 2)]:
         return ""

@@ -22,7 +22,6 @@ class messages:
     timer_off = ""
     witch_on = ""
     witch_off = ""
-    skip = ""
     not_skippable = ""
     incorrect_pm_password = ""
     no_such_speedrun = ""
