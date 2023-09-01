@@ -148,6 +148,11 @@ hierarchy[(500, 3)] = (400, 1)
 for i in range(1, 16 + 1):
     hierarchy[(206, i)] = (500, 0)
 
+# birdy and pm lead back to (400, 6)
+for i in range(1, 20+1):
+    hierarchy[(205, i)] = (400, 6)
+    hierarchy[(209, i)] = (400, 6)
+
 
 def is_valid_stage(level_index):
     level_set, level = level_index

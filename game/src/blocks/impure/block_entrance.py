@@ -63,6 +63,9 @@ class block_entrance(block):
         if where_is_player is not None:
             completion_pos = (pos[0] + v.LEVEL_COMPLETION_OFFSET, pos[1] + v.LEVEL_COMPLETION_OFFSET)
 
+            # for birdy and PM, 1st level acts as an entrance to the entire zone
+            if self.target_level[0] in [205, 209]:
+                return
             status = g.save_state.get_level_status(level_index=self.target_level)
             sprite = status_sprites[status]
             if sprite is not None:
