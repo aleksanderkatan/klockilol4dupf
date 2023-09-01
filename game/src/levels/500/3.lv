@@ -72,11 +72,11 @@ P000m000m000m0000P
 P0000000m00000000W
 ..................
 
-map_bridges 1 2 3 4 5 6 7 8 9 10
-#map_bridges 301 302 303
-map_bridges 11 205 209
-#map_bridges 203 202 204 207
-map_bridges 201
+map_bridges 1N 2N 3N 4N 5N 6N 7N 8N 9N 10N
+#map_bridges 301N 302N 303N
+map_bridges 11N 205N 209N
+#map_bridges 203N 202N 204N 207N
+map_bridges 201N
 entrances 400/1 201/0
 jumps 2
 portals 0 2 1 4 3 #6 5 8 7
