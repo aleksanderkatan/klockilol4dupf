@@ -1,8 +1,8 @@
 import pygame
 
 
-def is_display_controls(key):
-    return key in [pygame.K_TAB]
+def is_help(key):
+    return key in [pygame.K_TAB, ord("`")]
 
 
 def is_left(key):
@@ -33,16 +33,8 @@ def is_back_in_hierarchy(key):
     return key in [pygame.K_ESCAPE]
 
 
-def is_input_box_enable(key):
-    return key in [ord("`"), pygame.K_RETURN, pygame.K_t]
-
-
 def is_input_box_confirm(key):
     return key in [pygame.K_RETURN]
-
-
-def is_input_box_disable(key):
-    return key in [pygame.K_ESCAPE]
 
 
 def is_input_box_delete(key):

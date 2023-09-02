@@ -90,12 +90,8 @@ class game_logic:
         match self.mode:
             case mode.GAME:
                 next_move_direction = self._mode_game_move()
-            case mode.INPUT:
-                self._mode_input_move()
             case mode.WITCH:
                 self._mode_witch_move()
-            case mode.CONTROLS_DISPLAY:
-                self._mode_controls_display_move()
             case mode.CONTROLS_DISPLAY_AND_INPUT:
                 self._mode_controls_display_and_input_move()
 
@@ -124,16 +120,12 @@ class game_logic:
     def _mode_game_move(self):
         next_move_direction = d.NONE
         for key, unicode in self.keys_registered:
-            if k.is_input_box_enable(key):
-                self.mode = mode.INPUT
+            if k.is_help(key):
+                self.mode = mode.CONTROLS_DISPLAY_AND_INPUT
                 return
         if self.witch.check_for_events(self.level_index, self.stage.get_player_pos()):
             self.mode = mode.WITCH
             return
-        for key, unicode in self.keys_registered:
-            if k.is_display_controls(key):
-                self.mode = mode.CONTROLS_DISPLAY
-                return
         else:
             # take into account held keys
             possible_repeat_key = self.key_repeater.get_repeated_key(pygame.key.get_pressed())
@@ -196,12 +188,14 @@ class game_logic:
                                                        self.stage.latest_state().z)  # returns none or integer
         return next_move_direction
 
-    def _mode_input_move(self):
+
+    def _mode_witch_move(self):
         for key, unicode in self.keys_registered:
-            if k.is_input_box_disable(key):
-                self.mode = mode.GAME
-                self.input_box.clear()
-                return
+            self.witch.handle_key_pressed(key)
+        if not self.witch.is_active():
+            self.mode = mode.GAME
+
+    def _mode_controls_display_and_input_move(self):
         for key, unicode in self.keys_registered:
             if k.is_input_box_confirm(key):
                 command = self.input_box.text
@@ -210,39 +204,12 @@ class game_logic:
                 self.input_box.clear()
                 return
         for key, unicode in self.keys_registered:
-            if k.is_display_controls(key):
-                self.mode = mode.CONTROLS_DISPLAY_AND_INPUT
-                return
-        for key, unicode in self.keys_registered:
-            self.input_box.handle_key_pressed(key, unicode)
-
-    def _mode_witch_move(self):
-        for key, unicode in self.keys_registered:
-            self.witch.handle_key_pressed(key)
-        if not self.witch.is_active():
-            self.mode = mode.GAME
-
-    def _mode_controls_display_move(self):
-        for key, unicode in self.keys_registered:
-            if k.is_display_controls(key) or k.is_back_in_hierarchy(key):
+            if k.is_help(key) or k.is_back_in_hierarchy(key):
                 self.mode = mode.GAME
-                return
-        for key, unicode in self.keys_registered:
-            if k.is_input_box_enable(key):
-                self.mode = mode.CONTROLS_DISPLAY_AND_INPUT
-                return
-
-    def _mode_controls_display_and_input_move(self):
-        for key, unicode in self.keys_registered:
-            if k.is_input_box_disable(key) or k.is_back_in_hierarchy(key):
-                self.mode = mode.CONTROLS_DISPLAY
                 self.input_box.clear()
                 return
         for key, unicode in self.keys_registered:
-            if k.is_display_controls(key):
-                self.mode = mode.INPUT
-                return
-        self._mode_input_move()
+            self.input_box.handle_key_pressed(key, unicode)
 
 
     def _trigger_escape_counter(self):
@@ -265,10 +232,6 @@ class game_logic:
         match self.mode:
             case mode.WITCH:
                 self.witch.draw()
-            case mode.INPUT:
-                self.input_box.draw(self.screen)
-            case mode.CONTROLS_DISPLAY:
-                self.controls_display.draw(self.screen)
             case mode.CONTROLS_DISPLAY_AND_INPUT:
                 self.controls_display.draw(self.screen)
                 self.input_box.draw(self.screen, False)

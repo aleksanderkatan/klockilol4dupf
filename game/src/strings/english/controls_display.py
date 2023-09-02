@@ -5,6 +5,9 @@ class controls_display_en(controls_display):
     title_left = "Controls"
     title_right = "Commands"
     left = \
+        "TAB, `   - open this window\n" +\
+        "ENTER    - confirm a command\n" + \
+        "\n" + \
         "A, ←     - go left\n" +\
         "W, ↑     - go up\n" +\
         "D, →     - go right\n" +\
@@ -12,8 +15,6 @@ class controls_display_en(controls_display):
         "Q, SHIFT - undo a move\n" +\
         "R, /     - reset the stage\n" +\
         "ESC      - exit the stage\n" +\
-        "TAB      - help\n" +\
-        "ENTER    - open the console\n" +\
         "\n" +\
         "1..9     - single layer mode\n" +\
         "         (useful in zones 4+)"

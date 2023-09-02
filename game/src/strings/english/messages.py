@@ -39,7 +39,7 @@ class messages_en(messages):
 
     # escapes
     escapes_3_left = "Press escape three more times to exit.\nPress TAB for help."
-    escapes_2_left = "Press escape twice to exit.\nPress TAB for help."
+    escapes_2_left = "Press escape twice more to exit.\nPress TAB for help."
     escapes_1_left = "Press escape once more to exit.\nPress TAB for help."
 
     madeline_dashes_away = "Madeline wavedashes away."
