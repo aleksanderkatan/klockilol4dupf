@@ -14,6 +14,7 @@ class messages:
     death_with_reset = ""
 
     # public commands
+    enter_a_command = ""
     auto_reverse_on = ""
     auto_reverse_off = ""
     disappearing_blocks_on = ""

@@ -26,6 +26,7 @@ def execute_command(game_logic, command):
     CDS = get_control_display_strings(g.save_state.get_language())
 
     if command == '':
+        game_logic.register_message(MS.enter_a_command, 5)
         return
 
     if command == get_control_display_strings(g.save_state.get_language()).skip_message:

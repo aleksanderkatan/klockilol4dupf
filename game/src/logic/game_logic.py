@@ -210,6 +210,10 @@ class game_logic:
                 self.input_box.clear()
                 return
         for key, unicode in self.keys_registered:
+            if k.is_display_controls(key):
+                self.mode = mode.CONTROLS_DISPLAY_AND_INPUT
+                return
+        for key, unicode in self.keys_registered:
             self.input_box.handle_key_pressed(key, unicode)
 
     def _mode_witch_move(self):
@@ -230,9 +234,13 @@ class game_logic:
 
     def _mode_controls_display_and_input_move(self):
         for key, unicode in self.keys_registered:
-            if k.is_input_box_disable(key):
+            if k.is_input_box_disable(key) or k.is_back_in_hierarchy(key):
                 self.mode = mode.CONTROLS_DISPLAY
                 self.input_box.clear()
+                return
+        for key, unicode in self.keys_registered:
+            if k.is_display_controls(key):
+                self.mode = mode.INPUT
                 return
         self._mode_input_move()
 

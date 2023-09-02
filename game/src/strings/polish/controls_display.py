@@ -19,24 +19,24 @@ class controls_display_pl(controls_display):
         "         (istotny od strefy 4)"
     right = \
         "\'exit\'\n" +\
-        "    - forsuje zamknięcie gry.\n" + \
-        "    Zamknięcie okna zachowuje postępy.\n" + \
+        "  - forsuje zamknięcie gry.\n" + \
+        "  Zamknięcie okna zachowuje postępy.\n" + \
         "\n" +\
         "\'timer\'\n" +\
-        "    - włącza/wyłącza zegar.\n" +\
+        "  - włącza/wyłącza zegar.\n" +\
         "\n" +\
         "\'witch\'\n" +\
-        "    - włącza/wyłącza spotkania z wiedźmą.\n" +\
+        "  - włącza/wyłącza spotkania z wiedźmą.\n" +\
         "\n" +\
         "\'disappearing_blocks\'\n" +\
-        "    - włącza/wyłącza animacje bloków.\n" +\
+        "  - włącza/wyłącza animacje bloków.\n" +\
         "\n" +\
         "\'auto_reverse\'\n" +\
-        "    - włącza/wyłącza auto-cofanie ruchów.\n" +\
+        "  - włącza/wyłącza auto-cofanie ruchów.\n" +\
         "\n" +\
         "\'speedrun <nazwa>\'\n" +\
-        "    - USUWA ZAPIS i uruchamia speedrun.\n" +\
-        "    Więcej informacji w README.\n" +\
+        "  - USUWA ZAPIS i uruchamia speedrun.\n" +\
+        "  Więcej informacji w README.\n" +\
         "\n" +\
         "\n"
     skip_message = "Naprawdę nie jestem w stanie przejść tego poziomu."

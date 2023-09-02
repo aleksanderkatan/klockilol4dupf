@@ -6,6 +6,7 @@ class messages_en(messages):
     death_with_reset = "You died, the stage was reset."
 
     # public commands
+    enter_a_command = "You entered an empty command."
     auto_reverse_on = "Auto-reverse on death turned on."
     auto_reverse_off = "Auto-reverse on death turned off."
     disappearing_blocks_on = "Block disappearing animations turned on."

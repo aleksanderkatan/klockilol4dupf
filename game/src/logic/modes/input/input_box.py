@@ -19,9 +19,10 @@ def censor_text(text):
 
 
 def is_special(char):
-    pattern = r'[^a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\ ]'
-    match = re.search(pattern, char)
-    return bool(match)
+    return False
+    # pattern = r'[^a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\ ]'
+    # match = re.search(pattern, char)
+    # return bool(match)
 
 
 class input_box:

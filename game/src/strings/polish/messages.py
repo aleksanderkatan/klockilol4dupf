@@ -6,6 +6,7 @@ class messages_pl(messages):
     death_with_reset = "Zginąłeś, poziom został zresetowany."
 
     # public commands
+    enter_a_command = "Wpisałeś pustą komendę."
     auto_reverse_on = "Auto-cofanie ruchów w przypadku śmierci włączone."
     auto_reverse_off = "Auto-cofanie ruchów w przypadku śmierci wyłączone."
     disappearing_blocks_on = "Animacja znikających klocków włączona."
