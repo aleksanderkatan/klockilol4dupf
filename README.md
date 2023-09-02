@@ -39,10 +39,7 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 
 - More extra zones!
 - Any other suggestions that I find cool.
-
-- Utilize text_utils in all text display.
 - Add a new death screen.
-
 - Revamp birdy and pm lobbies.
 - Add a variant of map bridge that requires levels to be beaten.
 - A way to type in commands while in controls_display mode (mixed state?)

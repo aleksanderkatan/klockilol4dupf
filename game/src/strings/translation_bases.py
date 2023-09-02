@@ -71,7 +71,7 @@ class level_names:
 
 
 class other:
-    pass
+    q_to_reverse = ""
 
 
 

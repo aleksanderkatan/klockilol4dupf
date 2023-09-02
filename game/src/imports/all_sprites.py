@@ -4,6 +4,7 @@ import pygame
 
 import src.imports.globals as g
 from src.imports.view_constants import global_view_constants as v
+from src.logic.modes.text_display_utils import create_text_surfaces
 
 path = "src/sprites/"
 blocks_path = path + ("blocks/" if not g.THREED else "blocks_3d/")
@@ -93,3 +94,5 @@ sprites["particle_3"] = pygame.image.load(other_path + 'particle_3.gif').convert
 sprites["particle_star_1"] = pygame.image.load(other_path + 'particle_star_1.gif').convert()
 sprites["particle_star_2"] = pygame.image.load(other_path + 'particle_star_2.gif').convert()
 sprites["particle_star_3"] = pygame.image.load(other_path + 'particle_star_3.gif').convert()
+
+

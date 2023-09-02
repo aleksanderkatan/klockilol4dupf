@@ -77,7 +77,7 @@ def command_switch_timer(game_logic, command):
     log.write("Switching timer.")
     state = g.save_state.get_preference("timer")
     g.save_state.set_preference("timer", not state)
-    message = MS.auto_reverse_off if state else MS.auto_reverse_on
+    message = MS.timer_off if state else MS.timer_on
     register_message(game_logic, message, 5)
 
 

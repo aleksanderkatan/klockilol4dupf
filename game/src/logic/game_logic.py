@@ -180,14 +180,17 @@ class game_logic:
                     continue
 
                 if k.is_back_in_hierarchy(key):
-                    target = l.up_in_hierarchy(self.level_index)
-                    log.trace("Going back to", target)
-                    if target == self.level_index:
-                        self._trigger_escape_counter()
+                    if self.single_layer is not None:
+                        self.single_layer = None
                     else:
-                        self.set_stage(l.up_in_hierarchy(self.level_index))
-                    g.save_state.log_escape()
-                    continue
+                        target = l.up_in_hierarchy(self.level_index)
+                        log.trace("Going back to", target)
+                        if target == self.level_index:
+                            self._trigger_escape_counter()
+                        else:
+                            self.set_stage(l.up_in_hierarchy(self.level_index))
+                        g.save_state.log_escape()
+                        continue
 
                 self.single_layer = u.new_single_layer(self.single_layer, key,
                                                        self.stage.latest_state().z)  # returns none or integer

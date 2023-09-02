@@ -36,7 +36,7 @@ class level_statuses:
         self.statuses[level_index] = max(status, self.statuses[level_index])
 
     def _unlock_next(self, level_index):
-        level_set, level = l.next_level(level_index)
+        level_set, level = l.next_level(level_index, true_next=True)
         # if the next level is really a level and not just a stage
         if level != 0:
             self._set_level_status((level_set, level), l.level_status.AVAILABLE)

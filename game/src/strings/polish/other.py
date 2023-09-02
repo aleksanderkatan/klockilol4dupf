@@ -2,4 +2,4 @@ from src.strings.translation_bases import other
 
 
 class other_pl(other):
-    pass
+    q_to_reverse = "Q - cofnij"

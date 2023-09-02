@@ -27,8 +27,7 @@ def find_starting_point(s, last_level_index, options, preset_spawn):
 
     if type(s.get_block(s.player.pos)) not in o.standables:
         log.info("Player is not standing, finding a standable block...")
-        for blo in s.block_iterator():
-            typ = type(blo)
-            if typ in o.standables and typ != o.block_invisible:
-                s.teleport_player(blo.pos, False)
-                break
+        starting_point = s.first_standable_pos()
+        s.teleport_player(starting_point, False)
+
+

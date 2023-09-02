@@ -173,7 +173,7 @@ def level_path(level_index):
     return 'src/levels/' + str(level_set) + '/' + str(level) + '.lv'
 
 
-def next_level(level_index):
+def next_level(level_index, true_next=False):
     level_set, level = level_index
 
     if level_set == 400:
@@ -184,8 +184,10 @@ def next_level(level_index):
         return level_error
     if level_set >= 300:
         return level_set, 0
-    if level_index in back_in_hierarchy_levels:
+    if not true_next and level_index in back_in_hierarchy_levels:
         return up_in_hierarchy(level_index)
+    if level == 20 and level_set in [205, 209]:
+        return 400, 6
     if levs[level_set] == level:
         return level_set, 0
     return level_set, level + 1
@@ -262,7 +264,6 @@ def up_in_hierarchy(level_index):
     return level_error
 
 
-# TODO: add a dict to optimize at least a part of this
 def level_name(level_index):
     level_set, level = level_index
     LS = get_level_names_strings(g.save_state.get_language())

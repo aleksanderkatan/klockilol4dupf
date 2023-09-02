@@ -77,6 +77,9 @@ def reverse_direction(direction):
 
 
 def new_single_layer(current_single_layer, key, total_layers):
+    if total_layers == 1:
+        return None
+
     new_single_layer_index = -2137
     for i in range(1, total_layers + 1):
         if pygame.key.name(key) == str(i):

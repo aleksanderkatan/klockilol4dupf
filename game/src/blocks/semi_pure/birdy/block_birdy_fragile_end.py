@@ -6,7 +6,7 @@ from src.blocks.pure.block_end import block_end
 class block_birdy_fragile_end(block_end):
     def __init__(self, screen, stage, state_index, pos):
         super().__init__(screen, stage, state_index, pos)
-        self.sprite = s.sprites["block_fragile_end"]
+        self.sprite = s.sprites["block_end"]
 
     def on_step_out(self):
         super().on_step_out()
