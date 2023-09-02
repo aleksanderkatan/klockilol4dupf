@@ -44,4 +44,6 @@ class messages_en(messages):
 
     madeline_dashes_away = "Madeline wavedashes away."
 
+    forgot_period = "You forgot the period lol"
+
 

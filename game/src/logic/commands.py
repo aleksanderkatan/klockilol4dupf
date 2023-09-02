@@ -29,6 +29,10 @@ def execute_command(game_logic, command):
         game_logic.register_message(MS.enter_a_command, 5)
         return
 
+    if command == get_control_display_strings(g.save_state.get_language()).skip_message[:-1]:
+        game_logic.register_message(MS.forgot_period, 5)
+        return
+
     if command == get_control_display_strings(g.save_state.get_language()).skip_message:
         command_skip(game_logic, command)
         return

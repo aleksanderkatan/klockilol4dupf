@@ -39,13 +39,16 @@ class messages_pl(messages):
     level_skipped_speedrun = "Poziom pominięty. Speedrun wyrzucony do śmieci."
 
     # escapes
-    escapes_3_left = "Wciśnij Escape jeszcze trzy razy, aby zamknąć grę.\nWciśnij Tab aby wyświetlić pomoc."
+    escapes_3_left = "Wciśnij Escape jeszcze trzy razy, aby zamknąć grę.\nWciśnij TAB aby wyświetlić pomoc."
     # "Press escape three more times to exit.\nPress TAB for help."
-    escapes_2_left = "Wciśnij Escape jeszcze dwa razy, aby zamknąć grę.\nWciśnij Tab aby wyświetlić pomoc."
+    escapes_2_left = "Wciśnij Escape jeszcze dwa razy, aby zamknąć grę.\nWciśnij TAB aby wyświetlić pomoc."
     # "Press escape twice to exit.\nPress TAB for help."
-    escapes_1_left = "Wciśnij Escape jeszcze raz, aby zamknąć grę.\nWciśnij Tab aby wyświetlić pomoc."
+    escapes_1_left = "Wciśnij Escape jeszcze raz, aby zamknąć grę.\nWciśnij TAB aby wyświetlić pomoc."
     # "Press escape once more to exit.\nPress TAB for help."
 
     madeline_dashes_away = "Madeline wavedashuje w dal."
+
+    forgot_period = "Zapomniałeś kropki xd"
+
 
 

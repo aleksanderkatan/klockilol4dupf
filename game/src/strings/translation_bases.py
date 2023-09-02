@@ -56,6 +56,9 @@ class messages:
 
     madeline_dashes_away = ""
 
+    forgot_period = ""
+
+
 
 class level_names:
     debug = ""
