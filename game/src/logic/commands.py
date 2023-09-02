@@ -11,6 +11,7 @@ from src.imports.log import log
 from src.imports.platform_maze_passwords import passwords
 from src.imports.save_state import level_statuses
 from src.imports.view_constants import global_view_constants as v
+from src.logic.modes.input.annoying_skip_response import get_annoying_response, status
 from src.speedruns.settings import settings as speedrun_settings
 from src.strings.translation_getters import get_control_display_strings, get_message_strings
 
@@ -25,16 +26,16 @@ def execute_command(game_logic, command):
     MS = get_message_strings(g.save_state.get_language())
     CDS = get_control_display_strings(g.save_state.get_language())
 
-    if command == '':
+    if command == "":
         game_logic.register_message(MS.enter_a_command, 5)
         return
 
-    if command == get_control_display_strings(g.save_state.get_language()).skip_message[:-1]:
-        game_logic.register_message(MS.forgot_period, 5)
-        return
-
-    if command == get_control_display_strings(g.save_state.get_language()).skip_message:
+    possible_message, skip_status = get_annoying_response(CDS.skip_message, command)
+    if skip_status == status.CORRECT_SKIP:
         command_skip(game_logic, command)
+        return
+    if skip_status == status.INCORRECT_SKIP:
+        game_logic.register_message(possible_message, 5)
         return
 
     command = [word.lower() for word in command.strip().split(' ')]

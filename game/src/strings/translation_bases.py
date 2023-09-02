@@ -56,8 +56,16 @@ class messages:
 
     madeline_dashes_away = ""
 
+    # annoying messages
     forgot_period = ""
-
+    capitalization_matters = ""
+    space_error = ""
+    to_few_letters = ""
+    one_wrong_letter = ""
+    two_wrong_letters = ""
+    three_wrong_letters = ""
+    many_wrong_letters = ""
+    to_much_letters = ""
 
 
 class level_names:

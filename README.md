@@ -94,3 +94,7 @@ The speedrun command automatically sets up speedruns for you.
 * pygame
 * Tkinter
 * pickle
+* enum
+* ABC
+* editdistance
+

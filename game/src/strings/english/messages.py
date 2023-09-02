@@ -45,5 +45,14 @@ class messages_en(messages):
     madeline_dashes_away = "Madeline wavedashes away."
 
     forgot_period = "You forgot the period lol"
+    capitalization_matters = "The capitalization matters, don't you know?"
+    space_error = "You did something wrong with spaces."
+    to_few_letters = "Just one letter to few."
+    one_wrong_letter = "Only one mistake! So close!"
+    two_wrong_letters = "Yeah, two missclicks is a thing that can happen.\nTry harder."
+    three_wrong_letters = "Really? Three mistakes in such a simple sentence?"
+    many_wrong_letters = "Are you having a stroke?"
+    to_much_letters = "Only one letter too many!"
+
 
 

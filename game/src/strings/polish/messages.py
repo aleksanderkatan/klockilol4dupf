@@ -49,6 +49,16 @@ class messages_pl(messages):
     madeline_dashes_away = "Madeline wavedashuje w dal."
 
     forgot_period = "Zapomniałeś kropki xd"
+    capitalization_matters = "Wielie litery mają znaczenie, wiesz?"
+    space_error = "Coś zepsułeś ze spacjami."
+    to_few_letters = "Jednej literki ci zabrakło."
+    one_wrong_letter = "Tylko jedną literkę pomyliłeś! Tak blisko!"
+    two_wrong_letters = "Dwa missclicki się czasami zarzają. Postaraj się bardziej."
+    three_wrong_letters = "No wiesz? Aż trzy błędy zrobić w tak prostym zdaniu?"
+    many_wrong_letters = "Masz wylew?"
+    to_much_letters = "Tylko jedną literę za dużo dałeś!"
+
+
 
 
 
