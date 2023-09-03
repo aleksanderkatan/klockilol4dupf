@@ -6,8 +6,8 @@ class controls_display_en(controls_display):
     title_right = "Commands"
     left = \
         "TAB, `   - open this window\n" +\
-        "ENTER    - confirm a command\n" + \
-        "\n" + \
+        "ENTER    - execute a command\n" + \
+        "\n" +\
         "A, ←     - go left\n" +\
         "W, ↑     - go up\n" +\
         "D, →     - go right\n" +\

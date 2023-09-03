@@ -5,6 +5,9 @@ class controls_display_pl(controls_display):
     title_left = "Sterowanie"
     title_right = "Komendy"
     left = \
+        "ENTER    - włącz konsolę\n" +\
+        "TAB      - otwórz to okno\n" +\
+        "\n" +\
         "A, ←     - w lewo\n" +\
         "W, ↑     - w górę\n" +\
         "D, →     - w prawo\n" +\
@@ -12,9 +15,7 @@ class controls_display_pl(controls_display):
         "Q, SHIFT - cofnij ruch\n" +\
         "R, /     - zresetuj poziom\n" +\
         "ESC      - wyjdź z poziomu\n" +\
-        "TAB      - pomoc\n" +\
-        "ENTER    - włącz konsolę\n" + \
-        "\n" + \
+        "\n" +\
         "1..9     - tryb jednej warstwy\n" + \
         "         (istotny od strefy 4)"
     right = \

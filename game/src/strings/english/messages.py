@@ -18,7 +18,7 @@ class messages_en(messages):
     not_skippable = "This is not a skippable stage."
     incorrect_pm_password = "Incorrect password."
     no_such_speedrun = "Incorrect speedrun name."
-    starting_speedrun = "Running the following speedrun: "
+    starting_speedrun = "Starting speedrun: "
     set_speedrun_preferences = "Settings adjusted for speedrunning."
     incorrect_ec_password = "Incorrect password! No cheats for you."
     correct_ec_password = "Cheats enabled."

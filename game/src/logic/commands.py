@@ -150,7 +150,7 @@ def command_speedrun(game_logic, command):
     game_logic.set_stage(stage)
     game_logic.stage.latest_state().teleport_player(pos, activate_step_in=False)
     game_logic.speedrun = speedrun
-    register_message(game_logic, f"{MS.starting_speedrun} {speedrun.get_name()}.", 10)
+    register_message(game_logic, f"{MS.starting_speedrun} {speedrun.get_name()}.", 3)
 
 
 def command_shrek(game_logic, command):

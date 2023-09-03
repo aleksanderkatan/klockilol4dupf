@@ -74,19 +74,17 @@ The result will generate in the `dist` directory, and needs to be moved to the `
 
 When transitioning between devices, you can transfer your progress by copying the save folder and pasting it onto the new device.
 
-## Speedrun command AAAAA
+## Speedrun command
 
-Commands are available after pressing Enter while in game. 
-The speedrun command automatically sets up speedruns for you.
+The `speedrun [SPEEDRUN_NAME]` command (available under TAB key) automatically sets up a speedrun for you based on the argument provided. 
+
 **IT ERASES THE CURRENT SAVE FILE!!!**
 
-- speedrun - initiate a speedrun based on the provided arguments.   
-    WARNING: this command wipes your save! You can back it up by copying files from `game/data`  
-    Available speedruns:
-  - platform maze (pm)
-  - birdy's rainy day skipathon (birdy)
-  - shrek%
-  - 100%  
+Possible `[SPEEDRUN_NAME]` arguments:
+- `platform_maze` - completing a zone consisting of 20 stages, based on [Platform Maze](https://www.newgrounds.com/portal/view/360130) by Bobberticus,
+- `birdy` - completing a zone consisting of 20 stages, based on Birdy's Rainy Day Skipathon by Jess Hansen.
+- `shrek%` - getting the Shrek reward (awarded for completing all the 10 main zones of the game),
+- `100%` - completing everything there is in the game.
 
 
 ## Dependencies

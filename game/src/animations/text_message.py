@@ -7,8 +7,10 @@ from src.logic.modes.text_display_utils import create_text_surfaces, horizontal,
 class text_message:
     def __init__(self, screen, message, lifetime):
         self.screen = screen
+        # self.surfaces_with_poses = create_text_surfaces(message, 0.5, pygame.Color('black'),
+        #                                                 (0.5, 0.02), (horizontal.MID, vertical.TOP), horizontal.MID)
         self.surfaces_with_poses = create_text_surfaces(message, 0.5, pygame.Color('black'),
-                                                        (0.5, 0.02), (horizontal.MID, vertical.TOP), horizontal.MID)
+                                                        (0.02, 0.98), (horizontal.LFT, vertical.BOT), horizontal.LFT)
         self.lifetime = lifetime
 
     def draw(self):

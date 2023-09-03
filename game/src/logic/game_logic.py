@@ -250,6 +250,10 @@ class game_logic:
                               v.LEVEL_FONT_OFFSET * 2 + FONT_SIZE_2)
                              )
 
+        if self.speedrun is not None:
+            name_surface, pos = self.speedrun.get_text_sprite_and_pos()
+            self.screen.blit(name_surface, pos)
+
         self.screen.blit(self.grayness, (0, 0))
 
     def initialize_first_stage(self):

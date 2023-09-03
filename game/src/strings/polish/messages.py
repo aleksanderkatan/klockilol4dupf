@@ -18,7 +18,7 @@ class messages_pl(messages):
     not_skippable = "To nie jest poziom, którego można pominąć."
     incorrect_pm_password = "Niepoprawne hasło."
     no_such_speedrun = "Nie ma takiego speedrunu."
-    starting_speedrun = "Uruchomiono następujący speedrun: "
+    starting_speedrun = "Uruchomiono speedrun: "
     set_speedrun_preferences = "Ustawienia przystosowano do speedrunu."
     incorrect_ec_password = "Niepoprawne hasło! Nie ma cheatów dla ciebie!"
     correct_ec_password = "Cheaty włączone."
