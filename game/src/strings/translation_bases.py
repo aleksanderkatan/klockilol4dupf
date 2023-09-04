@@ -49,11 +49,9 @@ class messages:
 
     # escapes
     escapes_3_left = ""
-    # "Press escape three more times to exit.\nPress TAB for help."
     escapes_2_left = ""
-    # "Press escape twice to exit.\nPress TAB for help."
     escapes_1_left = ""
-    # "Press escape once more to exit.\nPress TAB for help."
+    escapes_confirm = ""
 
     no_access_yet = ""
     madeline_dashes_away = ""

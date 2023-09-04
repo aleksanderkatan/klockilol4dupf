@@ -30,27 +30,16 @@ Klockilol4dupf integrates mechanics and levels from both games as extra zones."
 
 - Ten main zones, each with a different gimmick, containing over 200 puzzles in total!
 - The ability to undo any mistakes you make!
-- A witch, that serves as a narrator! She speaks either Polish or English.
+- A witch, that serves as a narrator!
 - Speedrun helpers, including as a timer and commands setting up specific runs!
 - Several extra zones for players hungry for more!
 - An easy-to-learn level creation process based on txt files!
+
 
 ## Upcoming features:
 
 - More extra zones!
 - Any other suggestions that I find cool.
-- Add a new death screen.
-- Revamp birdy and pm lobbies.
-- Add a variant of map bridge that requires levels to be beaten.
-- A way to type in commands while in controls_display mode (mixed state?)
-- Translate all messages.
-- The addition of a way to skip levels.
-- Hold a direction to continue moving that way.
-- Make Madeline dash away with a secret trigger when getting close to her.
-- Newlines support in messages.
-- Return to the game in the stage you exited.
-- Add small animation for falling. (and adapt player animations to the new back)
-- An in-game display of the control scheme.
 
 ## Installation
 
@@ -61,7 +50,7 @@ For <b>Windows 10/11</b>:<br>
 
 **Do NOT move the .exe file away from that folder.** You can create a shortcut though. 
 
-Windows Defender will likely stop the game from running. CLick on 'more info' -> 'run anyway', if you trust me enough. Do NOT close the console window.
+Windows Defender will likely stop the game from running. CLick on 'more info' -> 'run anyway', if you trust me enough. Do not close the console window that opens.
 <br/><br/>
 
 For <b>Linux</b>:<br>
@@ -74,7 +63,7 @@ The result will generate in the `dist` directory, and needs to be moved to the `
 
 When transitioning between devices, you can transfer your progress by copying the save folder and pasting it onto the new device.
 
-## Speedrun command
+## The speedrun command
 
 The `speedrun [SPEEDRUN_NAME]` command (available under TAB key) automatically sets up a speedrun for you based on the argument provided. 
 

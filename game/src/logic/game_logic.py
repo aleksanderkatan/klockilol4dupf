@@ -175,13 +175,7 @@ class game_logic:
                     if self.single_layer is not None:
                         self.single_layer = None
                     else:
-                        target = l.up_in_hierarchy(self.level_index)
-                        log.trace("Going back to", target)
-                        if target == self.level_index:
-                            self._trigger_escape_counter()
-                        else:
-                            self.set_stage(l.up_in_hierarchy(self.level_index))
-                        g.save_state.log_escape()
+                        self._trigger_escape_counter()
                         continue
 
                 self.single_layer = u.new_single_layer(self.single_layer, key,
@@ -213,16 +207,26 @@ class game_logic:
 
 
     def _trigger_escape_counter(self):
+        target = l.up_in_hierarchy(self.level_index)
+        g.save_state.log_escape()
         self.escape_counter += 1
+
+        if target == self.level_index:
+            if self.escape_counter == 1:
+                self.register_message(MS.escapes_3_left, 5)
+            if self.escape_counter == 2:
+                self.register_message(MS.escapes_2_left, 5)
+            if self.escape_counter == 3:
+                self.register_message(MS.escapes_1_left, 5)
+            if self.escape_counter == 4:
+                c.exit_game()
+        else:
+            if self.escape_counter == 1:
+                self.register_message(MS.escapes_confirm, 5)
+            if self.escape_counter == 2:
+                self.set_stage(l.up_in_hierarchy(self.level_index))
+
         self.escape_timeout = v.FRAME_RATE * 5
-        if self.escape_counter == 1:
-            self.register_message(MS.escapes_3_left, 5)
-        if self.escape_counter == 2:
-            self.register_message(MS.escapes_2_left, 5)
-        if self.escape_counter == 3:
-            self.register_message(MS.escapes_1_left, 5)
-        if self.escape_counter == 4:
-            c.exit_game()
 
 
     def draw(self):
