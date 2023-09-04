@@ -26,9 +26,12 @@ class state:
         self.bombs = []
         self.decorations = []
         self.dark_visibility = 1
+        # self.death_text_with_pos = create_text_surfaces(get_other_strings(g.save_state.get_language()).q_to_reverse,
+        #                                                 1, pygame.Color('lightskyblue3'), (0.02, 0.02),
+        #                                                 (horizontal.LFT, vertical.TOP))[0]
         self.death_text_with_pos = create_text_surfaces(get_other_strings(g.save_state.get_language()).q_to_reverse,
-                                                        2, pygame.Color('lightskyblue3'), (0.02, 0.02),
-                                                        (horizontal.LFT, vertical.TOP))[0]
+                                                        1, pygame.Color('lightskyblue3'), (0.02, 0.98),
+                                                        (horizontal.LFT, vertical.BOT))[0]
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)

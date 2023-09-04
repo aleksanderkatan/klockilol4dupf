@@ -5,8 +5,8 @@ class controls_display_pl(controls_display):
     title_left = "Sterowanie"
     title_right = "Komendy"
     left = \
-        "ENTER    - włącz konsolę\n" +\
         "TAB      - otwórz to okno\n" +\
+        "ENTER    - wykonaj komendę\n" +\
         "\n" +\
         "A, ←     - w lewo\n" +\
         "W, ↑     - w górę\n" +\

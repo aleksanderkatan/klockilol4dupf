@@ -54,6 +54,7 @@ class messages:
     escapes_1_left = ""
     # "Press escape once more to exit.\nPress TAB for help."
 
+    no_access_yet = ""
     madeline_dashes_away = ""
 
     # annoying messages

@@ -42,6 +42,7 @@ class messages_en(messages):
     escapes_2_left = "Press escape twice more to exit.\nPress TAB for help."
     escapes_1_left = "Press escape once more to exit.\nPress TAB for help."
 
+    no_access_yet = "You don't have the access to this stage yet."
     madeline_dashes_away = "Madeline wavedashes away."
 
     forgot_period = "You forgot the period lol"

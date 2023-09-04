@@ -3,7 +3,7 @@ import src.imports.globals as g
 import src.imports.levels as l
 from src.blocks.block import block
 from src.imports.view_constants import global_view_constants as v
-
+from src.strings.translation_getters import get_message_strings
 
 status_sprites = {
     l.level_status.UNAVAILABLE: s.sprites["level_unavailable"],
@@ -54,6 +54,9 @@ class block_entrance(block):
         status = g.save_state.get_level_status(level_index=self.target_level)
         if status != l.level_status.UNAVAILABLE:
             self.stage.change_to = self.target_level
+        else:
+            MS = get_message_strings(g.save_state.get_language())
+            self.stage.animation_manager.register_message(self.screen, MS.no_access_yet, v.FRAME_RATE * 3)
 
     def on_step_out(self):
         self.stage.change_to = None

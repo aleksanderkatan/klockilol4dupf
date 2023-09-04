@@ -1,6 +1,12 @@
 Version 1.2 - The Accessibility Update
 - Added an in-game display of controls under the TAB key.
--
+- Added level skip functionality (also under the TAB key).
+- Added translation for all in-game messages (previously only the narrator was translated).
+- Added key auto-repeat functionality (you can now hold eg. arrows, Q to repeat their actions).
+- Changed starting stage to be the last one you visited.
+- Moved messages from top-middle of the screen to the bottom left corner.
+- Other minor changes.
+
 
 Version 1.1 - The Language Update
 - Added English translation and support for adding other translations.

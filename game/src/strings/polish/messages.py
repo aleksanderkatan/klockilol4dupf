@@ -46,6 +46,7 @@ class messages_pl(messages):
     escapes_1_left = "Wciśnij Escape jeszcze raz, aby zamknąć grę.\nWciśnij TAB aby wyświetlić pomoc."
     # "Press escape once more to exit.\nPress TAB for help."
 
+    no_access_yet = "Nie masz jeszcze dostępu do tego poziomu."
     madeline_dashes_away = "Madeline wavedashuje w dal."
 
     forgot_period = "Zapomniałeś kropki xd"
