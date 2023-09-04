@@ -27,6 +27,7 @@ class messages:
     incorrect_pm_password = ""
     no_such_speedrun = ""
     starting_speedrun = ""
+    speedrun_finished = ""
     set_speedrun_preferences = ""
     incorrect_ec_password = ""
     correct_ec_password = ""

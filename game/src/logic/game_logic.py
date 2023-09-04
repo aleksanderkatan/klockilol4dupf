@@ -301,6 +301,8 @@ class game_logic:
             log.write(g.save_state.get_all_stats())
             g.save_state.set("is_timer_stopped", True)
             g.save_state.hard_save_all()
+            self.speedrun = None
+            self.register_message(f"{MS.speedrun_finished} {name}", -1)
 
     def complete(self):
         if not l.is_level(self.level_index):
