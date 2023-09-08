@@ -5,7 +5,7 @@ Version 1.2 - The Accessibility Update
 - Added key auto-repeat functionality (you can now hold eg. arrows, Q to repeat their actions).
 - Changed starting stage to be the last one you visited.
 - Moved messages from top-middle of the screen to the bottom left corner.
-- Other minor changes.
+- Other minor changes, like the addition of new available resolutions.
 
 
 Version 1.1 - The Language Update
