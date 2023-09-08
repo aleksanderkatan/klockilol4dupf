@@ -83,5 +83,4 @@ Possible `[SPEEDRUN_NAME]` arguments:
 * pickle
 * enum
 * ABC
-* editdistance
 
