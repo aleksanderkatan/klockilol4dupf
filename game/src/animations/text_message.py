@@ -1,20 +1,21 @@
 import pygame
 
 from src.imports.view_constants import global_view_constants as v
-
-FONT = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", v.MESSAGE_FONT_SIZE)
+from src.logic.modes.text_display_utils import create_text_surfaces, horizontal, vertical
 
 
 class text_message:
     def __init__(self, screen, message, lifetime):
         self.screen = screen
-
-        self.surface = FONT.render(message, True, pygame.Color('black'))
-        self.pos = (v.WINDOW_X // 2 - self.surface.get_rect().width // 2, v.MESSAGE_FONT_SIZE)
+        # self.surfaces_with_poses = create_text_surfaces(message, 0.5, pygame.Color('black'),
+        #                                                 (0.5, 0.02), (horizontal.MID, vertical.TOP), horizontal.MID)
+        self.surfaces_with_poses = create_text_surfaces(message, 0.5, pygame.Color('black'),
+                                                        (0.02, 0.98), (horizontal.LFT, vertical.BOT), horizontal.LFT)
         self.lifetime = lifetime
 
     def draw(self):
-        self.screen.blit(self.surface, self.pos)
+        for surface, pos in self.surfaces_with_poses:
+            self.screen.blit(surface, pos)
 
     def advance(self):
         self.lifetime -= 1

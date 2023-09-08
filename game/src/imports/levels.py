@@ -1,7 +1,38 @@
+from enum import Enum
 import random
 
 import src.imports.globals as g
 from src.imports.log import log
+from src.strings.translation_getters import get_level_names_strings
+
+
+class level_status(Enum):
+    # those represent the texture shown in the corner of a stage
+    # when instead of a level an entire zone is in consideration, then this enum signifies the state of its map bridge
+    # only 0 means a stage that cannot be entered
+    UNAVAILABLE = 0
+    AVAILABLE = 1
+    SKIPPED = 2
+    COMPLETED = 3
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __lt__(self, other):
+        return self.value < other.value
+
+    def __le__(self, other):
+        return self.value <= other.value
+
+    def __gt__(self, other):
+        return self.value > other.value
+
+    def __ge__(self, other):
+        return self.value >= other.value
+
+    def __hash__(self):
+        return self.value
+
 
 level_error_path = 'src/levels/0/0.lv'
 
@@ -108,7 +139,7 @@ hierarchy[(303, 0)] = (400, 4)
 for i in range(1, 6 + 1):
     hierarchy[(400, i)] = (400, i)
 
-hierarchy[(500, 0)] = (400, 5)
+hierarchy[(500, 0)] = (500, 0)
 hierarchy[(500, 1)] = (400, 4)
 hierarchy[(500, 2)] = (400, 1)
 hierarchy[(500, 3)] = (400, 1)
@@ -116,6 +147,11 @@ hierarchy[(500, 3)] = (400, 1)
 # The Maze
 for i in range(1, 16 + 1):
     hierarchy[(206, i)] = (500, 0)
+
+# birdy and pm lead back to (400, 6)
+for i in range(1, 20+1):
+    hierarchy[(205, i)] = (400, 6)
+    hierarchy[(209, i)] = (400, 6)
 
 
 def is_valid_stage(level_index):
@@ -137,7 +173,7 @@ def level_path(level_index):
     return 'src/levels/' + str(level_set) + '/' + str(level) + '.lv'
 
 
-def next_level(level_index):
+def next_level(level_index, true_next=False):
     level_set, level = level_index
 
     if level_set == 400:
@@ -148,8 +184,10 @@ def next_level(level_index):
         return level_error
     if level_set >= 300:
         return level_set, 0
-    if level_index in back_in_hierarchy_levels:
+    if not true_next and level_index in back_in_hierarchy_levels:
         return up_in_hierarchy(level_index)
+    if level == 20 and level_set in [205, 209]:
+        return 400, 6
     if levs[level_set] == level:
         return level_set, 0
     return level_set, level + 1
@@ -190,7 +228,7 @@ def is_level(level_index):
         return False
     if is_zone(level_index):
         return False
-    if level_index[0] == 500:
+    if level_index[0] in [500, 206]:
         return False
     return True
 
@@ -226,50 +264,55 @@ def up_in_hierarchy(level_index):
     return level_error
 
 
-# TODO: add a dict to optimize at least a part of this
 def level_name(level_index):
     level_set, level = level_index
+    LS = get_level_names_strings(g.save_state.get_language())
 
     if level_set == 0:
-        return "Debug " + str(level)
+        return f"{LS.debug} {str(level)}"
 
     if 0 < level_set < 100:
         return str(level_set) + ("" if level == 0 else "-" + str(level))
 
     if 100 < level_set < 200:
-        return "Randomized level"
+        return LS.randomized
 
     if level_set == 204 or level_index == (500, 1):
-        return "Giszowiec"
+        return LS.zone_204
 
     if level_set == 205:
-        return "Birdy's Rainy Day Skipathon"
+        return LS.zone_205
 
     if level_set == 206:
-        return "The Maze"
+        return LS.zone_206
 
     if level_set == 209:
-        return "platform maze"
+        return LS.zone_209
 
     if 200 < level_set < 300:
-        return "?" + ("" if level == 0 else "-" + str(level))
+        return "???" + ("" if level == 0 else "-" + str(level))
 
     if 300 < level_set < 400:
-        return "extra " + str(level_set - 300) + ("" if level == 0 else "-" + str(level))
+        return LS.extra + " " + str(level_set - 300) + ("" if level == 0 else "-" + str(level))
 
     if level_set == 400:
-        return "Lobby " + str(level)
+        # if level == 1:
+        #     return LS.overworld
+        # if level == 3 and random.randint(0, 99) == 0:
+        #     return f"{LS.overworld} 2 2"
+        # return LS.overworld + " " + ("" if level == 1 else str(level))
+        return LS.overworld
 
     if level_index in [(500, 2)]:
         return ""
 
     if level_index == (500, 0):
-        return "The Swamp"
+        return LS.swamp
 
     if level_index == (500, 3):
-        return "1.00e1.000e15" if random.randint(0, 99) == 0 else "End"
+        return "1.00e1.000e15" if random.randint(0, 99) == 0 else LS.end
 
-    return "How did you get here?"
+    return LS.how_did_you_get_here
 
 
 background_index = {

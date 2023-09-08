@@ -19,7 +19,7 @@ def run_game(resolution, save):
 
     clock = pygame.time.Clock()
     game = game_logic(screen)
-    game.set_stage((400, 1))
+    game.initialize_first_stage()
     while True:
         for event in pygame.event.get():
             game.event_handler(event)

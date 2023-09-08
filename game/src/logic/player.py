@@ -8,7 +8,7 @@ from src.imports.view_constants import global_view_constants as v
 from src.logic.direction import direction as d
 
 FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4
-FONT = pygame.font.Font("src/fonts/mono/ttf/JetBrainsMono-Regular.ttf", FONT_SIZE_4)
+FONT = pygame.font.Font(v.FONT_PATH, FONT_SIZE_4)
 
 
 class player:
@@ -89,7 +89,7 @@ class player:
         move_length = self.next_move_length
         move_direction = self.this_move_direction
 
-        # moves longer than 1 are considered jumps and therefore surpass barriers
+        # moves longer than 1 are considered to be jumps and therefore surpass barriers
         if move_length == 1:
             if state.has_barrier(self.pos, move_direction):
                 state.invalid = True
@@ -100,8 +100,16 @@ class player:
 
         if move_length != 1 and move_direction.is_cardinal():
             move_animation = animation_player_jump(self.screen, self.stage, self.state_index, translation,
-                                                   (move_length - 1) / 2)
+                                                   (move_length - 1) / 2, move_length / 4)
             self.stage.animation_manager.register_animation(move_animation)
+        if move_direction == d.DESCEND:
+            move_animation = animation_player_jump(self.screen, self.stage, self.state_index, (0, 0, -move_length),
+                                                   0, 0.15 * move_length)
+            self.stage.animation_manager.register_animation(move_animation)
+        # if move_direction == d.ASCEND:
+        #     move_animation = animation_player_jump(self.screen, self.stage, self.state_index, (0, 0, move_length),
+        #                                            0, 0.15 * move_length)
+        #     self.stage.animation_manager.register_animation(move_animation)
 
         if new_pos[2] < 0:
             self.dead = True

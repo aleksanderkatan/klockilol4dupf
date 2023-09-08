@@ -7,6 +7,8 @@ class animation_manager:
         self.message = None
 
     def register_message(self, screen, message, lifetime):
+        if lifetime < 0:
+            lifetime = 10**10
         self.message = text_message(screen, message, lifetime)
 
     def register_animation(self, anim):

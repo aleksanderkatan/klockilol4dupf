@@ -1,8 +1,12 @@
+import pygame
+
 import src.imports.all_blocks as o
 import src.imports.all_sprites as s
 import src.imports.globals as g
 import src.imports.utils as u
 from src.logic.direction import direction as d
+from src.logic.modes.text_display_utils import create_text_surfaces, horizontal, vertical
+from src.strings.translation_getters import get_other_strings
 
 
 class state:
@@ -22,6 +26,12 @@ class state:
         self.bombs = []
         self.decorations = []
         self.dark_visibility = 1
+        # self.death_text_with_pos = create_text_surfaces(get_other_strings(g.save_state.get_language()).q_to_reverse,
+        #                                                 1, pygame.Color('lightskyblue3'), (0.02, 0.02),
+        #                                                 (horizontal.LFT, vertical.TOP))[0]
+        self.death_text_with_pos = create_text_surfaces(get_other_strings(g.save_state.get_language()).q_to_reverse,
+                                                        1, pygame.Color('lightskyblue3'), (0.02, 0.98),
+                                                        (horizontal.LFT, vertical.BOT))[0]
 
     def copy(self, new_state_index):
         sta = state(self.screen, self.stage, new_state_index)
@@ -58,6 +68,16 @@ class state:
             for row in l.grid:
                 for blo in row:
                     yield blo
+
+
+    def first_standable_pos(self):
+        for z in range(self.z):
+            for y in range(self.y):
+                for x in range(self.x):
+                    block = self.layers[z].grid[x][y]
+                    typ = type(block)
+                    if typ in o.standables and typ != o.block_invisible:
+                        return x, y, z
 
     def update_dark_visibility(self):
         for blo in self.block_iterator():
@@ -127,7 +147,9 @@ class state:
         if not self.player.dead:
             self.draw_player()
         if self.player.dead:
-            self.screen.blit(s.sprites['background_you_died'], (0, 0))
+            self.screen.blit(s.sprites['background_you_died_no_text'], (0, 0))
+            txt, pos = self.death_text_with_pos
+            self.screen.blit(txt, pos)
 
     def draw_one_layer(self, layer_index):  # !! can't be used above
         if self.player.dead or layer_index >= len(self.layers):

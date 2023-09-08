@@ -4,6 +4,7 @@ import pygame
 
 import src.imports.globals as g
 from src.imports.view_constants import global_view_constants as v
+from src.logic.modes.text_display_utils import create_text_surfaces
 
 path = "src/sprites/"
 blocks_path = path + ("blocks/" if not g.THREED else "blocks_3d/")
@@ -24,7 +25,7 @@ for path, _, files in os.walk(blocks_path):
 block_sprites["block_invisible"] = block_sprites["block"].copy()
 
 for name, sprite in block_sprites.items():
-    if name in ["level_available", "level_unavailable"]:  # has to have alphas
+    if name in ["level_completed", "level_skipped", "level_unavailable"]:  # has to have alphas
         new_sprite = pygame.transform.smoothscale(
             sprite, (int(v.BLOCK_X_SIZE * v.LEVEL_COMPLETION_SCALE), int(v.BLOCK_Y_SIZE * v.LEVEL_COMPLETION_SCALE))
         )
@@ -49,9 +50,11 @@ for path, _, files in os.walk(backgrounds_path):
     for name in files:
         background_sprites[name[:-4]] = pygame.image.load(os.path.join(path, name)).convert()
 
+background_sprites["background_blacker"] = background_sprites["background_black"].copy()
+background_sprites["background_blacker"].set_alpha(224)
+background_sprites["background_black"].set_alpha(192)
 background_sprites["background_grayness"] = background_sprites["background_black"].copy()
 background_sprites["background_grayness"].set_alpha(v.GRAYNESS * 256)
-background_sprites["background_black"].set_alpha(192)
 
 for name, sprite in background_sprites.items():
     sprites[name] = pygame.transform.scale(sprite, (v.WINDOW_X, v.WINDOW_Y))
@@ -91,3 +94,5 @@ sprites["particle_3"] = pygame.image.load(other_path + 'particle_3.gif').convert
 sprites["particle_star_1"] = pygame.image.load(other_path + 'particle_star_1.gif').convert()
 sprites["particle_star_2"] = pygame.image.load(other_path + 'particle_star_2.gif').convert()
 sprites["particle_star_3"] = pygame.image.load(other_path + 'particle_star_3.gif').convert()
+
+

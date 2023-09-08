@@ -1,0 +1,59 @@
+5 0
+None
+Liniowo rozszerzalny wybór poziomów to jest to!
+
+
+5 1
+None
+Szkoda, że nie wpadłam na ten klocek przy pisaniu klockilolunoduo.
+To byłoby paskudne spaghetti, jeszcze z tym wielkim switchem na to w jakim kierunku się poruszasz i 4 razy powtórzonym kodem.
+
+
+5 5
+None
+To może teraz jakieś lekkie ciekawostki.
+1/7 to bardzo ciekawy ułamek okresowy. Dokładnie to 0.(142857), a 2/7..6/7 mają te same cyfry w okresie, tylko trochę przesunięte!
+1/7 = 0.( 142857)
++2/7 = 0.(2857 14)
++3/7 = 0.(42857 1)
++4/7 = 0.(57 1428)
++5/7 = 0.(7 14285)
++6/7 = 0.(857 142)
+Dzikie, nieprawdaż?
+
+
+5 10
+None
+Nieskończoności jest więcej, niż jedna.
+Liczb naturalnych {0, 1, 2, ...} jest tyle samo, co całkowitych {..., -1, 0, 1, ...}, wymiernych {..., 1/2, 1/3, 2/3, 1/4, ...}, czyli pewna nieskończoność.
+Ale rzeczywistych {e, pi, pierwiastek_z_2, ...} jest znacząco więcej od tych poprzednich i da się to sensownie pokazać.
+...no ale tego teraz nie zrobię bo to ze 3 wykłady z teorii liczb.
+
+
+5 12
+None
+Jak już mówimy o nieskończonościach...
+Zdarzyło mi się usłyszeć, że jest takie twierdzenie, iż małpa pozostawiona przy maszynie do pisania na odpowiednio długo napisze którąś ze "sztuk" Shakeaspeara.
+To prawda i nieprawda. Nie istnieje ilość rzutów monetą, w której na pewno wyrzucisz orła, ale jak będziesz rzucał i rzucał to kiedyś orzeł wypadnie, w nieskończoność nie będą same reszki leciały.
+I analogicznie, nie istnieje taka ilość czasu, że jak damy małpie tyle czasu to na pewno napisze ten szmelc, ale z prawdopodobieństwem 1 zrobi to kiedyś.
+
+
+5 15
+None
+Mało rzeczy mnie tak wkurza jak twierdzenie, że "jeśli jest nieskończenie wiele różnych równoległych wszechświatów to wszystko się w nich wydarzyło".
+W zbiorze {1, 3, 5, 7, 9, ...} jest nieskończenie wiele różnych liczb, ale nie ma tam 2. Przy tym założeniu równie dobrze wszystkie równoległe światy mogą się różnić wyłącznie tym, w którym dokładnie momencie ktoś pierdnął (bez żadnego butterfly effectu).
+Czyli, Dżesika, być może w każdym alternatywnym wszechświecie jesteś słaba z matematyki.
+
+
+5 16
+None
+Sorry za tę dodatkową jedynkę przy starcie w poprzednim poziomie, nie mogłam się powstrzymać.
+
+
+5 17
+None
+Ostatnie o nieskończoności. Wyobraź sobie, że idziesz do kasyna i proponują ci grę: płacisz 1zł, a następnie z tym samym prawdopodobieństwem wygrywasz 2zł albo nic.
+Innymi słowy masz 50% na +1zł do balansu, 50% na -1zł do balansu.
+Nieważne, z jaką ilością pieniędzy tam przyjdziesz, jak będziesz grał do oporu to w końcu przegrasz. Nawet sto złoty cię nie uratuje. Pomimo faktu, że cały czas masz "średnio" (w oczekiwaniu) tyle samo pieniędzy, co na starcie. Nie ma nieskończonego krążenia wokół kwoty startowej ani niczego podobnego.
+To się formalnie nazywa łańcuchem Markowa, wszystkie stany są rekurencyjne jak zignorujemy kończenie przy uzyskaniu 0, więc z prawdopodobieństwem 1 trafisz kiedyś na 0.
+

@@ -48,6 +48,7 @@ charmap['t'] = o.block_swapping_trigger
 charmap['G'] = o.block_swapping_trigger_random
 charmap['W'] = o.block_game_exit
 charmap['C'] = o.block_silent_trigger  # C looks almost like 0
+charmap['w'] = o.block_madeline
 
 charmap['F'] = o.block_shrek
 charmap['p'] = o.block_undertale_purple
@@ -79,6 +80,6 @@ charmap['k'] = o.block_pm_triggerable_off
 # GH
 #
 #
-# w
+#
 # dhj
 #

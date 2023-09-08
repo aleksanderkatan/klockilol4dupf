@@ -6,16 +6,17 @@
 ...........
 ...........
 ...........
-...........
-.e0.....0e.
-..0.....0..
-..0000000..
-..0000000..
 .....0.....
+.e0..0..0e.
+..0..v..0..
+..0..0..0..
+..0000000..
+..m00000m..
 .....0.....
 .....e.....
 
-entrances 205/0 209/0
+entrances 205/1 209/1
 entrances 206/3
 decorations 1/3/0/decoration_3x3_skipathon/mid/mid
 decorations 9/3/0/decoration_4x3_platform_maze/mid/mid
+map_bridges 205 209

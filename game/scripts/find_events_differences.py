@@ -1,7 +1,6 @@
-from src.witch.events import load_events
+import os
 
-
-PATH = "src/witch/events/"
+from src.logic.modes.witch.events import load_events
 
 
 def find_duplicate_positions(left, right):
@@ -38,11 +37,14 @@ def find_differences(events1, events2):
 
 
 if __name__ == "__main__":
+    os.chdir("..")
+    print(f"Current path: {os.getcwd()}\n")
+
     lan1 = "polish"
     lan2 = "english"
-    events1 = load_events(lan1)
-    events2 = load_events(lan2)
-    print(f"{len(events1)} events in {lan1}, {len(events2)} events in {lan2}.")
+    events1 = load_events(f"src/strings/{lan1}/events/")
+    events2 = load_events(f"src/strings/{lan2}/events/")
+    print(f"{len(events1)} events in {lan1}, {len(events2)} events in {lan2}.\n")
     only_in_first, only_in_second = find_differences(events1, events2)
 
     print(f"Events only in {lan1}:")
