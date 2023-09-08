@@ -52,7 +52,9 @@ def _create_launcher_window_no_logic():
 
 resolutions = [
     (2560, 1920, " (x2)"),
+    (1920, 1440, " (x3/2)"),
     (1280, 960, " (recommended)"),
+    (960, 720, " (x3/4)"),
     (640, 480, " (x1/2)"),
     (320, 240, " (x1/4, for lectures)"),
     (21, 37, " [*]")]
@@ -103,7 +105,7 @@ def create_launcher_window():
     window, resolution_combo, save_navigation_buttons = _create_launcher_window_no_logic()
 
     resolution_combo['values'] = [str(int(c[0])) + "x" + str(int(c[1])) + c[2] for c in resolutions]
-    resolution_combo.current(1)
+    resolution_combo.current(2)
 
     for index, data in enumerate(zip(statuses, save_navigation_buttons), start=1):
         status, (play, delete) = data
