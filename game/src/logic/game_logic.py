@@ -122,10 +122,10 @@ class game_logic:
         for key, unicode in self.keys_registered:
             if k.is_help(key):
                 self.mode = mode.CONTROLS_DISPLAY_AND_INPUT
-                return
+                return next_move_direction
         if self.witch.check_for_events(self.level_index, self.stage.get_player_pos()):
             self.mode = mode.WITCH
-            return
+            return next_move_direction
         else:
             # take into account held keys
             possible_repeat_key = self.key_repeater.get_repeated_key(pygame.key.get_pressed())

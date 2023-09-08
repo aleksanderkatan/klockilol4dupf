@@ -18,11 +18,11 @@ def censor_text(text):
     return text
 
 
-def is_special(char):
-    return False
-    # pattern = r'[^a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\ ]'
-    # match = re.search(pattern, char)
-    # return bool(match)
+# def is_special(char):
+#     return False
+#     # pattern = r'[^a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\ ]'
+#     # match = re.search(pattern, char)
+#     # return bool(match)
 
 
 class input_box:
@@ -35,8 +35,8 @@ class input_box:
     def handle_key_pressed(self, key, unicode):
         if k.is_input_box_delete(key):
             self.text = self.text[:-1]
-        elif is_special(unicode):
-            return
+        # elif is_special(unicode):
+        #     return
         elif len(self.text) < g.MAX_COMMAND_LENGTH:
             self.text += unicode
         self.txt_surface = FONT.render(censor_text(self.text), True, self.color)

@@ -75,7 +75,7 @@ def command_switch_disappearing_blocks(game_logic, command):
     log.write("Switching disappearing blocks.")
     state = g.save_state.get_preference("disappearing_blocks")
     g.save_state.set_preference("disappearing_blocks", not state)
-    message = MS.disappearing_blocks_off if state else MS.disappearing_blocks_off
+    message = MS.disappearing_blocks_off if state else MS.disappearing_blocks_ons
     register_message(game_logic, message, 5)
 
 
@@ -185,13 +185,12 @@ public_commands["quit"] = command_quit
 public_commands["poweroff"] = command_quit
 public_commands["power-off"] = command_quit
 public_commands["shutdown"] = command_quit
-
 public_commands["halt"] = command_quit
+
 public_commands["auto_reverse"] = command_switch_auto_reverse
-
 public_commands["ar"] = command_switch_auto_reverse
-public_commands["disappearing_blocks"] = command_switch_disappearing_blocks
 
+public_commands["disappearing_blocks"] = command_switch_disappearing_blocks
 public_commands["db"] = command_switch_disappearing_blocks
 
 public_commands["timer"] = command_switch_timer
@@ -205,29 +204,28 @@ public_commands["witch"] = command_switch_witch
 public_commands["help"] = command_help_public
 
 public_commands["completion"] = command_completion
-public_commands["logged_keys"] = command_logged_keys
 
+public_commands["logged_keys"] = command_logged_keys
 public_commands["lk"] = command_logged_keys
 
 public_commands["password"] = command_password
+
 public_commands["speed_run"] = command_speedrun
 public_commands["speedrun"] = command_speedrun
 public_commands["sr"] = command_speedrun
-
 public_commands["s"] = command_speedrun
 
 public_commands["shrek"] = command_shrek
+
 public_commands["speed_run_preferences"] = command_speedrun_preferences
 public_commands["speedrun_preferences"] = command_speedrun_preferences
-
 public_commands["sp"] = command_speedrun_preferences
 
-# second section (root needed)
 
 for command_name in g.ENABLE_CHEATS_COMMANDS:
     public_commands[command_name] = command_enable_cheats
 
-
+# second section (root needed)
 root_commands = {}
 
 
@@ -435,35 +433,36 @@ def command_resume_timer(game_logic, command):
 def command_stop_timer(game_logic, command):
     log.write("Stopping timer.")
     g.save_state.hard_save("is_timer_stopped", True)
+
+
 # deprecated
 root_commands["reset_all"] = command_reset_all
+root_commands["ra"] = command_reset_all
 # -----
 
-root_commands["ra"] = command_reset_all
-
 root_commands["skip"] = command_skip
+
 root_commands["lv"] = command_lv
-
 root_commands["cd"] = command_lv
-root_commands["p"] = command_previous
 
+root_commands["p"] = command_previous
 root_commands["previous"] = command_previous
 
 root_commands["swap"] = command_swap
+
 root_commands["n"] = command_next
 root_commands["c"] = command_next
 root_commands["next"] = command_next
-
 root_commands["complete"] = command_next
+
 root_commands["2137"] = command_2137
 root_commands["21:37"] = command_2137
-
 root_commands["jp2gmd"] = command_2137
+
 root_commands["yoffset"] = command_y_offset
-
 root_commands["y_offset"] = command_y_offset
-root_commands["xoffset"] = command_x_offset
 
+root_commands["xoffset"] = command_x_offset
 root_commands["x_offset"] = command_x_offset
 
 root_commands["reset_timer"] = command_reset_timer
@@ -471,51 +470,50 @@ root_commands["reset_timer"] = command_reset_timer
 root_commands["reset_events"] = command_reset_events
 
 root_commands["reset_completed"] = command_reset_completed
+
 root_commands["complete_zone"] = command_complete_zone
-
 root_commands["cz"] = command_complete_zone
-root_commands["complete_all"] = command_complete_all
 
+root_commands["complete_all"] = command_complete_all
 root_commands["ca"] = command_complete_all
+
 root_commands["r"] = command_refresh
 root_commands["refresh"] = command_refresh
-
 root_commands["reset"] = command_refresh
+
 root_commands["load_all"] = command_load_all
-
 root_commands["la"] = command_load_all
-root_commands["ls"] = command_ls
 
+root_commands["ls"] = command_ls
 root_commands["list"] = command_ls
 
 root_commands["help"] = command_help_root
+
 root_commands["disable_cheats"] = command_disable_cheats
-
 root_commands["dc"] = command_disable_cheats
-root_commands["pos"] = command_position
 
+root_commands["pos"] = command_position
 root_commands["position"] = command_position
+
 root_commands["raise_exception"] = command_raise_exception
 root_commands["runtime_exception"] = command_raise_exception
-
 root_commands["re"] = command_raise_exception
+
 root_commands["teleport"] = command_teleport
-
 root_commands["tp"] = command_teleport
+
 root_commands["u"] = command_teleport_up
-
 root_commands["up"] = command_teleport_up
-root_commands["all_stats"] = command_all_stats
 
+root_commands["all_stats"] = command_all_stats
 root_commands["as"] = command_all_stats
 
 root_commands["resume_timer"] = command_resume_timer
 
-
-# helpful functions
-
 root_commands["stop_timer"] = command_stop_timer
 
+
+# helpful functions
 
 def extract_options(command):
     options = set()

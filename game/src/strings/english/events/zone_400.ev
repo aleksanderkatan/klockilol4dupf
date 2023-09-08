@@ -89,7 +89,8 @@ Birdy's Rainy Day Skipathon by Jess Hansen.
 Of course, level selections are for morons. So there are none here.
 Due to the nontrivial difficulty, there is a way to continue the game after quitting.
 That's right, a password system!
-In order to enter a particular stage, you have to press "Enter", type "password <password>" and press "Enter" once again.
+In order to enter a particular stage, you have to press TAB, type "password <password_of_the_stage>" and press "Enter" to confirm.
++Of course, you can complete the zone without that. It's just a little convenience.
 
 
 400 6
