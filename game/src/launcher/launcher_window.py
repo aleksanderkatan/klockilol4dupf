@@ -57,7 +57,8 @@ resolutions = [
     (960, 720, " (x3/4)"),
     (640, 480, " (x1/2)"),
     (320, 240, " (x1/4, for lectures)"),
-    (21, 37, " [*]")]
+    (21, 37, " [*]")
+]
 
 
 def create_new_save_action(launcher_window, resolution_combobox, save_index):
@@ -99,13 +100,33 @@ def create_delete_action(launcher_window, play_button, delete_button, resolution
     return button_action
 
 
+def get_best_resolution_index():
+    # GPT says there is no better way to do this... and I certainly don't know of one supported by pyinstaller
+    root = tk.Tk()
+    root.withdraw()
+
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+
+    root.destroy()
+
+    log.info(f"Detected screen resolution of {screen_width} by {screen_height}")
+    for index, (x, y, _) in enumerate(resolutions):
+        if x <= screen_width * 0.9 and y <= screen_height * 0.9:
+            log.info(f"Selected optimal resolution: {x} by {y}")
+            return index
+    log.error("No resolution fits!")
+    return 2
+
+
 def create_launcher_window():
     statuses = get_saves_status()
 
     window, resolution_combo, save_navigation_buttons = _create_launcher_window_no_logic()
 
     resolution_combo['values'] = [str(int(c[0])) + "x" + str(int(c[1])) + c[2] for c in resolutions]
-    resolution_combo.current(2)
+    best_resolution_index = get_best_resolution_index()
+    resolution_combo.current(best_resolution_index)
 
     for index, data in enumerate(zip(statuses, save_navigation_buttons), start=1):
         status, (play, delete) = data
