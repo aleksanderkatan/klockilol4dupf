@@ -51,6 +51,7 @@ charmap['C'] = o.block_silent_trigger  # C looks almost like 0
 charmap['w'] = o.block_madeline
 
 charmap['F'] = o.block_shrek
+
 charmap['p'] = o.block_undertale_purple
 charmap['i'] = o.block_undertale_pink  # p taken
 charmap['o'] = o.block_undertale_orange

@@ -5,4 +5,8 @@ venv
 *.spec
 dist*
 build*
-
+src/levels/101/*
+src/levels/102/*
+src/levels/103/*
+src/levels/201/7.lv
+src/levels/201/8.lv

@@ -72,15 +72,15 @@ levs[101] = 0
 levs[102] = 0
 levs[103] = 0
 
-levs[201] = 10  # end
+levs[201] = 10  # end (finished)
 levs[202] = 5  # undertale
 levs[203] = 5  # light
 levs[204] = 5  # giszowiec
-levs[205] = 20  # birdy
-levs[206] = 16  # maze
+levs[205] = 20  # birdy (finished)
+levs[206] = 16  # maze (finished)
 levs[207] = 15  # moving arrow
 levs[208] = 5  # references zone?
-levs[209] = 20  # platform maze
+levs[209] = 20  # platform maze (finished)
 levs[277] = 20  # extra levels without zone assigned (yet)
 levs[278] = 20  # discarded levels
 levs[301] = 5
@@ -97,7 +97,6 @@ extra_zones = [201, 205, 209]
 
 # all last-of-a-zone levels are automatically also back-in-hierarchy levels
 back_in_hierarchy_levels = {
-    (202, 4),
     (101, 0),
     (102, 0),
     (103, 0),
@@ -125,7 +124,7 @@ hierarchy[(102, 0)] = (400, 3)
 hierarchy[(103, 0)] = (400, 4)
 
 hierarchy[(201, 0)] = (500, 3)
-hierarchy[(202, 0)] = (8, 0)
+hierarchy[(202, 0)] = (400, 3)
 hierarchy[(203, 0)] = (400, 2)
 hierarchy[(204, 0)] = (501, 0)
 hierarchy[(207, 0)] = (400, 5)
