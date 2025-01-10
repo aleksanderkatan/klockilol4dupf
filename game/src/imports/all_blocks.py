@@ -34,6 +34,7 @@ from src.blocks.semi_pure.block_swapping_trigger_random import block_swapping_tr
 from src.blocks.impure.block_game_exit import block_game_exit
 from src.blocks.impure.block_silent_trigger import block_silent_trigger
 from src.blocks.impure.block_madeline import block_madeline
+from src.blocks.impure.block_temmie import block_temmie
 
 from src.blocks.impure.block_shrek import block_shrek
 
@@ -93,6 +94,7 @@ standables.add(block_swapping_trigger_random)
 standables.add(block_game_exit)
 standables.add(block_silent_trigger)
 standables.add(block_madeline)
+standables.add(block_temmie)
 
 standables.add(block_shrek)
 standables.add(block_undertale_yellow)
