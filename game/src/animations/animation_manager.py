@@ -2,14 +2,15 @@ from src.animations.text_message import text_message
 
 
 class animation_manager:
-    def __init__(self):
+    def __init__(self, color_provider):
         self.anims = []
         self.message = None
+        self.color_provider = color_provider
 
     def register_message(self, screen, message, lifetime):
         if lifetime < 0:
             lifetime = 10**10
-        self.message = text_message(screen, message, lifetime)
+        self.message = text_message(screen, message, lifetime, self.color_provider())
 
     def register_animation(self, anim):
         self.anims.append(anim)

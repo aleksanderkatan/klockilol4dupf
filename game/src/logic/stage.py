@@ -27,8 +27,8 @@ class stage:
             g.save_state.set_preset_spawn((level_index, first_state.player.pos))
         self.change_to = None
         self.particle_generator = particle_generator(self.screen)
-        self.animation_manager = animation_manager()
-        self.name_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color('black'))
+        self.animation_manager = animation_manager(lambda: l.font_color_of_level(self.level_index))
+        self.name_surface = FONT.render(l.level_name(self.level_index), True, pygame.Color(l.font_color_of_level(self.level_index)))
 
     def draw(self, single_layer=None):
         if single_layer is None:

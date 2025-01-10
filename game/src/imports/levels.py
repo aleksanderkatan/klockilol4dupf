@@ -149,7 +149,7 @@ for i in range(1, 16 + 1):
     hierarchy[(206, i)] = (500, 0)
 
 # birdy and pm lead back to (400, 6)
-for i in range(1, 20+1):
+for i in range(1, 20 + 1):
     hierarchy[(205, i)] = (400, 6)
     hierarchy[(209, i)] = (400, 6)
 
@@ -319,12 +319,14 @@ background_index = {
     (500, 0): "background_swamp",
     (500, 1): "background_giszowiec_1",
     (500, 2): "background_kono_dio_da",
+    (500, 3): "background_galaxy",
     (204, 0): "background_giszowiec_2",
     (4, 2): "background_kidney",
 }
 
 background_set = {
-    204: "background_giszowiec_3",
+    204: "background_niedziela",
+    201: "background_galaxy",
 }
 
 
@@ -339,3 +341,19 @@ def background_of_level(level_index):
     if g.PAPOR:
         return "background_2137"
     return "background_default"
+
+
+_backgrounds_inverting_colors = {
+    "background_galaxy",
+    "background_niedziela",
+    "background_kono_dio_da",
+    "background_swamp",
+}
+
+
+def font_color_of_level(level_index):
+    background = background_of_level(level_index)
+    if background in _backgrounds_inverting_colors:
+        return 'white'
+    return 'black'
+

@@ -1,4 +1,4 @@
-VERSION = "v1.2.2"
+VERSION = "v1.3 dev"
 
 MOVE_LIMIT = 2048
 

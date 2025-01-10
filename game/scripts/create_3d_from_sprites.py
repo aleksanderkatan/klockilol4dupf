@@ -5,7 +5,7 @@ from PIL import Image
 old_size = (32, 32)
 new_size = (32, 40)
 
-root = "D:\\Novvy_foldeer\\Gry\\moje\\klockilol4dupf\\src\\sprites\\"
+root = "..\\src\\sprites\\"
 old_path = root + "blocks\\"
 new_path = root + "blocks_3d\\"
 # empty = Image.new("CMYK", (32, 40), (0, 0, 0, 0))

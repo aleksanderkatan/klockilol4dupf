@@ -23,7 +23,7 @@ Maze of Tiles, also known as klockilol4dupf, is puzzle game, where you must step
 The concept is inspired by a hazy memory of a Flash game from the late 2000s called [Platform Maze](https://www.newgrounds.com/portal/view/360130) by Bobberticus.
 Another Flash game with a similar idea is Birdy's Rainy Day Skipathon by Jess Hansen.
 Both of those can be found on [Flash Point](https://bluemaxima.org/flashpoint/)) by BlueMaxima.
-Klockilol4dupf integrates mechanics and levels from both games as extra zones."
+Klockilol4dupf integrates mechanics and levels from both games as extra zones.
 
 
 ## Features:

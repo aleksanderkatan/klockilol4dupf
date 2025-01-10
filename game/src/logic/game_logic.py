@@ -243,19 +243,19 @@ class game_logic:
         if g.save_state.get_preference("timer"):
             ticks = g.save_state.get("time", 0)
             time = u.ticks_to_time(ticks)
-            txt_surface = FONT_2.render(time, True, pygame.Color('black'))
+            txt_surface = FONT_2.render(time, True, pygame.Color(l.font_color_of_level(self.level_index)))
             self.screen.blit(txt_surface,
                              (v.WINDOW_X - txt_surface.get_rect().width - v.LEVEL_FONT_OFFSET,
                               v.LEVEL_FONT_OFFSET)
                              )
-            txt_surface = FONT_4.render(g.VERSION, True, pygame.Color('black'))
+            txt_surface = FONT_4.render(g.VERSION, True, pygame.Color(l.font_color_of_level(self.level_index)))
             self.screen.blit(txt_surface,
                              (v.WINDOW_X - txt_surface.get_rect().width - v.LEVEL_FONT_OFFSET,
                               v.LEVEL_FONT_OFFSET * 2 + FONT_SIZE_2)
                              )
 
         if self.speedrun is not None:
-            name_surface, pos = self.speedrun.get_text_sprite_and_pos()
+            name_surface, pos = self.speedrun.get_text_sprite_and_pos(l.font_color_of_level(self.level_index))
             self.screen.blit(name_surface, pos)
 
         self.screen.blit(self.grayness, (0, 0))
