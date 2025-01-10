@@ -93,7 +93,7 @@ levs[500] = 3  # non hub, non lobby, non level stages
 
 # for completion's sake
 base_zones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-extra_zones = [201, 205, 209]
+extra_zones = [201, 202, 205, 209]
 
 # all last-of-a-zone levels are automatically also back-in-hierarchy levels
 back_in_hierarchy_levels = {
