@@ -15,14 +15,12 @@ from src.logic.modes.input.annoying_skip_response import get_annoying_response, 
 from src.speedruns.settings import settings as speedrun_settings
 from src.strings.translation_getters import get_control_display_strings, get_message_strings
 
-
 public_commands = {}
 
 
-
 def execute_command(game_logic, command):
-    global MS       # this is kind of ass, but I don't want to get those in every function
-    global CDS      # and outer scope does not work because there is no save_state yet
+    global MS  # this is kind of ass, but I don't want to get those in every function
+    global CDS  # and outer scope does not work because there is no save_state yet
     MS = get_message_strings(g.save_state.get_language())
     CDS = get_control_display_strings(g.save_state.get_language())
 
@@ -38,7 +36,7 @@ def execute_command(game_logic, command):
         game_logic.register_message(possible_message, 5)
         return
 
-    command = [word.lower() for word in command.strip().split(' ')]
+    command = [word for word in command.strip().split(' ')]
 
     if not g.save_state.get_preference("cheats"):
         if command[0] in public_commands:
@@ -58,6 +56,8 @@ def execute_command(game_logic, command):
 def command_quit(game_logic, command):
     log.write("Quitting.")
     exit_game()
+
+
 # all those honestly should just have a settings page in-game
 
 
@@ -68,7 +68,6 @@ def command_switch_auto_reverse(game_logic, command):
         game_logic.stage.reverse()
     message = MS.auto_reverse_off if state else MS.auto_reverse_on
     register_message(game_logic, message, 5)
-
 
 
 def command_switch_disappearing_blocks(game_logic, command):
@@ -154,7 +153,7 @@ def command_speedrun(game_logic, command):
 
 
 def command_shrek(game_logic, command):
-    g.save_state.set_preference("shrek", True)
+    g.save_state.set_preference("shrek", not g.save_state.get_preference("shrek"))
 
 
 def command_speedrun_preferences(game_logic, command):
@@ -220,7 +219,6 @@ public_commands["shrek"] = command_shrek
 public_commands["speed_run_preferences"] = command_speedrun_preferences
 public_commands["speedrun_preferences"] = command_speedrun_preferences
 public_commands["sp"] = command_speedrun_preferences
-
 
 for command_name in g.ENABLE_CHEATS_COMMANDS:
     public_commands[command_name] = command_enable_cheats
@@ -385,9 +383,11 @@ def command_disable_cheats(game_logic, command):
 
 
 def command_position(game_logic, command):
-    pos = game_logic.stage.latest_state().player.pos
-    message = str(pos) + ", " + str(game_logic.stage.level_index)
-    register_message(game_logic, message, 3)
+    level_index = game_logic.stage.level_index
+    player_pos = game_logic.stage.latest_state().player.pos
+    block = game_logic.stage.latest_state().get_block(player_pos)
+    message = f"Level index: {level_index}\nPlayer position: {player_pos}\nStanding on: {str(type(block))[8:-2]}"
+    register_message(game_logic, message, 10)
 
 
 def command_raise_exception(game_logic, command):
@@ -433,6 +433,51 @@ def command_resume_timer(game_logic, command):
 def command_stop_timer(game_logic, command):
     log.write("Stopping timer.")
     g.save_state.hard_save("is_timer_stopped", True)
+
+
+def command_charmap(game_logic, commands):
+    # has to be imported locally, this file is loaded before pygame is initialized
+    from src.imports.charmap import charmap as c
+    def strip(s):
+        return s.split(".")[-1].split("'")[0]
+
+    message = "\n".join([f"{key}: {strip(str(value))}" for key, value in c.items()])
+    log.write(message)
+    register_message(game_logic, MS.charmap_in_log, 5)
+
+
+def command_spawn(game_logic, command):
+    # has to be imported locally, this file is loaded before pygame is initialized
+    from src.imports.charmap import charmap as c
+    from src.logic.state_filler.option_maps import char_optionable_blocks, option_map
+
+    if len(command) < 2:
+        log.error("Enter the code of a block to spawn!")
+        return
+    state = game_logic.stage.latest_state()
+    pos = state.player.pos
+    if state.get_block(pos) is None:
+        register_message(game_logic, "Current player position is outside of the stage!", 10)
+        return
+    if command[1] not in c:
+        register_message(game_logic, f"Invalid block code: {command[1]}", 10)
+        return
+
+    try:
+        block_constructor = c[command[1]]
+        log.write(f"Creating a {block_constructor} block.")
+        block = block_constructor(game_logic.screen, game_logic.stage, game_logic.stage.latest_state().state_index, pos)
+        if block_constructor in char_optionable_blocks:
+            log.write("Block is char-optionable.")
+            block.options(command[1])
+        elif block_constructor in option_map and len(command) >= 3:
+            log.write("Block has options.")
+            block.options(command[2])
+        state.set_block(pos, block)
+        register_message(game_logic, f"Spawned a {block_constructor} block.", 10)
+    except Exception as e:
+        register_message(game_logic, f"Failed to spawn a block.", 10)
+        log.error(e)
 
 
 # deprecated
@@ -511,6 +556,10 @@ root_commands["as"] = command_all_stats
 root_commands["resume_timer"] = command_resume_timer
 
 root_commands["stop_timer"] = command_stop_timer
+
+root_commands["charmap"] = command_charmap
+
+root_commands["spawn"] = command_spawn
 
 
 # helpful functions

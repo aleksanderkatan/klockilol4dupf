@@ -38,6 +38,7 @@ class messages_pl(messages):
     level_skipped = "Poziom oznaczony jako pominięty.\nMożesz kontynuować grę bez wracania do niego w przyszłości."
     # "Last stage was skipped.\nYou can proceed without coming back to it."
     level_skipped_speedrun = "Poziom pominięty. Speedrun wyrzucony do śmieci."
+    charmap_in_log = "Charmapa została wypisana do logu."
 
     # escapes
     escapes_3_left = "Wciśnij Escape jeszcze trzy razy, aby zamknąć grę.\nWciśnij TAB aby wyświetlić pomoc."

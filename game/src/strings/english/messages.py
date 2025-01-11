@@ -37,6 +37,7 @@ class messages_en(messages):
     no_such_command = "No such command."
     level_skipped = "Last stage was skipped.\nYou can proceed without coming back to it."
     level_skipped_speedrun = "Stage skipped. Your speedrun was trashed."
+    charmap_in_log = "The charmap was dumped into the log."
 
     # escapes
     escapes_3_left = "Press escape three more times to exit.\nPress TAB for help."

@@ -1,7 +1,6 @@
 19
-14
+13
 1
-...................
 ...................
 ...................
 ...................
@@ -19,6 +18,6 @@ e0m0e00.0....0000..
 entrances 500/0 11/0
 entrances 10/0
 entrances 400/1
-decorations 2/7/0/decoration_1x1_block/left/up 4/7/0/decoration_1x1_block/left/up
+decorations 2/6/0/decoration_1x1_block/left/up 4/6/0/decoration_1x1_block/left/up
 map_bridges 11 10
 pistons ^ ^ ^ ^ ^

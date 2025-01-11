@@ -46,6 +46,7 @@ class messages:
     level_skipped = ""
     # "Last stage was skipped.\nYou can proceed without coming back to it."
     level_skipped_speedrun = ""
+    charmap_in_log = ""
 
     # escapes
     escapes_3_left = ""

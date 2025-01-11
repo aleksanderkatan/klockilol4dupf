@@ -16,6 +16,8 @@ def _find_angle(state, pos):
 
 
 def _rotate(pos, where_is_player, state):
+    if where_is_player is None:
+        return
     angle = _find_angle(state, pos)
     temmie_sprite = s.sprites["decoration_1x1_temmie"][where_is_player].copy()
     rot_sprite = pygame.transform.rotate(temmie_sprite, angle)
@@ -33,6 +35,8 @@ class block_temmie(block_perma_unsteppable):
 
     def draw(self, pos, where_is_player):
         super().draw(pos, where_is_player)
+        if where_is_player is None:
+            return
 
         state = self.stage.states[self.state_index]
         player_pos = state.player.pos
