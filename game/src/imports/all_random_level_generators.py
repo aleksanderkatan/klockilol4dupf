@@ -1,7 +1,8 @@
 import src.level_generators.less_simple_level_generator as LSLG
 import src.level_generators.portal_level_generator as PLG
-from src.imports.log import log
 from src.level_generators.spelunky_inspired_segmented_level_generator.generate import generate as SISLG
+from src.level_generators.effortless_undertale_level_generator import generate as EULG
+from src.imports.log import log
 
 
 # noinspection PyPep8Naming
@@ -27,3 +28,9 @@ def generate_SISLG(index, segments, x, y):
     except Exception as e:
         log.error(e)
         return False
+
+
+# noinspection PyPep8Naming
+def generate_EULG():
+    return EULG()
+

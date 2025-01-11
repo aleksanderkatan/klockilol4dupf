@@ -20,7 +20,7 @@ class block_entrance_random(block):
         self.update_target_level()
 
     def update_target_level(self):
-        if self.configuration not in [1, 2, 3]:
+        if self.configuration not in [1, 2, 3, 4]:
             log.error("Random entrance configuration invalid")
             self.target_level = None
             return
@@ -31,6 +31,8 @@ class block_entrance_random(block):
             self.target_level = (102, 0)
         elif self.configuration == 3:
             self.target_level = (103, 0)
+        elif self.configuration == 4:
+            self.target_level = (104, 0)
 
     def on_step_in(self):
         # also add above!
@@ -39,13 +41,13 @@ class block_entrance_random(block):
             result = r.generate_LSLG(index=self.target_level, x=8, y=8, ice=0, jump2=0, jump3=0, arrow=0, length=50,
                                      redirect=5, max_num=3, min_total=30)
         elif self.configuration == 2:
-            # result = r.generate_LSLG(index=self.target_level, x=6, y=6, ice=0, jump2=15, jump3=0, arrow=0, length=20,
-            #                          redirect=4, max_num=3, min_total=None)
             result = r.generate_LSLG(index=self.target_level, x=8, y=8, ice=0, jump2=10, jump3=0, arrow=0, length=50,
                                      redirect=3, max_num=3, min_total=None)
         elif self.configuration == 3:
             result = r.generate_PLG(index=self.target_level, x=7, y=7, portals=4, min_portals=2, pair_portals=True,
                                     length=30, redirect=4)
+        elif self.configuration == 4:
+            result = r.generate_EULG()
 
         if result is None or not result:
             return

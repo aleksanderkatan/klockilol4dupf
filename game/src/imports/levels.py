@@ -71,6 +71,7 @@ levs[11] = 10
 levs[101] = 0
 levs[102] = 0
 levs[103] = 0
+levs[104] = 0
 
 levs[201] = 10  # end (finished)
 levs[202] = 5  # undertale
@@ -122,6 +123,7 @@ hierarchy[(209, 0)] = (400, 6)
 hierarchy[(101, 0)] = (400, 2)
 hierarchy[(102, 0)] = (400, 3)
 hierarchy[(103, 0)] = (400, 4)
+hierarchy[(104, 0)] = (202, 0)
 
 hierarchy[(201, 0)] = (500, 3)
 hierarchy[(202, 0)] = (400, 3)
