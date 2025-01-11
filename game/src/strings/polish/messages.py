@@ -62,6 +62,12 @@ class messages_pl(messages):
     many_wrong_letters = "Masz wylew?"
     to_much_letters = "Tylko jedną literę za dużo dałeś!"
 
+    loops_5 = "5 okrążeń!"
+    loops_10 = "10 okrążeń!"
+    loops_15 = "15 okrążeń!"
+    loops_20 = "20 okrążeń!"
+    dog_infestation = "Plaga irytujących psów!"
+
 
 
 

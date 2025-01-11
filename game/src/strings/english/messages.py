@@ -57,5 +57,11 @@ class messages_en(messages):
     many_wrong_letters = "Are you having a stroke?"
     to_much_letters = "Only one letter too many!"
 
+    loops_5 = "5 loops!"
+    loops_10 = "10 loops!"
+    loops_15 = "15 loops!"
+    loops_20 = "20 loops!"
+    dog_infestation = "Annoying dog infestation!"
+
 
 

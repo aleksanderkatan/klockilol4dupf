@@ -67,6 +67,12 @@ class messages:
     many_wrong_letters = ""
     to_much_letters = ""
 
+    loops_5 = ""
+    loops_10 = ""
+    loops_15 = ""
+    loops_20 = ""
+    dog_infestation = ""
+
 
 class level_names:
     debug = ""
