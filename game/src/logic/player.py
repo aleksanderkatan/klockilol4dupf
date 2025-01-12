@@ -11,6 +11,43 @@ FONT_SIZE_4 = v.LEVEL_FONT_SIZE // 4
 FONT = pygame.font.Font(v.FONT_PATH, FONT_SIZE_4)
 
 
+def _bound_position(pos):
+    x_diff = v.BLOCK_X_SIZE//2
+    y_diff = v.BLOCK_Y_SIZE//2
+
+    center_x, center_y = pos[0]+x_diff, pos[1]+y_diff
+    if center_x <= 0 - x_diff:
+        center_x = 2*x_diff
+    if v.WINDOW_X + x_diff <= center_x:
+        center_x = v.WINDOW_X - 2*x_diff
+    if center_y <= 0 - y_diff:
+        center_y = 2*y_diff
+    if v.WINDOW_Y + y_diff <= center_y:
+        center_y = v.WINDOW_Y - 2*y_diff
+
+    return center_x - x_diff, center_y - y_diff
+
+
+def _triangle_to_draw(pos, bound_position):
+    if bound_position == pos:
+        return None
+    # sorry, I don't see an easier way than 4 cases
+    # there definitely is one with like rotation matrices, but this is not complicated enough for me to care
+    x_diff = v.BLOCK_X_SIZE//2
+    y_diff = v.BLOCK_Y_SIZE//2
+    x, y = bound_position
+    if pos[0] < bound_position[0]:
+        return (x, y), (x, y+2*y_diff), (x-x_diff, y+y_diff)
+    if bound_position[0] < pos[0]:
+        return (x+2*x_diff, y), (x+2*x_diff, y+2*y_diff), (x+3*x_diff, y+y_diff)
+    if pos[1] < bound_position[1]:
+        return (x, y), (x+2*x_diff, y), (x+x_diff, y-y_diff)
+    if bound_position[1] < pos[1]:
+        return (x, y+2*y_diff), (x+2*x_diff, y+2*y_diff), (x+x_diff, y+3*y_diff)
+
+
+
+
 class player:
     def __init__(self, pos, screen, stage, state_index):
         self.pos = pos
@@ -42,7 +79,15 @@ class player:
     def draw(self, screen_pos):
         if self.ignore_draw:
             return
-        self.screen.blit(self.get_current_sprite()[0], screen_pos)
+        bound_pos = _bound_position(screen_pos)
+        if bound_pos == screen_pos:
+            # inside the screen
+            self.screen.blit(self.get_current_sprite()[0], screen_pos)
+        else:
+            # outside the screen
+            triangle = _triangle_to_draw(screen_pos, bound_pos)
+            self.screen.blit(self.get_current_sprite()[0], bound_pos)
+            pygame.draw.polygon(self.screen, (0, 0, 0), triangle)
         if self.flight >= 0:
             text = f"free moves: {self.flight}"
             txt_surface = FONT.render(text, True, pygame.Color('black'))

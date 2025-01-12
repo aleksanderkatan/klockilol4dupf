@@ -1,7 +1,7 @@
 Version 1.3 - The Epsilon Update
 - Added a tiny Undertale extra zone (included in the 100% completion). Look for it in the third lobby.
 - Added two new backgrounds, courtesy to Agnieszka R.
-- TODO: Added an arrow pointing towards the player when they are outside the stage.
+- Added an arrow pointing towards the player when they are outside the screen.
 - Added spawn and charmap commands (OP only).
 - Changed the font color to white for dark backgrounds.
 - TODO: update executable

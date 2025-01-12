@@ -45,7 +45,7 @@ def is_witch_continue(key):
     return key in [pygame.K_SPACE, pygame.K_RETURN]
 
 
-def is_KB_cheat(keys):  # keys is an bit mask
+def is_KB_cheat(keys):  # keys is a bit mask
     return keys[pygame.K_b] and keys[pygame.K_k]
 
 
