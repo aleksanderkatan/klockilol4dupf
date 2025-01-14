@@ -23,6 +23,9 @@ for path, _, files in os.walk(blocks_path):
         block_sprites[name[:-4]] = pygame.image.load(os.path.join(path, name)).convert()
 
 block_sprites["block_invisible"] = block_sprites["block"].copy()
+block_sprites["block_invisible_translucent"] = block_sprites["block"].copy()
+block_sprites["block_invisible_translucent"].set_alpha(48)
+
 
 for name, sprite in block_sprites.items():
     if name in ["level_completed", "level_skipped", "level_unavailable"]:  # has to have alphas
