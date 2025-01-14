@@ -4,19 +4,19 @@ Maze of Tiles, also known as klockilol4dupf, is puzzle game, where you must step
 
 ## Engaging puzzles
 
-![ss](game/src/sprites/other/screenshot_2.gif "This puzzle has 12 different solutions. One of them is <<<v<<^>><^><^^")
+![ss](game/resources/sprites/other/screenshot_2.gif "This puzzle has 12 different solutions. One of them is <<<v<<^>><^><^^")
 
 ## NP-Complete concept
 
-![ss](game/src/sprites/other/screenshot_3.gif "Hamiltonian Cycle reduces to this and yes, this reduction is in the right direction")
+![ss](game/resources/sprites/other/screenshot_3.gif "Hamiltonian Cycle reduces to this and yes, this reduction is in the right direction")
 
 ## Overly complicated levels
 
-![ss](game/src/sprites/other/screenshot_4.gif "Those aren't even all of the blocks that are implemented")
+![ss](game/resources/sprites/other/screenshot_4.gif "Those aren't even all of the blocks that are implemented")
 
 ## Questionable design choices
 
-![ss](game/src/sprites/other/screenshot_1.gif "This zone is currently in development and therefore is not yet available")
+![ss](game/resources/sprites/other/screenshot_1.gif "This zone is currently in development and therefore is not yet available")
 
 ## The Idea
 

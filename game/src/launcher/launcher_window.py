@@ -22,7 +22,7 @@ def _create_launcher_window_no_logic():
     window = exception_catching_tk()
     window.title(f"klockilol4dupf {g.VERSION}")
     window.minsize(width=540, height=200)
-    window.iconbitmap("src/sprites/other/icon.ico")
+    window.iconbitmap("resources/sprites/other/icon.ico")
 
     for i in range(0, 3 + 1 + 1):
         window.grid_columnconfigure(i, weight=1)

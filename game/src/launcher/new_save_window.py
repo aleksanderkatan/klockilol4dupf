@@ -8,7 +8,7 @@ def create_new_save_window(action_to_perform_with_data):
     window = tk.Tk()
     window.title(f"New save")
     window.minsize(width=250, height=200)
-    window.iconbitmap("src/sprites/other/icon.ico")
+    window.iconbitmap("resources/sprites/other/icon.ico")
 
     for i in range(0, 2):
         window.grid_columnconfigure(i, weight=1)

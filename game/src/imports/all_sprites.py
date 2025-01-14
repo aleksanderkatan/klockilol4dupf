@@ -6,7 +6,7 @@ import src.imports.globals as g
 from src.imports.view_constants import global_view_constants as v
 from src.logic.modes.text_display_utils import create_text_surfaces
 
-path = "src/sprites/"
+path = "resources/sprites/"
 blocks_path = path + ("blocks/" if not g.THREED else "blocks_3d/")
 backgrounds_path = path + "backgrounds/"
 decorations_path = path + "decorations/"
