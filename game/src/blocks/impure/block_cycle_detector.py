@@ -2,7 +2,7 @@ import src.imports.utils as u
 import src.imports.globals as g
 from src.animations.animation_spinning_dog import animation_spinning_dog
 from src.blocks.pure.block_perma import block_perma
-from src.strings.translation_getters import get_message_strings
+from resources.strings.translation_getters import get_message_strings
 
 MS = get_message_strings(g.save_state.get_language())
 

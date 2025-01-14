@@ -1,4 +1,4 @@
-from src.strings.translation_bases import controls_display
+from resources.strings.translation_bases import controls_display
 
 
 class controls_display_pl(controls_display):

@@ -13,7 +13,7 @@ from src.imports.save_state import level_statuses
 from src.imports.view_constants import global_view_constants as v
 from src.logic.modes.input.annoying_skip_response import get_annoying_response, status
 from src.speedruns.settings import settings as speedrun_settings
-from src.strings.translation_getters import get_control_display_strings, get_message_strings
+from resources.strings.translation_getters import get_control_display_strings, get_message_strings
 
 public_commands = {}
 

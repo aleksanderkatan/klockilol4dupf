@@ -180,7 +180,7 @@ class save_state:
         return self.get("preset_spawn", None)
 
     def get_strings_path(self):
-        return "src/strings/" + self.get("language", "English").lower() + "/"
+        return "resources/strings/" + self.get("language", "English").lower() + "/"
     
     # levels
 

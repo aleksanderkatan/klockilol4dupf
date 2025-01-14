@@ -1,4 +1,4 @@
-from src.strings.translation_bases import messages
+from resources.strings.translation_bases import messages
 
 
 class messages_pl(messages):

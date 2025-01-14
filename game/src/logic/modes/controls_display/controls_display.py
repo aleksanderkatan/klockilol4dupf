@@ -2,7 +2,7 @@ import pygame as pg
 
 import src.imports.all_sprites as s
 from src.logic.modes.text_display_utils import create_text_surfaces, horizontal, vertical
-from src.strings.translation_getters import get_control_display_strings
+from resources.strings.translation_getters import get_control_display_strings
 
 COLOR = pg.Color('lightskyblue3')
 

@@ -3,7 +3,7 @@ import random
 
 import src.imports.globals as g
 from src.imports.log import log
-from src.strings.translation_getters import get_level_names_strings
+from resources.strings.translation_getters import get_level_names_strings
 
 
 class level_status(Enum):

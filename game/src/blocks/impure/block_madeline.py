@@ -4,7 +4,7 @@ from src.imports.view_constants import global_view_constants as v
 from src.blocks.block import block
 from src.animations.animation_jump import animation_jump
 from src.animations.chained_animation import chained_animation
-from src.strings.translation_getters import get_message_strings
+from resources.strings.translation_getters import get_message_strings
 
 
 MS = get_message_strings(g.save_state.get_language())

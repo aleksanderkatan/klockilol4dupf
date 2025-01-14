@@ -16,7 +16,7 @@ from src.logic.modes.witch.events import load_events
 from src.logic.modes.witch.witch import witch
 from src.logic.modes.controls_display.controls_display import controls_display
 from src.logic.key_repeater import key_repeater
-from src.strings.translation_getters import get_message_strings
+from resources.strings.translation_getters import get_message_strings
 
 FONT_SIZE_2 = v.LEVEL_FONT_SIZE // 2
 FONT_2 = pygame.font.Font(v.FONT_PATH, FONT_SIZE_2)

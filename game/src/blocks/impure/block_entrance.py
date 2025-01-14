@@ -3,7 +3,7 @@ import src.imports.globals as g
 import src.imports.levels as l
 from src.blocks.block import block
 from src.imports.view_constants import global_view_constants as v
-from src.strings.translation_getters import get_message_strings
+from resources.strings.translation_getters import get_message_strings
 
 status_sprites = {
     l.level_status.UNAVAILABLE: s.sprites["level_unavailable"],

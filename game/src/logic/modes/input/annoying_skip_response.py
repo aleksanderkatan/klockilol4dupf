@@ -1,6 +1,6 @@
 from enum import Enum
 
-from src.strings.translation_getters import get_message_strings
+from resources.strings.translation_getters import get_message_strings
 import src.imports.globals as g
 
 

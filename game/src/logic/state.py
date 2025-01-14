@@ -6,7 +6,7 @@ import src.imports.globals as g
 import src.imports.utils as u
 from src.logic.direction import direction as d
 from src.logic.modes.text_display_utils import create_text_surfaces, horizontal, vertical
-from src.strings.translation_getters import get_other_strings
+from resources.strings.translation_getters import get_other_strings
 
 
 class state:
