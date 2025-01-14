@@ -2,7 +2,7 @@ import random
 
 from src.imports.log import log
 
-levels_path = "src/levels/"
+levels_path = "resources/levels/"
 
 
 # this is a simple 2d numeric, perma, ice, jump and arrow level generator

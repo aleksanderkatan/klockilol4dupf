@@ -34,7 +34,7 @@ class level_status(Enum):
         return self.value
 
 
-level_error_path = 'src/levels/0/0.lv'
+level_error_path = 'resources/levels/0/0.lv'
 
 level_error = (0, 0)
 
@@ -171,7 +171,7 @@ def level_path(level_index):
         log.error("Wrong level index " + str(level_index))
         return level_error_path
     level_set, level = level_index
-    return 'src/levels/' + str(level_set) + '/' + str(level) + '.lv'
+    return 'resources/levels/' + str(level_set) + '/' + str(level) + '.lv'
 
 
 def next_level(level_index, true_next=False):

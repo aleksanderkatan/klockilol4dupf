@@ -614,9 +614,9 @@ def list_of_commands(commands):
 
 def swap_levels(level_1, level_2):  # !! performs no checks
     def level_path(level):
-        return "src/levels/" + str(level[0]) + "/" + str(level[1]) + ".lv"
+        return "resources/levels/" + str(level[0]) + "/" + str(level[1]) + ".lv"
 
-    temp_path = "src/levels/temp/0.lv"
+    temp_path = "resources/levels/temp/0.lv"
     path_1 = level_path(level_1)
     path_2 = level_path(level_2)
     os.rename(path_1, temp_path)

@@ -20,7 +20,7 @@ def generate_SISLG(index, segments, x, y):
     try:
         lines = SISLG(segments, x, y)
         level_string = "\n".join(lines)
-        path = "src/levels/" + str(index[0]) + "/" + str(index[1]) + ".lv"
+        path = "resources/levels/" + str(index[0]) + "/" + str(index[1]) + ".lv"
         f = open(path, "w")
         f.write(level_string)
         f.close()

@@ -1,6 +1,6 @@
 import os
 
-levels_path = "../src/levels/"
+levels_path = "../resources/levels/"
 temp_path = levels_path + "temp/0.lv"
 
 

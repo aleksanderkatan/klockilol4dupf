@@ -5,9 +5,9 @@ venv
 *.spec
 dist*
 build*
-/game/src/levels/101/0.lv
-/game/src/levels/102/0.lv
-/game/src/levels/103/0.lv
-/game/src/levels/104/0.lv
-/game/src/levels/201/7.lv
-/game/src/levels/201/8.lv
+/game/resources/levels/101/0.lv
+/game/resources/levels/102/0.lv
+/game/resources/levels/103/0.lv
+/game/resources/levels/104/0.lv
+/game/resources/levels/201/7.lv
+/game/resources/levels/201/8.lv

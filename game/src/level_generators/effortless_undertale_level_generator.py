@@ -11,7 +11,7 @@ def generate():
     grid[start_y][0] = "S"
     grid[end_y][size-1] = "E"
 
-    f = open("src/levels/104/0.lv", 'w')
+    f = open("resources/levels/104/0.lv", 'w')
     f.write(str(size) + "\n")
     f.write(str(size) + "\n")
     f.write("1\n")

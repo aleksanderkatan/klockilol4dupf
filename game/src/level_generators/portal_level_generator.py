@@ -234,7 +234,7 @@ def generate(index, x, y, portals, min_portals, pair_portals, length, redirect):
     for _ in range(100):
         level_string = try_generate(x, y, portals, min_portals, pair_portals, length, redirect)
         if level_string is not None:
-            path = "src/levels/" + str(index[0]) + "/" + str(index[1]) + ".lv"
+            path = "resources/levels/" + str(index[0]) + "/" + str(index[1]) + ".lv"
             f = open(path, "w")
             f.write(level_string)
             f.close()
