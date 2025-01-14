@@ -1,0 +1,31 @@
+import pygame
+
+import source_code.imports.globals as g
+from source_code.imports.view_constants import global_view_constants as v
+
+
+def run_game(resolution, save):
+    g.save_state = save
+    pygame.init()
+    x, y = resolution
+    resolution = (x, y)
+    v.change_resolution(resolution)
+
+    screen = pygame.display.set_mode((v.WINDOW_X, v.WINDOW_Y))
+    import source_code.imports.all_sprites as s
+    from source_code.logic.game_logic import game_logic
+    pygame.display.set_icon(s.sprites["block_numeric_1"][0])
+    pygame.display.set_caption('klockilol4dupf')
+
+    clock = pygame.time.Clock()
+    game = game_logic(screen)
+    game.initialize_first_stage()
+    while True:
+        for event in pygame.event.get():
+            game.event_handler(event)
+
+        game.move()
+        game.draw()
+
+        pygame.display.update()
+        clock.tick(v.FRAME_RATE)

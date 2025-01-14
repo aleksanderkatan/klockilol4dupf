@@ -1,6 +1,6 @@
 import os
 
-from src.logic.modes.witch.events import load_events
+from source_code.logic.modes.witch.events import load_events
 
 
 def find_duplicate_positions(left, right):

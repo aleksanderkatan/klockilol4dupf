@@ -11,11 +11,11 @@ max_moves = 34
 # YES, it has to show the screen. I wanted it to show the character moving rapidly, but I failed.
 screen = pygame.display.set_mode((100, 100))
 pygame.display.set_caption('level_tester')
-import src.imports.globals as g
+import source_code.imports.globals as g
 
 g.LOG_INFO = False
-import src.logic.direction as direction
-from src.logic.stage import stage
+import source_code.logic.direction as direction
+from source_code.logic.stage import stage
 
 s = stage(screen, tested_level, (0, 0))
 moves = []

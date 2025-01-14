@@ -1,6 +1,6 @@
 import os
 
-root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\game\\src\\"
+root = "C:\\Users\\oloiw\\PycharmProjects\\klockilol4dupf\\game\\source_code\\"
 
 
 def get_extension(s):
